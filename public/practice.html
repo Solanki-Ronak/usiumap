@@ -1,0 +1,4289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masked GeoJSON Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+    /* Basic Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Left side - Map */
+#map {
+    width: 70%;
+    height: 100%;
+}
+
+/* Right side - Controls */
+#controls {
+    width: 30%;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+}
+
+/* Search Bar for Main Categories */
+#searchContainer, #subSearchContainer {
+    position: sticky;
+    top: 0;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#searchBar, #subSearchBar {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Heading Styles */
+#locationsHeading, #subLocationsHeading {
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Main Categories and Sub-locations Styling */
+.location-category, .sub-location {
+    padding: 10px;
+    margin-top: 5px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.location-category:hover, .sub-location:hover {
+    background-color: #ccc;
+}
+
+/* Control Parts Layout */
+#controls div {
+    margin-bottom: 20px;
+}
+
+/* Sub Div Container */
+#subDivContainer {
+    margin-top: 20px;
+    padding: 10px;
+   
+    display: none; /* Initially hidden */
+}
+
+/* Back Button Styling */
+#backButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ccc;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#backButton:hover {
+    background-color: #bbb;
+}
+#subDivHeading {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+    text-transform: capitalize; /* Ensures first letter of each word is capitalized */
+}
+#sub3DivContainer {
+    display: none;
+    padding: 20px;
+   
+}
+
+#backButtonSub3 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ccc;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#sub3Image {
+    width: 150px; /* Increase image width */
+    height: auto;
+    margin: 20px 0; /* Add spacing above and below the image */
+    display: block;
+}
+
+#directionsBtn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#detailsTable {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+#detailsTable td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+#sub4DivContainer {
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+#backButtonSub4 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ccc;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#backButtonSub4:hover {
+    background-color: #bbb;
+}
+
+#sub4DestinationHeading {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#sub4DivContainer h3 {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+#searchAreaBtn, #selectAreaBtn, #useLiveLocationBtn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 1em;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#searchAreaBtn:hover, #selectAreaBtn:hover, #useLiveLocationBtn:hover {
+    background-color: #218838;
+}
+/* Styling for sub5DivContainer */
+#sub5DivContainer {
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+#backButtonSub5 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ccc;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#backButtonSub5:hover {
+    background-color: #bbb;
+}
+
+#sub5Heading {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#sub5SearchBar {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#sub5Content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for sub6DivContainer */
+#sub6DivContainer {
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+#backButtonSub6 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ccc;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#backButtonSub6:hover {
+    background-color: #bbb;
+}
+
+#sub6Heading {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#sub6SearchBar {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#sub6Content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for sub7DivContainer */
+#sub7DivContainer {
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+#backButtonSub7 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ccc;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#backButtonSub7:hover {
+    background-color: #bbb;
+}
+
+#sourceHeading, #destinationHeading {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#modeButtons, #actionButtons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#modeButtons button, #actionButtons button {
+    padding: 8px 15px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#modeButtons button:hover, #actionButtons button:hover {
+    background-color: #218838;
+}
+/* Styling for sub8DivContainer and sub9DivContainer */
+#sub8DivContainer, #sub9DivContainer {
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+#backButtonSub8, #backButtonSub9 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ccc;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#backButtonSub8:hover, #backButtonSub9:hover {
+    background-color: #bbb;
+}
+
+#modeButtonsSub8, #modeButtonsSub9, #actionButtonsSub8, #actionButtonsSub9 {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#modeButtonsSub8 button, #modeButtonsSub9 button, #actionButtonsSub8 button, #actionButtonsSub9 button {
+    padding: 8px 15px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#modeButtonsSub8 button:hover, #modeButtonsSub9 button:hover, #actionButtonsSub8 button:hover, #actionButtonsSub9 button:hover {
+    background-color: #218838;
+}
+#modeButtons .mode-btn.active {
+    background-color: #218838; /* Active mode color */
+    color: #fff;
+    border: 2px solid #1b6e32;
+}
+#controlspart1 {
+    display: none;
+    
+} 
+
+/* Responsive Layout for Smaller Screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    #map {
+        width: 100%;
+        height: 70vh;
+    }
+
+    #controls {
+        width: 100%;
+        height: 30vh;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left side for the map -->
+        <div id="map"></div>
+        
+        <!-- Right side for controls -->
+        <div id="controls">
+            
+            
+            <div id="controlspart1">
+            <div id="controls1">
+                <select id="featureSelect">
+                    <option value="">Select a feature</option>
+                </select>
+                <button id="searchBtn">Search</button>
+            </div><br>
+
+            <div id="controls2">
+                <label for="source">Source:</label>
+                <select id="source">
+                    <option value="">Select Source</option>
+                </select>
+
+                <label for="destination">Destination:</label>
+                <select id="destination">
+                    <option value="">Select Destination</option>
+                </select>
+
+                <label for="mode">Mode:</label>
+                <select id="mode">
+                    <option value="">Select Mode</option>
+                    <option value="walking">Walking</option>
+                    <option value="driving">Driving</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+
+                <button id="searchBtn1">Search</button>
+                <button id="startjourney1">start journey</button>
+
+                <div id="result"></div>
+                <table id="pathTable" border="1" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Path</th>
+                            <th>Distance</th>
+                            <th>Directions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="controls3">
+                <label for="sourceType">Source Type:</label>
+                <select id="sourceType">
+                    <option value="clickOnMap">Click on Map</option>
+                    <option value="liveLoc">Choose Live Location</option>
+                </select>
+
+                <label for="coordSource">Choose the Source by clicking on the map:</label>
+                <input type="text" id="coordSource2" readonly />
+                <input type="text" id="coordSource4" readonly />
+
+                <input type="text" id="coordSource1" readonly />
+                <input type="text" id="coordSource" readonly />
+
+                <label for="coordDestination">Destination:</label>
+                <select id="coordDestination">
+                    <option value="">Select Destination</option>
+                </select>
+
+                <label for="coordMode">Mode:</label>
+                <select id="coordMode">
+                    <option value="">Select Mode</option>
+                    <option value="walking">Walking</option>
+                    <option value="driving">Driving</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+
+                <button id="coordSearchBtn">Search</button>
+                <button id="liveSearchBtn">live Search</button>
+                <button id="startjourney2">start journey</button>
+
+
+                <div id="coordResult"></div>
+                <table id="coordPathTable" border="1" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Path</th>
+                            <th>Distance</th>
+                            <th>Directions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="controlspart2">
+            <!-- Fixed Search Bar -->
+            <div id="searchContainer">
+                <input type="text" id="searchBar" placeholder="Search..." />
+            </div>
+    
+            <!-- Locations Heading -->
+            <h3 id="locationsHeading">Locations</h3>
+    
+            <div id="categoryContainer"></div>
+        </div>
+    
+        <!-- Sub Div Container -->
+        <div id="subDivContainer" style="display: none;">
+            <!-- Back Button -->
+            <button id="backButton" onclick="goBack()">← Back</button>
+            <h2 id="subDivHeading"></h2>
+            <!-- Search Bar for Sub Divs -->
+            <div id="subSearchContainer">
+                <input type="text" id="subSearchBar" placeholder="Search..." />
+            </div>
+    
+            <!-- Sub Locations Heading -->
+            <h3 id="subLocationsHeading">Locations</h3>
+            
+            <!-- Dynamically Loaded Sub Div Content -->
+            <div id="subDivContent"></div>
+        </div>
+
+       <!-- Sub Div Container for Level 3 Details -->
+<div id="sub3DivContainer" style="display: none;">
+    <button id="backButtonSub3" onclick="goBackToSubDiv()">← Back</button>
+    <h2 id="sub3DivHeading"></h2>
+    <img id="sub3Image" src="" alt="Location Image">
+    <button id="directionsBtn">Directions</button>
+    <h3>Overview</h3>
+    <table id="detailsTable">
+        <tbody>
+            <tr><td>Location</td><td id="locationDetail"></td></tr>
+            <tr><td>Phone Number</td><td id="phoneNumberDetail"></td></tr>
+            <tr><td>Email Address</td><td id="emailAddressDetail"></td></tr>
+            <tr><td>Other</td><td id="otherDetail"></td></tr>
+        </tbody>
+    </table>
+</div>
+<!-- Sub Div Container for Level 4 Details -->
+<div id="sub4DivContainer" style="display: none;">
+    <button id="backButtonSub4" onclick="goBackToSub3()">← Back</button>
+    <h2 id="sub4DestinationHeading"></h2> <!-- Destination: will be set dynamically -->
+    <h3>Choose a starting location by the following means:</h3>
+    
+    <!-- Buttons for different selection methods -->
+    <button id="searchAreaBtn">Search an area</button>
+    <button id="selectAreaBtn">Select an area on the map</button>
+    <button id="useLiveLocationBtn">Use live location</button>
+</div>
+
+<!-- Sub Div Container for Level 5 Search -->
+<div id="sub5DivContainer" style="display: none;">
+    <button id="backButtonSub5" onclick="goBackToSub4()">← Back</button>
+    <h2 id="sub5Heading">Search a source</h2>
+    <input type="text" id="sub5SearchBar" placeholder="Search..." />
+    <div id="sub5Content"></div>
+</div>
+
+<!-- Sub Div Container for Level 6 Details -->
+<div id="sub6DivContainer" style="display: none;">
+    <button id="backButtonSub6" onclick="goBackToSub5()">← Back</button>
+    <h2 id="sub6Heading"></h2> <!-- Heading will be set dynamically based on selected div in div5 -->
+    <input type="text" id="sub6SearchBar" placeholder="Search..." />
+    <div id="sub6Content"></div> <!-- Divs will be populated based on locations.json -->
+</div>
+
+<div id="sub7DivContainer" style="display: none;">
+    <button id="backButtonSub7" onclick="goBackToSub6()">← Back</button>
+    <h2 id="sourceHeading"></h2> <!-- Source heading -->
+    <h2 id="destinationHeading"></h2> <!-- Destination heading -->
+    
+    <h3>Choose a mode:</h3>
+    <div id="modeButtons">
+        <button id="walkingMode" class="mode-btn">Walking</button>
+        <button id="vehicleMode" class="mode-btn">Vehicle</button>
+        <button id="disabledMode" class="mode-btn">Disabled</button>
+    </div>
+
+    <h3>Get directions or start the journey</h3>
+    <div id="actionButtons">
+        <button id="getDirectionsBtn">Get Directions</button>
+        <button id="startJourneyBtn">Start Journey</button>
+    </div>
+    <div id="directionDisplayContainer" class="mb-4">
+        <input type="text" id="currentDirection" readonly class="w-full p-2 border rounded" placeholder="Current direction will appear here">
+    </div>
+    <div id="directionsDisplay" style="display: none; padding: 20px; background-color: #f0f0f0;">
+        <h2>Directions</h2>
+        <div id="directionsList"></div> <!-- This will contain the directions as divs -->
+    </div>
+
+    
+</div>
+
+
+<!-- Sub Div Container for Select Area (Level 8) -->
+<div id="sub8DivContainer" style="display: none;">
+    <button id="backButtonSub8" onclick="goBackToSub4FromSub8()">← Back</button>
+    <h2>Source: Dropped Pin</h2>
+    <h2 id="sub8DestinationHeading"></h2>
+
+    <!-- Mode Selection Heading and Buttons -->
+    <h3>Choose a mode:</h3>
+    <div id="modeButtonsSub8">
+        <button id="walkingModeSub8" class="mode-btn">Walking</button>
+        <button id="vehicleModeSub8" class="mode-btn">Vehicle</button>
+        <button id="disabledModeSub8" class="mode-btn">Disabled</button>
+    </div>
+
+    <!-- Get Directions and Start Journey Section -->
+    <h3>Get directions or start the journey</h3>
+    <div id="actionButtonsSub8">
+        <button id="getDirectionsBtnSub8">Get Directions</button>
+        <button id="startJourneyBtnSub8">Start Journey</button>
+    </div>
+    <div id="directionDisplayContainer" class="mb-4">
+        <input type="text" id="currentDirection" readonly class="w-full p-2 border rounded" placeholder="Current direction will appear here">
+    </div>
+    <div id="directionsDisplay1" style="display: none; padding: 20px; background-color: #f0f0f0;">
+        <h2>Directions</h2>
+        <div id="directionsList1"></div> <!-- This will contain the directions as divs -->
+    </div>
+    
+</div>
+
+<!-- Sub Div Container for Use Live Location (Level 9) -->
+<div id="sub9DivContainer" style="display: none;">
+    <button id="backButtonSub9" onclick="goBackToSub4FromSub9()">← Back</button>
+    <h2>Source: Dropped Pin</h2>
+    <h2 id="sub9DestinationHeading"></h2>
+
+    <!-- Mode Selection Heading and Buttons -->
+    <h3>Choose a mode:</h3>
+    <div id="modeButtonsSub9">
+        <button id="walkingModeSub9" class="mode-btn">Walking</button>
+        <button id="vehicleModeSub9" class="mode-btn">Vehicle</button>
+        <button id="disabledModeSub9" class="mode-btn">Disabled</button>
+    </div>
+
+    <!-- Get Directions and Start Journey Section -->
+    <h3>Get directions or start the journey</h3>
+    <div id="actionButtonsSub9">
+        <button id="getDirectionsBtnSub9">Get Directions</button>
+        <button id="startJourneyBtnSub9">Start Journey</button>
+    </div>
+    <div id="directionDisplayContainer" class="mb-4">
+        <input type="text" id="currentDirection" readonly class="w-full p-2 border rounded" placeholder="Current direction will appear here">
+    </div>
+    <div id="directionsDisplay2" style="display: none; padding: 20px; background-color: #f0f0f0;">
+        <h2>Directions</h2>
+        <div id="directionsList2"></div> <!-- This will contain the directions as divs -->
+    </div>
+</div>
+
+
+
+
+</div>
+
+
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+var map = L.map('map').setView([-1.219737, 36.879385], 15);
+// Load base tile layer
+L.tileLayer('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+    attribution: '© CartoDB © OpenStreetMap contributors',
+    maxZoom: 22 // Adjust this based on the available zoom levels of the tile provider
+}).addTo(map);
+
+
+
+// Store layers for reference
+var featureLayers = [];
+var pathLayers = [];
+var usiuBorderLayer;
+// Load polygon coordinates first, then process GeoJSON data
+fetch('polygon_coordinates.json')
+    .then(response => response.json())
+    .then(polygonCoords => {
+        // After loading polygon coordinates, proceed to load GeoJSON
+        return fetch('14.geojson')
+            .then(response => response.json())
+            .then(data => {
+                var featureSelect = document.getElementById('featureSelect');
+                L.geoJSON(data, {
+                    pointToLayer: function (feature, latlng) {
+                        var marker = L.marker(latlng);
+                        marker.bindPopup(feature.properties.name);
+                        featureLayers.push({
+                            name: feature.properties.name,
+                            layer: marker,
+                            featureType: feature.geometry.type
+                        });
+                        return marker;
+                    },
+                    style: function (feature) {
+                        var isUSIUBorder = feature.properties.name === 'USIU BORDER';
+                        return {
+                            color: isUSIUBorder ? '#000' : (feature.properties.borderColor || '#000'),
+                            fillColor: isUSIUBorder ? '#27a147' : (feature.properties.fillColor || '#ccc'),
+                            fillOpacity: isUSIUBorder ? 1 : 0.7,
+                            weight: isUSIUBorder ? 5 : 2,
+                            zIndex: isUSIUBorder ? 1000 : (feature.properties.zIndex || 1)
+                        };
+                    },
+                    onEachFeature: function (feature, layer) {
+                        var option = document.createElement('option');
+                        option.value = feature.properties.name;
+                        option.text = feature.properties.name;
+                        featureSelect.appendChild(option);
+
+                        // Function to swap coordinate order for display
+                        function swapCoordinates(coordString) {
+                            const [lng, lat] = coordString.split(',').map(coord => coord.trim());
+                            return `${lat},${lng}`;
+                        }
+
+                        // Single click handler that handles both popup display and coordinate settings
+                        layer.on('click', function (e) {
+                            e.originalEvent.preventDefault(); // Prevent map click propagation
+                            const featureName = feature.properties.name;
+                            const latlng = e.latlng;
+
+                            // Open popup immediately at the clicked position
+                            L.popup()
+                                .setLatLng(latlng)
+                                .setContent(featureName)
+                                .openOn(map);
+
+                            // Handle 'USIU BORDER' clicks by clearing coordinates
+                            if (featureName === 'USIU BORDER') {
+                                document.getElementById('coordSource1').value = '';
+                                document.getElementById('coordSource').value = '';
+                                return;
+                            }
+
+                            // If predefined coordinates exist in polygonCoords, use them
+                            if (polygonCoords[featureName]) {
+                                document.getElementById('coordSource1').value = swapCoordinates(polygonCoords[featureName].source1);
+                                document.getElementById('coordSource').value = swapCoordinates(polygonCoords[featureName].source);
+                            } else {
+                                // Handle LineString and Polygon features if no predefined coordinates
+                                document.getElementById('coordSource1').value = `${latlng.lat}, ${latlng.lng}`;
+
+                                if (feature.geometry.type === "LineString") {
+                                    const lineCoords = layer.getLatLngs();
+                                    const closestEndpoint = findNearestEndpoint(latlng, lineCoords);
+                                    document.getElementById('coordSource').value = `${closestEndpoint.lat}, ${closestEndpoint.lng}`;
+                                } else {
+                                    const nearestEndpoint = findNearestPoint(latlng, featureLayers);
+                                    if (nearestEndpoint && nearestEndpoint.latLng) {
+                                        document.getElementById('coordSource').value = `${nearestEndpoint.latLng.lat}, ${nearestEndpoint.latLng.lng}`;
+                                    } else {
+                                        document.getElementById('coordSource').value = '';
+                                    }
+                                }
+                            }
+                        });
+
+                        // Store LineString features separately for path-based logic
+                        if (feature.geometry.type === "LineString") {
+                            pathLayers.push({
+                                name: feature.properties.name,
+                                layer: layer
+                            });
+                        }
+                    }
+                }).addTo(map);
+
+                // Apply a mask for USIU border if defined
+                if (usiuBorderLayer) {
+                    L.polygon(usiuBorderLayer.getLatLngs(), {
+                        color: '#000',
+                        fillColor: '#fff',
+                        fillOpacity: 1,
+                        zIndex: 1000
+                    }).addTo(map);
+                }
+
+                // Map click handler for areas outside of defined features
+                map.on('click', function(e) {
+                    if (!e.originalEvent.defaultPrevented) { // Ensure not handled by a feature click
+                        const latlng = e.latlng;
+                        let isValidFeature = false;
+                        let closestFeature = null;
+                        let shortestDistance = Infinity;
+
+                        featureLayers.forEach(function(featureLayer) {
+                            if (featureLayer.name === 'USIU BORDER') return;
+
+                            if (featureLayer.featureType === 'LineString') {
+                                const lineCoords = featureLayer.layer.getLatLngs();
+                                const nearestEndpoint = findNearestEndpoint(latlng, lineCoords);
+                                const distanceToNearest = calculateDistance(latlng, nearestEndpoint);
+
+                                if (distanceToNearest < 2 && distanceToNearest < shortestDistance) {
+                                    isValidFeature = true;
+                                    shortestDistance = distanceToNearest;
+                                    closestFeature = featureLayer;
+                                }
+                            }
+                        });
+
+                        // Clear coordinates if clicked outside of valid features
+                        if (!isValidFeature) {
+                            document.getElementById('coordSource1').value = '';
+                            document.getElementById('coordSource').value = '';
+                        }
+                    }
+                });
+            });
+    })
+    .catch(error => console.error('Error loading data:', error));
+
+
+        // Define the points from POINT 13 to POINT 335 excluding specific points
+        const availablePoints = [];
+        for (let i = 13; i <= 335; i++) {
+            if (![29, 31, 44, 107, 174, 194].includes(i)) {
+                availablePoints.push(`POINT ${i}`);
+            }
+        }
+// Add custom locations and map them to specific points
+const customLocations = {
+    "USIU GATE A": "POINT 86",
+    "USIU GATE B": "POINT 100",
+    "LIBRARY": "POINT 150",
+    "SCHOOL OF HUMANITIES": "POINT 200",
+    "ADMINISTRATION": "POINT 200",
+    "SWIMMING POOL": "POINT 250"
+};
+        // Function to populate source and destination dropdowns with filtered points
+        function populateDropdowns() {
+            const sourceSelect = document.getElementById('source');
+            const destinationSelect = document.getElementById('destination');
+            const coordDestinationSelect = document.getElementById('coordDestination');
+
+            // Clear previous options
+            sourceSelect.innerHTML = '<option value="">Select Source</option>';
+            destinationSelect.innerHTML = '<option value="">Select Destination</option>';
+            coordDestinationSelect.innerHTML = '<option value="">Select Destination</option>';
+
+            // Populate the dropdowns with the available points
+            availablePoints.forEach(point => {
+                const optionSource = document.createElement('option');
+                optionSource.value = point;
+                optionSource.textContent = point;
+                sourceSelect.appendChild(optionSource);
+
+                const optionDestination = document.createElement('option');
+                optionDestination.value = point;
+                optionDestination.textContent = point;
+                destinationSelect.appendChild(optionDestination);
+
+                const optionCoordDestination = document.createElement('option');
+        optionCoordDestination.value = point;
+        optionCoordDestination.textContent = point;
+        coordDestinationSelect.appendChild(optionCoordDestination);
+            });
+        
+// Populate the dropdowns with custom locations
+Object.keys(customLocations).forEach(location => {
+        const point = customLocations[location];
+
+        const optionSource = document.createElement('option');
+        optionSource.value = point; // Map custom location to POINT value
+        optionSource.textContent = location;
+        sourceSelect.appendChild(optionSource);
+
+        const optionDestination = document.createElement('option');
+        optionDestination.value = point; // Map custom location to POINT value
+        optionDestination.textContent = location;
+        destinationSelect.appendChild(optionDestination);
+
+        const optionCoordDestination = document.createElement('option');
+        optionCoordDestination.value = point; // Map custom location to POINT value
+        optionCoordDestination.textContent = location;
+        coordDestinationSelect.appendChild(optionCoordDestination);
+    });
+}
+
+        // Call the function to populate the dropdowns when the page loads
+        document.addEventListener('DOMContentLoaded', populateDropdowns);
+
+       // Fetch the directions file (1.json)
+let directionsData = {};
+
+fetch('1.json')
+    .then(response => response.json())
+    .then(data => {
+        directionsData = data; // Store the directions data for later use
+    })
+    .catch(error => console.error('Error loading directions JSON:', error));
+
+   // Add this to your frontend JavaScript where you handle the response from /shortest-path
+
+
+
+
+
+let interpolatedMarkers = [];
+
+// Add these two functions anywhere in your JavaScript code
+function clearInterpolatedMarkers() {
+    interpolatedMarkers.forEach(marker => {
+        map.removeLayer(marker);
+    });
+    interpolatedMarkers = [];
+}
+
+// Add these global variables at the top of your script
+let redCircleMarker = null;
+let allPathPoints = [];  // Store all points for path restriction
+
+// Function to clear the red circle
+function clearRedCircle() {
+    if (redCircleMarker) {
+        map.removeLayer(redCircleMarker);
+        redCircleMarker = null;
+    }
+}
+
+// Function to find closest point on path
+function findClosestPathPoint(latLng) {
+    let closestPoint = null;
+    let minDistance = Infinity;
+    
+    allPathPoints.forEach(point => {
+        const distance = L.latLng(point[0], point[1]).distanceTo(latLng);
+        if (distance < minDistance) {
+            minDistance = distance;
+            closestPoint = point;
+        }
+    });
+    
+    return closestPoint;
+}
+
+
+function displayAllPathPoints(result, foundLayer, pathNameFromMap, liveLatLng, pathNameFromTable) {
+    clearInterpolatedMarkers();
+    clearRedCircle();
+    allPathPoints = [];
+    endpointMarkers = [];
+
+    let initialPathPoints = [];
+    let startPoint = null;
+
+    if (pathNameFromTable === pathNameFromMap) {
+        const pathLayer = findPathContainingLiveCoordinate(liveLatLng);
+        if (pathLayer) {
+            const lineCoords = pathLayer.getLatLngs();
+            const extractedCoords = extractCoordinates(lineCoords, 1000);
+            const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, extractedCoords);
+            startPoint = [closestInterpolatedPoint[1], closestInterpolatedPoint[0]];
+        }
+        initialPathPoints = highlightFarthestInterpolatedPath(liveLatLng);
+    } else {
+        const pathLayer = findPathContainingLiveCoordinate(liveLatLng);
+        if (pathLayer) {
+            const lineCoords = pathLayer.getLatLngs();
+            const extractedCoords = extractCoordinates(lineCoords, 10);
+            const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, extractedCoords);
+            startPoint = [closestInterpolatedPoint[1], closestInterpolatedPoint[0]];
+        }
+        initialPathPoints = highlightInterpolatedPath(liveLatLng);
+    }
+
+    // Display markers for the initial path points
+    initialPathPoints.forEach((point, index, arr) => {
+        allPathPoints.push(point);
+        const isEndpoint = (index === 0 || index === arr.length - 1);
+        const marker = L.circleMarker(point, {
+            radius: isEndpoint ? 5 : 3,
+            fillColor: isEndpoint ? 'green' : '#000',
+            color: isEndpoint ? 'green' : '#000',
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 1
+        }).addTo(map);
+
+        if (isEndpoint) {
+            endpointMarkers.push({
+                marker: marker,
+                pathIndex: 0
+            });
+        }
+        interpolatedMarkers.push(marker);
+    });
+
+    // Handle all other paths
+    result.path.forEach((pathEntry, pathIndex) => {
+        const matchingLayer = pathLayers.find(layerObj => layerObj.name === pathEntry.path);
+        if (matchingLayer && matchingLayer.name !== pathNameFromMap) {
+            const lineCoords = matchingLayer.layer.getLatLngs();
+            const interpolatedPoints = extractCoordinates(lineCoords, 1000);
+
+            interpolatedPoints.forEach((point, index, arr) => {
+                const pointLatLng = [point[1], point[0]];
+                allPathPoints.push(pointLatLng);
+                const isEndpoint = (index === 0 || index === arr.length - 1);
+                const marker = L.circleMarker(pointLatLng, {
+                    radius: isEndpoint ? 5 : 3,
+                    fillColor: isEndpoint ? 'green' : '#000',
+                    color: isEndpoint ? 'green' : '#000',
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 1
+                }).addTo(map);
+
+                if (isEndpoint) {
+                    endpointMarkers.push({
+                        marker: marker,
+                        pathIndex: pathIndex,
+                        isLastEndpoint: (pathIndex === result.path.length - 1 && index === arr.length - 1)
+                    });
+                }
+                interpolatedMarkers.push(marker);
+            });
+        }
+    });
+
+    // Initialize with first direction
+    if (result.path.length > 0) {
+        const firstDirection = getDirectionFromTable1(0);
+        document.getElementById('currentDirection').value = firstDirection;
+    }
+
+    // Create draggable red circle at the closest interpolated point
+    if (startPoint) {
+        redCircleMarker = L.marker(startPoint, {
+            icon: L.divIcon({
+                className: 'custom-div-icon',
+                html: '<div style="background-color: red; width: 15px; height: 15px; border-radius: 50%;"></div>',
+                iconSize: [15, 15],
+                iconAnchor: [7.5, 7.5]
+            }),
+            draggable: true
+        }).addTo(map);
+
+        // Add drag event handlers with direction updates
+        redCircleMarker.on('drag', function(e) {
+            const closestPoint = findClosestPathPoint(e.latlng);
+            if (closestPoint) {
+                redCircleMarker.setLatLng(closestPoint);
+                
+                // Check for overlap with any endpoint marker
+                endpointMarkers.forEach((endpointObj, index) => {
+                    const endpointLatLng = endpointObj.marker.getLatLng();
+                    const distance = map.distance(closestPoint, endpointLatLng);
+                    
+                    if (distance < 5) {
+                        const table = document.getElementById('coordPathTable');
+                        const tbody = table.querySelector('tbody');
+                        const lastRowIndex = tbody.rows.length - 1;
+                        
+                        if (endpointObj.isLastEndpoint) {
+                            // For the last endpoint, show the last direction from table
+                            console.log('At last endpoint, getting direction from row:', lastRowIndex);
+                            const lastDirection = getDirectionFromTable1(lastRowIndex);
+                            console.log('Last direction:', lastDirection);
+                            document.getElementById('currentDirection').value = lastDirection;
+                        } else if (index === endpointMarkers.length - 2) {
+                            // Show "Destination Arrived" at the second last endpoint
+                            document.getElementById('currentDirection').value = "🎉 Destination Arrived!";
+                        } else {
+                            // For all other endpoints, show normal directions
+                            const tableRow = Math.floor(index / 2);
+                            const direction = getDirectionFromTable1(tableRow);
+                            if (direction) {
+                                document.getElementById('currentDirection').value = direction;
+                                currentPathIndex = tableRow;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    }
+}
+
+// Helper function to get direction from table with debugging
+function getDirectionFromTable1(rowIndex) {
+    const table = document.getElementById('coordPathTable');
+    const tbody = table.querySelector('tbody');
+    
+    console.log('Total rows in table:', tbody.rows.length);
+    console.log('Trying to get direction from row:', rowIndex);
+    
+    if (rowIndex >= 0 && rowIndex < tbody.rows.length) {
+        const row = tbody.rows[rowIndex];
+        const cells = row.getElementsByTagName('td');
+        const direction = cells[cells.length - 1].textContent;
+        console.log('Found direction:', direction);
+        return direction;
+    }
+    console.log('Row index out of bounds');
+    return '';
+}
+
+
+function displayLivePathPoints(result, foundLayer, pathNameFromMap, liveLatLng, pathNameFromTable) {
+    clearInterpolatedMarkers();
+    clearRedCircle();
+    allPathPoints = [];
+    endpointMarkers = [];
+
+    let initialPathPoints = [];
+    let startPoint = null;
+
+    if (pathNameFromTable === pathNameFromMap) {
+        const pathLayer = findPathContainingLiveCoordinate(liveLatLng);
+        if (pathLayer) {
+            const lineCoords = pathLayer.getLatLngs();
+            const extractedCoords = extractCoordinates(lineCoords, 1000);
+            const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, extractedCoords);
+            startPoint = [closestInterpolatedPoint[1], closestInterpolatedPoint[0]];
+        }
+        initialPathPoints = highlightFarthestInterpolatedPath(liveLatLng);
+    } else {
+        const pathLayer = findPathContainingLiveCoordinate(liveLatLng);
+        if (pathLayer) {
+            const lineCoords = pathLayer.getLatLngs();
+            const extractedCoords = extractCoordinates(lineCoords, 10);
+            const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, extractedCoords);
+            startPoint = [closestInterpolatedPoint[1], closestInterpolatedPoint[0]];
+        }
+        initialPathPoints = highlightInterpolatedPath(liveLatLng);
+    }
+
+    // Display markers for the initial path points
+    initialPathPoints.forEach((point, index, arr) => {
+        allPathPoints.push(point);
+        const isEndpoint = (index === 0 || index === arr.length - 1);
+        const marker = L.circleMarker(point, {
+            radius: isEndpoint ? 5 : 3,
+            fillColor: isEndpoint ? 'green' : '#000',
+            color: isEndpoint ? 'green' : '#000',
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 1
+        }).addTo(map);
+
+        if (isEndpoint) {
+            endpointMarkers.push({
+                marker: marker,
+                pathIndex: 0
+            });
+        }
+        interpolatedMarkers.push(marker);
+    });
+
+    // Handle all other paths
+    result.path.forEach((pathEntry, pathIndex) => {
+        const matchingLayer = pathLayers.find(layerObj => layerObj.name === pathEntry.path);
+        if (matchingLayer && matchingLayer.name !== pathNameFromMap) {
+            const lineCoords = matchingLayer.layer.getLatLngs();
+            const interpolatedPoints = extractCoordinates(lineCoords, 1000);
+
+            interpolatedPoints.forEach((point, index, arr) => {
+                const pointLatLng = [point[1], point[0]];
+                allPathPoints.push(pointLatLng);
+                const isEndpoint = (index === 0 || index === arr.length - 1);
+                const marker = L.circleMarker(pointLatLng, {
+                    radius: isEndpoint ? 5 : 3,
+                    fillColor: isEndpoint ? 'green' : '#000',
+                    color: isEndpoint ? 'green' : '#000',
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 1
+                }).addTo(map);
+
+                if (isEndpoint) {
+                    endpointMarkers.push({
+                        marker: marker,
+                        pathIndex: pathIndex,
+                        isLastEndpoint: (pathIndex === result.path.length - 1 && index === arr.length - 1)
+                    });
+                }
+                interpolatedMarkers.push(marker);
+            });
+        }
+    });
+
+    // Initialize with first direction
+    if (result.path.length > 0) {
+        const firstDirection = getDirectionFromTable2(0);
+        document.getElementById('currentDirection').value = firstDirection;
+    }
+
+    // Create draggable red circle at the closest interpolated point
+    if (startPoint) {
+        redCircleMarker = L.marker(startPoint, {
+            icon: L.divIcon({
+                className: 'custom-div-icon',
+                html: '<div style="background-color: red; width: 15px; height: 15px; border-radius: 50%;"></div>',
+                iconSize: [15, 15],
+                iconAnchor: [7.5, 7.5]
+            }),
+            draggable: true
+        }).addTo(map);
+
+        // Add drag event handlers with direction updates
+        redCircleMarker.on('drag', function(e) {
+            const closestPoint = findClosestPathPoint(e.latlng);
+            if (closestPoint) {
+                redCircleMarker.setLatLng(closestPoint);
+                
+                // Check for overlap with any endpoint marker
+                endpointMarkers.forEach((endpointObj, index) => {
+                    const endpointLatLng = endpointObj.marker.getLatLng();
+                    const distance = map.distance(closestPoint, endpointLatLng);
+                    
+                    if (distance < 5) {
+                        const table = document.getElementById('coordPathTable');
+                        const tbody = table.querySelector('tbody');
+                        const lastRowIndex = tbody.rows.length - 1;
+                        
+                        if (endpointObj.isLastEndpoint) {
+                            // For the last endpoint, show the last direction from table
+                            console.log('At last endpoint, getting direction from row:', lastRowIndex);
+                            const lastDirection = getDirectionFromTable2(lastRowIndex);
+                            console.log('Last direction:', lastDirection);
+                            document.getElementById('currentDirection').value = lastDirection;
+                        } else if (index === endpointMarkers.length - 2) {
+                            // Show "Destination Arrived" at the second last endpoint
+                            document.getElementById('currentDirection').value = "🎉 Destination Arrived!";
+                        } else {
+                            // For all other endpoints, show normal directions
+                            const tableRow = Math.floor(index / 2);
+                            const direction = getDirectionFromTable2(tableRow);
+                            if (direction) {
+                                document.getElementById('currentDirection').value = direction;
+                                currentPathIndex = tableRow;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    }
+}
+
+// Helper function to get direction from table
+function getDirectionFromTable2(rowIndex) {
+    const table = document.getElementById('coordPathTable');
+    const tbody = table.querySelector('tbody');
+    
+    console.log('Total rows in table:', tbody.rows.length);
+    console.log('Trying to get direction from row:', rowIndex);
+    
+    if (rowIndex >= 0 && rowIndex < tbody.rows.length) {
+        const row = tbody.rows[rowIndex];
+        const cells = row.getElementsByTagName('td');
+        const direction = cells[cells.length - 1].textContent;
+        console.log('Found direction:', direction);
+        return direction;
+    }
+    console.log('Row index out of bounds');
+    return '';
+}
+
+
+
+// Keep track of endpoint markers specifically
+let endpointMarkers = [];
+let currentPathIndex = 0;
+
+function addInterpolatedPoints(result) {
+    clearInterpolatedMarkers();
+    clearRedCircle();
+    allPathPoints = [];
+    endpointMarkers = []; // Reset endpoint markers array
+    
+    result.path.forEach((pathEntry, pathIndex) => {
+        const matchingLayer = pathLayers.find(layerObj => layerObj.name === pathEntry.path);
+        if (matchingLayer) {
+            const lineCoords = matchingLayer.layer.getLatLngs();
+            const interpolatedPoints = extractCoordinates(lineCoords, 1000);
+            
+            interpolatedPoints.forEach((point, index, arr) => {
+                const pointLatLng = [point[1], point[0]];
+                allPathPoints.push(pointLatLng);
+                
+                // Create markers only for endpoints (first and last points)
+                const isEndpoint = (index === 0 || index === arr.length - 1);
+                
+                const marker = L.circleMarker(pointLatLng, {
+                    radius: isEndpoint ? 5 : 3,
+                    fillColor: isEndpoint ? 'green' : '#000',
+                    color: isEndpoint ? 'green' : '#000',
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 1
+                }).addTo(map);
+
+                // Store endpoint markers separately
+                if (isEndpoint) {
+                    endpointMarkers.push({
+                        marker: marker,
+                        pathIndex: pathIndex,
+                        isLastEndpoint: (pathIndex === result.path.length - 1 && index === arr.length - 1) // Flag for last endpoint
+                    });
+                }
+                
+                interpolatedMarkers.push(marker);
+            });
+        }
+    });
+
+    // Initialize with first direction
+    if (result.path.length > 0) {
+        const firstDirection = getDirectionFromTable(0);
+        document.getElementById('currentDirection').value = firstDirection;
+    }
+
+    // Create draggable red circle
+    if (allPathPoints.length > 0) {
+        const startPoint = allPathPoints[0];
+        currentPathIndex = 0;
+
+        redCircleMarker = L.marker(startPoint, {
+            icon: L.divIcon({
+                className: 'custom-div-icon',
+                html: '<div style="background-color: red; width: 15px; height: 15px; border-radius: 50%;"></div>',
+                iconSize: [15, 15],
+                iconAnchor: [7.5, 7.5]
+            }),
+            draggable: true
+        }).addTo(map);
+
+        // Simplified drag event handler that checks for overlap
+        redCircleMarker.on('drag', function(e) {
+            const closestPoint = findClosestPathPoint(e.latlng);
+            if (closestPoint) {
+                redCircleMarker.setLatLng(closestPoint);
+                
+                // Check for overlap with any endpoint marker
+                endpointMarkers.forEach((endpointObj, index) => {
+                    const endpointLatLng = endpointObj.marker.getLatLng();
+                    
+                    // Calculate distance between red circle and endpoint
+                    const distance = map.distance(closestPoint, endpointLatLng);
+                    
+                    // If distance is very small (overlap), update direction
+                    if (distance < 5) { // 5 meters threshold for overlap
+                        if (endpointObj.isLastEndpoint) {
+                            // If it's the last endpoint, show "Destination Arrived"
+                            document.getElementById('currentDirection').value = "🎉 Destination Arrived!";
+                        } else {
+                            // For other endpoints, show the next direction
+                            const tableRow = Math.floor(index / 2);
+                            const direction = getDirectionFromTable(tableRow);
+                            if (direction) {
+                                document.getElementById('currentDirection').value = direction;
+                                currentPathIndex = tableRow;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    }
+}
+
+// Helper function to get direction from table
+function getDirectionFromTable(rowIndex) {
+    const table = document.getElementById('pathTable');
+    const tbody = table.querySelector('tbody');
+    const rows = tbody.getElementsByTagName('tr');
+    
+    if (rowIndex < rows.length) {
+        const cells = rows[rowIndex].getElementsByTagName('td');
+        return cells[cells.length - 1].textContent;
+    }
+    return '';
+}
+// Modify your existing searchBtn1 event listener
+document.getElementById('searchBtn1').addEventListener('click', function() {
+    const source = document.getElementById('source').value;
+    const destination = document.getElementById('destination').value;
+    const mode = document.getElementById('mode').value;
+
+    if (!source || !destination || !mode) {
+        alert('Please select source, destination, and mode.');
+        return;
+    }
+
+    fetch(`/shortest-path?source=${source}&destination=${destination}&mode=${mode}`)
+        .then(response => response.json())
+        .then(result => {
+            const resultDiv = document.getElementById('result');
+            const table = document.getElementById('pathTable');
+            const tbody = table.querySelector('tbody');
+            const directionsList = document.getElementById('directionsList');
+
+            if (result.error) {
+                resultDiv.textContent = result.error;
+                table.style.display = 'none';
+                directionsList.innerHTML = '';
+                document.getElementById('directionsDisplay').style.display = 'none';
+            } else {
+                resultDiv.textContent = `Total Distance: ${result.distance.toFixed(2)} units`;
+
+                tbody.innerHTML = '';
+                directionsList.innerHTML = '';
+
+                // Display and get the traversed paths
+               
+
+                // Populate the table and directions as before
+                result.path.forEach((pathEntry, index) => {
+                    const { from, to, path, distance } = pathEntry;
+                    
+                    // Create table row
+                    let row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${from}</td>
+                        <td>${to}</td>
+                        <td>${path}</td>
+                        <td>${distance.toFixed(2)}</td>
+                    `;
+
+                    // Get direction
+                    let direction = '';
+                    if (index < result.path.length - 1) {
+                        const nextPathName = result.path[index + 1].path;
+                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                        }
+                    } else {
+                        direction = `Destination in ${distance.toFixed(2)} metres`;
+                    }
+
+                    // Add direction to table
+                    let directionCell = document.createElement('td');
+                    directionCell.textContent = direction;
+                    row.appendChild(directionCell);
+                    tbody.appendChild(row);
+
+                    // Add direction to directions list
+                    const directionDiv = document.createElement('div');
+                    directionDiv.textContent = direction;
+                    directionDiv.style.padding = '10px';
+                    directionDiv.style.borderBottom = '1px solid #ddd';
+                    directionsList.appendChild(directionDiv);
+                });
+
+                table.style.display = 'table';
+                document.getElementById('directionsDisplay').style.display = 'block';
+                
+            
+                // Highlight the paths on the map using the path names
+                highlightPaths(result.path);
+                addInterpolatedPoints(result); 
+            }
+        })
+        .catch(error => console.error('Error calculating shortest path:', error));
+});
+
+function highlightPaths(paths, skipFirstPath) {
+    // Reset all path colors to default
+    pathLayers.forEach(layerObj => {
+        layerObj.layer.setStyle({
+            color: layerObj.layer.feature.properties.borderColor || '#000',
+            fillColor: layerObj.layer.feature.properties.fillColor || '#ccc'
+        });
+
+        // Remove previous polylines (if any)
+        if (layerObj.polyline) {
+            map.removeLayer(layerObj.polyline);
+        }
+    });
+
+    // Highlight the paths that are part of the shortest route
+    paths.forEach(({ path, from, to }, index) => {
+        // Skip the first path if the skipFirstPath flag is true
+        if (index === 0 && skipFirstPath) {
+            console.log(`Skipping highlighting for path: ${path}`);
+            return;
+        }
+
+        const matchingLayer = pathLayers.find(layerObj => layerObj.name === path);
+        if (matchingLayer) {
+            // Set the color to red for the shortest route
+            matchingLayer.layer.setStyle({ color: 'red' });
+
+            // Extract the coordinates from the matching path layer and draw a polyline
+            const coordinates = matchingLayer.layer.feature.geometry.coordinates.map(coord => [coord[1], coord[0]]); // Switch lat, lon
+
+            const polyline = L.polyline(coordinates, { color: 'red', weight: 2 }).addTo(map);
+
+            // Store the polyline on the layer object for potential future cleanup
+            matchingLayer.polyline = polyline;
+        }
+    });
+}
+
+
+
+
+
+// Global variable to store the previously drawn polyline
+let previousPolyline = null;
+
+// New function to find the closest interpolated point, nearest endpoint, and draw the black polyline
+function highlightInterpolatedPath(liveLatLng, coordSource) {
+    // Clear the previous polyline if it exists
+    if (previousPolyline) {
+        map.removeLayer(previousPolyline); // Remove the previous polyline from the map
+        previousPolyline = null; // Reset the variable
+    }
+
+    const pathLayer = findPathContainingLiveCoordinate(liveLatLng);
+
+    if (pathLayer) {
+        const lineCoords = pathLayer.getLatLngs();
+        
+        // Extract all the coordinates from the path (with interpolation)
+        const extractedCoords = extractCoordinates(lineCoords, 1000); // You can adjust the number of interpolated points
+        
+        // Find the closest interpolated point to the live coordinate
+        const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, extractedCoords);
+        
+        // Find the nearest endpoint to the live coordinate
+        const nearestEndpoint = findNearestEndpoint(liveLatLng, lineCoords);
+
+        // Find the index of the closest interpolated point and nearest endpoint in the extracted coordinates
+        const closestIndex = extractedCoords.findIndex(coord =>
+            coord[0] === closestInterpolatedPoint[0] && coord[1] === closestInterpolatedPoint[1]);
+        const nearestIndex = extractedCoords.findIndex(coord =>
+            coord[0] === nearestEndpoint.lng && coord[1] === nearestEndpoint.lat);
+
+        // Ensure the indices are valid and log the range of coordinates between them
+        if (closestIndex !== -1 && nearestIndex !== -1) {
+            const startIndex = Math.min(closestIndex, nearestIndex);
+            const endIndex = Math.max(closestIndex, nearestIndex);
+
+            console.log('Coordinates between the closest interpolated point and the nearest endpoint:');
+            
+            // Store the coordinates to connect them with a polyline
+            const coordsToConnect = [];
+            for (let i = startIndex; i <= endIndex; i++) {
+                coordsToConnect.push([extractedCoords[i][1], extractedCoords[i][0]]);  // Store the coordinate in [lat, lng] format
+            }
+
+            // Draw a black polyline connecting the coordinates (new polyline)
+            previousPolyline = L.polyline(coordsToConnect, { color: 'red', weight: 2 }).addTo(map);
+
+            return coordsToConnect;  // Return the coordinates for distance calculation
+
+        } else {
+            console.log('Could not find valid indices for closest point or nearest endpoint.');
+        }
+    } else {
+        console.log('No matching path found for the live coordinate.');
+    }
+
+    return [];  // Return empty if no valid path was found
+}
+
+// Global variable to store the previously drawn polyline for the farthest endpoint
+let previousFarthestPolyline = null;
+
+// New function to find the closest interpolated point, farthest endpoint, and draw the green polyline
+function highlightFarthestInterpolatedPath(liveLatLng, coordSource) {
+    // Clear the previous polyline if it exists
+    if (previousFarthestPolyline) {
+        map.removeLayer(previousFarthestPolyline); // Remove the previous polyline from the map
+        previousFarthestPolyline = null; // Reset the variable
+    }
+
+    const pathLayer = findPathContainingLiveCoordinate(liveLatLng);
+
+    if (pathLayer) {
+        const lineCoords = pathLayer.getLatLngs();
+        
+        // Extract all the coordinates from the path (with interpolation)
+        const extractedCoords = extractCoordinates(lineCoords, 1000); // You can adjust the number of interpolated points
+        
+        // Find the closest interpolated point to the live coordinate
+        const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, extractedCoords);
+        
+        // Find the farthest endpoint to the live coordinate
+        const farthestEndpoint = findFarthestEndpoint(liveLatLng, lineCoords);
+
+        // Find the index of the closest interpolated point and farthest endpoint in the extracted coordinates
+        const closestIndex = extractedCoords.findIndex(coord =>
+            coord[0] === closestInterpolatedPoint[0] && coord[1] === closestInterpolatedPoint[1]);
+        const farthestIndex = extractedCoords.findIndex(coord =>
+            coord[0] === farthestEndpoint.lng && coord[1] === farthestEndpoint.lat);
+
+        // Ensure the indices are valid and log the range of coordinates between them
+        if (closestIndex !== -1 && farthestIndex !== -1) {
+            const startIndex = Math.min(closestIndex, farthestIndex);
+            const endIndex = Math.max(closestIndex, farthestIndex);
+
+            console.log('Coordinates between the closest interpolated point and the farthest endpoint:');
+            
+            // Store the coordinates to connect them with a polyline
+            const coordsToConnect = [];
+            for (let i = startIndex; i <= endIndex; i++) {
+                coordsToConnect.push([extractedCoords[i][1], extractedCoords[i][0]]);  // Store the coordinate in [lat, lng] format
+            }
+
+            // Draw a green polyline connecting the coordinates (new polyline)
+            previousFarthestPolyline = L.polyline(coordsToConnect, { color: 'red', weight: 3 }).addTo(map);
+
+            return coordsToConnect;  // Return the coordinates for distance calculation
+
+        } else {
+            console.log('Could not find valid indices for closest point or farthest endpoint.');
+        }
+    } else {
+        console.log('No matching path found for the live coordinate.');
+    }
+
+    return [];  // Return empty if no valid path was found
+}
+
+
+
+
+
+// Function to calculate total distance between a list of coordinates
+function calculateTotalDistance(coords) {
+    let totalDistance = 0;
+    for (let i = 0; i < coords.length - 1; i++) {
+        const pointA = L.latLng(coords[i][0], coords[i][1]);
+        const pointB = L.latLng(coords[i + 1][0], coords[i + 1][1]);
+        totalDistance += pointA.distanceTo(pointB); // Calculate distance between two points
+    }
+    return totalDistance;
+}
+
+document.getElementById('coordSearchBtn').addEventListener('click', function() {
+    const coordSource1 = document.getElementById('coordSource1').value;
+    const coordSource = document.getElementById('coordSource').value;
+    const coordDestination = document.getElementById('coordDestination').value;
+    const coordMode = document.getElementById('coordMode').value;
+    const directionsList1 = document.getElementById('directionsList1');
+
+    if (!coordSource ) {
+        alert('Please click on a path or a building until a popup appears of the name of the path or building.');
+        return;
+    }
+    if ( !coordDestination || !coordMode) {
+        alert('Please select destination, and mode.');
+        return;
+    }
+    if (previousPolyline) {
+        map.removeLayer(previousPolyline);
+        previousPolyline = null; // Reset
+    }
+    if (previousFarthestPolyline) {
+        map.removeLayer(previousFarthestPolyline);
+        previousFarthestPolyline = null; // Reset
+    }
+    // Split the coordinates from the text input
+    const [lat1, lng1] = coordSource1.split(',').map(Number);
+    const liveLatLng = L.latLng(lat1, lng1);  // Live coordinate (coordSource1)
+
+    // Call the function to find the path containing the live coordinate
+    const foundLayer = findPathContainingLiveCoordinate(liveLatLng);
+    if (!foundLayer) {
+        console.log('No matching path found for the live coordinate.');
+        return;
+    }
+
+    const [lat2, lng2] = coordSource.split(',').map(Number);
+    const distanceBetweenCoords = calculateDistance(L.latLng(lat1, lng1), L.latLng(lat2, lng2)); // Distance between coordSource1 and coordSource
+
+    const userLatLng = L.latLng(lat2, lng2);  // This is the coordSource LatLng
+
+    // Find the nearest point or LineString endpoint to the user-selected coordinate
+    const nearestLocation = findNearestPoint(userLatLng, featureLayers);
+
+    if (!nearestLocation) {
+        alert('No nearest location found.');
+        return;
+    }
+
+    let source;
+    if (nearestLocation.latLng) { // If it's a LineString coordinate (nearest endpoint)
+        source = nearestLocation.latLng; // Use the closest endpoint
+    } else {
+        source = nearestLocation.name; // It's already a point
+    }
+
+    // Proceed with shortest path calculation using the found source (nearest Point or endpoint)
+    fetch(`/shortest-path?source=${source}&destination=${coordDestination}&mode=${coordMode}`)
+        .then(response => response.json())
+        .then(result => {
+            const resultDiv = document.getElementById('coordResult');
+            const table = document.getElementById('coordPathTable');
+            const tbody = table.querySelector('tbody');
+
+            if (result.error) {
+                resultDiv.textContent = result.error;
+                table.style.display = 'none';
+                directionsList1.innerHTML = '';
+                document.getElementById('directionsDisplay1').style.display = 'none';
+            } else {
+                // Total distance will include the distance between coordSource1 and coordSource
+                let totalDistance = distanceBetweenCoords;
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
+
+                tbody.innerHTML = ''; // Clear previous results
+                directionsList1.innerHTML = '';
+                // Add the new row with coordSource1 and coordSource
+                let newRow = document.createElement('tr');
+                
+                let fromCell = document.createElement('td');
+                fromCell.textContent = coordSource1;
+                newRow.appendChild(fromCell);
+
+                let toCell = document.createElement('td');
+                toCell.textContent = coordSource;
+                newRow.appendChild(toCell);
+
+                let pathCell = document.createElement('td');
+                pathCell.textContent = '';  // Leave path blank
+                newRow.appendChild(pathCell);
+
+                let distanceCell = document.createElement('td');
+                newRow.appendChild(distanceCell);
+
+                let directionCell = document.createElement('td');
+                directionCell.textContent = '';  // Leave directions blank
+                newRow.appendChild(directionCell);
+
+                tbody.appendChild(newRow);
+
+                // Iterate through the result path to populate the rest of the table
+                result.path.forEach((pathEntry, index) => {
+                    const { from, to, path, distance } = pathEntry;
+
+                    let row = document.createElement('tr');
+
+                    let fromCell = document.createElement('td');
+                    fromCell.textContent = from;
+                    row.appendChild(fromCell);
+
+                    let toCell = document.createElement('td');
+                    toCell.textContent = to;
+                    row.appendChild(toCell);
+
+                    let pathCell = document.createElement('td');
+                    pathCell.textContent = path;
+                    row.appendChild(pathCell);
+
+                    let distanceCell = document.createElement('td');
+                    distanceCell.textContent = distance;
+                    row.appendChild(distanceCell);
+
+                    totalDistance += distance;  // Add this path's distance to the total
+
+                    // Get direction for this path
+                    let direction = '';
+                    if (index < result.path.length - 1) { // Check if there is a next path
+                        const nextPathName = result.path[index + 1].path;
+                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                        }
+                    } else { // For the last row, say "Destination"
+                        direction = `Destination in ${distance.toFixed(2)} metres`;
+                    }
+// Add the direction as a div in the directionsDisplay section
+                    const directionDiv = document.createElement('div');
+                    directionDiv.textContent = direction;
+                    directionDiv.style.padding = '10px';
+                    directionDiv.style.borderBottom = '1px solid #ddd';
+                    directionsList1.appendChild(directionDiv);
+                    let directionCell = document.createElement('td');
+                    directionCell.textContent = direction;
+                    row.appendChild(directionCell);
+
+                    tbody.appendChild(row);
+                });
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`; // Update with total distance
+                table.style.display = 'table';
+                document.getElementById('directionsDisplay1').style.display = 'block';
+                // New Section: Check path in second row, third column
+                const secondRow = table.querySelector('tbody').rows[1];  // Get the second row (index 1)
+                if (secondRow) {
+                    const pathNameFromTable = secondRow.cells[2].textContent;  // Third column of second row
+                    const pathNameFromMap = foundLayer.feature.properties.name;  // The name of the path where live coordinate lies
+                    let interpolatedPoints = [];  // To store interpolated points for distance calculation
+                    let skipFirstPath = false;  // Initialize variable to skip the first path
+                    
+                    // Compare the path names and call the appropriate highlighting function
+if (pathNameFromTable === pathNameFromMap) {
+    interpolatedPoints = highlightFarthestInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+    skipFirstPath = true;  // Skip the first path
+} else {
+    interpolatedPoints = highlightInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+}
+
+// Step 4: Calculate the total distance for the first row using interpolated points
+const totalInterpolatedDistance = calculateTotalDistance(interpolatedPoints);  // Total distance in meters
+
+// Update the first row's distance cell with the total interpolated distance
+newRow.cells[3].textContent = `${totalInterpolatedDistance.toFixed(2)} meters`;
+
+// New logic to determine directions based on path names after calculating distance
+if (pathNameFromTable === pathNameFromMap) {
+    // If path names are the same, use the related path direction from directionsData
+    const thirdRow = table.querySelector('tbody').rows[2];  // Check the third row
+    if (thirdRow) {
+        const nextPathName = thirdRow.cells[2].textContent;  // Get the third column of third row
+        if (directionsData[pathNameFromMap] && directionsData[pathNameFromMap].related_paths[nextPathName]) {
+            const direction = directionsData[pathNameFromMap].related_paths[nextPathName];
+            newRow.cells[4].textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+
+            // Create the direction div and add it to directionsList2 as the first item
+            const directionDiv = document.createElement('div');
+            directionDiv.textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+            directionDiv.style.padding = '10px';
+            directionDiv.style.borderBottom = '1px solid #ddd';
+            directionsList1.insertBefore(directionDiv, directionsList1.firstChild);  // Insert at the beginning
+        }
+    }
+} else {
+    // If path names are different, provide a different direction
+    const nextPathName = pathNameFromTable;  // Get next path name from table
+    if (directionsData[pathNameFromMap] && directionsData[pathNameFromMap].related_paths[nextPathName]) {
+        const direction = directionsData[pathNameFromMap].related_paths[nextPathName];
+        newRow.cells[4].textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+
+        const directionDiv = document.createElement('div');
+        directionDiv.textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+        directionDiv.style.padding = '10px';
+        directionDiv.style.borderBottom = '1px solid #ddd';
+        directionsList1.insertBefore(directionDiv, directionsList1.firstChild); 
+    }
+}
+
+                      
+                    // Highlight paths on the map
+                    highlightPaths(result.path, skipFirstPath); 
+                   // Extract coordinates and display black dots
+                   displayAllPathPoints(result, foundLayer, pathNameFromMap, liveLatLng, pathNameFromTable);
+                } else {
+                    console.log('The second row of the table does not exist.');
+                }
+                 
+            }
+        })
+        .catch(error => console.error('Error calculating shortest path:', error));
+});
+
+document.getElementById('liveSearchBtn').addEventListener('click', function() {
+    const coordSource4 = document.getElementById('coordSource4').value;
+    const coordSource = document.getElementById('coordSource').value;
+    const coordDestination = document.getElementById('coordDestination').value;
+    const coordMode = document.getElementById('coordMode').value;
+    const directionsList2 = document.getElementById('directionsList2'); 
+    
+    if (!coordDestination || !coordMode) {
+        alert('Please select destination and mode.');
+        return;
+    }
+
+   // Replace this alert with the modal
+   if (!coordSource4) {
+        showOutsideCampusModal();
+        return;
+    }
+    if (previousPolyline) {
+        map.removeLayer(previousPolyline);
+        previousPolyline = null; // Reset
+    }
+    if (previousFarthestPolyline) {
+        map.removeLayer(previousFarthestPolyline);
+        previousFarthestPolyline = null; // Reset
+    }
+    // Split the coordinates from the text input
+    const [lat1, lng1] = coordSource4.split(',').map(Number);
+    const liveLatLng = L.latLng(lat1, lng1);  // Live coordinate (coordSource4)
+
+    // Call the function to find the path containing the live coordinate
+    const foundLayer = findPathContainingLiveCoordinate(liveLatLng);
+    if (!foundLayer) {
+        console.log('No matching path found for the live coordinate.');
+        return;
+    }
+
+    const [lat2, lng2] = coordSource.split(',').map(Number);
+    const distanceBetweenCoords = calculateDistance(L.latLng(lat1, lng1), L.latLng(lat2, lng2)); // Distance between coordSource4 and coordSource
+
+    const userLatLng = L.latLng(lat2, lng2);  // This is the coordSource LatLng
+
+    // Find the nearest point or LineString endpoint to the user-selected coordinate
+    const nearestLocation = findNearestPoint(userLatLng, featureLayers);
+
+    if (!nearestLocation) {
+        alert('No nearest location found.');
+        return;
+    }
+
+    let source;
+    if (nearestLocation.latLng) { // If it's a LineString coordinate (nearest endpoint)
+        source = nearestLocation.latLng; // Use the closest endpoint
+    } else {
+        source = nearestLocation.name; // It's already a point
+    }
+
+    // Proceed with shortest path calculation using the found source (nearest Point or endpoint)
+    fetch(`/shortest-path?source=${source}&destination=${coordDestination}&mode=${coordMode}`)
+        .then(response => response.json())
+        .then(result => {
+            const resultDiv = document.getElementById('coordResult');
+            const table = document.getElementById('coordPathTable');
+            const tbody = table.querySelector('tbody');
+
+            if (result.error) {
+                resultDiv.textContent = result.error;
+                table.style.display = 'none';
+                directionsList2.innerHTML = '';
+        document.getElementById('directionsDisplay2').style.display = 'none';
+            } else {
+                // Total distance will include the distance between coordSource4 and coordSource
+                let totalDistance = distanceBetweenCoords;
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
+
+                tbody.innerHTML = ''; // Clear previous results
+                directionsList2.innerHTML = '';
+                // Add the new row with coordSource4 and coordSource
+                let newRow = document.createElement('tr');
+                
+                let fromCell = document.createElement('td');
+                fromCell.textContent = coordSource4;
+                newRow.appendChild(fromCell);
+
+                let toCell = document.createElement('td');
+                toCell.textContent = coordSource;
+                newRow.appendChild(toCell);
+
+                let pathCell = document.createElement('td');
+                pathCell.textContent = '';  // Leave path blank
+                newRow.appendChild(pathCell);
+
+                let distanceCell = document.createElement('td');
+                newRow.appendChild(distanceCell);
+
+                let directionCell = document.createElement('td');
+                directionCell.textContent = '';  // Leave directions blank
+                newRow.appendChild(directionCell);
+
+                tbody.appendChild(newRow);
+
+                // Iterate through the result path to populate the rest of the table
+                result.path.forEach((pathEntry, index) => {
+                    const { from, to, path, distance } = pathEntry;
+
+                    let row = document.createElement('tr');
+
+                    let fromCell = document.createElement('td');
+                    fromCell.textContent = from;
+                    row.appendChild(fromCell);
+
+                    let toCell = document.createElement('td');
+                    toCell.textContent = to;
+                    row.appendChild(toCell);
+
+                    let pathCell = document.createElement('td');
+                    pathCell.textContent = path;
+                    row.appendChild(pathCell);
+
+                    let distanceCell = document.createElement('td');
+                    distanceCell.textContent = distance;
+                    row.appendChild(distanceCell);
+
+                    totalDistance += distance;  // Add this path's distance to the total
+
+                    // Get direction for this path
+                    let direction = '';
+                    if (index < result.path.length - 1) { // Check if there is a next path
+                        const nextPathName = result.path[index + 1].path;
+                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                        }
+                    } else { // For the last row, say "Destination"
+                        direction = `Destination in ${distance.toFixed(2)} metres`;
+                    }
+                    const directionDiv = document.createElement('div');
+            directionDiv.textContent = direction;
+            directionDiv.style.padding = '10px';
+            directionDiv.style.borderBottom = '1px solid #ddd';
+            directionsList2.appendChild(directionDiv);
+
+                    let directionCell = document.createElement('td');
+                    directionCell.textContent = direction;
+                    row.appendChild(directionCell);
+
+                    tbody.appendChild(row);
+                });
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`; // Update with total distance
+                table.style.display = 'table';
+                document.getElementById('directionsDisplay2').style.display = 'block';
+                // New Section: Check path in second row, third column
+                const secondRow = table.querySelector('tbody').rows[1];  // Get the second row (index 1)
+                if (secondRow) {
+                    const pathNameFromTable = secondRow.cells[2].textContent;  // Third column of second row
+                    const pathNameFromMap = foundLayer.feature.properties.name;  // The name of the path where live coordinate lies
+                    let interpolatedPoints = [];  // To store interpolated points for distance calculation
+                    let skipFirstPath = false;  // Initialize variable to skip the first path
+                    
+                    // Compare the path names and call the appropriate highlighting function
+if (pathNameFromTable === pathNameFromMap) {
+    interpolatedPoints = highlightFarthestInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+    skipFirstPath = true;  // Skip the first path
+} else {
+    interpolatedPoints = highlightInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+}
+
+// Step 4: Calculate the total distance for the first row using interpolated points
+const totalInterpolatedDistance = calculateTotalDistance(interpolatedPoints);  // Total distance in meters
+
+// Update the first row's distance cell with the total interpolated distance
+newRow.cells[3].textContent = `${totalInterpolatedDistance.toFixed(2)} meters`;
+
+// New logic to determine directions based on path names after calculating distance
+if (pathNameFromTable === pathNameFromMap) {
+    // If path names are the same, use the related path direction from directionsData
+    const thirdRow = table.querySelector('tbody').rows[2];  // Check the third row
+    if (thirdRow) {
+        const nextPathName = thirdRow.cells[2].textContent;  // Get the third column of third row
+        if (directionsData[pathNameFromMap] && directionsData[pathNameFromMap].related_paths[nextPathName]) {
+            const direction = directionsData[pathNameFromMap].related_paths[nextPathName];
+            newRow.cells[4].textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+
+            // Create the direction div and add it to directionsList2 as the first item
+            const directionDiv = document.createElement('div');
+            directionDiv.textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+            directionDiv.style.padding = '10px';
+            directionDiv.style.borderBottom = '1px solid #ddd';
+            directionsList2.insertBefore(directionDiv, directionsList2.firstChild);  // Insert at the beginning
+        }
+    }
+} else {
+    // If path names are different, provide a different direction
+    const nextPathName = pathNameFromTable;  // Get next path name from table
+    if (directionsData[pathNameFromMap] && directionsData[pathNameFromMap].related_paths[nextPathName]) {
+        const direction = directionsData[pathNameFromMap].related_paths[nextPathName];
+        newRow.cells[4].textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+
+        // Create the direction div and add it to directionsList2 as the first item
+        const directionDiv = document.createElement('div');
+        directionDiv.textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+        directionDiv.style.padding = '10px';
+        directionDiv.style.borderBottom = '1px solid #ddd';
+        directionsList2.insertBefore(directionDiv, directionsList2.firstChild);  // Insert at the beginning
+    }
+}
+
+
+
+                      
+                    // Highlight paths on the map
+                    highlightPaths(result.path, skipFirstPath);  // Call the function with skipFirstPath flag
+                    
+                    displayLivePathPoints(result, foundLayer, pathNameFromMap, liveLatLng, pathNameFromTable);
+               
+                } else {
+                    console.log('The second row of the table does not exist.');
+                }
+                 
+            }
+        })
+        .catch(error => console.error('Error calculating shortest path:', error));
+});
+
+
+
+// Function to interpolate between two coordinates, ensuring points are correctly placed even on straight lines
+function interpolateCoordinates(coord1, coord2, numPoints) {
+    let interpolatedPoints = [];
+    let latDiff = coord2[1] - coord1[1];
+    let lngDiff = coord2[0] - coord1[0];
+
+    // Ensure we always interpolate even when the line is straight by dividing the lat and lng difference
+    for (let i = 0; i <= numPoints; i++) {
+        let factor = i / numPoints;  // Calculate interpolation factor (between 0 and 1)
+        
+        // Interpolate both latitude and longitude using linear interpolation
+        let interpolatedLat = coord1[1] + (latDiff * factor);
+        let interpolatedLng = coord1[0] + (lngDiff * factor);
+        
+        interpolatedPoints.push([interpolatedLng, interpolatedLat]);
+    }
+
+    return interpolatedPoints;
+}
+
+
+// Function to extract all coordinates including interpolated points along the LineString
+function extractCoordinates(lineCoords, numInterpolatedPoints) {
+    let allCoordinates = [];
+
+    for (let i = 0; i < lineCoords.length - 1; i++) {
+        let coord1 = [lineCoords[i].lng, lineCoords[i].lat];
+        let coord2 = [lineCoords[i + 1].lng, lineCoords[i + 1].lat];
+        let segmentPoints = interpolateCoordinates(coord1, coord2, numInterpolatedPoints);
+        allCoordinates = allCoordinates.concat(segmentPoints);
+
+       
+    }
+
+    return allCoordinates;
+}
+
+
+// Function to find the closest interpolated point to the live coordinate
+function findClosestInterpolatedPoint(liveCoord, interpolatedPoints) {
+    let closestPoint = null;
+    let shortestDistance = Infinity;
+
+    interpolatedPoints.forEach(point => {
+        let pointLatLng = L.latLng(point[1], point[0]);
+        let distance = calculateDistance(liveCoord, pointLatLng);
+        if (distance < shortestDistance) {
+            shortestDistance = distance;
+            closestPoint = point;
+        }
+    });
+
+    return closestPoint;
+}
+
+// Global variables to store the current polyline and circles
+let currentPolyline = null;
+let currentCircles = [];
+
+// Function to remove the current polyline and circles from the map
+function clearCurrentPolylineAndCircles() {
+    if (currentPolyline) {
+        map.removeLayer(currentPolyline);  // Remove the polyline from the map
+        currentPolyline = null;  // Reset the reference
+    }
+    currentCircles.forEach(circle => {
+        map.removeLayer(circle);  // Remove each circle from the map
+    });
+    currentCircles = [];  // Reset the array
+}
+
+
+// Modified function to find the closest path where live coordinates belong, interpolate points, and call the new function
+function findPathContainingLiveCoordinate(liveLatLng) {
+    let foundLayer = null;
+    let closestPath = null;
+    let shortestDistance = Infinity;
+
+    // Iterate through all path layers to find the closest path to the live coordinate
+    pathLayers.forEach(layerObj => {
+        const lineCoords = layerObj.layer.getLatLngs();
+
+        // Loop through each segment formed by consecutive points
+        for (let i = 0; i < lineCoords.length - 1; i++) {
+            const segmentStart = lineCoords[i];
+            const segmentEnd = lineCoords[i + 1];
+
+            // Project the liveLatLng onto the current segment
+            const projectedPoint = projectOntoSegment(liveLatLng, segmentStart, segmentEnd);
+
+            // Calculate the distance between the liveLatLng and the projected point
+            const distance = calculateDistance(liveLatLng, projectedPoint);
+
+            // Check if the projected point is on the segment and if the distance is smaller than our threshold
+            if (isPointOnSegment(projectedPoint, segmentStart, segmentEnd) && distance < 2 && distance < shortestDistance) {
+                foundLayer = layerObj.layer;
+                shortestDistance = distance;
+                closestPath = layerObj;
+            }
+        }
+    });
+
+    // If a path is found
+    if (closestPath) {
+        console.log(`Live coordinate belongs to path: ${closestPath.name}`);
+
+        // Get the coordinates of the LineString where live coordinates lie
+        const lineCoords = closestPath.layer.getLatLngs();
+
+        // Interpolate 1000 points along the path
+        const interpolatedPoints = extractCoordinates(lineCoords, 1000);
+
+        // Find the closest interpolated point to the live coordinate
+        const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, interpolatedPoints);
+
+        // Find the nearest endpoint to the live coordinate
+        const nearestEndpoint = findNearestEndpoint(liveLatLng, lineCoords);
+
+        // Find the farthest endpoint to the live coordinate
+        const farthestEndpoint = findFarthestEndpoint(liveLatLng, lineCoords);
+
+        // Log the live coordinate, the closest interpolated point, nearest endpoint, and farthest endpoint
+        console.log(`Live coordinate: ${liveLatLng.lat}, ${liveLatLng.lng}`);
+        console.log(`Closest interpolated point: ${closestInterpolatedPoint[1]}, ${closestInterpolatedPoint[0]}`);
+        console.log(`Nearest endpoint: ${nearestEndpoint.lat}, ${nearestEndpoint.lng}`);
+        console.log(`Farthest endpoint: ${farthestEndpoint.lat}, ${farthestEndpoint.lng}`);
+    } else {
+        console.log('No matching path found for the live coordinate.');
+    }
+
+    return foundLayer;
+}
+
+// Helper function to calculate the distance between two coordinates (Haversine formula or Leaflet's distanceTo)
+function calculateDistance(latlng1, latlng2) {
+    return latlng1.distanceTo(latlng2); // Using Leaflet's built-in method
+}
+
+// Helper function to project a point onto a line segment
+function projectOntoSegment(point, segmentStart, segmentEnd) {
+    const x1 = segmentStart.lng, y1 = segmentStart.lat;
+    const x2 = segmentEnd.lng, y2 = segmentEnd.lat;
+    const x3 = point.lng, y3 = point.lat;
+
+    const px = x2 - x1;
+    const py = y2 - y1;
+    const norm = px * px + py * py;
+    const u = ((x3 - x1) * px + (y3 - y1) * py) / norm;
+
+    const clampedU = Math.max(Math.min(u, 1), 0); // Clamp the projection factor to [0, 1]
+    return L.latLng(y1 + clampedU * py, x1 + clampedU * px);
+}
+
+// Helper function to check if a point is on a segment between two points (using a small tolerance)
+function isPointOnSegment(point, segmentStart, segmentEnd) {
+    const tolerance = 0.00001; // Adjust tolerance as needed
+    const minLat = Math.min(segmentStart.lat, segmentEnd.lat) - tolerance;
+    const maxLat = Math.max(segmentStart.lat, segmentEnd.lat) + tolerance;
+    const minLng = Math.min(segmentStart.lng, segmentEnd.lng) - tolerance;
+    const maxLng = Math.max(segmentStart.lng, segmentEnd.lng) + tolerance;
+
+    return point.lat >= minLat && point.lat <= maxLat && point.lng >= minLng && point.lng <= maxLng;
+}
+
+// Function to find the nearest point or LineString endpoint to the selected coordinate
+function findNearestPoint(userLatLng, featureLayers) {
+    let nearestPoint = null;
+    let shortestDistance = Infinity;
+
+    featureLayers.forEach(featureLayer => {
+        // For Point features, compare directly
+        if (featureLayer.featureType === "Point") {
+            const pointLatLng = featureLayer.layer.getLatLng();
+            const distance = calculateDistance(userLatLng, pointLatLng);
+
+            if (distance < shortestDistance) {
+                shortestDistance = distance;
+                nearestPoint = featureLayer;
+            }
+        }
+        // For LineString features, check the closest endpoint (first or last)
+        else if (featureLayer.featureType === "LineString") {
+            const lineCoords = featureLayer.layer.getLatLngs();
+            const closestEndpoint = findNearestEndpoint(userLatLng, lineCoords);  // Only consider endpoints
+            const distance = calculateDistance(userLatLng, closestEndpoint);
+
+            if (distance < shortestDistance) {
+                shortestDistance = distance;
+                nearestPoint = { // Store the closest endpoint on the LineString
+                    name: featureLayer.name,
+                    latLng: closestEndpoint  // Use closest endpoint
+                };
+            }
+        }
+    });
+
+    return nearestPoint;
+}
+
+
+// Function to find the nearest endpoint (first or last) of a LineString to the selected coordinate
+function findNearestEndpoint(userLatLng, lineLatLngs) {
+    const firstPoint = L.latLng(lineLatLngs[0].lat, lineLatLngs[0].lng);
+    const lastPoint = L.latLng(lineLatLngs[lineLatLngs.length - 1].lat, lineLatLngs[lineLatLngs.length - 1].lng);
+
+    const distanceToFirst = calculateDistance(userLatLng, firstPoint);
+    const distanceToLast = calculateDistance(userLatLng, lastPoint);
+
+    // Return the closer endpoint
+    return distanceToFirst < distanceToLast ? firstPoint : lastPoint;
+}
+
+// Function to find the farthest endpoint (first or last) of a LineString to the selected coordinate
+function findFarthestEndpoint(userLatLng, lineLatLngs) {
+    const firstPoint = L.latLng(lineLatLngs[0].lat, lineLatLngs[0].lng);
+    const lastPoint = L.latLng(lineLatLngs[lineLatLngs.length - 1].lat, lineLatLngs[lineLatLngs.length - 1].lng);
+
+    const distanceToFirst = calculateDistance(userLatLng, firstPoint);
+    const distanceToLast = calculateDistance(userLatLng, lastPoint);
+
+    // Return the farther endpoint
+    return distanceToFirst > distanceToLast ? firstPoint : lastPoint;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Function to find the nearest path to the live coordinates
+function findNearestPath(latLng) {
+    let closestPathLayer = null;
+    let shortestDistance = Infinity;
+
+    // Iterate over each path layer to find the nearest path
+    pathLayers.forEach(layerObj => {
+        const lineCoords = layerObj.layer.getLatLngs();
+
+        // Loop through each segment in the LineString
+        for (let i = 0; i < lineCoords.length - 1; i++) {
+            const segmentStart = lineCoords[i];
+            const segmentEnd = lineCoords[i + 1];
+            const projectedPoint = projectOntoSegment(latLng, segmentStart, segmentEnd);
+            const distance = latLng.distanceTo(projectedPoint);
+
+            if (distance < shortestDistance) {
+                shortestDistance = distance;
+                closestPathLayer = layerObj;
+            }
+        }
+    });
+
+    return closestPathLayer;
+}
+// Define USIU border coordinates
+const usiuBorderCoordinates = [
+    [36.87955443924471, -1.219551075108555],
+    [36.88037134879136, -1.217190265152894],
+    [36.87947858336054, -1.216892743808472],
+    [36.88008371098167, -1.215087768554767],
+    [36.88062053725127, -1.213538202193178],
+    [36.88105035207693, -1.212298748613264],
+    [36.88155652792798, -1.210725392425729],
+    [36.8820396957874, -1.209330117409436],
+    [36.88198601046969, -1.209157595889621],
+    [36.88250614385259, -1.207667519774219],
+    [36.88192597175444, -1.207468611988716],
+    [36.87976691605007, -1.208590633902929],
+    [36.87943118459978, -1.209578710366813],
+    [36.87901302624101, -1.210807708413114],
+    [36.87837584694205, -1.21256479572547],
+    [36.87783371200825, -1.214185746911923],
+    [36.87705033861167, -1.21648884154898],
+    [36.87682962626818, -1.217160153032182],
+    [36.87707956928878, -1.217452297793216],
+    [36.87821893293008, -1.218665855956189],
+    [36.8790042397402, -1.21947140938309],
+    [36.87932697817411, -1.219782232991832],
+    [36.87955443924471, -1.219551075108555]
+];
+
+// Function to check if a point is inside a polygon using ray casting algorithm
+function isPointInPolygon(point, polygon) {
+    const x = point[0], y = point[1];
+    let inside = false;
+
+    for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+        const xi = polygon[i][0], yi = polygon[i][1];
+        const xj = polygon[j][0], yj = polygon[j][1];
+
+        const intersect = ((yi > y) !== (yj > y))
+            && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+        if (intersect) inside = !inside;
+    }
+
+    return inside;
+}
+var liveMarker = L.marker([ -1.219645599730465,36.87932573861777], {  // Replace with your desired coordinates
+    draggable: true, 
+    zIndexOffset: 1000 
+}).addTo(map);
+
+// Function to initialize marker coordinates
+function initializeMarkerCoordinates() {
+    const initialLatLng = liveMarker.getLatLng();
+    const initialPoint = [initialLatLng.lng, initialLatLng.lat];
+
+    // Check if initial position is inside USIU border
+    if (isPointInPolygon(initialPoint, usiuBorderCoordinates)) {
+        document.getElementById('coordSource2').value = `${initialLatLng.lat}, ${initialLatLng.lng}`;
+
+        // Find the nearest path and update other fields
+        const closestPathLayer = findNearestPath(initialLatLng);
+        if (closestPathLayer) {
+            const lineCoords = closestPathLayer.layer.getLatLngs();
+            const interpolatedPoints = extractCoordinates(lineCoords, 1000);
+            const closestInterpolatedPoint = findClosestInterpolatedPoint(initialLatLng, interpolatedPoints);
+            const nearestEndpoint = findNearestEndpoint(
+                L.latLng(closestInterpolatedPoint[1], closestInterpolatedPoint[0]), 
+                lineCoords
+            );
+
+            // Update both coordSource and coordSource4
+            document.getElementById('coordSource').value = `${nearestEndpoint.lat}, ${nearestEndpoint.lng}`;
+            document.getElementById('coordSource4').value = `${closestInterpolatedPoint[1]}, ${closestInterpolatedPoint[0]}`;
+            
+            // Log the values for debugging
+            console.log('Initial coordinates set:', {
+                coordSource2: document.getElementById('coordSource2').value,
+                coordSource4: document.getElementById('coordSource4').value,
+                coordSource: document.getElementById('coordSource').value
+            });
+        }
+    }
+}
+
+// Initialize coordinates when the map is ready
+map.whenReady(() => {
+    setTimeout(initializeMarkerCoordinates, 500); // Add a small delay to ensure all elements are loaded
+});
+
+
+// Set initial tooltip
+liveMarker.bindTooltip("Drag me to get coordinates").openTooltip();
+
+// Handle marker movement
+liveMarker.on('move', function(e) {
+    const latLng = e.target.getLatLng();
+    const point = [latLng.lng, latLng.lat]; // Note: GeoJSON uses [longitude, latitude]
+
+    // Check if the point is inside USIU border
+    if (isPointInPolygon(point, usiuBorderCoordinates)) {
+        // Point is inside USIU - update the coordinate fields
+        document.getElementById('coordSource2').value = `${latLng.lat}, ${latLng.lng}`;
+
+        // Find the nearest path and update other fields
+        const closestPathLayer = findNearestPath(latLng);
+        if (closestPathLayer) {
+            const lineCoords = closestPathLayer.layer.getLatLngs();
+            const interpolatedPoints = extractCoordinates(lineCoords, 1000);
+            const closestInterpolatedPoint = findClosestInterpolatedPoint(latLng, interpolatedPoints);
+            const nearestEndpoint = findNearestEndpoint(L.latLng(closestInterpolatedPoint[1], closestInterpolatedPoint[0]), lineCoords);
+
+            document.getElementById('coordSource').value = `${nearestEndpoint.lat}, ${nearestEndpoint.lng}`;
+            document.getElementById('coordSource4').value = `${closestInterpolatedPoint[1]}, ${closestInterpolatedPoint[0]}`;
+        } else {
+            document.getElementById('coordSource').value = '';
+            document.getElementById('coordSource4').value = '';
+        }
+    } else {
+        // Point is outside USIU - clear all coordinate fields
+        document.getElementById('coordSource2').value = '';
+        document.getElementById('coordSource').value = '';
+        document.getElementById('coordSource4').value = '';
+    }
+});
+
+// Handle drag start
+liveMarker.on('dragstart', function() {
+    this.unbindTooltip();
+});
+
+// Add this variable at the start to track if red circle should follow
+let isNearRedCircle = false;
+const FOLLOW_DISTANCE = 40; // Distance in meters within which the red circle will follow
+// Modal warning variables
+let isModalShowing = false;
+const WARNING_DISTANCE = 100; // meters
+ // Distance in meters within which red circle follows live marker
+
+// Function to clear map elements
+function clearMapElements() {
+    // Clear interpolated markers
+    clearInterpolatedMarkers();
+    // Clear red circle
+    if (redCircleMarker) {
+        map.removeLayer(redCircleMarker);
+        redCircleMarker = null;
+    }
+    // Reset all path colors and remove polylines
+    pathLayers.forEach(layerObj => {
+        layerObj.layer.setStyle({
+            color: layerObj.layer.feature.properties.borderColor || '#000',
+            fillColor: layerObj.layer.feature.properties.fillColor || '#ccc'
+        });
+        // Remove polyline if it exists
+        if (layerObj.polyline) {
+            map.removeLayer(layerObj.polyline);
+            delete layerObj.polyline;
+        }
+    });
+    // Clear the directions display
+    const directionsDisplay = document.getElementById('directionsDisplay2');
+    if (directionsDisplay) {
+        directionsDisplay.style.display = 'none';
+    }
+    const directionsList = document.getElementById('directionsList2');
+    if (directionsList) {
+        directionsList.innerHTML = '';
+    }
+}
+
+// Function to transfer values between controls
+function transferControlValues() {
+    // Check controls2 first
+    const destination = document.getElementById('destination').value;
+    const mode = document.getElementById('mode').value;
+    
+    // If values exist in controls2, transfer to controls3
+    if (destination && mode) {
+        document.getElementById('coordDestination').value = destination;
+        document.getElementById('coordMode').value = mode;
+    }
+    
+    // Make sure sourceType is set to "liveLoc"
+    const sourceType = document.getElementById('sourceType');
+    if (sourceType) {
+        sourceType.value = 'liveLoc';
+    }
+}
+// Add this function to transfer values from controls2 to controls3
+function transferControls2ToControls3() {
+    // Get values from controls2
+    const destination = document.getElementById('destination').value;
+    const mode = document.getElementById('mode').value;
+    
+    // Set values in controls3
+    const coordDestination = document.getElementById('coordDestination');
+    const coordMode = document.getElementById('coordMode');
+    const sourceType = document.getElementById('sourceType');
+    
+    // Set destination
+    if (destination) {
+        Array.from(coordDestination.options).forEach(option => {
+            if (option.value === destination) {
+                option.selected = true;
+            }
+        });
+    }
+    
+    // Set mode
+    if (mode) {
+        Array.from(coordMode.options).forEach(option => {
+            if (option.value === mode) {
+                option.selected = true;
+            }
+        });
+    }
+    
+    // Set source type to live location
+    sourceType.value = 'liveLoc';
+}
+// Function to trigger live search with current marker position
+async function triggerLiveSearch() {
+    const markerLatLng = liveMarker.getLatLng();
+    
+    // Update the coordinate fields
+    document.getElementById('coordSource2').value = `${markerLatLng.lat}, ${markerLatLng.lng}`;
+
+    // Find the nearest path and update other fields
+    const closestPathLayer = findNearestPath(markerLatLng);
+    if (closestPathLayer) {
+        const lineCoords = closestPathLayer.layer.getLatLngs();
+        const interpolatedPoints = extractCoordinates(lineCoords, 1000);
+        const closestInterpolatedPoint = findClosestInterpolatedPoint(markerLatLng, interpolatedPoints);
+        const nearestEndpoint = findNearestEndpoint(
+            L.latLng(closestInterpolatedPoint[1], closestInterpolatedPoint[0]), 
+            lineCoords
+        );
+
+        // Update the coordinate fields
+        document.getElementById('coordSource').value = `${nearestEndpoint.lat}, ${nearestEndpoint.lng}`;
+        document.getElementById('coordSource4').value = `${closestInterpolatedPoint[1]}, ${closestInterpolatedPoint[0]}`;
+
+        // Wait a brief moment to ensure all fields are updated
+        await new Promise(resolve => setTimeout(resolve, 100));
+
+        // Click the live search button
+        document.getElementById('liveSearchBtn').click();
+    }
+}
+let activeJourneyButton = null;
+
+
+// Function to update red circle position and handle interactions
+function handleRedCircleInteraction(latLng) {
+    if (redCircleMarker && interpolatedMarkers.length > 0) {
+        const distanceToRedCircle = latLng.distanceTo(redCircleMarker.getLatLng());
+        
+        if (distanceToRedCircle <= FOLLOW_DISTANCE) {
+            // If near, make red circle follow the marker along the path
+            const closestPathPoint = findClosestPathPoint(latLng);
+            if (closestPathPoint) {
+                redCircleMarker.setLatLng(closestPathPoint);
+                
+                // Trigger the drag event on red circle to update directions
+                redCircleMarker.fire('drag', {
+                    latlng: closestPathPoint
+                });
+            }
+            liveMarker.bindTooltip("Controlling red marker").openTooltip();
+            return true;
+        } else if (distanceToRedCircle <= FOLLOW_DISTANCE * 2) {
+            // Show "Getting closer" message when approaching red circle
+            liveMarker.bindTooltip("Move closer to control red marker").openTooltip();
+        } else {
+            liveMarker.bindTooltip("Valid location inside USIU").openTooltip();
+        }
+    }
+    return false;
+}
+// Add these global variables at the top with your other globals
+let journeyStarted = false;
+document.addEventListener('DOMContentLoaded', function() {
+    // First remove any existing event listeners
+    const startjourney1 = document.getElementById('startjourney1');
+    const startjourney2 = document.getElementById('startjourney2');
+    
+    const newStartjourney1 = startjourney1.cloneNode(true);
+    const newStartjourney2 = startjourney2.cloneNode(true);
+    
+    startjourney1.parentNode.replaceChild(newStartjourney1, startjourney1);
+    startjourney2.parentNode.replaceChild(newStartjourney2, startjourney2);
+
+    // Add event listener for startjourney1
+    newStartjourney1.addEventListener('click', function(e) {
+        // First check if liveMarker is inside USIU border
+        const markerLatLng = liveMarker.getLatLng();
+        const point = [markerLatLng.lng, markerLatLng.lat];
+        
+        if (!isPointInPolygon(point, usiuBorderCoordinates)) {
+            e.preventDefault();
+            showOutsideCampusModal();
+            return;
+        }
+
+        // Continue with existing validation if marker is inside USIU
+        const destination = document.getElementById('destination').value;
+        const mode = document.getElementById('mode').value;
+        const pathTable = document.getElementById('pathTable');
+
+        // Check if destination and mode are selected
+        if (!destination || !mode) {
+            e.preventDefault();
+            alert('Please select both destination and mode before starting the journey.');
+            return;
+        }
+
+        // Check if path has been searched
+        if (pathTable.style.display === 'none') {
+            e.preventDefault();
+            alert('Please click Search to generate a path before starting the journey.');
+            return;
+        }
+
+        // Check if the table has any rows
+        const tbody = pathTable.querySelector('tbody');
+        if (!tbody || tbody.rows.length === 0) {
+            e.preventDefault();
+            alert('No valid path found. Please try different locations.');
+            return;
+        }
+
+        // If all validations pass, start the journey
+        journeyStarted = true;
+        activeJourneyButton = 'startjourney1';
+        checkDistance();
+
+        // Enable the direction display container
+        const directionDisplayContainer = document.getElementById('directionDisplayContainer');
+        if (directionDisplayContainer) {
+            directionDisplayContainer.style.display = 'block';
+        }
+    });
+
+    // Add event listener for startjourney2
+    newStartjourney2.addEventListener('click', function(e) {
+        // Validate controls3 inputs
+        const destination = document.getElementById('coordDestination').value;
+        const mode = document.getElementById('coordMode').value;
+        const pathTable = document.getElementById('coordPathTable');
+        const coordSource = document.getElementById('coordSource').value;
+        const coordSource1 = document.getElementById('coordSource1').value;
+        const coordSource2 = document.getElementById('coordSource2').value;
+        const coordSource4 = document.getElementById('coordSource4').value;
+
+        // Check if destination and mode are selected
+        if (!destination || !mode) {
+            e.preventDefault();
+            alert('Please select both destination and mode before starting the journey.');
+            return;
+        }
+
+        // Check if source coordinates are available
+        if (!coordSource || !coordSource1 || !coordSource2 || !coordSource4) {
+            e.preventDefault();
+            alert('Please select a valid source location on the map.');
+            return;
+        }
+
+        // Check if path has been searched
+        if (pathTable.style.display === 'none') {
+            e.preventDefault();
+            alert('Please click Search to generate a path before starting the journey.');
+            return;
+        }
+
+        // Check if the table has any rows
+        const tbody = pathTable.querySelector('tbody');
+        if (!tbody || tbody.rows.length === 0) {
+            e.preventDefault();
+            alert('No valid path found. Please try different locations.');
+            return;
+        }
+
+        // If all validations pass, start the journey
+        journeyStarted = true;
+        activeJourneyButton = 'startjourney2';
+        checkDistance();
+
+        // Enable the direction display container
+        const directionDisplayContainer = document.getElementById('directionDisplayContainer');
+        if (directionDisplayContainer) {
+            directionDisplayContainer.style.display = 'block';
+        }
+    });
+});
+// Helper function to check if a point is inside USIU border
+function isValidLocation(coordSource) {
+    if (!coordSource) return false;
+    
+    const [lat, lng] = coordSource.split(',').map(coord => coord.trim());
+    const point = [parseFloat(lng), parseFloat(lat)];
+    
+    return isPointInPolygon(point, usiuBorderCoordinates);
+}
+
+// Add this new function to show the outside campus modal
+function showOutsideCampusModal() {
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        text-align: center;
+    `;
+    
+    modal.innerHTML = `
+        <h3 style="margin-bottom: 15px; color: #dc3545;">Outside USIU Campus</h3>
+        <p style="margin-bottom: 20px;">You are outside the USIU campus. You cannot use this feature.</p>
+        <button id="closeModalBtn" style="padding: 8px 16px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+    `;
+    
+    document.body.appendChild(modal);
+
+    // Handle Close button click
+    document.getElementById('closeModalBtn').onclick = function() {
+        document.body.removeChild(modal);
+    };
+}
+
+
+// Function to check distance and show modal
+function checkDistance() {
+    if (!redCircleMarker || !liveMarker) return;
+    
+    const latLng = liveMarker.getLatLng();
+    const distanceToRedCircle = latLng.distanceTo(redCircleMarker.getLatLng());
+    
+    if (distanceToRedCircle > WARNING_DISTANCE && !isModalShowing) {
+        showWarningModal();
+    }
+}
+// Update the showWarningModal function
+function showWarningModal() {
+    isModalShowing = true;
+    
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+    `;
+    
+    modal.innerHTML = `
+        <h3 style="margin-bottom: 15px;">You are far from the given path</h3>
+        <p>Would you like to start closer to your position?</p>
+        <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+            <button id="modalYesBtn" style="padding: 8px 16px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">Yes</button>
+            <button id="modalExitBtn" style="padding: 8px 16px; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Exit</button>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+
+    // Handle Yes button click
+    document.getElementById('modalYesBtn').onclick = async function() {
+        // If startjourney1 was clicked, transfer values from controls2 to controls3
+        if (activeJourneyButton === 'startjourney1') {
+            transferControls2ToControls3();
+        }
+        
+        document.body.removeChild(modal);
+        isModalShowing = false;
+        
+        // Wait a brief moment for the values to be transferred
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        await triggerLiveSearch();
+    };
+
+    // Handle Exit button click
+    document.getElementById('modalExitBtn').onclick = function() {
+        document.body.removeChild(modal);
+        isModalShowing = false;
+    };
+}
+
+
+// Modify the existing liveMarker drag event
+liveMarker.on('drag', function(e) {
+    const latLng = e.target.getLatLng();
+    const point = [latLng.lng, latLng.lat];
+    
+    if (isPointInPolygon(point, usiuBorderCoordinates)) {
+        document.getElementById('coordSource2').value = `${latLng.lat}, ${latLng.lng}`;
+
+        const closestPathLayer = findNearestPath(latLng);
+        if (closestPathLayer) {
+            const lineCoords = closestPathLayer.layer.getLatLngs();
+            const interpolatedPoints = extractCoordinates(lineCoords, 1000);
+            const closestInterpolatedPoint = findClosestInterpolatedPoint(latLng, interpolatedPoints);
+            const nearestEndpoint = findNearestEndpoint(
+                L.latLng(closestInterpolatedPoint[1], closestInterpolatedPoint[0]), 
+                lineCoords
+            );
+
+            document.getElementById('coordSource').value = `${nearestEndpoint.lat}, ${nearestEndpoint.lng}`;
+            document.getElementById('coordSource4').value = `${closestInterpolatedPoint[1]}, ${closestInterpolatedPoint[0]}`;
+
+            // Handle red circle interaction only if journey has started
+            if (journeyStarted) {
+                const distanceToRedCircle = latLng.distanceTo(redCircleMarker.getLatLng());
+                if (distanceToRedCircle <= FOLLOW_DISTANCE) {
+                    // Move red circle with live marker
+                    const closestPathPoint = findClosestPathPoint(latLng);
+                    if (closestPathPoint) {
+                        redCircleMarker.setLatLng(closestPathPoint);
+                        redCircleMarker.fire('drag', {
+                            latlng: closestPathPoint
+                        });
+                    }
+                    liveMarker.bindTooltip("Controlling red marker").openTooltip();
+                } else if (distanceToRedCircle <= FOLLOW_DISTANCE * 2) {
+                    liveMarker.bindTooltip("Move closer to control red marker").openTooltip();
+                } else {
+                    liveMarker.bindTooltip("Valid location inside USIU").openTooltip();
+                    // Check distance and show modal if needed
+                    checkDistance();
+                }
+            }
+        }
+    } else {
+        document.getElementById('coordSource2').value = '';
+        document.getElementById('coordSource').value = '';
+        document.getElementById('coordSource4').value = '';
+        liveMarker.bindTooltip("Invalid location - Please drag inside USIU border").openTooltip();
+    }
+});
+
+// Update the resetJourney function to also reset the activeJourneyButton
+function resetJourney() {
+    journeyStarted = false;
+    activeJourneyButton = null;
+    if (redCircleMarker) {
+        map.removeLayer(redCircleMarker);
+        redCircleMarker = null;
+    }
+    clearMapElements();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ... your existing initialization code ...
+
+    // Reset journey when certain navigation actions occur
+    document.getElementById('searchBtn').addEventListener('click', resetJourney);
+    document.getElementById('searchBtn1').addEventListener('click', resetJourney);
+});
+// Handle drag end
+liveMarker.on('dragend', function(e) {
+    const latLng = e.target.getLatLng();
+    const point = [latLng.lng, latLng.lat];
+    
+    if (!isPointInPolygon(point, usiuBorderCoordinates)) {
+        this.bindTooltip("Please drag the marker inside USIU border").openTooltip();
+    }
+});
+
+function clearJourneyState() {
+    journeyStarted = false;
+    activeJourneyButton = null;
+    
+    // Reset direction display
+    const currentDirectionInput = document.getElementById('currentDirection');
+    if (currentDirectionInput) {
+        currentDirectionInput.value = '';
+    }
+
+    // Hide direction display container
+    const directionDisplayContainer = document.getElementById('directionDisplayContainer');
+    if (directionDisplayContainer) {
+        directionDisplayContainer.style.display = 'none';
+    }
+}
+
+// Add this to your existing reset/cleanup functions
+function resetControls() {
+    // Reset controls2
+    document.getElementById('destination').selectedIndex = 0;
+    document.getElementById('mode').selectedIndex = 0;
+    document.getElementById('pathTable').style.display = 'none';
+    document.getElementById('result').textContent = '';
+
+    // Reset controls3
+    document.getElementById('coordDestination').selectedIndex = 0;
+    document.getElementById('coordMode').selectedIndex = 0;
+    document.getElementById('coordSource').value = '';
+    document.getElementById('coordSource1').value = '';
+    document.getElementById('coordSource2').value = '';
+    document.getElementById('coordSource4').value = '';
+    document.getElementById('coordPathTable').style.display = 'none';
+    document.getElementById('coordResult').textContent = '';
+
+    // Clear journey state
+    clearJourneyState();
+}
+
+// Add to your existing event listeners for navigation/reset
+document.getElementById('backButton')?.addEventListener('click', resetControls);
+document.getElementById('searchBtn')?.addEventListener('click', clearJourneyState);
+document.getElementById('coordSearchBtn')?.addEventListener('click', clearJourneyState);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Function to load categories from destination.json
+async function loadCategories() {
+    const response = await fetch('destination.json');
+    const data = await response.json();
+    return data.categories;
+}
+
+// Function to display categories dynamically
+async function displayCategories() {
+    const categoryContainer = document.getElementById('categoryContainer');
+    const categories = await loadCategories();
+
+    categories.forEach(category => {
+        const div = document.createElement('div');
+        div.classList.add('location-category');
+        div.id = category.toLowerCase();
+        div.textContent = category;
+        categoryContainer.appendChild(div);
+    });
+
+    // Attach event listeners for dynamically created categories
+    document.querySelectorAll('.location-category').forEach(div => {
+        div.addEventListener('click', async (e) => {
+            const category = e.target.id.charAt(0).toUpperCase() + e.target.id.slice(1);
+            const locationsData = await loadLocationsData(); // Load location data if needed
+            
+            if (locationsData[category]) {
+                displaySubDivs(category, locationsData[category]);
+            } else {
+                console.log(`No sub-divs found for ${category}`);
+            }
+        });
+    });
+}
+
+// Call the function to load and display categories when the page loads
+document.addEventListener('DOMContentLoaded', displayCategories);
+
+
+
+
+// Function to load locations data from locations.json
+async function loadLocationsData() {
+    const response = await fetch('locations.json');
+    const data = await response.json();
+    return data;
+}
+
+// Function to display main categories
+function showMainCategories() {
+    document.getElementById('controlspart2').style.display = 'block';
+    document.getElementById('subDivContainer').style.display = 'none';
+}
+
+// Function to display sub-divs based on selected main category
+function displaySubDivs(category, subDivs) {
+    const subDivContainer = document.getElementById('subDivContainer');
+    const subDivContent = document.getElementById('subDivContent');
+    const subDivHeading = document.getElementById('subDivHeading'); // Get the heading element
+
+    // Set the heading text with the category name, capitalizing each word
+    subDivHeading.textContent = category;
+
+    // Clear previous content
+    subDivContent.innerHTML = '';
+
+    // Populate subDivContent with new sub-divs
+    subDivs.forEach(subDiv => {
+        const div = document.createElement('div');
+        div.classList.add('sub-location');
+        div.textContent = subDiv;
+        subDivContent.appendChild(div);
+    });
+
+    // Hide main categories and show sub-divs
+    document.getElementById('controlspart2').style.display = 'none';
+    subDivContainer.style.display = 'block';
+}
+
+// Function to load locations data from locations.json
+async function loadLocationsData() {
+    const response = await fetch('locations.json');
+    const data = await response.json();
+    return data;
+}
+
+// Event listener for main categories
+document.querySelectorAll('.location-category').forEach(div => {
+    div.addEventListener('click', async (e) => {
+        const category = e.target.id.charAt(0).toUpperCase() + e.target.id.slice(1);
+        
+        // Load the locations data
+        const locationsData = await loadLocationsData();
+        
+        // Check if the clicked category has sub-divs in the data
+        if (locationsData[category]) {
+            displaySubDivs(category, locationsData[category]);
+        } else {
+            console.log(`No sub-divs found for ${category}`);
+        }
+    });
+});
+
+// Function for Back Button to show main categories again
+function goBack() {
+    showMainCategories();
+}
+
+
+// Function to display sub3 view with details
+async function displaySub3Details(subDivName) {
+    const sub3DivContainer = document.getElementById('sub3DivContainer');
+    const sub3DivHeading = document.getElementById('sub3DivHeading');
+    const directionsBtn = document.getElementById('directionsBtn');
+    const sub3Image = document.getElementById('sub3Image');
+
+    // Fetch the data from subdivs.json
+    const response = await fetch('subdivs.json');
+    const data = await response.json();
+
+    // Get the details for the clicked subDiv
+    const details = data[subDivName];
+
+    if (details) {
+        // Update the sub3Div with the fetched details
+        sub3DivHeading.textContent = subDivName;
+        sub3Image.src = details.image;
+
+        // Fill table with details
+        document.getElementById('locationDetail').textContent = details.details.Location;
+        document.getElementById('phoneNumberDetail').textContent = details.details["Phone Number"];
+        document.getElementById('emailAddressDetail').textContent = details.details["Email Address"];
+        document.getElementById('otherDetail').textContent = details.details.Other;
+
+        // Hide subDivContainer and show sub3DivContainer
+        document.getElementById('subDivContainer').style.display = 'none';
+        sub3DivContainer.style.display = 'block';
+    } else {
+        console.log(`No details found for ${subDivName}`);
+    }
+}
+
+// Event listener for sub-divs to open sub3 view
+document.getElementById('subDivContent').addEventListener('click', function (e) {
+    if (e.target.classList.contains('sub-location')) {
+        const subDivName = e.target.textContent;
+        displaySub3Details(subDivName);
+    }
+});
+
+// Back button functionality for sub3
+function goBackToSubDiv() {
+    document.getElementById('sub3DivContainer').style.display = 'none';
+    document.getElementById('subDivContainer').style.display = 'block';
+}
+
+// Function to display sub4 view when Directions button is clicked on sub3DivContainer
+document.getElementById('directionsBtn').addEventListener('click', function() {
+    const sub3Heading = document.getElementById('sub3DivHeading').textContent;
+    const sub4DestinationHeading = document.getElementById('sub4DestinationHeading');
+    
+    // Set the destination heading with the text from sub3DivHeading
+    sub4DestinationHeading.textContent = `Destination: ${sub3Heading}`;
+    
+    // Hide sub3DivContainer and show sub4DivContainer
+    document.getElementById('sub3DivContainer').style.display = 'none';
+    document.getElementById('sub4DivContainer').style.display = 'block';
+});
+
+// Back button functionality for sub4DivContainer
+function goBackToSub3() {
+    document.getElementById('sub4DivContainer').style.display = 'none';
+    document.getElementById('sub3DivContainer').style.display = 'block';
+}
+
+
+// Event listener for the searchAreaBtn to open sub5DivContainer
+document.getElementById('searchAreaBtn').addEventListener('click', async function () {
+    // Hide sub4DivContainer and show sub5DivContainer
+    document.getElementById('sub4DivContainer').style.display = 'none';
+    document.getElementById('sub5DivContainer').style.display = 'block';
+
+    // Load and display source divs from destination.json
+    await displaySub5Content();
+});
+
+// Function to load and display sub5 content from destination.json
+async function displaySub5Content() {
+    const sub5Content = document.getElementById('sub5Content');
+    sub5Content.innerHTML = ''; // Clear previous content
+
+    try {
+        const response = await fetch('destination.json');
+        const data = await response.json();
+
+        console.log("Loaded data:", data); // Log data structure for debugging
+
+        // Check if categories exists in the data and if it’s an array
+        if (data.categories && Array.isArray(data.categories)) {
+            // Populate sub5Content with divs for each category item in destination.json
+            data.categories.forEach(category => {
+                const div = document.createElement('div');
+                div.classList.add('sub-location'); // You can reuse this class from previous divs
+                div.textContent = category; // Display each category
+                sub5Content.appendChild(div);
+            });
+        } else {
+            console.error("No 'categories' array found in destination.json");
+        }
+    } catch (error) {
+        console.error('Error loading destination.json:', error);
+    }
+}
+
+// Back button functionality for sub5DivContainer
+function goBackToSub4() {
+    document.getElementById('sub5DivContainer').style.display = 'none';
+    document.getElementById('sub4DivContainer').style.display = 'block';
+}
+
+
+// Event listener for sub5Content divs to open sub6DivContainer
+document.getElementById('sub5Content').addEventListener('click', function (e) {
+    if (e.target.classList.contains('sub-location')) {
+        const selectedCategory = e.target.textContent; // Get the category name from the clicked div
+        displaySub6Content(selectedCategory);
+    }
+});
+
+// Function to load and display sub6 content from locations.json based on selected category
+async function displaySub6Content(category) {
+    const sub6Content = document.getElementById('sub6Content');
+    sub6Content.innerHTML = ''; // Clear previous content
+
+    try {
+        const response = await fetch('locations.json');
+        const data = await response.json();
+
+        // Set the heading for sub6DivContainer with the selected category name
+        document.getElementById('sub6Heading').textContent = category;
+
+        // Check if the category exists in locations.json and is an array
+        if (data[category] && Array.isArray(data[category])) {
+            // Populate sub6Content with divs for each item in the selected category
+            data[category].forEach(location => {
+                const div = document.createElement('div');
+                div.classList.add('sub-location'); // Reusing the sub-location class for consistency
+                div.textContent = location; // Display each location name
+                sub6Content.appendChild(div);
+            });
+        } else {
+            console.error(`No entries found for category: ${category}`);
+        }
+
+        // Hide sub5DivContainer and show sub6DivContainer
+        document.getElementById('sub5DivContainer').style.display = 'none';
+        document.getElementById('sub6DivContainer').style.display = 'block';
+    } catch (error) {
+        console.error('Error loading locations.json:', error);
+    }
+}
+
+// Back button functionality for sub6DivContainer
+function goBackToSub5() {
+    document.getElementById('sub6DivContainer').style.display = 'none';
+    document.getElementById('sub5DivContainer').style.display = 'block';
+}
+
+
+let selectedSource = ''; // To store the selected source from sub6
+let selectedDestination = ''; // To store the selected destination from sub3
+
+// Capture the destination from sub3DivContainer when navigating to sub4DivContainer
+document.getElementById('directionsBtn').addEventListener('click', function() {
+    const sub3Heading = document.getElementById('sub3DivHeading').textContent;
+    selectedDestination = sub3Heading; // Store the heading as the destination
+
+    // Set the destination heading in sub4DivContainer
+    const sub4DestinationHeading = document.getElementById('sub4DestinationHeading');
+    sub4DestinationHeading.textContent = `Destination: ${selectedDestination}`;
+    
+    // Hide sub3DivContainer and show sub4DivContainer
+    document.getElementById('sub3DivContainer').style.display = 'none';
+    document.getElementById('sub4DivContainer').style.display = 'block';
+});
+
+// Event listener for sub6Content divs to open sub7DivContainer
+document.getElementById('sub6Content').addEventListener('click', function (e) {
+    if (e.target.classList.contains('sub-location')) {
+        selectedSource = e.target.textContent; // Set the selected source when an item is clicked in sub6
+        displaySub7Content(); // Show sub7DivContainer with selected source and destination
+    }
+});
+
+// Function to display sub7 content with source and destination details
+function displaySub7Content() {
+    // Set the source and destination headings
+    document.getElementById('sourceHeading').textContent = `Source: ${selectedSource}`;
+    document.getElementById('destinationHeading').textContent = `Destination: ${selectedDestination}`;
+
+    // Hide sub6DivContainer and show sub7DivContainer
+    document.getElementById('sub6DivContainer').style.display = 'none';
+    document.getElementById('sub7DivContainer').style.display = 'block';
+}
+
+function goBackToSub6() {
+    // Reset controls2 elements
+    resetControls2();
+
+    // Show sub6DivContainer and hide sub7DivContainer
+    document.getElementById('sub7DivContainer').style.display = 'none';
+    document.getElementById('sub6DivContainer').style.display = 'block';
+}
+
+// Capture the selected destination from sub4DivContainer when navigating to sub8 or sub9
+function setDestinationForSub8AndSub9() {
+    const sub4DestinationHeading = document.getElementById('sub4DestinationHeading').textContent;
+    document.getElementById('sub8DestinationHeading').textContent = sub4DestinationHeading;
+    document.getElementById('sub9DestinationHeading').textContent = sub4DestinationHeading;
+}
+
+// Event listener for selectAreaBtn to open sub8DivContainer
+document.getElementById('selectAreaBtn').addEventListener('click', function() {
+    setDestinationForSub8AndSub9(); // Set the destination heading
+    document.getElementById('sub4DivContainer').style.display = 'none';
+    document.getElementById('sub8DivContainer').style.display = 'block';
+});
+
+// Event listener for useLiveLocationBtn to open sub9DivContainer
+document.getElementById('useLiveLocationBtn').addEventListener('click', function() {
+    setDestinationForSub8AndSub9(); // Set the destination heading
+    document.getElementById('sub4DivContainer').style.display = 'none';
+    document.getElementById('sub9DivContainer').style.display = 'block';
+});
+
+// Back button functionality for sub8DivContainer
+function goBackToSub4FromSub8() {
+    resetSub8();
+
+    document.getElementById('sub8DivContainer').style.display = 'none';
+    document.getElementById('sub4DivContainer').style.display = 'block';
+}
+
+// Back button functionality for sub9DivContainer
+function goBackToSub4FromSub9() {
+    resetSub9();
+
+    document.getElementById('sub9DivContainer').style.display = 'none';
+    document.getElementById('sub4DivContainer').style.display = 'block';
+}
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetch('dropdownpoints.json')
+        .then(response => response.json())
+        .then(data => populateDropdowns(data))
+        .catch(error => console.error("Error loading dropdownpoints.json:", error));
+
+        function populateDropdowns(data) {
+    const sourceDropdown = document.getElementById('source');
+    const destinationDropdown = document.getElementById('destination');
+
+    data.forEach(item => {
+        const optionSource = document.createElement('option');
+        optionSource.value = item.point;
+        optionSource.text = item.name;
+        sourceDropdown.add(optionSource);
+
+        const optionDestination = document.createElement('option');
+        optionDestination.value = item.point;
+        optionDestination.text = item.name;
+        destinationDropdown.add(optionDestination);
+    });
+}
+
+
+    document.getElementById("getDirectionsBtn").addEventListener("click", () => {
+        const sourceText = capitalizeWords(document.getElementById("sourceHeading").textContent.replace('Source: ', ''));
+        const destinationText = capitalizeWords(document.getElementById("destinationHeading").textContent.replace('Destination: ', ''));
+
+        selectDropdownOption("source", sourceText);
+        selectDropdownOption("destination", destinationText);
+
+        const selectedMode = document.querySelector("#modeButtons .active")?.id || "walkingMode";
+        selectMode(selectedMode);
+        
+        document.getElementById("searchBtn1").click();
+    });
+
+    function capitalizeWords(text) {
+        return text.replace(/\b\w/g, char => char.toUpperCase());
+    }
+
+    function selectDropdownOption(dropdownId, optionText) {
+    const dropdown = document.getElementById(dropdownId);
+    const optionFound = [...dropdown.options].some(option => {
+        if (option.text === optionText) {
+            option.selected = true;
+            return true;
+        }
+        return false;
+    });
+
+    // Handle case where option is not found
+    if (!optionFound) {
+        console.warn(`Option "${optionText}" not found in dropdownpoints.json`);
+        document.getElementById(dropdownId === 'source' ? 'sourceHeading' : 'destinationHeading').textContent = `Not Available`;
+    }
+}
+
+    function selectMode(modeId) {
+        const modeDropdown = document.getElementById("mode");
+        const modeValue = { walkingMode: "walking", vehicleMode: "driving", disabledMode: "disabled" }[modeId];
+        [...modeDropdown.options].forEach(option => {
+            if (option.value === modeValue) option.selected = true;
+        });
+    }
+
+    document.querySelectorAll("#modeButtons .mode-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            document.querySelectorAll("#modeButtons .mode-btn").forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+        });
+    });
+});
+
+function resetControls2() {
+    // Reset the source, destination, and mode dropdowns
+    document.getElementById('source').selectedIndex = 0; // Reset to "Select Source"
+    document.getElementById('destination').selectedIndex = 0; // Reset to "Select Destination"
+    document.getElementById('mode').selectedIndex = 0; // Reset to "Select Mode"
+
+    // Clear result text and hide the path table
+    document.getElementById('result').textContent = '';
+    const pathTable = document.getElementById('pathTable');
+    pathTable.style.display = 'none';
+
+    // Clear the table rows
+    const tbody = pathTable.querySelector('tbody');
+    tbody.innerHTML = '';
+
+    // Hide the directions display div
+    document.getElementById('directionsDisplay').style.display = 'none';
+    document.getElementById('directionsList').innerHTML = ''; // Clear directions list
+}
+
+
+function resetSub8() {
+    // Reset source type and mode dropdowns
+    document.getElementById('sourceType').selectedIndex = 0; // Reset to "Select Source Type"
+    document.getElementById('coordMode').selectedIndex = 0; // Reset to "Select Mode"
+    document.getElementById('coordDestination').selectedIndex = 0; // Reset to "Select Destination"
+    document.getElementById('coordSource2').value = '';
+    document.getElementById('coordSource4').value = '';
+    document.getElementById('coordSource1').value = '';
+    document.getElementById('coordSource').value = '';
+
+    // Clear result text and hide the path table in controls3
+    document.getElementById('coordResult').textContent = '';
+    const coordPathTable = document.getElementById('coordPathTable');
+    coordPathTable.style.display = 'none';
+
+    // Clear the table rows
+    const tbody = coordPathTable.querySelector('tbody');
+    tbody.innerHTML = '';
+
+    // Hide the directions display div
+    document.getElementById('directionsDisplay').style.display = 'none';
+    document.getElementById('directionsList').innerHTML = ''; // Clear directions list
+
+    // Hide sub8DivContainer and show the previous div (e.g., controls3 or main container)
+    document.getElementById('sub8DivContainer').style.display = 'none';
+    document.getElementById('controls3').style.display = 'block';
+
+    document.getElementById('directionsDisplay1').style.display = 'none';
+    document.getElementById('directionsList1').innerHTML = ''; // Clear directions list
+}
+
+function resetSub9() {
+    // Reset source type and mode dropdowns
+    document.getElementById('sourceType').selectedIndex = 1; // Set to "Live Location" for sourceType
+    document.getElementById('coordMode').selectedIndex = 0; // Reset to "Select Mode"
+    document.getElementById('coordDestination').selectedIndex = 0; // Reset to "Select Destination"
+    document.getElementById('coordSource2').value = '';
+    document.getElementById('coordSource4').value = '';
+    document.getElementById('coordSource1').value = '';
+    document.getElementById('coordSource').value = '';
+
+    // Clear result text and hide the path table in controls3
+    document.getElementById('coordResult').textContent = '';
+    const coordPathTable = document.getElementById('coordPathTable');
+    coordPathTable.style.display = 'none';
+
+    // Clear the table rows
+    const tbody = coordPathTable.querySelector('tbody');
+    tbody.innerHTML = '';
+
+    // Hide the directions display div
+    document.getElementById('directionsDisplay').style.display = 'none';
+    document.getElementById('directionsList').innerHTML = ''; // Clear directions list
+
+    // Hide sub9DivContainer and show the previous div (e.g., controls3 or main container)
+    document.getElementById('sub9DivContainer').style.display = 'none';
+    document.getElementById('controls3').style.display = 'block';
+
+    document.getElementById('directionsDisplay2').style.display = 'none';
+    document.getElementById('directionsList2').innerHTML = ''; // Clear directions list
+}
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetch('dropdownpoints.json')
+        .then(response => response.json())
+        .then(data => populateDropdowns(data))
+        .catch(error => console.error("Error loading dropdownpoints.json:", error));
+
+    function populateDropdowns(data) {
+        const coordDestinationDropdown = document.getElementById('coordDestination');
+        data.forEach(item => {
+            const optionCoordDestination = document.createElement('option');
+            optionCoordDestination.value = item.point;
+            optionCoordDestination.text = item.name;
+            coordDestinationDropdown.add(optionCoordDestination);
+        });
+    }
+
+
+    // Main Start Journey Button (from sub7)
+document.getElementById("startJourneyBtn").addEventListener("click", () => {
+    // Get source and destination text
+    const sourceText = capitalizeWords(document.getElementById("sourceHeading").textContent.replace('Source: ', ''));
+    const destinationText = capitalizeWords(document.getElementById("destinationHeading").textContent.replace('Destination: ', ''));
+
+    // Set source and destination dropdowns
+    selectDropdownOption("source", sourceText);
+    selectDropdownOption("destination", destinationText);
+
+    // Get selected mode from active button and map it to dropdown value
+    const activeButton = document.querySelector("#modeButtons .mode-btn.active");
+    let modeValue = "walking"; // default value
+    if (activeButton) {
+        switch (activeButton.id) {
+            case "walkingMode":
+                modeValue = "walking";
+                break;
+            case "vehicleMode":
+                modeValue = "driving";
+                break;
+            case "disabledMode":
+                modeValue = "disabled";
+                break;
+        }
+    }
+    
+    // Set the mode in the dropdown
+    const modeDropdown = document.getElementById("mode");
+    if (modeDropdown) {
+        Array.from(modeDropdown.options).forEach(option => {
+            option.selected = option.value === modeValue;
+        });
+    }
+
+    // Wait a short moment for values to be set
+    setTimeout(() => {
+        document.getElementById("startjourney1").click();
+    }, 100);
+});
+
+// Sub8 Start Journey Button (for click on map)
+document.getElementById("startJourneyBtnSub8").addEventListener("click", () => {
+    // Get the destination text
+    const destinationText = capitalizeWords(
+        document.getElementById("sub8DestinationHeading").textContent.trim().replace('Destination: ', '')
+    );
+    document.getElementById("sourceType").value = "clickOnMap";
+    selectDropdownOption("coordDestination", destinationText);
+
+    // Get selected mode from active button and map it to dropdown value
+    const activeButton = document.querySelector("#modeButtonsSub8 .mode-btn.active");
+    let modeValue = "walking"; // default value
+    if (activeButton) {
+        switch (activeButton.id) {
+            case "walkingModeSub8":
+                modeValue = "walking";
+                break;
+            case "vehicleModeSub8":
+                modeValue = "driving";
+                break;
+            case "disabledModeSub8":
+                modeValue = "disabled";
+                break;
+        }
+    }
+    
+    // Set the mode in the dropdown
+    const coordModeDropdown = document.getElementById("coordMode");
+    if (coordModeDropdown) {
+        Array.from(coordModeDropdown.options).forEach(option => {
+            option.selected = option.value === modeValue;
+        });
+    }
+
+    // Wait a short moment for values to be set
+    setTimeout(() => {
+        document.getElementById("startjourney2").click();
+    }, 100);
+});
+
+// Sub9 Start Journey Button (for live location)
+document.getElementById("startJourneyBtnSub9").addEventListener("click", () => {
+    // Get the destination text
+    const destinationText = capitalizeWords(
+        document.getElementById("sub9DestinationHeading").textContent.trim().replace('Destination: ', '')
+    );
+    document.getElementById("sourceType").value = "liveLoc";
+    selectDropdownOption("coordDestination", destinationText);
+
+    // Get selected mode from active button and map it to dropdown value
+    const activeButton = document.querySelector("#modeButtonsSub9 .mode-btn.active");
+    let modeValue = "walking"; // default value
+    if (activeButton) {
+        switch (activeButton.id) {
+            case "walkingModeSub9":
+                modeValue = "walking";
+                break;
+            case "vehicleModeSub9":
+                modeValue = "driving";
+                break;
+            case "disabledModeSub9":
+                modeValue = "disabled";
+                break;
+        }
+    }
+    
+    // Set the mode in the dropdown
+    const coordModeDropdown = document.getElementById("coordMode");
+    if (coordModeDropdown) {
+        Array.from(coordModeDropdown.options).forEach(option => {
+            option.selected = option.value === modeValue;
+        });
+    }
+
+    // Wait a short moment for values to be set
+    setTimeout(() => {
+        document.getElementById("startjourney2").click();
+    }, 100);
+});
+
+    // Sub8 Get Directions functionality
+    document.getElementById("getDirectionsBtnSub8").addEventListener("click", () => {
+        document.getElementById("sourceType").value = "clickOnMap"; 
+        const destinationText = capitalizeWords(
+            document.getElementById("sub8DestinationHeading").textContent.trim().replace('Destination: ', '')
+        );
+        selectDropdownOption("coordDestination", destinationText);
+
+        const selectedMode = document.querySelector("#modeButtonsSub8 .active")?.id || "walkingModeSub8";
+        selectMode("coordMode", selectedMode);
+
+        document.getElementById("coordSearchBtn").click(); 
+    });
+
+    // Sub9 Get Directions functionality, linked to liveSearchBtn
+    document.getElementById("getDirectionsBtnSub9").addEventListener("click", () => {
+        document.getElementById("sourceType").value = "liveLoc";
+        const destinationText = capitalizeWords(
+            document.getElementById("sub9DestinationHeading").textContent.trim().replace('Destination: ', '')
+        );
+        selectDropdownOption("coordDestination", destinationText);
+
+        const selectedMode = document.querySelector("#modeButtonsSub9 .active")?.id || "walkingModeSub9";
+        selectMode("coordMode", selectedMode);
+
+        document.getElementById("liveSearchBtn").click(); 
+    });
+
+    function capitalizeWords(text) {
+        return text.replace(/\b\w/g, char => char.toUpperCase());
+    }
+
+    function selectDropdownOption(dropdownId, optionText) {
+        const dropdown = document.getElementById(dropdownId);
+        let optionFound = false;
+
+        [...dropdown.options].forEach(option => {
+            if (option.text.trim().toLowerCase() === optionText.toLowerCase()) {
+                option.selected = true;
+                optionFound = true;
+                console.log(`Found and selected option: ${option.text}`); 
+            }
+        });
+
+        if (!optionFound) {
+            console.warn(`Option "${optionText}" not found in dropdownpoints.json`);
+            document.getElementById(dropdownId === 'coordDestination' ? 'sub9DestinationHeading' : 'sourceHeading').textContent = `Not Available`;
+        }
+    }
+
+    function selectMode(modeDropdownId, modeId) {
+        const modeDropdown = document.getElementById(modeDropdownId);
+        const modeValue = { 
+            walkingModeSub8: "walking", 
+            vehicleModeSub8: "driving", 
+            disabledModeSub8: "disabled",
+            walkingModeSub9: "walking", 
+            vehicleModeSub9: "driving", 
+            disabledModeSub9: "disabled" 
+        }[modeId];
+        [...modeDropdown.options].forEach(option => {
+            if (option.value === modeValue) option.selected = true;
+        });
+    }
+
+    document.querySelectorAll("#modeButtonsSub8 .mode-btn, #modeButtonsSub9 .mode-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const parentDiv = button.parentElement;
+            parentDiv.querySelectorAll(".mode-btn").forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+        });
+    });
+});
+
+
+// Store all data globally for search
+let allLocationsData = {};
+let allCategories = [];
+let originalCategoryDivs = [];
+let subDivsData = {};
+let currentCategory = ''; // Add currentCategory tracking
+
+// Function to load all data needed for search
+async function loadAllSearchData() {
+    try {
+        // Load all necessary data
+        const [destResponse, locResponse, subDivsResponse] = await Promise.all([
+            fetch('destination.json'),
+            fetch('locations.json'),
+            fetch('subdivs.json')
+        ]);
+
+        const destData = await destResponse.json();
+        allCategories = destData.categories;
+        allLocationsData = await locResponse.json();
+        subDivsData = await subDivsResponse.json();
+    } catch (error) {
+        console.error('Error loading search data:', error);
+    }
+}
+
+// Function to show no results message
+function showNoResultsMessage(container) {
+    const noResults = document.createElement('div');
+    noResults.classList.add('location-category');
+    noResults.textContent = 'No locations found';
+    noResults.style.opacity = '0.7';
+    noResults.style.cursor = 'default';
+    container.appendChild(noR2esults);
+}
+
+// Function to check if a sub-location has details
+function hasSubDivDetails(location) {
+    return subDivsData.hasOwnProperty(location);
+}
+
+// Store original categories
+function storeOriginalCategories() {
+    const categoryContainer = document.getElementById('categoryContainer');
+    originalCategoryDivs = Array.from(categoryContainer.getElementsByClassName('location-category'));
+}
+
+// Restore original categories without reloading
+function restoreOriginalCategories() {
+    const categoryContainer = document.getElementById('categoryContainer');
+    if (categoryContainer) {
+        categoryContainer.innerHTML = '';
+        originalCategoryDivs.forEach(div => {
+            const newDiv = div.cloneNode(true);
+            newDiv.addEventListener('click', async (e) => {
+                const category = e.target.id.charAt(0).toUpperCase() + e.target.id.slice(1);
+                if (allLocationsData[category]) {
+                    displaySubDivs(category, allLocationsData[category]);
+                }
+            });
+            categoryContainer.appendChild(newDiv);
+        });
+    }
+}
+
+// Function to perform combined search
+function performCombinedSearch(searchTerm) {
+    searchTerm = searchTerm.toLowerCase();
+    const categoryContainer = document.getElementById('categoryContainer');
+    
+    if (!categoryContainer) return;
+
+    if (!searchTerm) {
+        restoreOriginalCategories();
+        return;
+    }
+
+    categoryContainer.innerHTML = '';
+
+    const matchingCategories = allCategories.filter(category => 
+        category.toLowerCase().includes(searchTerm)
+    );
+
+    let matchingSubLocations = [];
+    Object.entries(allLocationsData).forEach(([category, locations]) => {
+        locations.forEach(location => {
+            if (location.toLowerCase().includes(searchTerm)) {
+                matchingSubLocations.push({
+                    category: category,
+                    location: location
+                });
+            }
+        });
+    });
+
+    // Show no results message if nothing found
+    if (matchingCategories.length === 0 && matchingSubLocations.length === 0) {
+        showNoResultsMessage(categoryContainer);
+        return;
+    }
+
+    matchingCategories.forEach(category => {
+        const div = document.createElement('div');
+        div.classList.add('location-category');
+        div.id = category.toLowerCase();
+        div.textContent = category;
+        
+        div.addEventListener('click', () => {
+            if (allLocationsData[category]) {
+                displaySubDivs(category, allLocationsData[category]);
+            }
+        });
+        
+        categoryContainer.appendChild(div);
+    });
+
+    matchingSubLocations.forEach(match => {
+        const div = document.createElement('div');
+        div.classList.add('location-category');
+        div.textContent = match.location;
+        
+        if (hasSubDivDetails(match.location)) {
+            div.addEventListener('click', () => {
+                displaySubDivs(match.category, allLocationsData[match.category]);
+                displaySub3Details(match.location);
+            });
+        } else {
+            div.style.cursor = 'default';
+            div.style.opacity = '0.7';
+            div.title = 'No detailed information available';
+        }
+        
+        categoryContainer.appendChild(div);
+    });
+}
+
+// Function to restore all sub-divs
+function restoreAllSubDivs() {
+    if (currentCategory && allLocationsData[currentCategory]) {
+        const subDivContent = document.getElementById('subDivContent');
+        const subSearchBar = document.getElementById('subSearchBar');
+        
+        // Clear search bar
+        if (subSearchBar) {
+            subSearchBar.value = '';
+        }
+
+        // Clear and repopulate content
+        subDivContent.innerHTML = '';
+        allLocationsData[currentCategory].forEach(subDiv => {
+            const div = document.createElement('div');
+            div.classList.add('location-category');
+            div.textContent = subDiv;
+            
+            if (hasSubDivDetails(subDiv)) {
+                div.addEventListener('click', () => {
+                    displaySub3Details(subDiv);
+                });
+            } else {
+                div.style.cursor = 'default';
+                div.style.opacity = '0.7';
+                div.title = 'No detailed information available';
+            }
+            
+            subDivContent.appendChild(div);
+        });
+    }
+}
+
+// Function to display sub-divs
+function displaySubDivs(category, subDivs) {
+    const subDivContainer = document.getElementById('subDivContainer');
+    const subDivContent = document.getElementById('subDivContent');
+    const subDivHeading = document.getElementById('subDivHeading');
+    const controlspart2 = document.getElementById('controlspart2');
+
+    // Store current category
+    currentCategory = category;
+
+    subDivHeading.textContent = category;
+    subDivContent.innerHTML = '';
+
+    subDivs.forEach(subDiv => {
+        const div = document.createElement('div');
+        div.classList.add('location-category');
+        div.textContent = subDiv;
+        
+        if (hasSubDivDetails(subDiv)) {
+            div.addEventListener('click', () => {
+                displaySub3Details(subDiv);
+            });
+        } else {
+            div.style.cursor = 'default';
+            div.style.opacity = '0.7';
+            div.title = 'No detailed information available';
+        }
+        
+        subDivContent.appendChild(div);
+    });
+
+    controlspart2.style.display = 'none';
+    subDivContainer.style.display = 'block';
+
+    // Clear search bars
+    document.getElementById('searchBar').value = '';
+    document.getElementById('subSearchBar').value = '';
+}
+
+// Initialize search functionality
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadAllSearchData();
+    setTimeout(storeOriginalCategories, 100);
+
+    // Main search bar setup
+    const searchBar = document.getElementById('searchBar');
+    const newSearchBar = searchBar.cloneNode(true);
+    searchBar.parentNode.replaceChild(newSearchBar, searchBar);
+    newSearchBar.addEventListener('input', (e) => {
+        performCombinedSearch(e.target.value.trim());
+    });
+
+    // Sub-location search bar setup
+    const subSearchBar = document.getElementById('subSearchBar');
+    if (subSearchBar) {
+        const newSubSearchBar = subSearchBar.cloneNode(true);
+        subSearchBar.parentNode.replaceChild(newSubSearchBar, subSearchBar);
+
+        newSubSearchBar.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.trim().toLowerCase();
+            const subDivContent = document.getElementById('subDivContent');
+            
+            if (!searchTerm) {
+                restoreAllSubDivs();
+                return;
+            }
+
+            subDivContent.innerHTML = '';
+            if (allLocationsData[currentCategory]) {
+                const matchingLocations = allLocationsData[currentCategory].filter(location =>
+                    location.toLowerCase().includes(searchTerm)
+                );
+
+                if (matchingLocations.length === 0) {
+                    showNoResultsMessage(subDivContent);
+                    return;
+                }
+
+                matchingLocations.forEach(location => {
+                    const div = document.createElement('div');
+                    div.classList.add('location-category');
+                    div.textContent = location;
+                    
+                    if (hasSubDivDetails(location)) {
+                        div.addEventListener('click', () => {
+                            displaySub3Details(location);
+                        });
+                    } else {
+                        div.style.cursor = 'default';
+                        div.style.opacity = '0.7';
+                        div.title = 'No detailed information available';
+                    }
+                    
+                    subDivContent.appendChild(div);
+                });
+            }
+        });
+    }
+
+    // Add event listener for sub3 back button
+    const backButtonSub3 = document.getElementById('backButtonSub3');
+    if (backButtonSub3) {
+        backButtonSub3.onclick = function() {
+            document.getElementById('sub3DivContainer').style.display = 'none';
+            document.getElementById('subDivContainer').style.display = 'block';
+            restoreAllSubDivs(); // Restore all sub-divs when going back
+        };
+    }
+
+    // Back button functionality
+    window.goBack = function() {
+        const subDivContainer = document.getElementById('subDivContainer');
+        const controlspart2 = document.getElementById('controlspart2');
+        const searchBar = document.getElementById('searchBar');
+        const subSearchBar = document.getElementById('subSearchBar');
+
+        if (subDivContainer) subDivContainer.style.display = 'none';
+        if (controlspart2) controlspart2.style.display = 'block';
+        if (searchBar) searchBar.value = '';
+        if (subSearchBar) subSearchBar.value = '';
+        
+        currentCategory = ''; // Clear current category
+        restoreOriginalCategories();
+    };
+});
+
+// Additional CSS for styling
+const style = document.createElement('style');
+style.textContent = `
+    .location-category {
+        padding: 10px;
+        margin-top: 5px;
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .location-category:hover:not([style*="cursor: default"]) {
+        background-color: #ccc;
+    }
+`;
+document.head.appendChild(style);
+
+
+
+
+
+
+// Add these event listeners in your main DOMContentLoaded event:
+
+// Sub5 search bar setup (Combined search)
+const sub5SearchBar = document.getElementById('sub5SearchBar');
+if (sub5SearchBar) {
+    const newSub5SearchBar = sub5SearchBar.cloneNode(true);
+    sub5SearchBar.parentNode.replaceChild(newSub5SearchBar, sub5SearchBar);
+
+    newSub5SearchBar.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.trim().toLowerCase();
+        const sub5Content = document.getElementById('sub5Content');
+        
+        if (!searchTerm) {
+            if (allCategories) {
+                displaySub5Content();
+            }
+            return;
+        }
+
+        sub5Content.innerHTML = '';
+
+        // Search in categories
+        const matchingCategories = allCategories.filter(category => 
+            category.toLowerCase().includes(searchTerm)
+        );
+
+        // Search in all sub-locations
+        let matchingSubLocations = [];
+        Object.entries(allLocationsData).forEach(([category, locations]) => {
+            locations.forEach(location => {
+                if (location.toLowerCase().includes(searchTerm)) {
+                    matchingSubLocations.push({
+                        category: category,
+                        location: location
+                    });
+                }
+            });
+        });
+
+        // Show no results message if nothing found
+        if (matchingCategories.length === 0 && matchingSubLocations.length === 0) {
+            const noResults = document.createElement('div');
+            noResults.classList.add('location-category');
+            noResults.textContent = 'No locations found';
+            sub5Content.appendChild(noResults);
+            return;
+        }
+
+        // Display matching categories
+        matchingCategories.forEach(category => {
+            const div = document.createElement('div');
+            div.classList.add('location-category');
+            div.textContent = category;
+            
+            div.addEventListener('click', () => {
+                displaySub6Content(category);
+            });
+            
+            sub5Content.appendChild(div);
+        });
+
+        // Display matching sub-locations
+        matchingSubLocations.forEach(match => {
+            const div = document.createElement('div');
+            div.classList.add('location-category');
+            div.textContent = match.location;
+            
+            if (hasSubDivDetails(match.location)) {
+                div.addEventListener('click', () => {
+                    displaySub6Content(match.category);
+                    // Change to open sub7 instead of sub3
+                    openSub7(match.location, document.getElementById('sub4DestinationHeading').textContent);
+                });
+            } else {
+                div.title = 'No detailed information available';
+            }
+            
+            sub5Content.appendChild(div);
+        });
+    });
+}
+
+// Sub6 search bar setup (Single category search)
+const sub6SearchBar = document.getElementById('sub6SearchBar');
+if (sub6SearchBar) {
+    const newSub6SearchBar = sub6SearchBar.cloneNode(true);
+    sub6SearchBar.parentNode.replaceChild(newSub6SearchBar, sub6SearchBar);
+
+    newSub6SearchBar.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.trim().toLowerCase();
+        const sub6Content = document.getElementById('sub6Content');
+        const currentCategory = document.getElementById('sub6Heading').textContent;
+        
+        if (!searchTerm) {
+            if (allLocationsData[currentCategory]) {
+                displaySub6Content(currentCategory);
+            }
+            return;
+        }
+
+        sub6Content.innerHTML = '';
+
+        if (allLocationsData[currentCategory]) {
+            const matchingLocations = allLocationsData[currentCategory].filter(location =>
+                location.toLowerCase().includes(searchTerm)
+            );
+
+            if (matchingLocations.length === 0) {
+                const noResults = document.createElement('div');
+                noResults.classList.add('location-category');
+                noResults.textContent = 'No locations found';
+                sub6Content.appendChild(noResults);
+                return;
+            }
+
+            matchingLocations.forEach(location => {
+                const div = document.createElement('div');
+                div.classList.add('location-category');
+                div.textContent = location;
+                
+                if (hasSubDivDetails(location)) {
+                    div.addEventListener('click', () => {
+                        // Get destination from sub4
+                        const destination = document.getElementById('sub4DestinationHeading').textContent;
+                        openSub7(location, destination);
+                    });
+                } else {
+                    div.title = 'No detailed information available';
+                }
+                
+                sub6Content.appendChild(div);
+            });
+        }
+    });
+}
+
+async function displaySub5Content() {
+    const sub5Content = document.getElementById('sub5Content');
+    sub5Content.innerHTML = '';
+
+    allCategories.forEach(category => {
+        const div = document.createElement('div');
+        div.classList.add('location-category');
+        div.textContent = category;
+        
+        div.addEventListener('click', () => {
+            displaySub6Content(category);
+        });
+        
+        sub5Content.appendChild(div);
+    });
+
+    // Clear search bar
+    document.getElementById('sub5SearchBar').value = '';
+}
+
+function displaySub6Content(category) {
+    const sub6Container = document.getElementById('sub6DivContainer');
+    const sub6Content = document.getElementById('sub6Content');
+    const sub6Heading = document.getElementById('sub6Heading');
+    const sub5Container = document.getElementById('sub5DivContainer');
+
+    sub6Heading.textContent = category;
+    sub6Content.innerHTML = '';
+
+    if (allLocationsData[category]) {
+        allLocationsData[category].forEach(location => {
+            const div = document.createElement('div');
+            div.classList.add('location-category');
+            div.textContent = location;
+            
+            if (hasSubDivDetails(location)) {
+                div.addEventListener('click', () => {
+                    // Get destination from sub4
+                    const destination = document.getElementById('sub4DestinationHeading').textContent;
+                    openSub7(location, destination);
+                });
+            } else {
+                div.title = 'No detailed information available';
+            }
+            
+            sub6Content.appendChild(div);
+        });
+    }
+
+    // Update display
+    sub5Container.style.display = 'none';
+    sub6Container.style.display = 'block';
+
+    // Clear search bars
+    document.getElementById('sub5SearchBar').value = '';
+    document.getElementById('sub6SearchBar').value = '';
+}
+
+// Function to open sub7 with source and destination
+function openSub7(source, destination) {
+    const sub7Container = document.getElementById('sub7DivContainer');
+    const sub6Container = document.getElementById('sub6DivContainer');
+    const sourceHeading = document.getElementById('sourceHeading');
+    const destinationHeading = document.getElementById('destinationHeading');
+
+    // Clean up the destination text (remove "Destination: " if present)
+    const cleanDestination = destination.replace('Destination: ', '');
+
+    // Set the headings
+    sourceHeading.textContent = `Source: ${source}`;
+    destinationHeading.textContent = `Destination: ${cleanDestination}`;
+
+    // Update display
+    sub6Container.style.display = 'none';
+    sub7Container.style.display = 'block';
+}
+
+// Add these to your existing back button functions
+function goBackToSub5() {
+    document.getElementById('sub6DivContainer').style.display = 'none';
+    document.getElementById('sub5DivContainer').style.display = 'block';
+    document.getElementById('sub6SearchBar').value = '';
+}
+
+function goBackToSub6() {
+    document.getElementById('sub7DivContainer').style.display = 'none';
+    document.getElementById('sub6DivContainer').style.display = 'block';
+}
+    </script>
+</body>
+</html>

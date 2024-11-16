@@ -1,0 +1,62 @@
+{
+    "Transportation Office": {
+        "image": "messi.jpeg",
+        "details": {
+            "Location": "Building A, Floor 1",
+            "Phone Number": "123-456-7890",
+            "Email Address": "transportation@university.edu",
+            "Other": "Opens 9 AM - 5 PM transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu"
+        }
+    },
+    "Sironi": {
+        "image": "path/to/sironi.png",
+        "details": {
+            "Location": "Main Campus, Block C",
+            "Phone Number": "234-567-8901",
+            "Email Address": "sironi@university.edu",
+            "Other": "Popular for breakfast and lunch"
+        }
+    },
+    "Lecturer 1": {
+        "image": "messi.jpeg",
+        "details": {
+            "Location": "Humanities Building, Room 210",
+            "Phone Number": "345-678-9012",
+            "Email Address": "lecturer1@university.edu",
+            "Other": "Office hours 10 AM - 3 PM"
+        }
+    },
+
+    "Lecturer 2": {
+        "image": "path/to/lecturer1.png",
+        "details": {
+            "Location": "Humanities Building, Room 210",
+            "Phone Number": "345-678-9012",
+            "Email Address": "lecturer1@university.edu",
+            "Other": "Office hours 10 AM - 3 PM"
+        }
+    }
+
+    ,
+
+    "Lecturer 3": {
+        "image": "path/to/lecturer1.png",
+        "details": {
+            "Location": "Humanities Building, Room 210",
+            "Phone Number": "345-678-9012",
+            "Email Address": "lecturer1@university.edu",
+            "Other": "Office hours 10 AM - 3 PM"
+        }
+    },
+
+    "Basketball Court": {
+        "image": "messi.jpeg",
+        "details": {
+            "Location": "Humanities Building, Room 210",
+            "Phone Number": "345-678-9012",
+            "Email Address": "lecturer1@university.edu",
+            "Other": "Office hours 10 AM - 3 PM"
+        }
+    }
+
+}

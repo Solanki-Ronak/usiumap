@@ -1,0 +1,2868 @@
+{
+  "path 1": {
+    "related_paths": {
+      "path 176": "Turn slight right",
+      "path 179": "Turn slight right",
+      "path 3.1": "Turn left",
+      "path 177": "Turn slight right"
+    }
+  },
+  "path 2": {
+    "related_paths": {
+      "path 3": "Turn slight left",
+      "path 180": "Turn slight right",
+      "path 178": "Turn right",
+      "path 177": "Turn slight left"
+    }
+  },
+  "path 3": {
+    "related_paths": {
+      "path 5": "Turn slight right",
+      "path 184": "Turn slight left"
+    }
+  },
+  "path 3.1": {
+    "related_paths": {
+      "path 5": "Turn slight right",
+      "path 176": "Turn slight left",
+      "path 1": "Turn right",
+      "path 184": "Turn slight left"
+    }
+  },
+  "path 4": {
+    "related_paths": {
+      "path 185": "Turn slight left",
+      "path 184": "Turn right",
+      "path 183": "Turn left"
+    }
+  },
+  "path 5": {
+    "related_paths": {
+      "path 6": "Turn slight right",
+      "path 3.1": "Turn slight left",
+      "path 184": "Turn left"
+    }
+  },
+  "path 6": {
+    "related_paths": {
+      "path 5": "Turn slight left"
+    }
+  },
+  "PATH 8": {
+    "related_paths": {
+      "path 188": "Turn right",
+      "path 187": "Turn left"
+    }
+  },
+  "BIG PATH 2": {
+    "related_paths": {
+      "path 190": "Turn slight left",
+      "path 189": "Turn slight right"
+    }
+  },
+  "BIG PATH 3": {
+    "related_paths": {
+      "path 192": "Turn slight right",
+      "path 191": "Turn left"
+    }
+  },
+  "BIG PATH 4": {
+    "related_paths": {
+      "path 227": "Turn slight left",
+      "BIG PATH 5": "Turn slight right"
+    }
+  },
+  "BIG PATH 5": {
+    "related_paths": {
+      "BIG PATH 4": "Turn slight left"
+    }
+  },
+  "PATH 9": {
+    "related_paths": {
+      "PATH 10": "Turn slight left",
+      "path 355": "Turn right"
+    }
+  },
+  "PATH 10": {
+    "related_paths": {
+      "path 242": "Turn slight right",
+      "path 240": "Turn right",
+      "PATH 9": "Turn slight right",
+      "path 355": "Turn slight left"
+    }
+  },
+  "PATH 11": {
+    "related_paths": {
+      "path 242": "Turn slight left",
+      "path 243": "Turn slight left"
+    }
+  },
+  "PATH 11.1": {
+    "related_paths": {
+      "path 188": "Turn slight left",
+      "path 228": "Turn slight left",
+      "path 189": "Turn right",
+      "path 245": "Turn left",
+      "path 235": "Turn slight right"
+    }
+  },
+  "PATH 12": {
+    "related_paths": {
+      "PATH 17": "Turn left",
+      "path 164": "Turn slight left",
+      "path 163": "Turn slight left",
+      "PATH 31 FROM LIBRARY TO PARKING BEHIND LIBRARY": "Turn right"
+    }
+  },
+  "PATH 13": {
+    "related_paths": {
+      "PATH 156": "Turn slight right",
+      "PATH 157": "Turn slight left",
+      "PATH 23": "Turn left",
+      "PATH 159": "Turn right"
+    }
+  },
+  "PATH 14": {
+    "related_paths": {
+      "PATH 26": "Turn slight right",
+      "PATH 40": "Turn slight right",
+      "path 367": "Turn left",
+      "path 150": "Turn right",
+      "path 151": "Turn slight left"
+    }
+  },
+  "PATH 15": {
+    "related_paths": {
+      "PATH 158": "Turn slight left",
+      "PATH 154": "Turn slight right",
+      "PATH 155": "Turn left",
+      "PATH 157": "Turn right"
+    }
+  },
+  "PATH 16": {
+    "related_paths": {
+      "path 354": "Turn right",
+      "path 168": "Turn slight left",
+      "PATH 18": "Turn slight left",
+      "PATH 30": "Turn slight right",
+      "path 167": "Turn right"
+    }
+  },
+  "PATH 17": {
+    "related_paths": {
+      "path 163": "Turn left",
+      "path 243": "Turn slight right",
+      "PATH 12": "Turn right"
+    }
+  },
+  "PATH 18": {
+    "related_paths": {
+      "PATH 16": "Turn slight right",
+      "PATH 28": "Turn right",
+      "path 167": "Turn slight left",
+      "path 165": "Turn slight left"
+    }
+  },
+  "PATH 19": {
+    "related_paths": {
+      "path 214": "Turn slight left",
+      "path 190": "Turn slight right",
+      "path 191": "Turn left"
+    }
+  },
+  "PATH 20": {
+    "related_paths": {
+      "path 263": "Turn slight right",
+      "path 259": "Turn slight left",
+      "path 357": "Turn left",
+      "PATH 21": "Turn slight right"
+    }
+  },
+  "PATH 21": {
+    "related_paths": {
+      "path 319": "Turn right",
+      "path 167": "Turn slight right",
+      "PATH 20": "Turn slight left",
+      "path 259": "Turn slight right",
+      "Untitled path.1": "Turn slight left"
+    }
+  },
+  "PATH 22": {
+    "related_paths": {
+      "path 261": "Turn slight right"
+    }
+  },
+  "PATH 23": {
+    "related_paths": {
+      "PATH 13": "Turn left",
+      "PATH 157": "Turn slight right",
+      "PATH 159": "Turn right",
+      "PATH 24": "Turn slight left"
+    }
+  },
+  "PATH 24": {
+    "related_paths": {
+      "path 162": "Turn right",
+      "PATH 23": "Turn slight right",
+      "PATH 159": "Turn slight left",
+      "PATH 161": "Turn left",
+      "PATH 160": "Turn slight right"
+    }
+  },
+  "PATH 26": {
+    "related_paths": {
+      "PATH 39": "Turn right",
+      "PATH 40": "Turn left",
+      "path 367": "Turn right",
+      "PATH 148": "Turn slight left",
+      "PATH 38": "Turn slight right",
+      "PATH 14": "Turn slight left"
+    }
+  },
+  "PATH 28": {
+    "related_paths": {
+      "path 165": "Turn slight right",
+      "path 282": "Turn slight right",
+      "PATH 18": "Turn left"
+    }
+  },
+  "PATH 29": {
+    "related_paths": {
+      "path 354": "Turn right",
+      "path 239": "Turn slight right",
+      "path 355": "Turn slight left"
+    }
+  },
+  "PATH FROM SCIENCE COMPLEX TO SCIENCE COMPLEX PARKING": {
+    "related_paths": {
+      "path 231": "Turn slight right",
+      "path 238": "Turn slight left"
+    }
+  },
+  "PATH 30": {
+    "related_paths": {
+      "PATH 16": "Turn slight right",
+      "path 168": "Turn right",
+      "path 354": "Turn slight left",
+      "path 233": "Turn slight left"
+    }
+  },
+  "PATH 31 FROM LIBRARY TO PARKING BEHIND LIBRARY": {
+    "related_paths": {
+      "path 241": "Turn slight right",
+      "path 164": "Turn slight right",
+      "PATH 12": "Turn left"
+    }
+  },
+  "PATH 32": {
+    "related_paths": {
+      "PATH 1 AROUND AUDITORIUM": "Turn right",
+      "PATH 2 AROUND AUDITORIUM": "Turn slight left",
+      "path 165": "Turn left",
+      "path 166": "Turn slight right"
+    }
+  },
+  "PATH 33": {
+    "related_paths": {
+      "PATH 36": "Turn right",
+      "path 326": "Turn slight right",
+      "path 299": "Turn slight left"
+    }
+  },
+  "PATH 34": {
+    "related_paths": {
+      "PATH 156": "Turn left",
+      "PATH 46": "Turn slight left",
+      "PATH 147": "Turn slight right",
+      "path 150": "Turn right",
+      "PATH 155": "Turn slight right"
+    }
+  },
+  "PATH 35": {
+    "related_paths": {
+      "PATH 45.1": "Turn left",
+      "path 151": "Turn left",
+      "PATH 55": "Turn slight left",
+      "path 152": "Turn slight left"
+    }
+  },
+  "PATH 36": {
+    "related_paths": {
+      "PATH 57": "Turn slight left",
+      "path 298": "Turn slight right",
+      "path 299": "Turn slight right",
+      "PATH 33": "Turn left"
+    }
+  },
+  "PATH 37": {
+    "related_paths": {
+      "path 304": "Turn left",
+      "path 342": "Turn slight right",
+      "path 372": "Turn slight left"
+    }
+  },
+  "PATH 38": {
+    "related_paths": {
+      "PATH 39": "Turn slight left",
+      "PATH 26": "Turn slight left",
+      "PATH 136": "Turn slight right",
+      "PATH 148": "Turn right",
+      "PATH 135": "Turn slight left"
+    }
+  },
+  "PATH 39": {
+    "related_paths": {
+      "PATH 26": "Turn left",
+      "PATH 139": "Turn left",
+      "PATH 148": "Turn slight right",
+      "PATH 38": "Turn slight right",
+      "PATH 140": "Turn slight right"
+    }
+  },
+  "PATH 40": {
+    "related_paths": {
+      "PATH 26": "Turn right",
+      "path 367": "Turn slight right",
+      "path 366": "Turn slight left",
+      "PATH 14": "Turn slight left",
+      "PATH 44.1": "Turn slight right"
+    }
+  },
+  "PATH 43": {
+    "related_paths": {
+      "PATH 133": "Turn slight right",
+      "PATH 44": "Turn slight left",
+      "path 364": "Turn right"
+    }
+  },
+  "PATH 44": {
+    "related_paths": {
+      "PATH 43": "Turn slight right",
+      "PATH 133": "Turn slight left",
+      "PATH 78": "Turn slight left",
+      "PATH 132": "Turn left"
+    }
+  },
+  "PATH 45": {
+    "related_paths": {
+      "PATH 68": "Turn slight right",
+      "PATH 63": "Turn slight left",
+      "PATH 400": "Turn left",
+      "PATH 62.1": "Turn left"
+    }
+  },
+  "PATH 42": {
+    "related_paths": {
+      "PATH 104": "Turn slight left",
+      "PATH 63": "Turn right",
+      "path 368": "Turn left"
+    }
+  },
+  "PATH 43.1": {
+    "related_paths": {
+      "PATH 108": "Turn slight right",
+      "path 366": "Turn slight left",
+      "PATH 140": "Turn slight left"
+    }
+  },
+  "PATH 44.1": {
+    "related_paths": {
+      "path 366": "Turn right",
+      "PATH 40": "Turn slight left"
+    }
+  },
+  "PATH 45.1": {
+    "related_paths": {
+      "path 301": "Turn right",
+      "PATH 35": "Turn right",
+      "path 152": "Turn left"
+    }
+  },
+  "PATH 46": {
+    "related_paths": {
+      "path 295": "Turn slight left",
+      "PATH 34": "Turn slight right",
+      "PATH 155": "Turn left",
+      "path 152": "Turn left"
+    }
+  },
+  "PATH 47": {
+    "related_paths": {
+      "path 292": "Turn right",
+      "path 296": "Turn slight right",
+      "PATH 154": "Turn right",
+      "path 293": "Turn left",
+      "PATH 153": "Turn slight left"
+    }
+  },
+  "PATH 48": {
+    "related_paths": {
+      "path 171": "Turn slight right",
+      "path 170": "Turn left",
+      "path 172": "Turn slight left"
+    }
+  },
+  "PATH 49": {
+    "related_paths": {
+      "path 173": "Turn slight left",
+      "PATH 52": "Turn left",
+      "path 172": "Turn slight left",
+      "PATH 51": "Turn left"
+    }
+  },
+  "PATH 50": {
+    "related_paths": {
+      "path 175": "Turn right",
+      "path 174": "Turn left",
+      "PATH 51": "Turn slight right"
+    }
+  },
+  "PATH 51": {
+    "related_paths": {
+      "path 173": "Turn slight left",
+      "path 175": "Turn slight left",
+      "PATH 50": "Turn slight left",
+      "PATH 49": "Turn right"
+    }
+  },
+  "PATH 52": {
+    "related_paths": {
+      "path 172": "Turn slight left",
+      "PATH 49": "Turn right"
+    }
+  },
+  "PATH 53": {
+    "related_paths": {
+      "PATH 54": "Turn right",
+      "path 310": "Turn slight right",
+      "path 371": "Turn slight left",
+      "path 372": "Turn right"
+    }
+  },
+  "PATH 54": {
+    "related_paths": {
+      "PATH 53": "Turn left",
+      "path 310": "Turn right"
+    }
+  },
+  "PATH 55": {
+    "related_paths": {
+      "PATH 56": "Turn slight right",
+      "PATH 35": "Turn slight right",
+      "path 151": "Turn slight right"
+    }
+  },
+  "PATH 56": {
+    "related_paths": {
+      "path 310": "Turn slight left",
+      "PATH 55": "Turn slight left",
+      "path 309": "Turn slight right"
+    }
+  },
+  "PATH 57": {
+    "related_paths": {
+      "path 298": "Turn left",
+      "PATH 36": "Turn slight right",
+      "path 306": "Turn slight left",
+      "path 300": "Turn right"
+    }
+  },
+  "PATH 58": {
+    "related_paths": {
+      "path 308": "Turn slight right",
+      "PATH 60": "Turn right"
+    }
+  },
+ "PATH 59": {
+    "related_paths": {
+      "path 305": "Turn slight left",
+      "path 307": "Turn left"
+    }
+  },
+  "PATH 60": {
+    "related_paths": {
+      "path 373": "Turn slight left",
+      "path 308": "Turn slight right",
+      "PATH 58": "Turn left"
+    }
+  },
+  "PATH 61": {
+    "related_paths": {
+      "path 373": "Turn slight right",
+      "path 303": "Turn slight left",
+      "path 307": "Turn slight right",
+      "path 304": "Turn left",
+      "PATH 62": "Turn slight right"
+    }
+  },
+  "PATH 62": {
+    "related_paths": {
+      "PATH 61": "Turn slight left",
+      "path 303": "Turn right"
+    }
+  },
+  "PATH 62.1": {
+    "related_paths": {
+      "path 101": "Turn slight right",
+      "PATH 68": "Turn slight right",
+      "PATH 63": "Turn slight left",
+      "PATH 45": "Turn right"
+    }
+  },
+  "PATH 63": {
+    "related_paths": {
+      "PATH 42": "Turn left",
+      "PATH 68": "Turn slight left",
+      "PATH 45": "Turn slight right",
+      "PATH 104": "Turn slight right",
+      "PATH 62.1": "Turn slight right"
+    }
+  },
+  "PATH 64": {
+    "related_paths": {
+      "PATH 141": "Turn slight left",
+      "PATH 142": "Turn slight right",
+      "PATH 67": "Turn slight left",
+      "PATH 65": "Turn slight right"
+    }
+  },
+  "PATH 65": {
+    "related_paths": {
+      "PATH 141": "Turn slight right",
+      "PATH 64": "Turn slight left",
+      "PATH 143": "Turn slight right"
+    }
+  },
+  "PATH 66": {
+    "related_paths": {
+      "path 149": "Turn slight left",
+      "path 375": "Turn slight right",
+      "PATH 67": "Turn right",
+      "path 318": "Turn slight left"
+    }
+  },
+  "PATH 67": {
+    "related_paths": {
+      "path 318": "Turn slight right",
+      "PATH 64": "Turn slight right",
+      "PATH 66": "Turn left",
+      "PATH 142": "Turn left"
+    }
+  },
+  "PATH 68": {
+    "related_paths": {
+      "PATH 62.1": "Turn slight left",
+      "PATH 63": "Turn slight right",
+      "PATH 45": "Turn slight left"
+    }
+  },
+  "PATH 69": {
+    "related_paths": {
+      "PATH 113": "Turn slight left",
+      "PATH 400": "Turn slight right",
+      "PATH 99": "Turn right"
+    }
+  },
+  "PATH 70": {
+    "related_paths": {
+      "PATH 71": "Turn slight left",
+      "PATH 73": "Turn right"
+    }
+  },
+  "PATH 71": {
+    "related_paths": {
+      "PATH 138": "Turn slight left",
+      "PATH 72": "Turn slight right",
+      "PATH 70": "Turn slight right",
+      "PATH 73": "Turn slight left"
+    }
+  },
+  "PATH 72": {
+    "related_paths": {
+      "PATH 138": "Turn right",
+      "PATH 137": "Turn left",
+      "PATH 136": "Turn slight right",
+      "PATH 71": "Turn slight left"
+    }
+  },
+  "PATH 73": {
+    "related_paths": {
+      "path 20.1": "Turn slight left",
+      "PATH 76": "Turn slight right",
+      "PATH 70": "Turn left",
+      "PATH 71": "Turn slight right"
+    }
+  },
+  "PATH 75": {
+    "related_paths": {
+      "PATH 78.1": "Turn slight left",
+      "PATH 76": "Turn slight right",
+      "PATH 126.1": "Turn left"
+    }
+  },
+  "PATH 76": {
+    "related_paths": {
+      "path 20.1": "Turn right",
+      "PATH 126.1": "Turn slight left",
+      "PATH 73": "Turn slight left",
+      "PATH 78.1": "Turn slight right",
+      "PATH 75": "Turn slight left"
+    }
+  },
+  "PATH 77": {
+    "related_paths": {
+      "PATH 131": "Turn slight right",
+      "PATH 78": "Turn left",
+      "PATH 135": "Turn slight left",
+      "PATH 134": "Turn right"
+    }
+  },
+  "PATH 78": {
+    "related_paths": {
+      "PATH 131": "Turn slight left",
+      "PATH 132": "Turn right",
+      "PATH 77": "Turn right",
+      "PATH 44": "Turn slight right"
+    }
+  },
+  "PATH 79": {
+    "related_paths": {
+      "path 361": "Turn slight left",
+      "PATH 80": "Turn slight left",
+      "PATH 129": "Turn right"
+    }
+  },
+  "PATH 80": {
+    "related_paths": {
+      "PATH 79": "Turn slight right",
+      "PATH 129": "Turn slight right",
+      "PATH 81": "Turn slight right",
+      "path 374": "Turn slight left"
+    }
+  },
+  "PATH 81": {
+    "related_paths": {
+      "PATH 83": "Turn slight right",
+      "PATH 80": "Turn slight left",
+      "path 374": "Turn right",
+      "PATH 127": "Turn slight left"
+    }
+  },
+  "PATH 82": {
+    "related_paths": {
+      "PATH 122": "Turn slight left",
+      "PATH 122.1": "Turn slight right"
+    }
+  },
+  "PATH 83": {
+    "related_paths": {
+      "PATH 127": "Turn slight right",
+      "PATH 81": "Turn slight left"
+    }
+  },
+  "PATH 78.1": {
+    "related_paths": {
+      "PATH 126.1": "Turn slight right",
+      "PATH 76": "Turn slight left",
+      "PATH 75": "Turn slight right",
+      "PATH 124.1": "Turn slight left",
+      "PATH 80.1": "Turn slight right"
+    }
+  },
+  "PATH 79.1": {
+    "related_paths": {
+      "PATH 122": "Turn slight left",
+      "PATH 121": "Turn right"
+    }
+  },
+  "PATH 80.1": {
+    "related_paths": {
+      "PATH 78.1": "Turn slight left",
+      "PATH 124.1": "Turn slight right"
+    }
+  },
+  "PATH 83.1": {
+    "related_paths": {
+      "PATH 126.1": "Turn slight left",
+      "PATH 126": "Turn right",
+      "PATH 122.1": "Turn slight right",
+      "PATH 124": "Turn left",
+      "PATH 127": "Turn right"
+    }
+  },
+  "PATH 84": {
+    "related_paths": {
+      "path  91": "Turn slight left",
+      "PATH 120": "Turn right",
+      "PATH 115": "Turn left",
+      "PATH 124.1": "Turn right"
+    }
+  },
+  "PATH 85": {
+    "related_paths": {
+      "PATH 111": "Turn slight right",
+      "PATH 86": "Turn left",
+      "PATH 114": "Turn slight right",
+      "PATH 97": "Turn right"
+    }
+  },
+  "PATH 86": {
+    "related_paths": {
+      "PATH 111": "Turn slight left",
+      "PATH 85": "Turn right"
+    }
+  },
+  "PATH 87": {
+    "related_paths": {
+      "PATH 110": "Turn slight right",
+      "PATH 111": "Turn left"
+    }
+  },
+  "PATH 88": {
+    "related_paths": {
+      "PATH 106": "Turn slight right",
+      "PATH 105": "Turn slight left"
+    }
+  },
+  "path  91": {
+    "related_paths": {
+      "PATH 117": "Turn slight right",
+      "PATH 84": "Turn slight right",
+      "PATH 120": "Turn slight left",
+      "PATH 121": "Turn slight left"
+    }
+  },
+  "path 92": {
+    "related_paths": {
+      "PATH 120.1": "Turn left",
+      "PATH 120": "Turn slight right",
+      "PATH 116": "Turn right",
+      "path 94": "Turn slight right",
+      "PATH 96": "Turn slight right"
+    }
+  },
+  "path 94": {
+    "related_paths": {
+      "PATH 120.1": "Turn slight left",
+      "PATH 116.1": "Turn slight right",
+      "path 92": "Turn slight left",
+      "PATH 96": "Turn right",
+      "path 95": "Turn left"
+    }
+  },
+  "path 95": {
+    "related_paths": {
+      "path 94": "Turn right",
+      "PATH 116.1": "Turn slight left",
+      "PATH 96": "Turn left"
+    }
+  },
+  "PATH 96": {
+    "related_paths": {
+      "path 94": "Turn left",
+      "PATH 120.1": "Turn slight right",
+      "path 92": "Turn slight left",
+      "path 95": "Turn right"
+    }
+  },
+  "PATH 97": {
+    "related_paths": {
+      "PATH 85": "Turn left",
+      "PATH 114": "Turn right",
+      "PATH 113": "Turn slight right",
+      "PATH 100": "Turn slight left"
+    }
+  },
+  "PATH 99": {
+    "related_paths": {
+      "PATH 69": "Turn left",
+      "PATH 113": "Turn slight right"
+    }
+  },
+  "PATH 100": {
+    "related_paths": {
+      "PATH 97": "Turn slight right",
+      "PATH 113": "Turn slight left"
+    }
+  },
+  "path 101": {
+    "related_paths": {
+      "PATH 144": "Turn slight right",
+      "PATH 102": "Turn slight left",
+      "PATH 103": "Turn left",
+      "PATH 62.1": "Turn slight left"
+    }
+  },
+  "PATH 102": {
+    "related_paths": {
+      "path 101": "Turn slight right",
+      "PATH 103": "Turn slight right",
+      "PATH 144": "Turn slight left"
+    }
+  },
+  "PATH 103": {
+    "related_paths": {
+      "PATH 102": "Turn slight left",
+      "path 376": "Turn right",
+      "path 369": "Turn slight right",
+      "PATH 144": "Turn slight right",
+      "path 101": "Turn right"
+    }
+  },
+  "PATH 104": {
+    "related_paths": {
+      "PATH 110": "Turn slight right",
+      "PATH 63": "Turn slight left",
+      "PATH 105": "Turn slight left",
+      "PATH 42": "Turn slight right"
+    }
+  },
+  "PATH 105": {
+    "related_paths": {
+      "PATH 104": "Turn slight right",
+      "PATH 88": "Turn slight right",
+      "PATH 106": "Turn slight left",
+      "PATH 110": "Turn slight left"
+    }
+  },
+  "PATH 106": {
+    "related_paths": {
+      "PATH 108": "Turn slight right",
+      "PATH 141": "Turn slight left",
+      "PATH 88": "Turn slight left",
+      "PATH 105": "Turn slight right"
+    }
+  },
+  "PATH 108": {
+    "related_paths": {
+      "PATH 141": "Turn slight right",
+      "PATH 106": "Turn slight left",
+      "PATH 43.1": "Turn slight left",
+      "path 366": "Turn slight right",
+      "PATH 140": "Turn slight right"
+    }
+  },
+  "PATH 110": {
+    "related_paths": {
+      "PATH 104": "Turn slight left",
+      "PATH 111": "Turn slight right",
+      "PATH 87": "Turn slight left",
+      "PATH 105": "Turn slight right"
+    }
+  },
+  "PATH 111": {
+    "related_paths": {
+      "PATH 110": "Turn slight left",
+      "PATH 85": "Turn slight left",
+      "PATH 86": "Turn slight right",
+      "PATH 87": "Turn right"
+    }
+  },
+  "PATH 113": {
+    "related_paths": {
+      "PATH 100": "Turn slight right",
+      "PATH 69": "Turn slight right",
+      "PATH 97": "Turn slight left",
+      "PATH 99": "Turn slight left"
+    }
+  },
+  "PATH 114": {
+    "related_paths": {
+      "PATH 115": "Turn slight left",
+      "PATH 85": "Turn slight left",
+      "PATH 115.1": "Turn slight left",
+      "PATH 97": "Turn left"
+    }
+  },
+  "PATH 115": {
+    "related_paths": {
+      "PATH 115.1": "Turn left",
+      "PATH 84": "Turn right",
+      "PATH 114": "Turn slight right",
+      "PATH 124.1": "Turn slight right"
+    }
+  },
+  "PATH 115.1": {
+    "related_paths": {
+      "PATH 115": "Turn right",
+      "PATH 116.1": "Turn slight right",
+      "PATH 114": "Turn slight right",
+      "PATH 116": "Turn slight left"
+    }
+  },
+  "PATH 116": {
+    "related_paths": {
+      "PATH 115.1": "Turn slight right",
+      "PATH 116.1": "Turn left",
+      "PATH 120": "Turn slight right",
+      "path 92": "Turn right"
+    }
+  },
+  "PATH 116.1": {
+    "related_paths": {
+      "path 94": "Turn slight left",
+      "PATH 115.1": "Turn slight left",
+      "PATH 116": "Turn right",
+      "path 95": "Turn slight right"
+    }
+  },
+  "PATH 120": {
+    "related_paths": {
+      "PATH 84": "Turn left",
+      "path 92": "Turn slight left",
+      "PATH 116": "Turn slight left",
+      "path  91": "Turn slight right"
+    }
+  },
+  "PATH 117": {
+    "related_paths": {
+      "path  91": "Turn slight left",
+      "PATH 121": "Turn slight right"
+    }
+  },
+  "PATH 120.1": {
+    "related_paths": {
+      "path 94": "Turn slight right",
+      "path 92": "Turn right",
+      "PATH 96": "Turn slight left"
+    }
+  },
+  "PATH 121": {
+    "related_paths": {
+      "PATH 117": "Turn slight left",
+      "path  91": "Turn slight right",
+      "PATH 122": "Turn slight left",
+      "PATH 79.1": "Turn left"
+    }
+  },
+  "PATH 122": {
+    "related_paths": {
+      "PATH 82": "Turn slight right",
+      "PATH 122.1": "Turn slight left",
+      "PATH 121": "Turn slight right",
+      "PATH 79.1": "Turn slight right"
+    }
+  },
+ "PATH 122.1": {
+    "related_paths": {
+      "PATH 122": "Turn slight right",
+      "PATH 82": "Turn slight left",
+      "PATH 83.1": "Turn slight left",
+      "PATH 124": "Turn slight right"
+    }
+  },
+  "PATH 124": {
+    "related_paths": {
+      "PATH 125": "Turn right",
+      "PATH 122.1": "Turn slight left",
+      "PATH 83.1": "Turn right",
+      "PATH 126": "Turn slight left"
+    }
+  },
+  "PATH 125": {
+    "related_paths": {
+      "path 365": "Turn left",
+      "PATH 126": "Turn slight right",
+      "PATH 124": "Turn left"
+    }
+  },
+  "PATH 126": {
+    "related_paths": {
+      "PATH 126.1": "Turn slight right",
+      "PATH 125": "Turn slight left",
+      "PATH 83.1": "Turn left",
+      "PATH 124": "Turn slight right",
+      "PATH 127": "Turn right"
+    }
+  },
+  "PATH 126.1": {
+    "related_paths": {
+      "PATH 126": "Turn slight left",
+      "PATH 78.1": "Turn slight left",
+      "PATH 76": "Turn slight right",
+      "PATH 75": "Turn right",
+      "PATH 83.1": "Turn slight right",
+      "PATH 127": "Turn slight left"
+    }
+  },
+  "PATH 127": {
+    "related_paths": {
+      "PATH 126.1": "Turn slight right",
+      "PATH 126": "Turn left",
+      "PATH 83": "Turn slight left",
+      "PATH 81": "Turn slight right",
+      "PATH 83.1": "Turn slight left"
+    }
+  },
+  "PATH 129": {
+    "related_paths": {
+      "PATH 79": "Turn left",
+      "PATH 131": "Turn slight right",
+      "PATH 80": "Turn slight left",
+      "PATH 130": "Turn slight right"
+    }
+  },
+  "PATH 130": {
+    "related_paths": {
+      "PATH 131": "Turn right",
+      "PATH 129": "Turn slight left"
+    }
+  },
+  "PATH 131": {
+    "related_paths": {
+      "PATH 130": "Turn left",
+      "PATH 129": "Turn slight left",
+      "PATH 77": "Turn slight left",
+      "PATH 78": "Turn slight right"
+    }
+  },
+  "PATH 132": {
+    "related_paths": {
+      "PATH 78": "Turn left",
+      "PATH 44": "Turn right",
+      "path 363": "Turn left"
+    }
+  },
+  "PATH 133": {
+    "related_paths": {
+      "PATH 43": "Turn slight left",
+      "PATH 44": "Turn slight right"
+    }
+  },
+  "PATH 134": {
+    "related_paths": {
+      "PATH 77": "Turn left",
+      "PATH 135": "Turn slight left"
+    }
+  },
+  "PATH 135": {
+    "related_paths": {
+      "PATH 38": "Turn slight right",
+      "PATH 77": "Turn slight right",
+      "PATH 134": "Turn slight right",
+      "PATH 136": "Turn left"
+    }
+  },
+  "PATH 136": {
+    "related_paths": {
+      "PATH 135": "Turn right",
+      "PATH 137": "Turn slight left",
+      "PATH 38": "Turn slight left",
+      "PATH 72": "Turn slight left"
+    }
+  },
+  "PATH 137": {
+    "related_paths": {
+      "PATH 138": "Turn left",
+      "PATH 139": "Turn slight left",
+      "PATH 72": "Turn right",
+      "PATH 136": "Turn slight right"
+    }
+  },
+  "PATH 138": {
+    "related_paths": {
+      "PATH 139": "Turn slight left",
+      "PATH 137": "Turn right",
+      "PATH 72": "Turn left",
+      "PATH 71": "Turn slight right"
+    }
+  },
+  "PATH 139": {
+    "related_paths": {
+      "PATH 138": "Turn slight right",
+      "PATH 39": "Turn right",
+      "PATH 137": "Turn slight right",
+      "PATH 140": "Turn slight left"
+    }
+  },
+  "PATH 140": {
+    "related_paths": {
+      "PATH 39": "Turn slight right",
+      "PATH 108": "Turn slight left",
+      "PATH 139": "Turn slight right",
+      "PATH 43.1": "Turn slight right",
+      "path 366": "Turn right"
+    }
+  },
+  "PATH 141": {
+    "related_paths": {
+      "PATH 108": "Turn slight left",
+      "PATH 64": "Turn slight right",
+      "PATH 65": "Turn slight left",
+      "PATH 106": "Turn slight right"
+    }
+  },
+  "PATH 142": {
+    "related_paths": {
+      "PATH 64": "Turn slight left",
+      "PATH 67": "Turn right"
+    }
+  },
+  "PATH 143": {
+    "related_paths": {
+      "path 149": "Turn slight right",
+      "PATH 144": "Turn left",
+      "PATH 65": "Turn slight left"
+    }
+  },
+  "PATH 144": {
+    "related_paths": {
+      "PATH 102": "Turn slight right",
+      "PATH 103": "Turn slight left",
+      "path 149": "Turn slight left",
+      "path 101": "Turn slight left",
+      "PATH 143": "Turn right"
+    }
+  },
+  "PATH 145": {
+    "related_paths": {
+      "path 375": "Turn slight right",
+      "path 376": "Turn slight left"
+    }
+  },
+  "PATH 147": {
+    "related_paths": {
+      "PATH 156": "Turn slight right",
+      "PATH 34": "Turn slight left",
+      "path 150": "Turn left",
+      "path 367": "Turn slight right"
+    }
+  },
+  "PATH 148": {
+    "related_paths": {
+      "PATH 39": "Turn slight left",
+      "PATH 38": "Turn left",
+      "PATH 26": "Turn slight right"
+    }
+  },
+  "path 149": {
+    "related_paths": {
+      "path 375": "Turn left",
+      "PATH 66": "Turn slight right",
+      "PATH 143": "Turn slight left",
+      "PATH 144": "Turn slight right"
+    }
+  },
+  "path 150": {
+    "related_paths": {
+      "PATH 147": "Turn right",
+      "path 151": "Turn slight right",
+      "PATH 14": "Turn left",
+      "PATH 34": "Turn left",
+      "PATH 156": "Turn slight left"
+    }
+  },
+  "path 151": {
+    "related_paths": {
+      "path 150": "Turn slight left",
+      "PATH 14": "Turn slight right",
+      "PATH 55": "Turn slight left",
+      "PATH 35": "Turn right"
+    }
+  },
+  "path 152": {
+    "related_paths": {
+      "path 295": "Turn left",
+      "PATH 46": "Turn right",
+      "PATH 45.1": "Turn left",
+      "PATH 35": "Turn slight right"
+    }
+  },
+  "PATH 153": {
+    "related_paths": {
+      "PATH 47": "Turn slight right",
+      "PATH 154": "Turn slight right",
+      "path 290": "Turn slight left",
+      "path 358": "Turn slight right"
+    }
+  },
+  "PATH 154": {
+    "related_paths": {
+      "PATH 15": "Turn slight left",
+      "PATH 153": "Turn slight left",
+      "PATH 155": "Turn slight right",
+      "PATH 47": "Turn left"
+    }
+  },
+  "PATH 155": {
+    "related_paths": {
+      "PATH 46": "Turn right",
+      "PATH 15": "Turn right",
+      "PATH 154": "Turn slight left",
+      "PATH 34": "Turn slight left"
+    }
+  },
+  "PATH 156": {
+    "related_paths": {
+      "PATH 159": "Turn slight right",
+      "PATH 147": "Turn slight left",
+      "PATH 13": "Turn slight left",
+      "path 150": "Turn slight right",
+      "PATH 34": "Turn right"
+    }
+  },
+  "PATH 157": {
+    "related_paths": {
+      "PATH 13": "Turn slight right",
+      "PATH 15": "Turn left",
+      "PATH 158": "Turn slight left",
+      "PATH 23": "Turn slight left"
+    }
+  },
+  "PATH 158": {
+    "related_paths": {
+      "PATH 15": "Turn slight right",
+      "PATH 157": "Turn slight right",
+      "path 164": "Turn slight right",
+      "path 166": "Turn slight left"
+    }
+  },
+  "PATH 159": {
+    "related_paths": {
+      "PATH 13": "Turn right",
+      "PATH 23": "Turn left",
+      "PATH 156": "Turn slight left",
+      "PATH 24": "Turn slight right"
+    }
+  },
+  "PATH 160": {
+    "related_paths": {
+      "path 162": "Turn left",
+      "PATH 161": "Turn right",
+      "PATH 24": "Turn slight left"
+    }
+  },
+  "PATH 161": {
+    "related_paths": {
+      "path 162": "Turn slight left",
+      "PATH 160": "Turn left",
+      "PATH 24": "Turn slight right"
+    }
+  },
+  "path 162": {
+    "related_paths": {
+      "PATH 160": "Turn right",
+      "PATH 161": "Turn slight right",
+      "PATH 24": "Turn left"
+    }
+  },
+  "path 163": {
+    "related_paths": {
+      "PATH 17": "Turn right",
+      "PATH 12": "Turn slight right"
+    }
+  },
+  "path 164": {
+    "related_paths": {
+      "PATH 158": "Turn slight left",
+      "PATH 31 FROM LIBRARY TO PARKING BEHIND LIBRARY": "Turn slight left",
+      "path 166": "Turn slight right",
+      "PATH 12": "Turn slight right"
+    }
+  },
+  "path 165": {
+    "related_paths": {
+      "path 166": "Turn slight left",
+      "PATH 28": "Turn slight left",
+      "PATH 18": "Turn slight right",
+      "PATH 32": "Turn right"
+    }
+  },
+  "path 166": {
+    "related_paths": {
+      "path 164": "Turn slight left",
+      "path 165": "Turn slight right",
+      "PATH 158": "Turn slight right",
+      "PATH 32": "Turn slight left"
+    }
+  },
+  "path 167": {
+    "related_paths": {
+      "PATH 16": "Turn left",
+      "path 319": "Turn slight left",
+      "Untitled path.1": "Turn right",
+      "PATH 21": "Turn slight left",
+      "PATH 18": "Turn slight right"
+    }
+  },
+  "path 168": {
+    "related_paths": {
+      "PATH 16": "Turn slight right",
+      "path 354": "Turn slight left",
+      "path 352": "Turn slight left",
+      "path 236": "Turn right",
+      "PATH 30": "Turn left"
+    }
+  },
+  "Untitled path.1": {
+    "related_paths": {
+      "path 319": "Turn slight right",
+      "path 352": "Turn slight left",
+      "path 167": "Turn left",
+      "path 253": "Turn left",
+      "PATH 21": "Turn slight right"
+    }
+  },
+  "path 169": {
+    "related_paths": {
+      "path 324": "Turn slight left",
+      "path 274": "Turn slight left",
+      "path 320": "Turn slight left",
+      "path 323": "Turn slight right"
+    }
+  },
+  "path 170": {
+    "related_paths": {
+      "PATH 48": "Turn right"
+    }
+  },
+  "path 171": {
+    "related_paths": {
+      "path 172": "Turn slight right",
+      "PATH 48": "Turn slight left"
+    }
+  },
+  "path 172": {
+    "related_paths": {
+      "path 171": "Turn slight left",
+      "PATH 52": "Turn slight right",
+      "PATH 48": "Turn slight right",
+      "PATH 49": "Turn slight right"
+    }
+  },
+  "PATH 400": {
+    "related_paths": {
+      "PATH 69": "Turn slight left",
+      "PATH 45": "Turn right"
+    }
+  },
+  "path 173": {
+    "related_paths": {
+      "path 330": "Turn slight right",
+      "PATH 51": "Turn slight right",
+      "PATH 49": "Turn slight right"
+    }
+  },
+  "path 174": {
+    "related_paths": {
+      "PATH 50": "Turn right"
+    }
+  },
+  "path 175": {
+    "related_paths": {
+      "PATH 50": "Turn left",
+      "PATH 51": "Turn slight right"
+    }
+  },
+  "path 176": {
+    "related_paths": {
+      "path 1": "Turn slight left",
+      "path 3.1": "Turn slight right"
+    }
+  },
+  "PATH 1 AROUND AUDITORIUM": {
+    "related_paths": {
+      "PATH 2 AROUND AUDITORIUM": "Turn slight left",
+      "path 348": "Turn slight left",
+      "path 286": "Turn slight right",
+      "PATH 32": "Turn left"
+    }
+  },
+  "PATH 2 AROUND AUDITORIUM": {
+    "related_paths": {
+      "PATH 1 AROUND AUDITORIUM": "Turn slight right",
+      "PATH 32": "Turn slight right",
+      "path 348": "Turn slight left",
+      "path 358": "Turn left"
+    }
+  },
+
+  "path 177": {
+    "related_paths": {
+      "path 2": "Turn slight right",
+      "path 179": "Turn left",
+      "path 1": "Turn slight left",
+      "path 178": "Turn slight right"
+    }
+  },
+  "path 178": {
+    "related_paths": {
+      "path 2": "Turn left",
+      "path 177": "Turn slight left"
+    }
+  },
+  "path 179": {
+    "related_paths": {
+      "path 182": "Turn slight right",
+      "path 180": "Turn left",
+      "path 1": "Turn slight left",
+      "path 177": "Turn right"
+    }
+  },
+  "path 180": {
+    "related_paths": {
+      "path 2": "Turn slight left",
+      "path 3": "Turn slight right",
+      "path 179": "Turn right",
+      "path 182": "Turn slight left"
+    }
+  },
+  "path 181": {
+    "related_paths": {
+      "path 3": "Turn left",
+      "path 186": "Turn slight right",
+      "path 183": "Turn left",
+      "path 182": "Turn slight right"
+    }
+  },
+  "path 182": {
+    "related_paths": {
+      "path 179": "Turn slight left",
+      "path 180": "Turn slight right",
+      "path 183": "Turn slight right",
+      "path 181": "Turn slight left"
+    }
+  },
+  "path 183": {
+    "related_paths": {
+      "path 184": "Turn slight right",
+      "path 182": "Turn slight left",
+      "path 4": "Turn right",
+      "path 181": "Turn right",
+      "path 185": "Turn slight left"
+    }
+  },
+  "path 184": {
+    "related_paths": {
+      "path 3.1": "Turn slight right",
+      "path 4": "Turn left",
+      "path 5": "Turn left",
+      "path 183": "Turn slight left",
+      "path 185": "Turn slight right"
+    }
+  },
+  "path 185": {
+    "related_paths": {
+      "path 184": "Turn slight left",
+      "path 6": "Turn slight left",
+      "path 4": "Turn slight right",
+      "path 5": "Turn right",
+      "path 183": "Turn slight right"
+    }
+  },
+  "path 186": {
+    "related_paths": {
+      "path 3": "Turn slight right",
+      "path 6": "Turn right",
+      "path 187": "Turn slight left",
+      "path 181": "Turn slight left"
+    }
+  },
+  "path 187": {
+    "related_paths": {
+      "path 188": "Turn slight right",
+      "PATH 8": "Turn right",
+      "path 186": "Turn slight right",
+      "path 6": "Turn slight left"
+    }
+  },
+  "path 188": {
+    "related_paths": {
+      "PATH 8": "Turn left",
+      "PATH 11.1": "Turn slight right",
+      "path 189": "Turn slight left",
+      "path 245": "Turn slight right",
+      "path 187": "Turn slight left"
+    }
+  },
+  "path 189": {
+    "related_paths": {
+      "path 188": "Turn slight right",
+      "PATH 11.1": "Turn left",
+      "BIG PATH 2": "Turn slight left",
+      "path 190": "Turn slight right",
+      "path 245": "Turn slight left"
+    }
+  },
+  "path 190": {
+    "related_paths": {
+      "BIG PATH 2": "Turn slight right",
+      "path 189": "Turn slight left",
+      "path 191": "Turn slight right",
+      "PATH 19": "Turn slight left"
+    }
+  },
+  "path 191": {
+    "related_paths": {
+      "path 192": "Turn slight right",
+      "path 190": "Turn slight left",
+      "BIG PATH 3": "Turn right",
+      "PATH 19": "Turn right"
+    }
+  },
+  "path 192": {
+    "related_paths": {
+      "path 224": "Turn slight left",
+      "BIG PATH 3": "Turn slight left",
+      "path 191": "Turn slight left",
+      "path 217": "Turn right"
+    }
+  },
+  "path 193": {
+    "related_paths": {
+      "path 211": "Turn right",
+      "path 209": "Turn slight left"
+    }
+  },
+  "path 194": {
+    "related_paths": {
+      "path 195": "Turn slight left",
+      "path 208": "Turn slight right"
+    }
+  },
+  "path 195": {
+    "related_paths": {
+      "path 206": "Turn slight right",
+      "path 196": "Turn slight left",
+      "path 194": "Turn slight right",
+      "path 208": "Turn slight left"
+    }
+  },
+  "path 196": {
+    "related_paths": {
+      "path 206": "Turn left",
+      "path 195": "Turn slight right",
+      "path 197": "Turn slight left",
+      "path 202": "Turn slight right"
+    }
+  },
+  "path 197": {
+    "related_paths": {
+      "path 198": "Turn right",
+      "path 196": "Turn slight right",
+      "path 202": "Turn slight left"
+    }
+  },
+  "path 198": {
+    "related_paths": {
+      "path 203": "Turn slight right",
+      "path 197": "Turn left",
+      "path 199": "Turn slight right"
+    }
+  },
+  "path 199": {
+    "related_paths": {
+      "path 203": "Turn left",
+      "path 200": "Turn slight right",
+      "path 198": "Turn slight left"
+    }
+  },
+  "path 200": {
+    "related_paths": {
+      "path 201": "Turn slight right",
+      "path 199": "Turn slight left"
+    }
+  },
+  "path 201": {
+    "related_paths": {
+      "path 202": "Turn slight right",
+      "path 204": "Turn slight left",
+      "path 200": "Turn slight left",
+      "path 203": "Turn slight right"
+    }
+  },
+  "path 202": {
+    "related_paths": {
+      "path 197": "Turn slight right",
+      "path 203": "Turn left",
+      "path 201": "Turn slight left",
+      "path 204": "Turn right",
+      "path 196": "Turn slight left"
+    }
+  },
+  "path 203": {
+    "related_paths": {
+      "path 198": "Turn slight left",
+      "path 201": "Turn slight left",
+      "path 199": "Turn right",
+      "path 202": "Turn right",
+      "path 204": "Turn slight right"
+    }
+  },
+  "path 204": {
+    "related_paths": {
+      "path 203": "Turn slight left",
+      "path 205": "Turn left",
+      "path 206": "Turn slight right",
+      "path 201": "Turn slight right",
+      "path 202": "Turn left",
+      "path 207": "Turn slight left"
+    }
+  },
+  "path 205": {
+    "related_paths": {
+      "path 206": "Turn slight left",
+      "path 204": "Turn right",
+      "path 207": "Turn left"
+    }
+  },
+  "path 206": {
+    "related_paths": {
+      "path 195": "Turn slight left",
+      "path 205": "Turn slight right",
+      "path 204": "Turn slight left",
+      "path 207": "Turn slight right",
+      "path 196": "Turn right"
+    }
+  },
+  "path 207": {
+    "related_paths": {
+      "path 210": "Turn right",
+      "path 205": "Turn right",
+      "path 206": "Turn slight left",
+      "path 215": "Turn slight left",
+      "path 216": "Turn slight left",
+      "path 204": "Turn slight right",
+      "path 213": "Turn slight right"
+    }
+  },
+  "path 208": {
+    "related_paths": {
+      "path 209": "Turn slight right",
+      "path 195": "Turn slight right",
+      "path 194": "Turn slight left",
+      "path 210": "Turn slight left"
+    }
+  },
+  "path 209": {
+    "related_paths": {
+      "path 210": "Turn right",
+      "path 211": "Turn slight left",
+      "path 193": "Turn slight right",
+      "path 208": "Turn slight left"
+    }
+  },
+  "path 210": {
+    "related_paths": {
+      "path 209": "Turn left",
+      "path 215": "Turn slight right",
+      "path 208": "Turn slight right",
+      "path 216": "Turn slight right",
+      "path 207": "Turn left",
+      "path 213": "Turn right"
+    }
+  },
+  "path 211": {
+    "related_paths": {
+      "path 209": "Turn slight right",
+      "path 214": "Turn slight right",
+      "path 193": "Turn left",
+      "path 212": "Turn slight left"
+    }
+  },
+  "path 212": {
+    "related_paths": {
+      "path 211": "Turn slight right",
+      "path 214": "Turn left",
+      "path 213": "Turn slight left"
+    }
+  },
+  "path 213": {
+    "related_paths": {
+      "path 210": "Turn left",
+      "path 215": "Turn slight right",
+      "path 216": "Turn right",
+      "path 207": "Turn slight left",
+      "path 212": "Turn slight right"
+    }
+  },
+  "path 214": {
+    "related_paths": {
+      "path 211": "Turn slight left",
+      "PATH 19": "Turn slight right",
+      "path 212": "Turn right"
+    }
+  },
+  "path 215": {
+    "related_paths": {
+      "path 210": "Turn slight left",
+      "path 216": "Turn left",
+      "path 207": "Turn slight right",
+      "path 227": "Turn slight left",
+      "path 213": "Turn slight left",
+      "path 226": "Turn right"
+    }
+  },
+  "path 216": {
+    "related_paths": {
+      "path 210": "Turn slight left",
+      "path 224": "Turn right",
+      "path 215": "Turn right",
+      "path 207": "Turn slight right",
+      "path 225": "Turn slight left",
+      "path 213": "Turn left"
+    }
+  },
+  "path 217": {
+    "related_paths": {
+      "path 192": "Turn left",
+      "path 224": "Turn slight right",
+      "path 219": "Turn slight right",
+      "path 218": "Turn slight left"
+    }
+  },
+  "path 218": {
+    "related_paths": {
+      "path 226": "Turn right",
+      "path 217": "Turn slight right",
+      "path 225": "Turn slight left",
+      "path 219": "Turn slight left"
+    }
+  },
+  "path 219": {
+    "related_paths": {
+      "path 222": "Turn slight left",
+      "path 217": "Turn slight left",
+      "path 218": "Turn slight right",
+      "path 223": "Turn slight right"
+    }
+  },
+  "path 220": {
+    "related_paths": {
+      "path 222": "Turn slight left",
+      "path 221": "Turn right"
+    }
+  },
+  "path 221": {
+    "related_paths": {
+      "path 223": "Turn slight right",
+      "path 220": "Turn left"
+    }
+  },
+  "path 222": {
+    "related_paths": {
+      "path 223": "Turn left",
+      "path 219": "Turn slight right",
+      "path 220": "Turn slight right"
+    }
+  },
+  "path 223": {
+    "related_paths": {
+      "path 222": "Turn right",
+      "path 221": "Turn slight left",
+      "path 219": "Turn slight left"
+    }
+  },
+  "path 224": {
+    "related_paths": {
+      "path 216": "Turn left",
+      "path 192": "Turn slight right",
+      "path 225": "Turn slight right",
+      "path 217": "Turn slight left"
+    }
+  },
+  "path 225": {
+    "related_paths": {
+      "path 226": "Turn slight left",
+      "path 216": "Turn slight right",
+      "path 224": "Turn slight left",
+      "path 218": "Turn slight right"
+    }
+  },
+  "path 226": {
+    "related_paths": {
+      "path 227": "Turn slight left",
+      "path 215": "Turn left",
+      "path 218": "Turn left",
+      "path 225": "Turn slight right"
+    }
+  },
+  "path 227": {
+    "related_paths": {
+      "path 226": "Turn slight right",
+      "BIG PATH 4": "Turn slight right",
+      "path 215": "Turn slight right"
+    }
+  },
+  "path 228": {
+    "related_paths": {
+      "path 230": "Turn slight right",
+      "path 229": "Turn slight left",
+      "path 235": "Turn slight left",
+      "PATH 11.1": "Turn slight right"
+    }
+  },
+  "path 229": {
+    "related_paths": {
+      "path 228": "Turn slight right",
+      "path 230": "Turn slight left"
+    }
+  },
+  "path 230": {
+    "related_paths": {
+      "path 228": "Turn slight left",
+      "path 231": "Turn slight left",
+      "path 229": "Turn slight right",
+      "path 232": "Turn slight left"
+    }
+  },
+  "path 231": {
+    "related_paths": {
+      "path 232": "Turn left",
+      "PATH FROM SCIENCE COMPLEX TO SCIENCE COMPLEX PARKING": "Turn slight left",
+      "path 230": "Turn slight right"
+    }
+  },
+  "path 232": {
+    "related_paths": {
+      "path 234": "Turn slight left",
+      "path 231": "Turn right",
+      "path 233": "Turn slight left",
+      "path 230": "Turn slight right"
+    }
+  },
+  "path 233": {
+    "related_paths": {
+      "path 232": "Turn slight right",
+      "PATH 30": "Turn slight right",
+      "path 234": "Turn left"
+    }
+  },
+  "path 234": {
+    "related_paths": {
+      "path 232": "Turn slight right",
+      "path 236": "Turn slight left",
+      "path 233": "Turn right",
+      "path 235": "Turn right"
+    }
+  },
+  "path 235": {
+    "related_paths": {
+      "path 228": "Turn slight right",
+      "path 234": "Turn left",
+      "path 236": "Turn slight right",
+      "PATH 11.1": "Turn slight left"
+    }
+  },
+  "path 236": {
+    "related_paths": {
+      "path 352": "Turn slight left",
+      "path 234": "Turn slight right",
+      "path 168": "Turn left",
+      "path 235": "Turn slight left"
+    }
+  },
+  "path 236.1": {
+    "related_paths": {
+      "path 244": "Turn slight right",
+      "path 237": "Turn left"
+    }
+  },
+  "path 237": {
+    "related_paths": {
+      "path 238": "Turn left",
+      "path 236.1": "Turn right",
+      "path 239": "Turn slight right"
+    }
+  },
+  "path 238": {
+    "related_paths": {
+      "path 239": "Turn slight right",
+      "PATH FROM SCIENCE COMPLEX TO SCIENCE COMPLEX PARKING": "Turn slight right",
+      "path 237": "Turn left"
+    }
+  },
+  "path 239": {
+    "related_paths": {
+      "path 238": "Turn slight left",
+      "PATH 29": "Turn slight left",
+      "path 237": "Turn slight left"
+    }
+  },
+  "path 240": {
+    "related_paths": {
+      "PATH 10": "Turn left",
+      "path 242": "Turn slight right",
+      "path 241": "Turn slight left"
+    }
+  },
+  "path 241": {
+    "related_paths": {
+      "path 240": "Turn slight right",
+      "PATH 31 FROM LIBRARY TO PARKING BEHIND LIBRARY": "Turn slight left"
+    }
+  },
+  "path 242": {
+    "related_paths": {
+      "PATH 10": "Turn slight left",
+      "PATH 11": "Turn slight right",
+      "path 240": "Turn slight left"
+    }
+  },
+  "path 243": {
+    "related_paths": {
+      "PATH 17": "Turn slight left",
+      "PATH 11": "Turn slight right"
+    }
+  },
+  "path 244": {
+    "related_paths": {
+      "path 236.1": "Turn slight left"
+    }
+  },
+  "path 245": {
+    "related_paths": {
+      "path 188": "Turn slight left",
+      "path 246": "Turn slight right",
+      "PATH 11.1": "Turn right",
+      "path 189": "Turn slight right",
+      "path 248": "Turn slight left"
+    }
+  },
+  "path 246": {
+    "related_paths": {
+      "path 245": "Turn slight left",
+      "path 247": "Turn slight left",
+      "path 248": "Turn slight right"
+    }
+  },
+  "path 247": {
+    "related_paths": {
+      "path 246": "Turn slight right"
+    }
+  },
+  "path 248": {
+    "related_paths": {
+      "path 250": "Turn slight left",
+      "path 245": "Turn slight right",
+      "path 246": "Turn slight left"
+    }
+  },
+  "path 249": {
+    "related_paths": {
+      "path 250": "Turn slight left",
+      "path 350": "Turn right",
+      "path 351": "Turn slight right",
+      "path 349": "Turn slight right"
+    }
+  },
+  "path 250": {
+    "related_paths": {
+      "path 249": "Turn slight right",
+      "path 349": "Turn slight left",
+      "path 248": "Turn slight right"
+    }
+  },
+  "path 251": {
+    "related_paths": {
+      "path 252": "Turn slight left",
+      "path 349": "Turn slight right",
+      "path 258": "Turn left"
+    }
+  },
+  "path 252": {
+    "related_paths": {
+      "path 251": "Turn slight right",
+      "path 257": "Turn slight left",
+      "path 256": "Turn slight right"
+    }
+  },
+  "path 253": {
+    "related_paths": {
+      "path 352": "Turn slight left",
+      "path 255": "Turn slight left",
+      "Untitled path.1": "Turn right",
+      "path 257": "Turn slight right"
+    }
+  },
+  "path 255": {
+    "related_paths": {
+      "path 253": "Turn slight right",
+      "path 257": "Turn slight left"
+    }
+  },
+  "path 256": {
+    "related_paths": {
+      "path 260": "Turn slight right",
+      "path 259": "Turn left",
+      "path 257": "Turn right",
+      "path 252": "Turn slight left"
+    }
+  },
+  "path 257": {
+    "related_paths": {
+      "path 252": "Turn slight right",
+      "path 255": "Turn slight right",
+      "path 253": "Turn slight left",
+      "path 256": "Turn left"
+    }
+  },
+  "path 258": {
+    "related_paths": {
+      "path 260": "Turn slight left",
+      "path 251": "Turn right",
+      "path 349": "Turn slight left"
+    }
+  },
+  "path 259": {
+    "related_paths": {
+      "path 260": "Turn slight right",
+      "PATH 20": "Turn slight right",
+      "PATH 21": "Turn slight left",
+      "path 256": "Turn right"
+    }
+  },
+  "path 260": {
+    "related_paths": {
+      "path 259": "Turn slight left",
+      "path 258": "Turn slight right",
+      "path 256": "Turn slight left"
+    }
+  },
+  "path 261": {
+    "related_paths": {
+      "path 262": "Turn slight left",
+      "path 267": "Turn right",
+      "PATH 22": "Turn slight left"
+    }
+  },
+  "path 262": {
+    "related_paths": {
+      "path 263": "Turn slight right",
+      "path 261": "Turn slight right",
+      "path 264": "Turn right",
+      "path 267": "Turn slight left"
+    }
+  },
+  
+  "path 263": {
+    "related_paths": {
+      "path 262": "Turn slight left",
+      "PATH 20": "Turn slight left",
+      "path 357": "Turn slight left",
+      "path 264": "Turn slight left"
+    }
+  },
+  "path 264": {
+    "related_paths": {
+      "path 262": "Turn left",
+      "path 265": "Turn slight right",
+      "path 263": "Turn slight right",
+      "path 273": "Turn slight right"
+    }
+  },
+  "path 265": {
+    "related_paths": {
+      "path 266": "Turn slight left",
+      "path 272": "Turn slight right",
+      "path 273": "Turn left",
+      "path 264": "Turn slight left"
+    }
+  },
+  "path 266": {
+    "related_paths": {
+      "path 265": "Turn slight right",
+      "path 271": "Turn slight right",
+      "path 274": "Turn slight left",
+      "path 272": "Turn left"
+    }
+  },
+  "path 267": {
+    "related_paths": {
+      "path 262": "Turn slight right",
+      "path 261": "Turn left",
+      "path 268": "Turn slight left"
+    }
+  },
+  "path 268": {
+    "related_paths": {
+      "path 346": "Turn slight left",
+      "path 269": "Turn slight right",
+      "path 267": "Turn slight right"
+    }
+  },
+  "path 269": {
+    "related_paths": {
+      "path 346": "Turn right",
+      "path 268": "Turn slight left",
+      "path 270": "Turn slight right",
+      "path 272": "Turn left"
+    }
+  },
+  "path 270": {
+    "related_paths": {
+      "path 269": "Turn slight left",
+      "path 271": "Turn left",
+      "path 272": "Turn slight right"
+    }
+  },
+  "path 271": {
+    "related_paths": {
+      "path 274": "Turn slight right",
+      "path 270": "Turn right",
+      "path 266": "Turn slight left"
+    }
+  },
+  "path 272": {
+    "related_paths": {
+      "path 269": "Turn right",
+      "path 265": "Turn slight left",
+      "path 270": "Turn slight right",
+      "path 266": "Turn left"
+    }
+  },
+  "path 273": {
+    "related_paths": {
+      "path 346": "Turn slight right",
+      "path 265": "Turn right",
+      "path 264": "Turn slight left"
+    }
+  },
+  "path 274": {
+    "related_paths": {
+      "path 266": "Turn slight right",
+      "path 323": "Turn slight left",
+      "path 169": "Turn slight right",
+      "path 320": "Turn left",
+      "path 271": "Turn slight left"
+    }
+  },
+  "path 275": {
+    "related_paths": {
+      "path 276": "Turn slight left",
+      "path 283": "Turn slight right",
+      "path 321": "Turn right",
+      "path 320": "Turn slight left"
+    }
+  },
+  "path 276": {
+    "related_paths": {
+      "path 283": "Turn slight left",
+      "path 281": "Turn right",
+      "path 275": "Turn slight right",
+      "path 277": "Turn slight left"
+    }
+  },
+  "path 277": {
+    "related_paths": {
+      "path 276": "Turn slight right",
+      "path 281": "Turn slight left",
+      "path 278": "Turn right"
+    }
+  },
+  "path 278": {
+    "related_paths": {
+      "path 277": "Turn left",
+      "path 279": "Turn slight right"
+    }
+  },
+  "path 279": {
+    "related_paths": {
+      "path 278": "Turn slight left",
+      "path 280": "Turn right"
+    }
+  },
+  "path 280": {
+    "related_paths": {
+      "path 282": "Turn slight left",
+      "path 345": "Turn slight right",
+      "path 279": "Turn left"
+    }
+  },
+  "path 281": {
+    "related_paths": {
+      "path 276": "Turn left",
+      "path 277": "Turn slight right",
+      "path 345": "Turn slight left"
+    }
+  },
+  "path 282": {
+    "related_paths": {
+      "PATH 28": "Turn slight left",
+      "path 345": "Turn slight left",
+      "path 280": "Turn slight right"
+    }
+  },
+  "path 283": {
+    "related_paths": {
+      "path 287": "Turn slight left",
+      "path 275": "Turn slight left",
+      "path 284": "Turn slight left",
+      "path 276": "Turn slight right",
+      "path 288": "Turn slight right"
+    }
+  },
+  "path 284": {
+    "related_paths": {
+      "path 287": "Turn left",
+      "path 283": "Turn slight right",
+      "path 286": "Turn slight left",
+      "path 288": "Turn slight left",
+      "path 285": "Turn slight right"
+    }
+  },
+  "path 285": {
+    "related_paths": {
+      "path 287": "Turn right",
+      "path 289": "Turn slight left",
+      "path 286": "Turn right",
+      "path 284": "Turn slight left"
+    }
+  },
+  "path 286": {
+    "related_paths": {
+      "PATH 1 AROUND AUDITORIUM": "Turn slight left",
+      "path 285": "Turn left",
+      "path 348": "Turn slight right",
+      "path 284": "Turn slight right"
+    }
+  },
+  "path 287": {
+    "related_paths": {
+      "path 283": "Turn slight right",
+      "path 289": "Turn slight left",
+      "path 284": "Turn right",
+      "path 288": "Turn left",
+      "path 285": "Turn left"
+    }
+  },
+  "path 288": {
+    "related_paths": {
+      "path 287": "Turn right",
+      "path 284": "Turn slight right",
+      "path 283": "Turn slight left",
+      "path 322": "Turn left",
+      "path 323": "Turn slight right"
+    }
+  },
+  "path 289": {
+    "related_paths": {
+      "path 287": "Turn slight right",
+      "path 291": "Turn slight right",
+      "path 290": "Turn slight left",
+      "path 285": "Turn slight right"
+    }
+  },
+  "path 290": {
+    "related_paths": {
+      "path 291": "Turn left",
+      "PATH 153": "Turn slight right",
+      "path 289": "Turn slight right",
+      "path 358": "Turn left"
+    }
+  },
+  "path 291": {
+    "related_paths": {
+      "path 292": "Turn slight right",
+      "path 289": "Turn slight left",
+      "path 290": "Turn right"
+    }
+  },
+  "path 292": {
+    "related_paths": {
+      "path 293": "Turn slight left",
+      "path 296": "Turn slight right",
+      "PATH 47": "Turn left",
+      "path 291": "Turn slight left"
+    }
+  },
+  "path 293": {
+    "related_paths": {
+      "path 294": "Turn slight right",
+      "path 292": "Turn slight right",
+      "path 296": "Turn slight left",
+      "PATH 47": "Turn right",
+      "path 295": "Turn slight left"
+    }
+  },
+  "path 294": {
+    "related_paths": {
+      "path 295": "Turn right",
+      "path 293": "Turn slight left"
+    }
+  },
+  "path 295": {
+    "related_paths": {
+      "PATH 46": "Turn slight right",
+      "path 294": "Turn left",
+      "path 293": "Turn slight right",
+      "path 152": "Turn right"
+    }
+  },
+  "path 296": {
+    "related_paths": {
+      "path 297": "Turn slight right",
+      "path 292": "Turn slight left",
+      "PATH 47": "Turn slight left",
+      "path 299": "Turn slight left",
+      "path 293": "Turn slight right"
+    }
+  },
+  "path 297": {
+    "related_paths": {
+      "path 299": "Turn right",
+      "path 296": "Turn slight left"
+    }
+  },
+  "path 298": {
+    "related_paths": {
+      "PATH 57": "Turn right",
+      "path 328": "Turn slight right",
+      "PATH 36": "Turn slight left"
+    }
+  },
+  "path 299": {
+    "related_paths": {
+      "path 297": "Turn left",
+      "PATH 36": "Turn slight left",
+      "path 296": "Turn slight right",
+      "PATH 33": "Turn slight right"
+    }
+  },
+  "path 300": {
+    "related_paths": {
+      "path 306": "Turn slight right",
+      "PATH 57": "Turn left"
+    }
+  },
+  "path 301": {
+    "related_paths": {
+      "PATH 45.1": "Turn left"
+    }
+  },
+  "path 302": {
+    "related_paths": {
+      "path 309": "Turn slight left",
+      "path 303": "Turn right"
+    }
+  },
+  "path 303": {
+    "related_paths": {
+      "PATH 61": "Turn slight right",
+      "path 302": "Turn left",
+      "path 309": "Turn slight right",
+      "PATH 62": "Turn left"
+    }
+  },
+  "path 304": {
+    "related_paths": {
+      "path 373": "Turn slight left",
+      "PATH 37": "Turn right",
+      "path 307": "Turn slight right",
+      "PATH 61": "Turn right",
+      "path 372": "Turn slight left"
+    }
+  },
+  "path 305": {
+    "related_paths": {
+      "path 308": "Turn slight left",
+      "path 307": "Turn slight right",
+      "PATH 59": "Turn slight right",
+      "path 306": "Turn slight right"
+    }
+  },
+  "path 306": {
+    "related_paths": {
+      "path 308": "Turn right",
+      "path 305": "Turn slight left",
+      "path 300": "Turn slight left",
+      "PATH 57": "Turn slight right"
+    }
+  },
+  "path 307": {
+    "related_paths": {
+      "path 373": "Turn right",
+      "path 305": "Turn slight left",
+      "PATH 59": "Turn right",
+      "path 304": "Turn slight left",
+      "PATH 61": "Turn slight left"
+    }
+  },
+  
+  "path 308": {
+    "related_paths": {
+      "path 305": "Turn slight right",
+      "PATH 60": "Turn slight left",
+      "path 306": "Turn left",
+      "PATH 58": "Turn slight left"
+    }
+  },
+  "path 309": {
+    "related_paths": {
+      "PATH 56": "Turn slight left",
+      "path 310": "Turn slight right",
+      "path 302": "Turn slight right",
+      "path 303": "Turn slight left"
+    }
+  },
+  "path 310": {
+    "related_paths": {
+      "PATH 56": "Turn slight right",
+      "PATH 53": "Turn slight left",
+      "PATH 54": "Turn left",
+      "path 309": "Turn slight left"
+    }
+  },
+  "path 311": {
+    "related_paths": {
+      "path 371": "Turn right",
+      "path 370": "Turn slight left"
+    }
+  },
+  "path 312": {
+    "related_paths": {
+      "path 317": "Turn slight left",
+      "path 316": "Turn slight left",
+      "path 318": "Turn slight right",
+      "path 313": "Turn slight right",
+      "path 370": "Turn left"
+    }
+  },
+  "path 313": {
+    "related_paths": {
+      "path 317": "Turn right",
+      "path 316": "Turn slight right",
+      "path 312": "Turn slight left",
+      "path 314": "Turn left",
+      "path 315": "Turn slight left"
+    }
+  },
+  "path 314": {
+    "related_paths": {
+      "path 313": "Turn right",
+      "path 315": "Turn left"
+    }
+  },
+  "path 315": {
+    "related_paths": {
+      "path 314": "Turn right",
+      "path 313": "Turn slight right"
+    }
+  },
+  "path 316": {
+    "related_paths": {
+      "path 317": "Turn left",
+      "path 312": "Turn slight right",
+      "path 313": "Turn slight left"
+    }
+  },
+  "path 317": {
+    "related_paths": {
+      "path 316": "Turn right",
+      "path 312": "Turn slight right",
+      "path 313": "Turn left"
+    }
+  },
+  "path 318": {
+    "related_paths": {
+      "PATH 66": "Turn slight right",
+      "path 312": "Turn slight left",
+      "PATH 67": "Turn slight left",
+      "path 370": "Turn slight right"
+    }
+  },
+  "path 319": {
+    "related_paths": {
+      "path 357": "Turn slight right",
+      "Untitled path.1": "Turn slight left",
+      "PATH 21": "Turn left",
+      "path 321": "Turn slight right",
+      "path 167": "Turn slight right"
+    }
+  },
+  "path 320": {
+    "related_paths": {
+      "path 274": "Turn right",
+      "path 275": "Turn slight right",
+      "path 321": "Turn slight right",
+      "path 323": "Turn left",
+      "path 169": "Turn slight right"
+    }
+  },
+  "path 321": {
+    "related_paths": {
+      "path 357": "Turn left",
+      "path 275": "Turn slight left",
+      "path 320": "Turn slight left",
+      "path 319": "Turn slight left"
+    }
+  },
+  "path 322": {
+    "related_paths": {
+      "path 288": "Turn right",
+      "path 323": "Turn slight left"
+    }
+  },
+  "path 323": {
+    "related_paths": {
+      "path 322": "Turn slight right",
+      "path 274": "Turn slight right",
+      "path 169": "Turn slight left",
+      "path 288": "Turn slight left",
+      "path 320": "Turn right"
+    }
+  },
+  "path 324": {
+    "related_paths": {
+      "path 329": "Turn slight right",
+      "path 325": "Turn slight left",
+      "path 169": "Turn slight right"
+    }
+  },
+  "path 325": {
+    "related_paths": {
+      "path 327": "Turn slight right",
+      "path 326": "Turn slight left",
+      "path 329": "Turn slight left",
+      "path 324": "Turn slight right"
+    }
+  },
+  "path 326": {
+    "related_paths": {
+      "path 327": "Turn slight left",
+      "path 325": "Turn slight right",
+      "PATH 33": "Turn slight left"
+    }
+  },
+  "path 327": {
+    "related_paths": {
+      "path 328": "Turn slight left",
+      "path 343": "Turn slight right",
+      "path 326": "Turn slight right",
+      "path 325": "Turn slight left"
+    }
+  },
+  "path 328": {
+    "related_paths": {
+      "path 327": "Turn slight right",
+      "path 298": "Turn slight left",
+      "path 343": "Turn slight left"
+    }
+  },
+  "path 329": {
+    "related_paths": {
+      "path 338": "Turn right",
+      "path 325": "Turn slight right",
+      "path 324": "Turn slight left",
+      "path 339": "Turn slight left"
+    }
+  },
+  "path 330": {
+    "related_paths": {
+      "path 331": "Turn slight right",
+      "path 173": "Turn slight left",
+      "path 338": "Turn slight left"
+    }
+  },
+  "path 331": {
+    "related_paths": {
+      "path 338": "Turn slight right",
+      "path 332": "Turn left",
+      "path 330": "Turn slight left"
+    }
+  },
+  
+  "path 332": {
+    "related_paths": {
+      "path 331": "Turn right",
+      "path 333": "Turn slight right",
+      "path 335": "Turn slight left"
+    }
+  },
+  "path 333": {
+    "related_paths": {
+      "path 336": "Turn left",
+      "path 334": "Turn slight left",
+      "path 332": "Turn slight left",
+      "path 335": "Turn slight right"
+    }
+  },
+  "path 334": {
+    "related_paths": {
+      "path 336": "Turn slight right",
+      "path 333": "Turn slight right",
+      "path 337": "Turn slight left"
+    }
+  },
+  "path 335": {
+    "related_paths": {
+      "path 340": "Turn slight right",
+      "path 333": "Turn slight left",
+      "path 332": "Turn slight right",
+      "path 339": "Turn slight left"
+    }
+  },
+  "path 336": {
+    "related_paths": {
+      "path 333": "Turn slight right",
+      "path 334": "Turn left",
+      "path 347": "Turn slight left"
+    }
+  },
+  "path 337": {
+    "related_paths": {
+      "path 334": "Turn slight right",
+      "path 342": "Turn slight left",
+      "path 344": "Turn slight right"
+    }
+  },
+  "path 338": {
+    "related_paths": {
+      "path 331": "Turn slight left",
+      "path 339": "Turn slight right",
+      "path 329": "Turn slight left",
+      "path 330": "Turn slight right"
+    }
+  },
+  "path 339": {
+    "related_paths": {
+      "path 340": "Turn slight left",
+      "path 338": "Turn slight right",
+      "path 329": "Turn slight right",
+      "path 335": "Turn slight left"
+    }
+  },
+  "path 340": {
+    "related_paths": {
+      "path 341": "Turn slight left",
+      "path 339": "Turn slight right",
+      "path 347": "Turn slight right",
+      "path 335": "Turn slight right"
+    }
+  },
+  "path 341": {
+    "related_paths": {
+      "path 340": "Turn slight right",
+      "path 343": "Turn slight left",
+      "path 347": "Turn slight right",
+      "path 344": "Turn slight right"
+    }
+  },
+  "path 342": {
+    "related_paths": {
+      "path 344": "Turn slight right",
+      "path 337": "Turn slight right",
+      "path 343": "Turn slight left"
+    }
+  },
+  "path 343": {
+    "related_paths": {
+      "path 341": "Turn slight right",
+      "path 342": "Turn slight right",
+      "path 344": "Turn slight left"
+    }
+  },
+  "path 344": {
+    "related_paths": {
+      "path 341": "Turn slight left",
+      "path 337": "Turn slight right",
+      "path 343": "Turn slight left"
+    }
+  },
+  "path 345": {
+    "related_paths": {
+      "path 281": "Turn slight right",
+      "path 282": "Turn slight right",
+      "path 280": "Turn slight left"
+    }
+  },
+  "path 346": {
+    "related_paths": {
+      "path 269": "Turn left",
+      "path 268": "Turn slight right",
+      "path 273": "Turn slight left"
+    }
+  },
+  "path 347": {
+    "related_paths": {
+      "path 340": "Turn slight left",
+      "path 336": "Turn slight left",
+      "path 341": "Turn slight right"
+    }
+  },
+  "path 348": {
+    "related_paths": {
+      "path 286": "Turn left",
+      "path 347": "Turn right",
+      "path 285": "Turn slight left"
+    }
+  },
+  "path 349": {
+    "related_paths": {
+      "path 347": "Turn right",
+      "path 348": "Turn slight left",
+      "path 285": "Turn slight right"
+    }
+  },
+
+  
+  "path 350": {
+    "related_paths": {
+      "path 249": "Turn left",
+      "path 351": "Turn slight right"
+    }
+  },
+  "path 351": {
+    "related_paths": {
+      "path 249": "Turn slight left",
+      "path 350": "Turn slight left"
+    }
+  },
+  "path 352": {
+    "related_paths": {
+      "path 236": "Turn slight right",
+      "path 253": "Turn slight right",
+      "path 168": "Turn slight right",
+      "Untitled path.1": "Turn slight right"
+    }
+  },
+  "path 354": {
+    "related_paths": {
+      "PATH 16": "Turn left",
+      "path 355": "Turn slight right",
+      "path 168": "Turn slight right",
+      "PATH 29": "Turn left",
+      "PATH 30": "Turn slight right"
+    }
+  },
+  "path 355": {
+    "related_paths": {
+      "PATH 10": "Turn slight right",
+      "PATH 29": "Turn slight right",
+      "PATH 9": "Turn left",
+      "path 354": "Turn slight left"
+    }
+  },
+  "path 357": {
+    "related_paths": {
+      "path 263": "Turn slight right",
+      "PATH 20": "Turn right",
+      "path 321": "Turn right",
+      "path 319": "Turn slight left"
+    }
+  },
+  "path 358": {
+    "related_paths": {
+      "PATH 2 AROUND AUDITORIUM": "Turn right",
+      "PATH 153": "Turn slight left",
+      "path 290": "Turn right",
+      "path 348": "Turn slight left"
+    }
+  },
+  "path 361": {
+    "related_paths": {
+      "PATH 79": "Turn slight right"
+    }
+  },
+  "path 362": {
+    "related_paths": {
+      "path 374": "Turn right"
+    }
+  },
+  "path 363": {
+    "related_paths": {
+      "PATH 132": "Turn right"
+    }
+  },
+  "path 364": {
+    "related_paths": {
+      "PATH 43": "Turn left"
+    }
+  },
+  "path 365": {
+    "related_paths": {
+      "PATH 125": "Turn right"
+    }
+  },
+  "path 366": {
+    "related_paths": {
+      "PATH 40": "Turn slight right",
+      "PATH 108": "Turn slight left",
+      "PATH 43.1": "Turn slight right",
+      "PATH 140": "Turn left",
+      "PATH 44.1": "Turn left"
+    }
+  },
+  "path 367": {
+    "related_paths": {
+      "PATH 147": "Turn slight left",
+      "PATH 14": "Turn right",
+      "PATH 26": "Turn slight left",
+      "PATH 40": "Turn slight left"
+    }
+  },
+  "path 368": {
+    "related_paths": {
+      "PATH 42": "Turn right"
+    }
+  },
+  "path 369": {
+    "related_paths": {
+      "path 376": "Turn slight left",
+      "PATH 103": "Turn slight left"
+    }
+  },
+  "path 370": {
+    "related_paths": {
+      "path 312": "Turn right",
+      "path 318": "Turn slight left",
+      "path 371": "Turn slight right",
+      "path 311": "Turn slight right"
+    }
+  },
+  "path 371": {
+    "related_paths": {
+      "PATH 53": "Turn slight right",
+      "path 311": "Turn left",
+      "path 370": "Turn slight left",
+      "path 372": "Turn slight left"
+    }
+  },
+  "path 372": {
+    "related_paths": {
+      "PATH 37": "Turn slight right",
+      "PATH 53": "Turn left",
+      "path 371": "Turn slight right",
+      "path 304": "Turn slight right"
+    }
+  },
+  "path 373": {
+    "related_paths": {
+      "PATH 61": "Turn slight left",
+      "PATH 60": "Turn slight right",
+      "path 307": "Turn left",
+      "path 304": "Turn slight right"
+    }
+  },
+  "path 374": {
+    "related_paths": {
+      "PATH 80": "Turn slight right",
+      "path 362": "Turn left",
+      "PATH 81": "Turn left"
+    }
+  },
+  "path 375": {
+    "related_paths": {
+      "path 149": "Turn right",
+      "PATH 66": "Turn slight left",
+      "PATH 145": "Turn slight left"
+    }
+  },
+  "path 376": {
+    "related_paths": {
+      "path 369": "Turn slight right",
+      "PATH 103": "Turn left",
+      "PATH 145": "Turn slight right"
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+

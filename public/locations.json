@@ -1,0 +1,7 @@
+{
+    "Transportation": ["Transportation Office"],
+    "Restaurants": ["Sironi", "Caffe latta", "Pauls Caffe"],
+    "Lecturers": ["Lecturer 1", "Lecturer 2", "Lecturer 3", "Lecturer 4", "Lecturer 5","Lecturer 1", "Lecturer 2", "Lecturer 3", "Lecturer 4", "Lecturer 5","Lecturer 1", "Lecturer 2", "Lecturer 3", "Lecturer 4", "Lecturer 5","Lecturer 1", "Lecturer 2", "Lecturer 3", "Lecturer 4", "Lecturer 5"],
+    "Playgrounds": ["Playground 1", "Playground 2"],
+    "Sports": ["Basketball Court", "Football Field"]
+}

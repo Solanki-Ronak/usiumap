@@ -1,0 +1,4 @@
+1. path 45 AND PATH 69, i can not get detect all points to find path so whenever i click on the map or use live location
+you may solve it by doing this, add more points in that path
+
+2. path 3 does not give me directions when i choose the click on map or use live location

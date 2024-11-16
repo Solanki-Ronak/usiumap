@@ -1,0 +1,2960 @@
+[
+    {
+        "path_name": "CIRCLE 2 BASKETBALL COURT",
+        "instructions": [
+            "Make a slight right for 2.37 meters",
+            "Make a slight right for 1.51 meters",
+            "Make a slight right for 2.01 meters",
+            "Make a slight right for 1.40 meters",
+            "Make a slight right for 1.32 meters",
+            "Turn right for 1.96 meters",
+            "Turn right for 1.49 meters",
+            "Make a sharp right for 1.48 meters",
+            "Make a sharp right for 1.89 meters",
+            "Make a sharp right for 1.50 meters",
+            "Make a sharp right for 2.18 meters",
+            "Turn around for 1.69 meters",
+            "Turn around for 1.61 meters",
+            "Turn around for 1.24 meters",
+            "Turn around for 2.25 meters"
+        ]
+    },
+    {
+        "path_name": "MIDLINE 2 BASKETBALL COURT",
+        "instructions": [
+            "Turn right for 14.11 meters"
+        ]
+    },
+    {
+        "path_name": "MID LINE BASKETBALL COURT",
+        "instructions": [
+            "Turn right for 14.68 meters"
+        ]
+    },
+    {
+        "path_name": "CIRCLE 4 BASKETBALL COURT",
+        "instructions": [
+            "Make a slight right for 1.59 meters",
+            "Make a slight right for 1.02 meters",
+            "Make a slight right for 1.42 meters",
+            "Make a slight right for 1.29 meters",
+            "Make a slight right for 1.24 meters",
+            "Turn right for 1.74 meters",
+            "Turn right for 1.66 meters",
+            "Turn right for 1.30 meters",
+            "Turn right for 1.32 meters",
+            "Make a sharp right for 0.85 meters",
+            "Make a sharp right for 0.96 meters",
+            "Make a sharp right for 1.54 meters",
+            "Make a sharp right for 1.16 meters",
+            "Make a sharp right for 1.34 meters",
+            "Turn around for 1.08 meters",
+            "Turn around for 1.49 meters",
+            "Turn around for 0.53 meters",
+            "Turn around for 0.56 meters",
+            "Turn around for 0.74 meters",
+            "Turn around for 1.35 meters"
+        ]
+    },
+    {
+        "path_name": "CIRCLE 3 BASKETBALL COURT",
+        "instructions": [
+            "Turn around for 2.62 meters",
+            "Turn around for 1.70 meters",
+            "Turn around for 1.44 meters",
+            "Turn around for 1.32 meters",
+            "Make a sharp right for 1.72 meters",
+            "Make a sharp right for 1.11 meters",
+            "Make a sharp right for 1.57 meters",
+            "Turn right for 2.49 meters",
+            "Turn right for 2.10 meters",
+            "Turn right for 2.39 meters",
+            "Make a slight right for 2.05 meters",
+            "Make a slight right for 1.36 meters",
+            "Make a slight right for 1.61 meters",
+            "Make a slight right for 1.32 meters"
+        ]
+    },
+    {
+        "path_name": "CIRCLE 1 BASKET BALL COURT",
+        "instructions": [
+            "Turn around for 1.60 meters",
+            "Turn around for 1.55 meters",
+            "Turn around for 0.87 meters",
+            "Turn around for 0.99 meters",
+            "Turn around for 0.79 meters",
+            "Turn around for 0.90 meters",
+            "Turn around for 0.63 meters",
+            "Turn around for 0.83 meters",
+            "Make a sharp right for 0.75 meters",
+            "Make a sharp right for 1.09 meters",
+            "Make a sharp right for 1.25 meters",
+            "Make a sharp right for 1.22 meters",
+            "Make a sharp right for 1.31 meters",
+            "Turn right for 1.79 meters",
+            "Turn right for 1.58 meters",
+            "Turn right for 1.72 meters",
+            "Make a slight right for 1.82 meters",
+            "Make a slight right for 1.90 meters",
+            "Make a slight right for 1.58 meters",
+            "Head straight for 1.05 meters",
+            "Make a slight right for 1.42 meters"
+        ]
+    },
+    {
+        "path_name": "path 1",
+        "instructions": [
+            "Make a sharp right for 3.40 meters",
+            "Make a sharp right for 10.54 meters",
+            "Turn right for 9.71 meters",
+            "Turn right for 27.63 meters",
+            "Turn right for 74.90 meters"
+        ]
+    },
+    {
+        "path_name": "path 2",
+        "instructions": [
+            "Head straight for 63.17 meters"
+        ]
+    },
+    {
+        "path_name": "path 3",
+        "instructions": [
+            "Turn right for 16.52 meters",
+            "Turn right for 9.53 meters",
+            "Turn right for 18.49 meters",
+            "Turn right for 16.60 meters",
+            "Turn right for 18.67 meters",
+            "Turn right for 15.25 meters",
+            "Turn right for 7.95 meters",
+            "Turn right for 22.27 meters",
+            "Turn right for 9.60 meters",
+            "Turn right for 12.10 meters",
+            "Make a slight right for 8.26 meters",
+            "Make a slight right for 10.06 meters",
+            "Make a slight right for 12.75 meters",
+            "Head straight for 8.90 meters",
+            "Make a slight right for 5.38 meters",
+            "Head straight for 10.50 meters",
+            "Head straight for 12.79 meters",
+            "Head straight for 14.31 meters",
+            "Head straight for 9.34 meters",
+            "Head straight for 9.04 meters",
+            "Make a slight right for 13.75 meters",
+            "Head straight for 11.54 meters",
+            "Head straight for 16.48 meters",
+            "Make a slight right for 13.17 meters",
+            "Make a slight right for 20.09 meters",
+            "Head straight for 13.89 meters",
+            "Head straight for 13.48 meters",
+            "Head straight for 14.37 meters",
+            "Head straight for 9.29 meters",
+            "Make a slight right for 6.72 meters",
+            "Head straight for 10.10 meters",
+            "Head straight for 12.71 meters",
+            "Head straight for 10.44 meters",
+            "Make a slight left for 8.39 meters",
+            "Make a slight left for 14.83 meters",
+            "Make a slight left for 11.70 meters",
+            "Make a slight left for 6.16 meters"
+        ]
+    },
+    {
+        "path_name": "path 3.1",
+        "instructions": [
+            "Make a sharp left for 15.23 meters",
+            "Make a sharp left for 14.35 meters",
+            "Turn around for 10.96 meters",
+            "Make a sharp left for 11.26 meters",
+            "Make a sharp left for 22.45 meters",
+            "Make a sharp left for 30.20 meters",
+            "Turn around for 41.57 meters",
+            "Turn around for 71.47 meters",
+            "Turn around for 23.73 meters"
+        ]
+    },
+    {
+        "path_name": "path 4",
+        "instructions": [
+            "Make a slight right for 9.38 meters",
+            "Make a slight right for 2.11 meters",
+            "Make a slight right for 4.60 meters",
+            "Make a slight right for 5.68 meters",
+            "Make a slight right for 2.29 meters"
+        ]
+    },
+    {
+        "path_name": "path 5",
+        "instructions": [
+            "Turn around for 25.56 meters",
+            "Turn around for 18.22 meters",
+            "Turn around for 12.29 meters"
+        ]
+    },
+    {
+        "path_name": "path 6",
+        "instructions": [
+            "Turn around for 27.63 meters",
+            "Turn around for 14.60 meters",
+            "Turn around for 45.28 meters",
+            "Turn around for 23.01 meters",
+            "Make a sharp left for 19.31 meters",
+            "Make a sharp left for 20.19 meters",
+            "Make a sharp left for 14.57 meters",
+            "Make a sharp left for 12.92 meters",
+            "Make a sharp left for 24.82 meters",
+            "Make a sharp left for 17.89 meters",
+            "Make a sharp left for 11.63 meters",
+            "Turn around for 11.23 meters",
+            "Turn around for 15.27 meters",
+            "Turn around for 13.96 meters",
+            "Turn around for 12.51 meters",
+            "Turn around for 16.28 meters",
+            "Turn around for 12.59 meters",
+            "Turn around for 9.58 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 8",
+        "instructions": [
+            "Make a sharp right for 13.28 meters"
+        ]
+    },
+    {
+        "path_name": "BIG PATH 2",
+        "instructions": [
+            "Turn around for 9.52 meters"
+        ]
+    },
+    {
+        "path_name": "BIG PATH 3",
+        "instructions": [
+            "Make a sharp right for 11.82 meters",
+            "Turn around for 9.30 meters",
+            "Turn around for 16.42 meters"
+        ]
+    },
+    {
+        "path_name": "BIG PATH 4",
+        "instructions": [
+            "Make a slight right for 6.60 meters",
+            "Make a slight right for 11.64 meters",
+            "Make a slight right for 5.90 meters",
+            "Make a slight right for 10.63 meters"
+        ]
+    },
+    {
+        "path_name": "BIG PATH 5",
+        "instructions": [
+            "Make a slight right for 8.68 meters",
+            "Turn right for 11.15 meters",
+            "Turn right for 14.18 meters",
+            "Turn right for 27.34 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 9",
+        "instructions": [
+            "Turn around for 8.30 meters",
+            "Turn around for 6.52 meters",
+            "Turn around for 7.75 meters",
+            "Turn around for 9.96 meters",
+            "Turn around for 19.88 meters",
+            "Turn around for 17.70 meters",
+            "Turn around for 8.62 meters",
+            "Turn right for 3.99 meters",
+            "Make a sharp right for 5.78 meters",
+            "Turn around for 5.12 meters",
+            "Turn around for 8.85 meters",
+            "Turn around for 8.17 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 10",
+        "instructions": [
+            "Turn right for 9.50 meters",
+            "Turn right for 6.35 meters",
+            "Make a sharp right for 6.80 meters",
+            "Make a sharp right for 6.00 meters",
+            "Make a sharp right for 6.37 meters",
+            "Make a sharp right for 5.89 meters",
+            "Make a sharp right for 7.27 meters",
+            "Make a sharp right for 5.62 meters",
+            "Turn around for 5.74 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 11",
+        "instructions": [
+            "Turn around for 26.57 meters",
+            "Turn around for 23.83 meters",
+            "Make a sharp left for 8.66 meters",
+            "Turn around for 15.03 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 11.1",
+        "instructions": [
+            "Turn around for 14.93 meters",
+            "Turn around for 11.00 meters",
+            "Turn around for 15.14 meters",
+            "Turn around for 7.33 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 12",
+        "instructions": [
+            "Make a sharp right for 2.36 meters",
+            "Make a sharp right for 3.93 meters",
+            "Make a sharp right for 3.10 meters",
+            "Make a sharp right for 5.37 meters",
+            "Make a sharp right for 4.06 meters",
+            "Make a sharp right for 4.66 meters",
+            "Make a sharp right for 5.73 meters",
+            "Make a sharp right for 3.72 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 13",
+        "instructions": [
+            "Turn around for 22.74 meters",
+            "Turn around for 21.82 meters",
+            "Turn around for 17.59 meters",
+            "Turn around for 6.07 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 14",
+        "instructions": [
+            "Make a sharp right for 37.43 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 15",
+        "instructions": [
+            "Turn right for 4.14 meters",
+            "Turn right for 9.88 meters",
+            "Turn right for 3.59 meters",
+            "Turn right for 5.33 meters",
+            "Turn right for 8.42 meters",
+            "Turn right for 4.87 meters",
+            "Turn right for 4.41 meters",
+            "Turn right for 5.41 meters",
+            "Make a slight right for 3.42 meters",
+            "Make a slight right for 3.21 meters",
+            "Make a slight right for 4.73 meters",
+            "Make a slight right for 2.60 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 16",
+        "instructions": [
+            "Head straight for 1.50 meters",
+            "Make a slight left for 2.49 meters",
+            "Make a slight left for 2.94 meters",
+            "Make a slight left for 4.87 meters",
+            "Make a slight left for 7.72 meters",
+            "Head straight for 5.62 meters",
+            "Head straight for 3.69 meters",
+            "Head straight for 3.53 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 17",
+        "instructions": [
+            "Make a slight right for 2.84 meters",
+            "Make a slight right for 1.58 meters",
+            "Make a slight right for 2.41 meters",
+            "Make a slight right for 1.45 meters",
+            "Make a slight right for 3.75 meters",
+            "Make a slight right for 1.44 meters",
+            "Head straight for 1.36 meters",
+            "Head straight for 1.71 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 18",
+        "instructions": [
+            "Make a sharp right for 11.10 meters",
+            "Make a sharp right for 7.24 meters",
+            "Make a sharp right for 8.86 meters",
+            "Make a sharp right for 7.93 meters",
+            "Make a sharp right for 8.22 meters",
+            "Turn around for 7.62 meters",
+            "Turn around for 9.84 meters",
+            "Turn around for 14.37 meters",
+            "Turn around for 6.22 meters",
+            "Turn around for 4.72 meters",
+            "Make a sharp right for 7.46 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 19",
+        "instructions": [
+            "Turn around for 22.33 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 20",
+        "instructions": [
+            "Head straight for 6.82 meters",
+            "Head straight for 4.85 meters",
+            "Head straight for 4.28 meters",
+            "Head straight for 6.26 meters",
+            "Head straight for 5.17 meters",
+            "Head straight for 6.77 meters",
+            "Head straight for 5.72 meters",
+            "Head straight for 3.29 meters",
+            "Head straight for 3.56 meters",
+            "Head straight for 6.29 meters",
+            "Head straight for 4.98 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 21",
+        "instructions": [
+            "Turn right for 15.26 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 22",
+        "instructions": [
+            "Turn around for 12.42 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 23",
+        "instructions": [
+            "Turn around for 7.77 meters",
+            "Turn around for 4.57 meters",
+            "Make a sharp right for 7.18 meters",
+            "Make a sharp right for 4.63 meters",
+            "Make a sharp right for 8.01 meters",
+            "Make a sharp right for 12.29 meters",
+            "Make a sharp right for 5.36 meters",
+            "Make a sharp right for 4.47 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 24",
+        "instructions": [
+            "Turn left for 4.34 meters",
+            "Turn left for 3.95 meters",
+            "Make a sharp left for 4.89 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 26",
+        "instructions": [
+            "Make a sharp right for 3.59 meters",
+            "Make a sharp right for 1.56 meters",
+            "Make a sharp right for 6.20 meters",
+            "Turn right for 7.35 meters",
+            "Turn right for 18.89 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 28",
+        "instructions": [
+            "Turn right for 6.93 meters",
+            "Make a sharp right for 6.27 meters",
+            "Make a sharp right for 3.61 meters",
+            "Make a sharp right for 4.47 meters",
+            "Make a sharp right for 6.47 meters",
+            "Make a sharp right for 2.94 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 29",
+        "instructions": [
+            "Turn around for 4.13 meters"
+        ]
+    },
+    {
+        "path_name": "PATH FROM SCIENCE COMPLEX TO SCIENCE COMPLEX PARKING",
+        "instructions": [
+            "Make a sharp right for 3.02 meters",
+            "Make a sharp right for 2.43 meters",
+            "Make a sharp right for 2.09 meters",
+            "Make a sharp right for 2.38 meters",
+            "Make a sharp right for 2.22 meters",
+            "Make a sharp right for 2.29 meters",
+            "Make a sharp right for 3.27 meters",
+            "Make a sharp right for 1.50 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 30",
+        "instructions": [
+            "Make a sharp left for 3.06 meters",
+            "Turn around for 2.89 meters",
+            "Turn around for 4.93 meters",
+            "Turn around for 2.90 meters",
+            "Turn around for 4.44 meters",
+            "Turn around for 2.51 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 31 FROM LIBRARY TO PARKING BEHIND LIBRARY",
+        "instructions": [
+            "Make a slight right for 5.85 meters",
+            "Make a slight right for 3.82 meters",
+            "Make a slight right for 5.07 meters",
+            "Make a slight right for 3.66 meters",
+            "Make a slight right for 4.03 meters",
+            "Make a slight right for 5.43 meters",
+            "Make a slight right for 4.83 meters",
+            "Make a slight right for 5.23 meters",
+            "Head straight for 6.73 meters",
+            "Head straight for 2.15 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 32",
+        "instructions": [
+            "Turn right for 9.24 meters",
+            "Turn right for 9.51 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 33",
+        "instructions": [
+            "Turn left for 4.58 meters",
+            "Turn left for 3.03 meters",
+            "Turn left for 2.04 meters",
+            "Turn left for 2.57 meters",
+            "Turn left for 3.08 meters",
+            "Turn left for 2.84 meters",
+            "Turn left for 3.05 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 34",
+        "instructions": [
+            "Make a slight left for 7.31 meters",
+            "Make a slight left for 7.72 meters",
+            "Make a slight left for 26.43 meters",
+            "Make a slight left for 9.29 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 35",
+        "instructions": [
+            "Turn around for 9.83 meters",
+            "Turn around for 21.77 meters",
+            "Turn around for 7.98 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 36",
+        "instructions": [
+            "Make a sharp left for 4.43 meters",
+            "Turn around for 4.76 meters",
+            "Turn around for 6.04 meters",
+            "Turn around for 4.80 meters",
+            "Turn around for 3.54 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 37",
+        "instructions": [
+            "Make a sharp right for 28.85 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 38",
+        "instructions": [
+            "Turn right for 8.53 meters",
+            "Turn right for 4.02 meters",
+            "Turn right for 4.56 meters",
+            "Turn right for 4.69 meters",
+            "Turn right for 5.32 meters",
+            "Turn right for 3.56 meters",
+            "Turn right for 1.01 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 39",
+        "instructions": [
+            "Make a sharp left for 14.61 meters",
+            "Make a sharp left for 14.80 meters",
+            "Make a sharp left for 9.74 meters",
+            "Make a sharp left for 6.28 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 40",
+        "instructions": [
+            "Head straight for 1.97 meters",
+            "Head straight for 7.91 meters",
+            "Head straight for 8.63 meters",
+            "Head straight for 19.14 meters",
+            "Head straight for 8.43 meters",
+            "Head straight for 5.56 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 43",
+        "instructions": [
+            "Turn right for 10.79 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 44",
+        "instructions": [
+            "Turn around for 5.07 meters",
+            "Turn around for 3.48 meters",
+            "Make a sharp left for 5.53 meters",
+            "Make a sharp left for 3.59 meters",
+            "Make a sharp left for 3.76 meters",
+            "Turn around for 4.24 meters",
+            "Make a sharp left for 4.59 meters",
+            "Make a sharp left for 4.11 meters",
+            "Make a sharp left for 18.71 meters",
+            "Turn around for 3.49 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 45",
+        "instructions": [
+            "Make a slight left for 29.99 meters",
+            "Head straight for 35.76 meters",
+            "Turn left for 24.41 meters",
+            "Head straight for 21.83 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 42",
+        "instructions": [
+            "Turn left for 10.50 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 43.1",
+        "instructions": [
+            "Turn left for 20.47 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 44.1",
+        "instructions": [
+            "Turn right for 20.85 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 45.1",
+        "instructions": [
+            "Turn right for 10.86 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 46",
+        "instructions": [
+            "Turn right for 22.44 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 47",
+        "instructions": [
+            "Make a sharp left for 25.69 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 48",
+        "instructions": [
+            "Turn around for 28.27 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 49",
+        "instructions": [
+            "Make a sharp right for 21.40 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 50",
+        "instructions": [
+            "Turn around for 26.18 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 51",
+        "instructions": [
+            "Turn around for 23.52 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 52",
+        "instructions": [
+            "Make a sharp left for 14.67 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 53",
+        "instructions": [
+            "Head straight for 6.76 meters",
+            "Head straight for 7.00 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 54",
+        "instructions": [
+            "Turn right for 6.30 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 55",
+        "instructions": [
+            "Turn right for 10.18 meters",
+            "Turn right for 1.27 meters",
+            "Make a slight right for 0.77 meters",
+            "Make a slight right for 1.72 meters",
+            "Make a slight right for 0.86 meters",
+            "Make a slight right for 1.57 meters",
+            "Head straight for 0.79 meters",
+            "Head straight for 2.21 meters",
+            "Head straight for 3.26 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 56",
+        "instructions": [
+            "Turn right for 2.99 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 57",
+        "instructions": [
+            "Turn around for 5.52 meters",
+            "Make a sharp right for 2.61 meters",
+            "Make a sharp right for 3.97 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 58",
+        "instructions": [
+            "Turn left for 0.40 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 59",
+        "instructions": [
+            "Turn right for 0.33 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 60",
+        "instructions": [
+            "Head straight for 18.10 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 61",
+        "instructions": [
+            "Turn right for 9.62 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 62",
+        "instructions": [
+            "Turn around for 1.31 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 62.1",
+        "instructions": [
+            "Make a slight right for 6.70 meters",
+            "Make a slight right for 5.04 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 63",
+        "instructions": [
+            "Turn around for 13.83 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 64",
+        "instructions": [
+            "Turn around for 9.94 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 65",
+        "instructions": [
+            "Make a sharp left for 16.61 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 66",
+        "instructions": [
+            "Make a sharp right for 6.29 meters",
+            "Turn around for 5.54 meters",
+            "Make a sharp right for 31.54 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 67",
+        "instructions": [
+            "Turn left for 3.57 meters",
+            "Turn left for 3.59 meters",
+            "Turn left for 3.40 meters",
+            "Turn left for 3.61 meters",
+            "Turn left for 4.71 meters",
+            "Turn left for 4.25 meters",
+            "Turn left for 2.71 meters",
+            "Make a slight left for 3.93 meters",
+            "Make a slight left for 3.77 meters",
+            "Make a slight left for 1.91 meters",
+            "Make a slight left for 1.90 meters",
+            "Make a slight left for 1.27 meters",
+            "Make a slight left for 8.31 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 68",
+        "instructions": [
+            "Turn right for 1.84 meters"
+        ]
+    },
+    {
+        "path_name": "PARKING LINE NEAR ADMIN PARKING",
+        "instructions": [
+            "Make a sharp right for 55.51 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 69",
+        "instructions": [
+            "Head straight for 32.27 meters",
+            "Head straight for 10.35 meters",
+            "Head straight for 26.05 meters",
+            "Head straight for 0.51 meters",
+            "Make a slight right for 0.58 meters",
+            "Make a slight right for 1.25 meters",
+            "Make a slight right for 2.21 meters",
+            "Make a slight right for 4.45 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 70",
+        "instructions": [
+            "Turn around for 4.46 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 71",
+        "instructions": [
+            "Make a sharp right for 10.28 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 72",
+        "instructions": [
+            "Turn around for 0.85 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 73",
+        "instructions": [
+            "Make a sharp right for 4.52 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 75",
+        "instructions": [
+            "Turn around for 1.85 meters",
+            "Make a sharp left for 4.36 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 76",
+        "instructions": [
+            "Make a sharp right for 12.32 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 77",
+        "instructions": [
+            "Turn right for 20.66 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 78",
+        "instructions": [
+            "Turn around for 20.51 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 79",
+        "instructions": [
+            "Turn right for 16.98 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 80",
+        "instructions": [
+            "Turn around for 12.39 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 81",
+        "instructions": [
+            "Turn around for 12.13 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 82",
+        "instructions": [
+            "Turn right for 4.90 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 83",
+        "instructions": [
+            "Turn right for 2.77 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 78.1",
+        "instructions": [
+            "Make a sharp left for 9.74 meters",
+            "Turn around for 10.68 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 79.1",
+        "instructions": [
+            "Turn right for 5.51 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 80.1",
+        "instructions": [
+            "Turn right for 4.36 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 83.1",
+        "instructions": [
+            "Make a sharp right for 7.30 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 84",
+        "instructions": [
+            "Turn left for 14.63 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 85",
+        "instructions": [
+            "Turn right for 22.36 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 86",
+        "instructions": [
+            "Turn around for 4.92 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 87",
+        "instructions": [
+            "Turn around for 10.15 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 88",
+        "instructions": [
+            "Turn right for 7.06 meters"
+        ]
+    },
+    {
+        "path_name": "path  91",
+        "instructions": [
+            "Turn right for 4.52 meters"
+        ]
+    },
+    {
+        "path_name": "path 92",
+        "instructions": [
+            "Turn around for 11.10 meters"
+        ]
+    },
+    {
+        "path_name": "path 94",
+        "instructions": [
+            "Turn right for 4.96 meters"
+        ]
+    },
+    {
+        "path_name": "path 95",
+        "instructions": [
+            "Turn around for 4.09 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 96",
+        "instructions": [
+            "Make a sharp left for 6.37 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 97",
+        "instructions": [
+            "Turn around for 19.91 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 99",
+        "instructions": [
+            "Turn around for 2.37 meters",
+            "Turn right for 8.29 meters",
+            "Turn around for 5.12 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 100",
+        "instructions": [
+            "Turn right for 14.48 meters",
+            "Turn around for 3.51 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 1 AROUND AUDITORIUM",
+        "instructions": [
+            "Head straight for 3.68 meters",
+            "Make a slight left for 3.65 meters",
+            "Make a slight left for 2.85 meters",
+            "Make a slight left for 2.88 meters",
+            "Make a slight left for 3.77 meters",
+            "Turn left for 3.99 meters",
+            "Turn left for 3.66 meters",
+            "Turn left for 3.07 meters",
+            "Turn left for 3.27 meters",
+            "Turn left for 4.12 meters",
+            "Make a sharp left for 2.53 meters",
+            "Make a sharp left for 2.78 meters",
+            "Make a sharp left for 3.35 meters",
+            "Make a sharp left for 1.84 meters",
+            "Make a sharp left for 3.30 meters",
+            "Turn around for 3.10 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 2 AROUND AUDITORIUM",
+        "instructions": [
+            "Turn right for 2.18 meters",
+            "Turn right for 2.88 meters",
+            "Turn right for 1.52 meters",
+            "Turn right for 1.55 meters",
+            "Turn right for 2.87 meters",
+            "Turn right for 2.43 meters",
+            "Turn right for 2.17 meters",
+            "Make a slight right for 2.43 meters",
+            "Make a slight right for 3.15 meters",
+            "Make a slight right for 3.45 meters",
+            "Make a slight right for 4.17 meters",
+            "Head straight for 1.51 meters",
+            "Head straight for 2.05 meters",
+            "Head straight for 1.44 meters",
+            "Head straight for 1.95 meters",
+            "Head straight for 1.50 meters",
+            "Head straight for 1.49 meters"
+        ]
+    },
+    {
+        "path_name": "path 101",
+        "instructions": [
+            "Make a slight right for 5.67 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 102",
+        "instructions": [
+            "Make a sharp left for 5.97 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 103",
+        "instructions": [
+            "Make a sharp right for 17.05 meters",
+            "Make a sharp right for 20.63 meters",
+            "Make a sharp right for 12.09 meters",
+            "Make a sharp right for 5.99 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 104",
+        "instructions": [
+            "Head straight for 1.57 meters",
+            "Head straight for 1.58 meters",
+            "Turn right for 1.55 meters",
+            "Turn right for 2.43 meters",
+            "Turn right for 3.12 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 105",
+        "instructions": [
+            "Turn around for 11.09 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 106",
+        "instructions": [
+            "Make a sharp right for 3.25 meters",
+            "Turn around for 2.45 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 108",
+        "instructions": [
+            "Turn around for 17.54 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 110",
+        "instructions": [
+            "Turn right for 18.52 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 111",
+        "instructions": [
+            "Turn right for 16.17 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 113",
+        "instructions": [
+            "Turn around for 8.07 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 114",
+        "instructions": [
+            "Turn right for 11.42 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 115",
+        "instructions": [
+            "Turn around for 13.85 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 115.1",
+        "instructions": [
+            "Turn right for 5.33 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 116",
+        "instructions": [
+            "Make a slight right for 13.32 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 116.1",
+        "instructions": [
+            "Turn right for 2.23 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 120",
+        "instructions": [
+            "Make a slight right for 2.59 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 117",
+        "instructions": [
+            "Make a sharp right for 10.14 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 120.1",
+        "instructions": [
+            "Turn right for 1.05 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 121",
+        "instructions": [
+            "Head straight for 12.35 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 122",
+        "instructions": [
+            "Head straight for 5.06 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 122.1",
+        "instructions": [
+            "Head straight for 4.17 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 124",
+        "instructions": [
+            "Head straight for 4.95 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 125",
+        "instructions": [
+            "Turn right for 7.56 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 126",
+        "instructions": [
+            "Turn right for 5.29 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 124.1",
+        "instructions": [
+            "Turn around for 3.62 meters"
+        ]
+    },
+    {
+        "path_name": "path 20.1",
+        "instructions": [
+            "Turn right for 5.75 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 126.1",
+        "instructions": [
+            "Turn right for 10.68 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 127",
+        "instructions": [
+            "Turn around for 2.56 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 129",
+        "instructions": [
+            "Head straight for 4.44 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 130",
+        "instructions": [
+            "Make a slight right for 17.15 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 131",
+        "instructions": [
+            "Turn around for 1.49 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 132",
+        "instructions": [
+            "Turn right for 17.51 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 133",
+        "instructions": [
+            "Turn around for 4.84 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 134",
+        "instructions": [
+            "Make a slight right for 3.95 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 135",
+        "instructions": [
+            "Turn right for 1.70 meters",
+            "Make a slight right for 4.71 meters",
+            "Make a slight right for 1.65 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 136",
+        "instructions": [
+            "Turn right for 1.60 meters",
+            "Turn right for 4.87 meters",
+            "Head straight for 19.01 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 137",
+        "instructions": [
+            "Turn right for 0.76 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 138",
+        "instructions": [
+            "Make a sharp right for 0.87 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 139",
+        "instructions": [
+            "Turn right for 5.19 meters",
+            "Turn right for 5.93 meters",
+            "Turn right for 5.79 meters",
+            "Turn right for 18.36 meters",
+            "Turn right for 9.18 meters",
+            "Turn right for 4.87 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 140",
+        "instructions": [
+            "Make a sharp left for 7.77 meters",
+            "Make a sharp left for 6.67 meters",
+            "Make a sharp left for 5.14 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 141",
+        "instructions": [
+            "Turn right for 24.94 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 142",
+        "instructions": [
+            "Turn around for 6.72 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 143",
+        "instructions": [
+            "Make a sharp left for 3.33 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 144",
+        "instructions": [
+            "Make a sharp right for 34.55 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 145",
+        "instructions": [
+            "Make a sharp right for 87.13 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 147",
+        "instructions": [
+            "Make a sharp right for 31.63 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 148",
+        "instructions": [
+            "Turn around for 6.87 meters",
+            "Turn around for 10.44 meters",
+            "Make a sharp left for 4.16 meters",
+            "Make a sharp left for 5.34 meters",
+            "Make a sharp left for 3.08 meters",
+            "Make a sharp left for 4.21 meters",
+            "Make a sharp left for 4.26 meters"
+        ]
+    },
+    {
+        "path_name": "path 149",
+        "instructions": [
+            "Make a sharp right for 6.94 meters"
+        ]
+    },
+    {
+        "path_name": "path 150",
+        "instructions": [
+            "Make a slight right for 20.04 meters"
+        ]
+    },
+    {
+        "path_name": "path 151",
+        "instructions": [
+            "Turn right for 6.53 meters",
+            "Turn right for 7.47 meters",
+            "Turn right for 25.76 meters"
+        ]
+    },
+    {
+        "path_name": "path 152",
+        "instructions": [
+            "Turn around for 23.22 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 153",
+        "instructions": [
+            "Make a sharp right for 5.88 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 154",
+        "instructions": [
+            "Make a sharp right for 0.84 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 155",
+        "instructions": [
+            "Make a sharp right for 29.83 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 156",
+        "instructions": [
+            "Make a slight right for 1.98 meters",
+            "Make a slight right for 1.42 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 157",
+        "instructions": [
+            "Head straight for 2.87 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 158",
+        "instructions": [
+            "Head straight for 17.62 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 159",
+        "instructions": [
+            "Turn right for 1.73 meters",
+            "Make a slight right for 14.99 meters",
+            "Make a slight right for 5.39 meters",
+            "Make a slight right for 8.71 meters",
+            "Make a slight right for 9.65 meters",
+            "Make a slight right for 4.40 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 160",
+        "instructions": [
+            "Turn right for 15.12 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 161",
+        "instructions": [
+            "Head straight for 14.23 meters"
+        ]
+    },
+    {
+        "path_name": "path 162",
+        "instructions": [
+            "Turn around for 11.88 meters"
+        ]
+    },
+    {
+        "path_name": "path 163",
+        "instructions": [
+            "Make a sharp right for 3.02 meters",
+            "Make a sharp right for 2.42 meters",
+            "Turn right for 4.28 meters",
+            "Make a sharp right for 1.66 meters",
+            "Make a sharp right for 1.36 meters",
+            "Make a sharp right for 5.37 meters",
+            "Make a sharp right for 3.40 meters",
+            "Make a sharp right for 3.07 meters",
+            "Make a sharp right for 2.59 meters",
+            "Turn around for 2.03 meters",
+            "Make a sharp right for 1.74 meters",
+            "Turn around for 1.30 meters",
+            "Turn around for 1.14 meters",
+            "Turn around for 1.33 meters"
+        ]
+    },
+    {
+        "path_name": "path 164",
+        "instructions": [
+            "Turn right for 1.65 meters",
+            "Turn right for 2.06 meters",
+            "Turn right for 2.26 meters",
+            "Turn right for 1.17 meters",
+            "Turn right for 1.79 meters",
+            "Make a slight right for 1.47 meters",
+            "Turn right for 1.53 meters",
+            "Make a slight right for 1.58 meters",
+            "Turn right for 3.48 meters",
+            "Make a slight right for 3.25 meters"
+        ]
+    },
+    {
+        "path_name": "path 165",
+        "instructions": [
+            "Make a sharp right for 5.96 meters",
+            "Make a sharp right for 4.12 meters",
+            "Make a sharp right for 4.23 meters",
+            "Make a sharp right for 1.94 meters",
+            "Make a sharp right for 1.68 meters"
+        ]
+    },
+    {
+        "path_name": "path 166",
+        "instructions": [
+            "Make a sharp right for 3.37 meters",
+            "Make a sharp right for 4.05 meters",
+            "Make a sharp right for 3.14 meters",
+            "Make a sharp right for 3.02 meters",
+            "Turn right for 1.93 meters",
+            "Turn right for 4.61 meters",
+            "Turn right for 3.50 meters"
+        ]
+    },
+    {
+        "path_name": "path 167",
+        "instructions": [
+            "Turn right for 36.36 meters"
+        ]
+    },
+    {
+        "path_name": "path 168",
+        "instructions": [
+            "Turn right for 17.26 meters"
+        ]
+    },
+    {
+        "path_name": "Untitled path.1",
+        "instructions": [
+            "Turn around for 25.13 meters"
+        ]
+    },
+    {
+        "path_name": "path 169",
+        "instructions": [
+            "Turn around for 51.81 meters",
+            "Turn around for 2.95 meters",
+            "Turn around for 1.72 meters",
+            "Turn around for 2.72 meters",
+            "Turn around for 2.53 meters",
+            "Turn around for 2.76 meters",
+            "Turn around for 1.82 meters"
+        ]
+    },
+    {
+        "path_name": "path 170",
+        "instructions": [
+            "Turn left for 7.29 meters"
+        ]
+    },
+    {
+        "path_name": "path 171",
+        "instructions": [
+            "Turn right for 9.27 meters"
+        ]
+    },
+    {
+        "path_name": "path 172",
+        "instructions": [
+            "Make a sharp right for 8.85 meters"
+        ]
+    },
+    {
+        "path_name": "PATH 400",
+        "instructions": [
+            "Make a sharp left for 4.03 meters"
+        ]
+    },
+    {
+        "path_name": "path 173",
+        "instructions": [
+            "Make a sharp right for 5.59 meters"
+        ]
+    },
+    {
+        "path_name": "path 174",
+        "instructions": [
+            "Turn right for 7.50 meters"
+        ]
+    },
+    {
+        "path_name": "path 175",
+        "instructions": [
+            "Make a sharp right for 2.34 meters"
+        ]
+    },
+    {
+        "path_name": "path 176",
+        "instructions": [
+            "Make a sharp right for 12.89 meters"
+        ]
+    },
+    {
+        "path_name": "path 177",
+        "instructions": [
+            "Turn right for 42.13 meters"
+        ]
+    },
+    {
+        "path_name": "path 178",
+        "instructions": [
+            "Turn right for 44.61 meters"
+        ]
+    },
+    {
+        "path_name": "path 179",
+        "instructions": [
+            "Turn around for 78.48 meters"
+        ]
+    },
+    {
+        "path_name": "path 180",
+        "instructions": [
+            "Turn right for 25.00 meters"
+        ]
+    },
+    {
+        "path_name": "path 181",
+        "instructions": [
+            "Head straight for 6.90 meters",
+            "Make a slight right for 32.17 meters",
+            "Make a slight right for 26.19 meters",
+            "Make a slight right for 30.44 meters",
+            "Make a slight right for 25.45 meters",
+            "Head straight for 36.10 meters"
+        ]
+    },
+    {
+        "path_name": "path 182",
+        "instructions": [
+            "Head straight for 56.26 meters",
+            "Head straight for 31.57 meters",
+            "Make a slight right for 15.66 meters",
+            "Make a slight right for 19.26 meters",
+            "Make a slight right for 16.12 meters",
+            "Make a slight right for 14.61 meters",
+            "Make a slight right for 13.35 meters"
+        ]
+    },
+    {
+        "path_name": "path 183",
+        "instructions": [
+            "Turn right for 19.57 meters",
+            "Make a sharp right for 18.78 meters",
+            "Turn right for 11.46 meters",
+            "Turn right for 16.81 meters",
+            "Turn right for 10.04 meters",
+            "Turn right for 9.42 meters",
+            "Turn right for 19.69 meters",
+            "Make a slight right for 19.88 meters",
+            "Turn right for 8.31 meters"
+        ]
+    },
+    {
+        "path_name": "path 184",
+        "instructions": [
+            "Turn around for 20.29 meters",
+            "Turn around for 12.58 meters"
+        ]
+    },
+    {
+        "path_name": "path 185",
+        "instructions": [
+            "Make a slight right for 13.35 meters",
+            "Make a slight right for 13.39 meters"
+        ]
+    },
+    {
+        "path_name": "path 186",
+        "instructions": [
+            "Make a slight right for 6.13 meters",
+            "Make a slight right for 6.09 meters",
+            "Make a slight right for 7.76 meters",
+            "Make a slight right for 9.71 meters",
+            "Head straight for 8.91 meters",
+            "Make a slight right for 11.68 meters",
+            "Make a slight right for 15.00 meters",
+            "Make a slight right for 15.58 meters",
+            "Make a slight right for 12.04 meters",
+            "Make a slight right for 12.95 meters",
+            "Make a slight right for 14.87 meters",
+            "Make a slight right for 18.86 meters",
+            "Make a slight right for 17.43 meters",
+            "Make a slight right for 13.95 meters",
+            "Make a slight right for 17.65 meters",
+            "Make a slight right for 8.05 meters",
+            "Make a slight right for 8.15 meters",
+            "Make a slight right for 8.72 meters",
+            "Make a slight right for 10.58 meters",
+            "Make a slight right for 14.54 meters"
+        ]
+    },
+    {
+        "path_name": "path 187",
+        "instructions": [
+            "Make a slight right for 5.29 meters",
+            "Make a slight right for 5.66 meters",
+            "Make a slight right for 4.42 meters",
+            "Make a slight right for 4.85 meters",
+            "Make a slight right for 2.52 meters",
+            "Head straight for 3.88 meters",
+            "Head straight for 3.97 meters",
+            "Head straight for 3.70 meters",
+            "Head straight for 5.18 meters",
+            "Head straight for 5.74 meters",
+            "Head straight for 4.72 meters"
+        ]
+    },
+    {
+        "path_name": "path 188",
+        "instructions": [
+            "Make a sharp left for 5.07 meters",
+            "Make a sharp left for 5.36 meters",
+            "Make a sharp left for 5.49 meters",
+            "Make a sharp left for 4.03 meters",
+            "Make a sharp left for 4.26 meters",
+            "Turn around for 6.36 meters",
+            "Turn around for 8.76 meters",
+            "Turn around for 5.36 meters",
+            "Turn around for 7.16 meters",
+            "Turn around for 7.12 meters",
+            "Turn around for 6.67 meters",
+            "Turn around for 6.33 meters"
+        ]
+    },
+    {
+        "path_name": "path 189",
+        "instructions": [
+            "Turn right for 30.59 meters",
+            "Turn right for 10.36 meters",
+            "Turn right for 20.88 meters"
+        ]
+    },
+    {
+        "path_name": "path 190",
+        "instructions": [
+            "Turn right for 6.36 meters",
+            "Turn right for 21.72 meters",
+            "Turn right for 14.50 meters"
+        ]
+    },
+    {
+        "path_name": "path 191",
+        "instructions": [
+            "Turn right for 11.82 meters",
+            "Make a slight right for 3.58 meters"
+        ]
+    },
+    {
+        "path_name": "path 192",
+        "instructions": [
+            "Make a slight right for 12.31 meters",
+            "Make a slight right for 12.74 meters",
+            "Make a slight right for 25.45 meters"
+        ]
+    },
+    {
+        "path_name": "path 193",
+        "instructions": [
+            "Turn right for 9.90 meters",
+            "Turn right for 9.88 meters",
+            "Turn right for 8.35 meters",
+            "Turn right for 3.47 meters"
+        ]
+    },
+    {
+        "path_name": "path 194",
+        "instructions": [
+            "Turn right for 13.38 meters"
+        ]
+    },
+    {
+        "path_name": "path 195",
+        "instructions": [
+            "Head straight for 11.41 meters"
+        ]
+    },
+    {
+        "path_name": "path 196",
+        "instructions": [
+            "Head straight for 17.21 meters"
+        ]
+    },
+    {
+        "path_name": "path 197",
+        "instructions": [
+            "Head straight for 17.84 meters"
+        ]
+    },
+    {
+        "path_name": "path 198",
+        "instructions": [
+            "Turn right for 36.55 meters"
+        ]
+    },
+    {
+        "path_name": "path 199",
+        "instructions": [
+            "Turn right for 36.21 meters"
+        ]
+    },
+    {
+        "path_name": "path 200",
+        "instructions": [
+            "Make a sharp right for 1.72 meters",
+            "Turn around for 3.01 meters",
+            "Turn around for 2.58 meters",
+            "Turn around for 3.10 meters",
+            "Make a sharp left for 3.61 meters",
+            "Turn left for 5.57 meters",
+            "Turn left for 4.80 meters",
+            "Turn left for 2.86 meters"
+        ]
+    },
+    {
+        "path_name": "path 201",
+        "instructions": [
+            "Turn right for 25.33 meters"
+        ]
+    },
+    {
+        "path_name": "path 202",
+        "instructions": [
+            "Turn right for 37.25 meters"
+        ]
+    },
+    {
+        "path_name": "path 203",
+        "instructions": [
+            "Head straight for 18.01 meters"
+        ]
+    },
+    {
+        "path_name": "path 204",
+        "instructions": [
+            "Turn around for 16.07 meters"
+        ]
+    },
+    {
+        "path_name": "path 205",
+        "instructions": [
+            "Turn right for 24.40 meters"
+        ]
+    },
+    {
+        "path_name": "path 206",
+        "instructions": [
+            "Turn right for 37.12 meters"
+        ]
+    },
+    {
+        "path_name": "path 207",
+        "instructions": [
+            "Turn around for 14.08 meters"
+        ]
+    },
+    {
+        "path_name": "path 208",
+        "instructions": [
+            "Turn right for 16.88 meters"
+        ]
+    },
+    {
+        "path_name": "path 209",
+        "instructions": [
+            "Turn around for 12.38 meters"
+        ]
+    },
+    {
+        "path_name": "path 210",
+        "instructions": [
+            "Turn right for 21.08 meters"
+        ]
+    },
+    {
+        "path_name": "path 211",
+        "instructions": [
+            "Turn around for 23.58 meters"
+        ]
+    },
+    {
+        "path_name": "path 212",
+        "instructions": [
+            "Turn right for 17.71 meters"
+        ]
+    },
+    {
+        "path_name": "path 213",
+        "instructions": [
+            "Head straight for 35.70 meters"
+        ]
+    },
+    {
+        "path_name": "path 214",
+        "instructions": [
+            "Turn around for 9.23 meters"
+        ]
+    },
+    {
+        "path_name": "path 215",
+        "instructions": [
+            "Turn right for 32.36 meters"
+        ]
+    },
+    {
+        "path_name": "path 216",
+        "instructions": [
+            "Make a sharp right for 28.70 meters"
+        ]
+    },
+    {
+        "path_name": "path 217",
+        "instructions": [
+            "Make a sharp right for 4.06 meters",
+            "Make a sharp right for 4.45 meters",
+            "Make a sharp right for 4.85 meters",
+            "Turn right for 5.59 meters",
+            "Make a slight right for 5.98 meters",
+            "Head straight for 4.49 meters",
+            "Head straight for 3.05 meters"
+        ]
+    },
+    {
+        "path_name": "path 218",
+        "instructions": [
+            "Make a sharp right for 7.48 meters",
+            "Make a sharp right for 5.75 meters"
+        ]
+    },
+    {
+        "path_name": "path 219",
+        "instructions": [
+            "Turn right for 4.44 meters",
+            "Make a slight right for 18.61 meters"
+        ]
+    },
+    {
+        "path_name": "path 220",
+        "instructions": [
+            "Turn right for 7.66 meters"
+        ]
+    },
+    {
+        "path_name": "path 221",
+        "instructions": [
+            "Turn around for 30.54 meters"
+        ]
+    },
+    {
+        "path_name": "path 222",
+        "instructions": [
+            "Make a sharp left for 32.88 meters"
+        ]
+    },
+    {
+        "path_name": "path 223",
+        "instructions": [
+            "Turn right for 19.86 meters"
+        ]
+    },
+    {
+        "path_name": "path 224",
+        "instructions": [
+            "Make a slight right for 8.89 meters"
+        ]
+    },
+    {
+        "path_name": "path 225",
+        "instructions": [
+            "Make a slight right for 5.30 meters"
+        ]
+    },
+    {
+        "path_name": "path 226",
+        "instructions": [
+            "Make a slight right for 6.71 meters"
+        ]
+    },
+    {
+        "path_name": "path 227",
+        "instructions": [
+            "Make a slight right for 19.38 meters"
+        ]
+    },
+    {
+        "path_name": "path 228",
+        "instructions": [
+            "Turn right for 4.48 meters",
+            "Turn right for 5.04 meters",
+            "Make a sharp right for 4.26 meters",
+            "Make a sharp right for 2.91 meters"
+        ]
+    },
+    {
+        "path_name": "path 229",
+        "instructions": [
+            "Make a slight right for 12.81 meters"
+        ]
+    },
+    {
+        "path_name": "path 230",
+        "instructions": [
+            "Turn around for 2.55 meters",
+            "Turn around for 4.50 meters",
+            "Turn around for 4.03 meters",
+            "Turn around for 4.97 meters",
+            "Make a sharp left for 2.38 meters",
+            "Make a sharp left for 3.93 meters",
+            "Make a sharp left for 1.30 meters"
+        ]
+    },
+    {
+        "path_name": "path 231",
+        "instructions": [
+            "Turn around for 3.28 meters"
+        ]
+    },
+    {
+        "path_name": "path 232",
+        "instructions": [
+            "Turn right for 1.90 meters",
+            "Turn right for 1.61 meters",
+            "Turn right for 1.83 meters",
+            "Make a slight right for 1.03 meters",
+            "Make a slight right for 1.00 meters"
+        ]
+    },
+    {
+        "path_name": "path 233",
+        "instructions": [
+            "Turn around for 2.26 meters"
+        ]
+    },
+    {
+        "path_name": "path 234",
+        "instructions": [
+            "Turn right for 5.43 meters",
+            "Turn right for 5.76 meters"
+        ]
+    },
+    {
+        "path_name": "path 235",
+        "instructions": [
+            "Turn around for 26.58 meters"
+        ]
+    },
+    {
+        "path_name": "path 236",
+        "instructions": [
+            "Turn around for 21.71 meters"
+        ]
+    },
+    {
+        "path_name": "path 236.1",
+        "instructions": [
+            "Turn right for 29.86 meters"
+        ]
+    },
+    {
+        "path_name": "path 237",
+        "instructions": [
+            "Turn around for 6.06 meters"
+        ]
+    },
+    {
+        "path_name": "path 238",
+        "instructions": [
+            "Turn right for 3.25 meters"
+        ]
+    },
+    {
+        "path_name": "path 239",
+        "instructions": [
+            "Turn around for 3.90 meters"
+        ]
+    },
+    {
+        "path_name": "path 240",
+        "instructions": [
+            "Turn left for 7.03 meters",
+            "Turn left for 8.20 meters",
+            "Turn left for 7.18 meters",
+            "Make a sharp left for 4.63 meters",
+            "Make a sharp left for 5.27 meters",
+            "Turn around for 5.25 meters",
+            "Turn around for 20.62 meters"
+        ]
+    },
+    {
+        "path_name": "path 241",
+        "instructions": [
+            "Make a slight right for 8.12 meters",
+            "Head straight for 11.50 meters"
+        ]
+    },
+    {
+        "path_name": "path 242",
+        "instructions": [
+            "Turn around for 14.32 meters"
+        ]
+    },
+    {
+        "path_name": "path 243",
+        "instructions": [
+            "Turn around for 16.73 meters"
+        ]
+    },
+    {
+        "path_name": "path 244",
+        "instructions": [
+            "Turn right for 30.23 meters"
+        ]
+    },
+    {
+        "path_name": "path 245",
+        "instructions": [
+            "Make a sharp left for 9.69 meters"
+        ]
+    },
+    {
+        "path_name": "path 246",
+        "instructions": [
+            "Make a slight left for 10.56 meters",
+            "Head straight for 4.82 meters"
+        ]
+    },
+    {
+        "path_name": "path 247",
+        "instructions": [
+            "Head straight for 4.77 meters"
+        ]
+    },
+    {
+        "path_name": "path 248",
+        "instructions": [
+            "Turn around for 3.73 meters",
+            "Turn around for 2.15 meters",
+            "Turn around for 2.72 meters",
+            "Make a sharp right for 3.98 meters",
+            "Turn around for 4.20 meters",
+            "Turn around for 10.45 meters"
+        ]
+    },
+    {
+        "path_name": "path 249",
+        "instructions": [
+            "Turn right for 27.54 meters"
+        ]
+    },
+    {
+        "path_name": "path 250",
+        "instructions": [
+            "Turn around for 28.78 meters"
+        ]
+    },
+    {
+        "path_name": "path 251",
+        "instructions": [
+            "Turn around for 11.47 meters"
+        ]
+    },
+    {
+        "path_name": "path 252",
+        "instructions": [
+            "Turn around for 16.36 meters"
+        ]
+    },
+    {
+        "path_name": "path 253",
+        "instructions": [
+            "Turn right for 12.27 meters"
+        ]
+    },
+    {
+        "path_name": "path 255",
+        "instructions": [
+            "Turn around for 9.24 meters"
+        ]
+    },
+    {
+        "path_name": "path 256",
+        "instructions": [
+            "Turn right for 9.42 meters"
+        ]
+    },
+    {
+        "path_name": "path 257",
+        "instructions": [
+            "Turn around for 4.78 meters"
+        ]
+    },
+    {
+        "path_name": "path 258",
+        "instructions": [
+            "Turn right for 10.58 meters"
+        ]
+    },
+    {
+        "path_name": "path 259",
+        "instructions": [
+            "Turn around for 22.62 meters",
+            "Turn around for 5.63 meters"
+        ]
+    },
+    {
+        "path_name": "path 260",
+        "instructions": [
+            "Turn around for 27.13 meters"
+        ]
+    },
+    {
+        "path_name": "path 261",
+        "instructions": [
+            "Turn around for 9.82 meters"
+        ]
+    },
+    {
+        "path_name": "path 262",
+        "instructions": [
+            "Turn right for 5.43 meters"
+        ]
+    },
+    {
+        "path_name": "path 263",
+        "instructions": [
+            "Turn right for 5.50 meters"
+        ]
+    },
+    {
+        "path_name": "path 264",
+        "instructions": [
+            "Turn around for 17.47 meters"
+        ]
+    },
+    {
+        "path_name": "path 265",
+        "instructions": [
+            "Turn around for 16.35 meters"
+        ]
+    },
+    {
+        "path_name": "path 266",
+        "instructions": [
+            "Turn around for 14.91 meters"
+        ]
+    },
+    {
+        "path_name": "path 267",
+        "instructions": [
+            "Turn left for 35.30 meters"
+        ]
+    },
+    {
+        "path_name": "path 268",
+        "instructions": [
+            "Turn around for 14.77 meters"
+        ]
+    },
+    {
+        "path_name": "path 269",
+        "instructions": [
+            "Turn around for 17.74 meters"
+        ]
+    },
+    {
+        "path_name": "path 270",
+        "instructions": [
+            "Turn around for 15.24 meters"
+        ]
+    },
+    {
+        "path_name": "path 271",
+        "instructions": [
+            "Turn right for 38.70 meters"
+        ]
+    },
+    {
+        "path_name": "path 272",
+        "instructions": [
+            "Turn right for 39.13 meters"
+        ]
+    },
+    {
+        "path_name": "path 273",
+        "instructions": [
+            "Turn right for 19.67 meters"
+        ]
+    },
+    {
+        "path_name": "path 274",
+        "instructions": [
+            "Turn right for 13.79 meters"
+        ]
+    },
+    {
+        "path_name": "path 275",
+        "instructions": [
+            "Turn right for 33.02 meters"
+        ]
+    },
+    {
+        "path_name": "path 276",
+        "instructions": [
+            "Head straight for 25.45 meters"
+        ]
+    },
+    {
+        "path_name": "path 277",
+        "instructions": [
+            "Turn left for 4.48 meters"
+        ]
+    },
+    {
+        "path_name": "path 278",
+        "instructions": [
+            "Head straight for 14.46 meters"
+        ]
+    },
+    {
+        "path_name": "path 279",
+        "instructions": [
+            "Turn right for 35.21 meters"
+        ]
+    },
+    {
+        "path_name": "path 280",
+        "instructions": [
+            "Turn around for 14.12 meters"
+        ]
+    },
+    {
+        "path_name": "path 281",
+        "instructions": [
+            "Turn left for 14.06 meters"
+        ]
+    },
+    {
+        "path_name": "path 282",
+        "instructions": [
+            "Make a sharp right for 4.30 meters"
+        ]
+    },
+    {
+        "path_name": "path 283",
+        "instructions": [
+            "Make a sharp right for 4.89 meters",
+            "Make a sharp right for 5.60 meters",
+            "Make a sharp right for 4.70 meters",
+            "Turn around for 5.81 meters"
+        ]
+    },
+    {
+        "path_name": "path 284",
+        "instructions": [
+            "Turn right for 7.46 meters"
+        ]
+    },
+    {
+        "path_name": "path 285",
+        "instructions": [
+            "Turn around for 4.14 meters",
+            "Make a sharp left for 4.07 meters",
+            "Make a sharp left for 1.76 meters"
+        ]
+    },
+    {
+        "path_name": "path 286",
+        "instructions": [
+            "Turn right for 4.54 meters"
+        ]
+    },
+    {
+        "path_name": "path 287",
+        "instructions": [
+            "Turn around for 11.00 meters"
+        ]
+    },
+    {
+        "path_name": "path 288",
+        "instructions": [
+            "Turn around for 3.07 meters",
+            "Make a sharp left for 2.85 meters",
+            "Turn left for 4.88 meters",
+            "Turn left for 8.35 meters",
+            "Turn left for 16.31 meters",
+            "Turn left for 12.33 meters"
+        ]
+    },
+    {
+        "path_name": "path 289",
+        "instructions": [
+            "Turn around for 13.77 meters"
+        ]
+    },
+    {
+        "path_name": "path 290",
+        "instructions": [
+            "Make a slight left for 1.65 meters",
+            "Make a slight left for 2.16 meters",
+            "Make a slight left for 4.59 meters",
+            "Turn left for 2.98 meters",
+            "Turn left for 6.08 meters"
+        ]
+    },
+    {
+        "path_name": "path 291",
+        "instructions": [
+            "Turn around for 12.68 meters"
+        ]
+    },
+    {
+        "path_name": "path 292",
+        "instructions": [
+            "Turn around for 13.98 meters"
+        ]
+    },
+    {
+        "path_name": "path 293",
+        "instructions": [
+            "Turn right for 9.78 meters"
+        ]
+    },
+    {
+        "path_name": "path 294",
+        "instructions": [
+            "Turn around for 2.92 meters"
+        ]
+    },
+    {
+        "path_name": "path 295",
+        "instructions": [
+            "Turn right for 5.36 meters"
+        ]
+    },
+    {
+        "path_name": "path 296",
+        "instructions": [
+            "Make a sharp left for 3.61 meters",
+            "Make a sharp left for 2.64 meters",
+            "Turn around for 3.48 meters",
+            "Make a sharp left for 2.75 meters",
+            "Turn left for 4.23 meters",
+            "Turn left for 3.65 meters",
+            "Turn left for 4.51 meters",
+            "Turn left for 4.36 meters"
+        ]
+    },
+    {
+        "path_name": "path 297",
+        "instructions": [
+            "Make a sharp right for 6.48 meters"
+        ]
+    },
+    {
+        "path_name": "path 298",
+        "instructions": [
+            "Turn right for 9.53 meters",
+            "Turn right for 3.42 meters"
+        ]
+    },
+    {
+        "path_name": "path 299",
+        "instructions": [
+            "Turn right for 3.70 meters"
+        ]
+    },
+    {
+        "path_name": "path 300",
+        "instructions": [
+            "Turn right for 2.90 meters"
+        ]
+    },
+    {
+        "path_name": "path 301",
+        "instructions": [
+            "Turn around for 0.96 meters"
+        ]
+    },
+    {
+        "path_name": "path 302",
+        "instructions": [
+            "Turn around for 3.00 meters"
+        ]
+    },
+    {
+        "path_name": "path 303",
+        "instructions": [
+            "Turn right for 7.91 meters"
+        ]
+    },
+    {
+        "path_name": "path 304",
+        "instructions": [
+            "Turn around for 8.38 meters",
+            "Make a sharp left for 12.49 meters"
+        ]
+    },
+    {
+        "path_name": "path 305",
+        "instructions": [
+            "Turn right for 4.28 meters"
+        ]
+    },
+    {
+        "path_name": "path 306",
+        "instructions": [
+            "Make a sharp right for 2.60 meters",
+            "Make a sharp right for 1.70 meters",
+            "Turn around for 2.30 meters"
+        ]
+    },
+    {
+        "path_name": "path 307",
+        "instructions": [
+            "Turn around for 18.43 meters"
+        ]
+    },
+    {
+        "path_name": "path 308",
+        "instructions": [
+            "Turn right for 0.86 meters"
+        ]
+    },
+    {
+        "path_name": "path 309",
+        "instructions": [
+            "Turn around for 4.23 meters"
+        ]
+    },
+    {
+        "path_name": "path 310",
+        "instructions": [
+            "Turn around for 8.21 meters",
+            "Turn around for 6.44 meters",
+            "Turn around for 3.21 meters"
+        ]
+    },
+    {
+        "path_name": "path 311",
+        "instructions": [
+            "Make a slight right for 7.82 meters"
+        ]
+    },
+    {
+        "path_name": "path 312",
+        "instructions": [
+            "Make a sharp left for 16.01 meters"
+        ]
+    },
+    {
+        "path_name": "path 313",
+        "instructions": [
+            "Make a slight left for 13.95 meters"
+        ]
+    },
+    {
+        "path_name": "path 314",
+        "instructions": [
+            "Make a sharp left for 2.43 meters"
+        ]
+    },
+    {
+        "path_name": "path 315",
+        "instructions": [
+            "Make a slight left for 6.91 meters",
+            "Make a slight left for 7.55 meters",
+            "Make a slight left for 6.07 meters",
+            "Make a slight left for 5.25 meters",
+            "Make a slight left for 4.57 meters"
+        ]
+    },
+    {
+        "path_name": "path 316",
+        "instructions": [
+            "Make a sharp right for 4.60 meters",
+            "Make a sharp right for 4.25 meters",
+            "Make a sharp right for 4.10 meters",
+            "Make a sharp right for 5.86 meters"
+        ]
+    },
+    {
+        "path_name": "path 317",
+        "instructions": [
+            "Make a sharp left for 6.99 meters"
+        ]
+    },
+    {
+        "path_name": "path 318",
+        "instructions": [
+            "Make a sharp right for 2.44 meters",
+            "Make a sharp right for 4.54 meters"
+        ]
+    },
+    {
+        "path_name": "path 319",
+        "instructions": [
+            "Turn around for 59.89 meters"
+        ]
+    },
+    {
+        "path_name": "path 320",
+        "instructions": [
+            "Turn around for 20.12 meters"
+        ]
+    },
+    {
+        "path_name": "path 321",
+        "instructions": [
+            "Turn around for 28.88 meters"
+        ]
+    },
+    {
+        "path_name": "path 322",
+        "instructions": [
+            "Turn around for 12.45 meters"
+        ]
+    },
+    {
+        "path_name": "path 323",
+        "instructions": [
+            "Turn right for 5.52 meters"
+        ]
+    },
+    {
+        "path_name": "path 324",
+        "instructions": [
+            "Make a sharp right for 7.05 meters"
+        ]
+    },
+    {
+        "path_name": "path 325",
+        "instructions": [
+            "Make a slight right for 3.62 meters",
+            "Turn right for 3.49 meters",
+            "Turn right for 6.11 meters",
+            "Turn right for 4.47 meters",
+            "Make a sharp right for 5.04 meters"
+        ]
+    },
+    {
+        "path_name": "path 326",
+        "instructions": [
+            "Turn left for 3.60 meters"
+        ]
+    },
+    {
+        "path_name": "path 327",
+        "instructions": [
+            "Turn around for 2.67 meters",
+            "Turn around for 3.30 meters",
+            "Turn around for 2.39 meters",
+            "Turn around for 2.43 meters",
+            "Turn around for 2.86 meters",
+            "Turn around for 2.17 meters"
+        ]
+    },
+    {
+        "path_name": "path 328",
+        "instructions": [
+            "Turn right for 3.94 meters"
+        ]
+    },
+    {
+        "path_name": "path 329",
+        "instructions": [
+            "Turn around for 3.70 meters",
+            "Turn around for 3.93 meters",
+            "Turn around for 5.47 meters",
+            "Turn around for 5.87 meters"
+        ]
+    },
+    {
+        "path_name": "path 330",
+        "instructions": [
+            "Make a sharp right for 4.28 meters"
+        ]
+    },
+    {
+        "path_name": "path 331",
+        "instructions": [
+            "Make a sharp left for 24.81 meters"
+        ]
+    },
+    {
+        "path_name": "path 332",
+        "instructions": [
+            "Make a sharp right for 15.15 meters"
+        ]
+    },
+    {
+        "path_name": "path 333",
+        "instructions": [
+            "Make a sharp right for 17.29 meters"
+        ]
+    },
+    {
+        "path_name": "path 334",
+        "instructions": [
+            "Make a sharp right for 15.73 meters"
+        ]
+    },
+    {
+        "path_name": "path 335",
+        "instructions": [
+            "Make a slight right for 24.68 meters"
+        ]
+    },
+    {
+        "path_name": "path 336",
+        "instructions": [
+            "Make a slight right for 13.57 meters"
+        ]
+    },
+    {
+        "path_name": "path 337",
+        "instructions": [
+            "Make a slight right for 25.40 meters"
+        ]
+    },
+    {
+        "path_name": "path 338",
+        "instructions": [
+            "Make a sharp right for 12.81 meters"
+        ]
+    },
+    {
+        "path_name": "path 339",
+        "instructions": [
+            "Make a sharp right for 2.57 meters"
+        ]
+    },
+    {
+        "path_name": "path 340",
+        "instructions": [
+            "Make a sharp right for 16.79 meters"
+        ]
+    },
+    {
+        "path_name": "path 341",
+        "instructions": [
+            "Make a sharp right for 10.85 meters"
+        ]
+    },
+    {
+        "path_name": "path 342",
+        "instructions": [
+            "Make a sharp right for 10.42 meters"
+        ]
+    },
+    {
+        "path_name": "path 343",
+        "instructions": [
+            "Turn around for 4.00 meters",
+            "Turn around for 3.85 meters",
+            "Turn around for 4.20 meters",
+            "Turn around for 6.30 meters",
+            "Turn around for 2.64 meters"
+        ]
+    },
+    {
+        "path_name": "path 344",
+        "instructions": [
+            "Make a sharp right for 5.46 meters"
+        ]
+    },
+    {
+        "path_name": "path 345",
+        "instructions": [
+            "Turn right for 16.62 meters"
+        ]
+    },
+    {
+        "path_name": "path 346",
+        "instructions": [
+            "Turn right for 20.30 meters"
+        ]
+    },
+    {
+        "path_name": "path 347",
+        "instructions": [
+            "Make a slight right for 12.05 meters"
+        ]
+    },
+    {
+        "path_name": "path 348",
+        "instructions": [
+            "Turn around for 0.85 meters",
+            "Turn around for 2.00 meters",
+            "Turn around for 1.66 meters",
+            "Turn around for 1.61 meters",
+            "Turn around for 2.68 meters",
+            "Turn around for 2.22 meters",
+            "Make a sharp right for 1.69 meters",
+            "Make a sharp right for 1.17 meters",
+            "Make a sharp right for 1.43 meters",
+            "Make a sharp right for 2.02 meters",
+            "Make a sharp right for 2.17 meters",
+            "Make a sharp right for 2.50 meters",
+            "Make a sharp right for 2.41 meters",
+            "Turn right for 1.94 meters",
+            "Turn right for 3.01 meters"
+        ]
+    },
+    {
+        "path_name": "path 349",
+        "instructions": [
+            "Turn around for 6.04 meters"
+        ]
+    },
+    {
+        "path_name": "path 350",
+        "instructions": [
+            "Head straight for 3.80 meters"
+        ]
+    },
+    {
+        "path_name": "path 351",
+        "instructions": [
+            "Turn right for 10.47 meters"
+        ]
+    },
+    {
+        "path_name": "path 352",
+        "instructions": [
+            "Head straight for 3.77 meters"
+        ]
+    },
+    {
+        "path_name": "path 354",
+        "instructions": [
+            "Turn right for 25.42 meters"
+        ]
+    },
+    {
+        "path_name": "path 355",
+        "instructions": [
+            "Turn right for 89.46 meters"
+        ]
+    },
+    {
+        "path_name": "path 357",
+        "instructions": [
+            "Turn right for 7.67 meters"
+        ]
+    },
+    {
+        "path_name": "path 358",
+        "instructions": [
+            "Make a slight right for 0.76 meters",
+            "Head straight for 1.82 meters"
+        ]
+    },
+    {
+        "path_name": "path 361",
+        "instructions": [
+            "Turn around for 1.84 meters"
+        ]
+    },
+    {
+        "path_name": "path 362",
+        "instructions": [
+            "Turn around for 1.62 meters"
+        ]
+    },
+    {
+        "path_name": "path 363",
+        "instructions": [
+            "Turn around for 1.20 meters"
+        ]
+    },
+    {
+        "path_name": "path 364",
+        "instructions": [
+            "Turn around for 1.63 meters"
+        ]
+    },
+    {
+        "path_name": "path 365",
+        "instructions": [
+            "Turn around for 2.82 meters"
+        ]
+    },
+    {
+        "path_name": "path 366",
+        "instructions": [
+            "Turn around for 8.24 meters"
+        ]
+    },
+    {
+        "path_name": "path 367",
+        "instructions": [
+            "Head straight for 1.38 meters"
+        ]
+    },
+    {
+        "path_name": "path 368",
+        "instructions": [
+            "Turn around for 2.51 meters"
+        ]
+    },
+    {
+        "path_name": "path 369",
+        "instructions": [
+            "Make a sharp right for 4.18 meters",
+            "Make a sharp right for 5.24 meters",
+            "Make a sharp right for 5.37 meters",
+            "Make a sharp right for 5.82 meters",
+            "Make a sharp right for 25.39 meters"
+        ]
+    },
+    {
+        "path_name": "path 370",
+        "instructions": [
+            "Make a sharp right for 14.90 meters"
+        ]
+    },
+    {
+        "path_name": "path 371",
+        "instructions": [
+            "Make a sharp right for 12.42 meters"
+        ]
+    },
+    {
+        "path_name": "path 372",
+        "instructions": [
+            "Make a sharp right for 23.89 meters"
+        ]
+    },
+    {
+        "path_name": "path 373",
+        "instructions": [
+            "Turn right for 5.60 meters"
+        ]
+    },
+    {
+        "path_name": "path 374",
+        "instructions": [
+            "Turn right for 13.48 meters"
+        ]
+    },
+    {
+        "path_name": "path 375",
+        "instructions": [
+            "Make a sharp left for 15.79 meters"
+        ]
+    },
+    {
+        "path_name": "path 376",
+        "instructions": [
+            "Turn right for 16.15 meters"
+        ]
+    }
+]

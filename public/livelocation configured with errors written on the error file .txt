@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masked GeoJSON Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 90vh;
+            width: 100vw;
+        }
+
+        #controls1 {
+            position: left;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            display:none;
+        }
+        #controls2 {
+            position: right;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #controls3 {
+            position: right;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="controls1">
+        <select id="featureSelect">
+            <option value="">Select a feature</option>
+        </select>
+        <button id="searchBtn">Search</button>
+    </div><br>
+
+    <div id="controls2">
+        <label for="source">Source:</label>
+        <select id="source">
+            <option value="">Select Source</option>
+        </select>
+
+        <label for="destination">Destination:</label>
+        <select id="destination">
+            <option value="">Select Destination</option>
+        </select>
+
+        <label for="mode">Mode:</label>
+        <select id="mode">
+            <option value="">Select Mode</option>
+            <option value="walking">Walking</option>
+            <option value="driving">Driving</option>
+            <option value="disabled">Disabled</option>
+        </select>
+
+        <button id="searchBtn1">Search</button>
+        
+        <div id="result"></div>
+        <table id="pathTable" border="1" style="display:none;">
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Path</th>
+                    <th>Distance</th>
+                    <th>Directions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    
+    <div id="controls3">
+        <!-- Add this new dropdown -->
+        <label for="sourceType">Source Type:</label>
+        <select id="sourceType">
+            <option value="clickOnMap">Click on Map</option>
+            <option value="liveLoc">Choose Live Location</option>
+        </select>
+    
+        <!-- Existing controls3 content -->
+        <label for="coordSource">Choose the Source by clicking on the map:</label>
+        <input type="text" id="coordSource2" readonly />
+        <input type="text" id="coordSource4" readonly />
+       
+        
+        <input type="text" id="coordSource1" readonly />
+        <input type="text" id="coordSource" readonly />
+        
+        <label for="coordDestination">Destination:</label>
+        <select id="coordDestination">
+            <option value="">Select Destination</option>
+        </select>
+    
+        <label for="coordMode">Mode:</label>
+        <select id="coordMode">
+            <option value="">Select Mode</option>
+            <option value="walking">Walking</option>
+            <option value="driving">Driving</option>
+            <option value="disabled">Disabled</option>
+        </select>
+    
+        <button id="coordSearchBtn">Search</button>
+        <button id="liveSearchBtn">live Search</button>
+        
+        <div id="coordResult"></div>
+        <table id="coordPathTable" border="1" style="display:none;">
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Path</th>
+                    <th>Distance</th>
+                    <th>Directions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    
+
+    
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([-1.219737, 36.879385], 15);
+
+        // Store layers for later reference
+        var featureLayers = [];
+        var pathLayers = [];
+        var usiuBorderLayer;
+
+        fetch('14.geojson')
+    .then(response => response.json())
+    .then(data => {
+        var featureSelect = document.getElementById('featureSelect');
+        L.geoJSON(data, {
+            pointToLayer: function (feature, latlng) {
+                var marker = L.marker(latlng);
+                marker.bindPopup(feature.properties.name);
+                featureLayers.push({
+                    name: feature.properties.name,
+                    layer: marker,
+                    featureType: feature.geometry.type
+                });
+                return marker;
+            },
+            style: function (feature) {
+                var isUSIUBorder = feature.properties.name === 'USIU BORDER';
+                return {
+                    color: isUSIUBorder ? '#000' : (feature.properties.borderColor || '#000'),
+                    fillColor: isUSIUBorder ? '#27a147 ' : (feature.properties.fillColor || '#ccc'),
+                    fillOpacity: isUSIUBorder ? 1 : 0.7,
+                    weight: isUSIUBorder ? 5 : 2,
+                    zIndex: isUSIUBorder ? 1000 : (feature.properties.zIndex || 1)
+                };
+            },
+            onEachFeature: function (feature, layer) {
+                var option = document.createElement('option');
+                option.value = feature.properties.name;
+                option.text = feature.properties.name;
+                featureSelect.appendChild(option);
+
+                // Register live coordinates for any clicked feature except 'USIU BORDER'
+                layer.on('click', function (e) {
+                    var latlng = e.latlng; // Get the coordinates of the clicked point
+
+                    // Handle 'USIU BORDER' clicks (clear inputs)
+                    if (feature.properties.name === 'USIU BORDER') {
+                        document.getElementById('coordSource1').value = '';
+                        document.getElementById('coordSource').value = '';
+                        return; // Exit, no further processing for USIU BORDER
+                    }
+
+                    // Handle LineString or Polygon features (excluding 'USIU BORDER')
+                    if (feature.geometry.type === "LineString" || feature.geometry.type === "Polygon") {
+                        // Update the first input with live coordinates of the clicked point
+                        document.getElementById('coordSource1').value = `${latlng.lat}, ${latlng.lng}`;
+
+                        // Handle LineString features for nearest endpoint
+                        if (feature.geometry.type === "LineString") {
+                            const lineCoords = layer.getLatLngs(); // Get the coordinates of the LineString
+
+                            // Find the closest endpoint of the clicked LineString
+                            const closestEndpoint = findNearestEndpoint(latlng, lineCoords);
+
+                            // Update the second input with the closest endpoint of the LineString
+                            document.getElementById('coordSource').value = `${closestEndpoint.lat}, ${closestEndpoint.lng}`;
+                        } else {
+                            // Clear coordSource input for Polygons, as no nearest endpoint is needed
+                            document.getElementById('coordSource').value = '';
+                        }
+                    }
+                });
+
+                if (feature.geometry.type === "LineString") {
+                    pathLayers.push({
+                        name: feature.properties.name,
+                        layer: layer
+                    });
+                }
+
+                if (feature.properties && feature.properties.name) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            }
+        }).addTo(map);
+
+        if (usiuBorderLayer) {
+            var maskBounds = usiuBorderLayer.getBounds();
+            L.polygon(usiuBorderLayer.getLatLngs(), {
+                color: '#000',
+                fillColor: '#fff',
+                fillOpacity: 1,
+                zIndex: 1000
+            }).addTo(map);
+        }
+    })
+    .catch(error => console.error('Error loading the GeoJSON file:', error));
+
+
+    map.on('click', function(e) {
+    var latlng = e.latlng;
+
+    // Reset the validity flag
+    var isValidFeature = false;
+    var closestFeature = null;
+    var shortestDistance = Infinity;
+
+    // Loop through the featureLayers to check if clicked on LineString or Polygon (excluding 'USIU BORDER')
+    featureLayers.forEach(function(featureLayer) {
+        // Exclude "USIU BORDER" explicitly
+        if (featureLayer.name === 'USIU BORDER') {
+            return; // Skip processing for USIU BORDER
+        }
+
+        // Handle LineStrings
+        if (featureLayer.featureType === 'LineString') {
+            const lineCoords = featureLayer.layer.getLatLngs();
+            const nearestEndpoint = findNearestEndpoint(latlng, lineCoords);
+            const distanceToNearest = calculateDistance(latlng, nearestEndpoint);
+
+            // Check if click is near the LineString (adjust distance threshold as needed)
+            if (distanceToNearest < 2 && distanceToNearest < shortestDistance) {
+                isValidFeature = true; // Valid LineString feature clicked
+                shortestDistance = distanceToNearest; // Track the closest distance
+                closestFeature = featureLayer; // Track the closest feature
+            }
+        }
+        // Handle Polygons
+        else if (featureLayer.featureType === 'Polygon') {
+            if (featureLayer.layer.getBounds().contains(latlng)) {
+                isValidFeature = true; // Valid Polygon feature clicked
+            }
+        }
+    });
+ // If the click was on a valid LineString, interpolate and log the points
+ if (isValidFeature && closestFeature) {
+        const lineCoords = closestFeature.layer.getLatLngs();
+        
+        // Interpolate 1000 points along the LineString
+        const interpolatedPoints = extractCoordinates(lineCoords, 1000);
+        
+        // Log all interpolated points to the console
+        console.log('Interpolated points along the clicked LineString:');
+        interpolatedPoints.forEach(point => {
+            console.log(`Latitude: ${point[1]}, Longitude: ${point[0]}`);
+        });
+    } else {
+        console.log('Click was not on a valid LineString.');
+    }
+    // If the click was on a valid LineString or Polygon (excluding USIU BORDER), update the coordSource1 with live coordinates
+    if (isValidFeature) {
+        document.getElementById('coordSource1').value = `${latlng.lat}, ${latlng.lng}`;
+
+        // Log the closest LineString name to the console
+        if (closestFeature && closestFeature.name) {
+            console.log(`The closest LineString is: ${closestFeature.name}`);
+        }
+    } else {
+        // If the click was outside valid features or on 'USIU BORDER', clear the input
+        document.getElementById('coordSource1').value = '';
+        document.getElementById('coordSource').value = '';
+    }
+
+    // Find the nearest endpoint of the LineString and update coordSource (second input)
+    var nearestEndpoint = findNearestPoint(latlng, featureLayers);
+    if (nearestEndpoint && nearestEndpoint.latLng) {
+        document.getElementById('coordSource').value = `${nearestEndpoint.latLng.lat}, ${nearestEndpoint.latLng.lng}`;
+    } else {
+        document.getElementById('coordSource').value = 'No nearest endpoint found';
+    }
+});
+
+
+
+
+        // Define the points from POINT 13 to POINT 335 excluding specific points
+        const availablePoints = [];
+        for (let i = 13; i <= 335; i++) {
+            if (![29, 31, 44, 107, 174, 194].includes(i)) {
+                availablePoints.push(`POINT ${i}`);
+            }
+        }
+// Add custom locations and map them to specific points
+const customLocations = {
+    "USIU GATE A": "POINT 86",
+    "USIU GATE B": "POINT 100",
+    "LIBRARY": "POINT 150",
+    "SCHOOL OF HUMANITIES": "POINT 200",
+    "ADMINISTRATION": "POINT 200",
+    "SWIMMING POOL": "POINT 250"
+};
+        // Function to populate source and destination dropdowns with filtered points
+        function populateDropdowns() {
+            const sourceSelect = document.getElementById('source');
+            const destinationSelect = document.getElementById('destination');
+            const coordDestinationSelect = document.getElementById('coordDestination');
+
+            // Clear previous options
+            sourceSelect.innerHTML = '<option value="">Select Source</option>';
+            destinationSelect.innerHTML = '<option value="">Select Destination</option>';
+            coordDestinationSelect.innerHTML = '<option value="">Select Destination</option>';
+
+            // Populate the dropdowns with the available points
+            availablePoints.forEach(point => {
+                const optionSource = document.createElement('option');
+                optionSource.value = point;
+                optionSource.textContent = point;
+                sourceSelect.appendChild(optionSource);
+
+                const optionDestination = document.createElement('option');
+                optionDestination.value = point;
+                optionDestination.textContent = point;
+                destinationSelect.appendChild(optionDestination);
+
+                const optionCoordDestination = document.createElement('option');
+        optionCoordDestination.value = point;
+        optionCoordDestination.textContent = point;
+        coordDestinationSelect.appendChild(optionCoordDestination);
+            });
+        
+// Populate the dropdowns with custom locations
+Object.keys(customLocations).forEach(location => {
+        const point = customLocations[location];
+
+        const optionSource = document.createElement('option');
+        optionSource.value = point; // Map custom location to POINT value
+        optionSource.textContent = location;
+        sourceSelect.appendChild(optionSource);
+
+        const optionDestination = document.createElement('option');
+        optionDestination.value = point; // Map custom location to POINT value
+        optionDestination.textContent = location;
+        destinationSelect.appendChild(optionDestination);
+
+        const optionCoordDestination = document.createElement('option');
+        optionCoordDestination.value = point; // Map custom location to POINT value
+        optionCoordDestination.textContent = location;
+        coordDestinationSelect.appendChild(optionCoordDestination);
+    });
+}
+
+        // Call the function to populate the dropdowns when the page loads
+        document.addEventListener('DOMContentLoaded', populateDropdowns);
+
+       // Fetch the directions file (1.json)
+let directionsData = {};
+
+fetch('1.json')
+    .then(response => response.json())
+    .then(data => {
+        directionsData = data; // Store the directions data for later use
+    })
+    .catch(error => console.error('Error loading directions JSON:', error));
+
+// Update the search button click handler to also populate the directions
+document.getElementById('searchBtn1').addEventListener('click', function() {
+    const source = document.getElementById('source').value;
+    const destination = document.getElementById('destination').value;
+    const mode = document.getElementById('mode').value;
+
+    if (!source || !destination || !mode) {
+        alert('Please select source, destination, and mode.');
+        return;
+    }
+
+    fetch(`/shortest-path?source=${source}&destination=${destination}&mode=${mode}`)
+        .then(response => response.json())
+        .then(result => {
+            const resultDiv = document.getElementById('result');
+            const table = document.getElementById('pathTable');
+            const tbody = table.querySelector('tbody');
+
+            if (result.error) {
+                resultDiv.textContent = result.error;
+                table.style.display = 'none';
+            } else {
+                resultDiv.textContent = `Total Distance: ${result.distance.toFixed(2)} units`;
+
+                tbody.innerHTML = ''; // Clear previous results
+
+                // Iterate through the result path to populate the table and add directions
+                result.path.forEach((pathEntry, index) => {
+                    const { from, to, path, distance } = pathEntry;
+
+                    let row = document.createElement('tr');
+
+                    let fromCell = document.createElement('td');
+                    fromCell.textContent = from;
+                    row.appendChild(fromCell);
+
+                    let toCell = document.createElement('td');
+                    toCell.textContent = to;
+                    row.appendChild(toCell);
+
+                    let pathCell = document.createElement('td');
+                    pathCell.textContent = path;
+                    row.appendChild(pathCell);
+
+                    let distanceCell = document.createElement('td');
+                    distanceCell.textContent = distance;
+                    row.appendChild(distanceCell);
+
+                    // Get direction for this path
+                    let direction = '';
+                    if (index < result.path.length - 1) { // Check if there is a next path
+                        const nextPathName = result.path[index + 1].path;
+                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                        }
+                    } else { // For the last row, say "Destination"
+                        direction = `Destination in ${distance.toFixed(2)} metres`;
+                    }
+
+                    let directionCell = document.createElement('td');
+                    directionCell.textContent = direction;
+                    row.appendChild(directionCell);
+
+                    tbody.appendChild(row);
+                });
+
+                table.style.display = 'table';
+
+                // Highlight paths on the map
+                highlightPaths(result.path);
+            }
+        })
+        .catch(error => console.error('Error calculating shortest path:', error));
+});
+
+function highlightPaths(paths, skipFirstPath) {
+    // Reset all path colors to default
+    pathLayers.forEach(layerObj => {
+        layerObj.layer.setStyle({
+            color: layerObj.layer.feature.properties.borderColor || '#000',
+            fillColor: layerObj.layer.feature.properties.fillColor || '#ccc'
+        });
+
+        // Remove previous polylines (if any)
+        if (layerObj.polyline) {
+            map.removeLayer(layerObj.polyline);
+        }
+    });
+
+    // Highlight the paths that are part of the shortest route
+    paths.forEach(({ path, from, to }, index) => {
+        // Skip the first path if the skipFirstPath flag is true
+        if (index === 0 && skipFirstPath) {
+            console.log(`Skipping highlighting for path: ${path}`);
+            return;
+        }
+
+        const matchingLayer = pathLayers.find(layerObj => layerObj.name === path);
+        if (matchingLayer) {
+            // Set the color to red for the shortest route
+            matchingLayer.layer.setStyle({ color: 'red' });
+
+            // Extract the coordinates from the matching path layer and draw a polyline
+            const coordinates = matchingLayer.layer.feature.geometry.coordinates.map(coord => [coord[1], coord[0]]); // Switch lat, lon
+
+            const polyline = L.polyline(coordinates, { color: 'red', weight: 2 }).addTo(map);
+
+            // Store the polyline on the layer object for potential future cleanup
+            matchingLayer.polyline = polyline;
+        }
+    });
+}
+
+
+
+// Global variable to store the previously drawn polyline
+let previousPolyline = null;
+
+// New function to find the closest interpolated point, nearest endpoint, and draw the black polyline
+function highlightInterpolatedPath(liveLatLng, coordSource) {
+    // Clear the previous polyline if it exists
+    if (previousPolyline) {
+        map.removeLayer(previousPolyline); // Remove the previous polyline from the map
+        previousPolyline = null; // Reset the variable
+    }
+
+    const pathLayer = findPathContainingLiveCoordinate(liveLatLng);
+
+    if (pathLayer) {
+        const lineCoords = pathLayer.getLatLngs();
+        
+        // Extract all the coordinates from the path (with interpolation)
+        const extractedCoords = extractCoordinates(lineCoords, 1000); // You can adjust the number of interpolated points
+        
+        // Find the closest interpolated point to the live coordinate
+        const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, extractedCoords);
+        
+        // Find the nearest endpoint to the live coordinate
+        const nearestEndpoint = findNearestEndpoint(liveLatLng, lineCoords);
+
+        // Find the index of the closest interpolated point and nearest endpoint in the extracted coordinates
+        const closestIndex = extractedCoords.findIndex(coord =>
+            coord[0] === closestInterpolatedPoint[0] && coord[1] === closestInterpolatedPoint[1]);
+        const nearestIndex = extractedCoords.findIndex(coord =>
+            coord[0] === nearestEndpoint.lng && coord[1] === nearestEndpoint.lat);
+
+        // Ensure the indices are valid and log the range of coordinates between them
+        if (closestIndex !== -1 && nearestIndex !== -1) {
+            const startIndex = Math.min(closestIndex, nearestIndex);
+            const endIndex = Math.max(closestIndex, nearestIndex);
+
+            console.log('Coordinates between the closest interpolated point and the nearest endpoint:');
+            
+            // Store the coordinates to connect them with a polyline
+            const coordsToConnect = [];
+            for (let i = startIndex; i <= endIndex; i++) {
+                coordsToConnect.push([extractedCoords[i][1], extractedCoords[i][0]]);  // Store the coordinate in [lat, lng] format
+            }
+
+            // Draw a black polyline connecting the coordinates (new polyline)
+            previousPolyline = L.polyline(coordsToConnect, { color: 'red', weight: 2 }).addTo(map);
+
+            return coordsToConnect;  // Return the coordinates for distance calculation
+
+        } else {
+            console.log('Could not find valid indices for closest point or nearest endpoint.');
+        }
+    } else {
+        console.log('No matching path found for the live coordinate.');
+    }
+
+    return [];  // Return empty if no valid path was found
+}
+
+// Global variable to store the previously drawn polyline for the farthest endpoint
+let previousFarthestPolyline = null;
+
+// New function to find the closest interpolated point, farthest endpoint, and draw the green polyline
+function highlightFarthestInterpolatedPath(liveLatLng, coordSource) {
+    // Clear the previous polyline if it exists
+    if (previousFarthestPolyline) {
+        map.removeLayer(previousFarthestPolyline); // Remove the previous polyline from the map
+        previousFarthestPolyline = null; // Reset the variable
+    }
+
+    const pathLayer = findPathContainingLiveCoordinate(liveLatLng);
+
+    if (pathLayer) {
+        const lineCoords = pathLayer.getLatLngs();
+        
+        // Extract all the coordinates from the path (with interpolation)
+        const extractedCoords = extractCoordinates(lineCoords, 1000); // You can adjust the number of interpolated points
+        
+        // Find the closest interpolated point to the live coordinate
+        const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, extractedCoords);
+        
+        // Find the farthest endpoint to the live coordinate
+        const farthestEndpoint = findFarthestEndpoint(liveLatLng, lineCoords);
+
+        // Find the index of the closest interpolated point and farthest endpoint in the extracted coordinates
+        const closestIndex = extractedCoords.findIndex(coord =>
+            coord[0] === closestInterpolatedPoint[0] && coord[1] === closestInterpolatedPoint[1]);
+        const farthestIndex = extractedCoords.findIndex(coord =>
+            coord[0] === farthestEndpoint.lng && coord[1] === farthestEndpoint.lat);
+
+        // Ensure the indices are valid and log the range of coordinates between them
+        if (closestIndex !== -1 && farthestIndex !== -1) {
+            const startIndex = Math.min(closestIndex, farthestIndex);
+            const endIndex = Math.max(closestIndex, farthestIndex);
+
+            console.log('Coordinates between the closest interpolated point and the farthest endpoint:');
+            
+            // Store the coordinates to connect them with a polyline
+            const coordsToConnect = [];
+            for (let i = startIndex; i <= endIndex; i++) {
+                coordsToConnect.push([extractedCoords[i][1], extractedCoords[i][0]]);  // Store the coordinate in [lat, lng] format
+            }
+
+            // Draw a green polyline connecting the coordinates (new polyline)
+            previousFarthestPolyline = L.polyline(coordsToConnect, { color: 'red', weight: 3 }).addTo(map);
+
+            return coordsToConnect;  // Return the coordinates for distance calculation
+
+        } else {
+            console.log('Could not find valid indices for closest point or farthest endpoint.');
+        }
+    } else {
+        console.log('No matching path found for the live coordinate.');
+    }
+
+    return [];  // Return empty if no valid path was found
+}
+
+// Function to calculate total distance between a list of coordinates
+function calculateTotalDistance(coords) {
+    let totalDistance = 0;
+    for (let i = 0; i < coords.length - 1; i++) {
+        const pointA = L.latLng(coords[i][0], coords[i][1]);
+        const pointB = L.latLng(coords[i + 1][0], coords[i + 1][1]);
+        totalDistance += pointA.distanceTo(pointB); // Calculate distance between two points
+    }
+    return totalDistance;
+}
+
+document.getElementById('coordSearchBtn').addEventListener('click', function() {
+    const coordSource1 = document.getElementById('coordSource1').value;
+    const coordSource = document.getElementById('coordSource').value;
+    const coordDestination = document.getElementById('coordDestination').value;
+    const coordMode = document.getElementById('coordMode').value;
+
+    if (!coordSource || !coordDestination || !coordMode) {
+        alert('Please select source, destination, and mode.');
+        return;
+    }
+    if (previousPolyline) {
+        map.removeLayer(previousPolyline);
+        previousPolyline = null; // Reset
+    }
+    if (previousFarthestPolyline) {
+        map.removeLayer(previousFarthestPolyline);
+        previousFarthestPolyline = null; // Reset
+    }
+    // Split the coordinates from the text input
+    const [lat1, lng1] = coordSource1.split(',').map(Number);
+    const liveLatLng = L.latLng(lat1, lng1);  // Live coordinate (coordSource1)
+
+    // Call the function to find the path containing the live coordinate
+    const foundLayer = findPathContainingLiveCoordinate(liveLatLng);
+    if (!foundLayer) {
+        console.log('No matching path found for the live coordinate.');
+        return;
+    }
+
+    const [lat2, lng2] = coordSource.split(',').map(Number);
+    const distanceBetweenCoords = calculateDistance(L.latLng(lat1, lng1), L.latLng(lat2, lng2)); // Distance between coordSource1 and coordSource
+
+    const userLatLng = L.latLng(lat2, lng2);  // This is the coordSource LatLng
+
+    // Find the nearest point or LineString endpoint to the user-selected coordinate
+    const nearestLocation = findNearestPoint(userLatLng, featureLayers);
+
+    if (!nearestLocation) {
+        alert('No nearest location found.');
+        return;
+    }
+
+    let source;
+    if (nearestLocation.latLng) { // If it's a LineString coordinate (nearest endpoint)
+        source = nearestLocation.latLng; // Use the closest endpoint
+    } else {
+        source = nearestLocation.name; // It's already a point
+    }
+
+    // Proceed with shortest path calculation using the found source (nearest Point or endpoint)
+    fetch(`/shortest-path?source=${source}&destination=${coordDestination}&mode=${coordMode}`)
+        .then(response => response.json())
+        .then(result => {
+            const resultDiv = document.getElementById('coordResult');
+            const table = document.getElementById('coordPathTable');
+            const tbody = table.querySelector('tbody');
+
+            if (result.error) {
+                resultDiv.textContent = result.error;
+                table.style.display = 'none';
+            } else {
+                // Total distance will include the distance between coordSource1 and coordSource
+                let totalDistance = distanceBetweenCoords;
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
+
+                tbody.innerHTML = ''; // Clear previous results
+
+                // Add the new row with coordSource1 and coordSource
+                let newRow = document.createElement('tr');
+                
+                let fromCell = document.createElement('td');
+                fromCell.textContent = coordSource1;
+                newRow.appendChild(fromCell);
+
+                let toCell = document.createElement('td');
+                toCell.textContent = coordSource;
+                newRow.appendChild(toCell);
+
+                let pathCell = document.createElement('td');
+                pathCell.textContent = '';  // Leave path blank
+                newRow.appendChild(pathCell);
+
+                let distanceCell = document.createElement('td');
+                newRow.appendChild(distanceCell);
+
+                let directionCell = document.createElement('td');
+                directionCell.textContent = '';  // Leave directions blank
+                newRow.appendChild(directionCell);
+
+                tbody.appendChild(newRow);
+
+                // Iterate through the result path to populate the rest of the table
+                result.path.forEach((pathEntry, index) => {
+                    const { from, to, path, distance } = pathEntry;
+
+                    let row = document.createElement('tr');
+
+                    let fromCell = document.createElement('td');
+                    fromCell.textContent = from;
+                    row.appendChild(fromCell);
+
+                    let toCell = document.createElement('td');
+                    toCell.textContent = to;
+                    row.appendChild(toCell);
+
+                    let pathCell = document.createElement('td');
+                    pathCell.textContent = path;
+                    row.appendChild(pathCell);
+
+                    let distanceCell = document.createElement('td');
+                    distanceCell.textContent = distance;
+                    row.appendChild(distanceCell);
+
+                    totalDistance += distance;  // Add this path's distance to the total
+
+                    // Get direction for this path
+                    let direction = '';
+                    if (index < result.path.length - 1) { // Check if there is a next path
+                        const nextPathName = result.path[index + 1].path;
+                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                        }
+                    } else { // For the last row, say "Destination"
+                        direction = `Destination in ${distance.toFixed(2)} metres`;
+                    }
+
+                    let directionCell = document.createElement('td');
+                    directionCell.textContent = direction;
+                    row.appendChild(directionCell);
+
+                    tbody.appendChild(row);
+                });
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`; // Update with total distance
+                table.style.display = 'table';
+
+                // New Section: Check path in second row, third column
+                const secondRow = table.querySelector('tbody').rows[1];  // Get the second row (index 1)
+                if (secondRow) {
+                    const pathNameFromTable = secondRow.cells[2].textContent;  // Third column of second row
+                    const pathNameFromMap = foundLayer.feature.properties.name;  // The name of the path where live coordinate lies
+                    let interpolatedPoints = [];  // To store interpolated points for distance calculation
+                    let skipFirstPath = false;  // Initialize variable to skip the first path
+                    
+                    // Compare the path names and call the appropriate highlighting function
+if (pathNameFromTable === pathNameFromMap) {
+    interpolatedPoints = highlightFarthestInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+    skipFirstPath = true;  // Skip the first path
+} else {
+    interpolatedPoints = highlightInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+}
+
+// Step 4: Calculate the total distance for the first row using interpolated points
+const totalInterpolatedDistance = calculateTotalDistance(interpolatedPoints);  // Total distance in meters
+
+// Update the first row's distance cell with the total interpolated distance
+newRow.cells[3].textContent = `${totalInterpolatedDistance.toFixed(2)} meters`;
+
+// New logic to determine directions based on path names after calculating distance
+if (pathNameFromTable === pathNameFromMap) {
+    // If path names are the same, use the related path direction from directionsData
+    const thirdRow = table.querySelector('tbody').rows[2];  // Check the third row
+    if (thirdRow) {
+        const nextPathName = thirdRow.cells[2].textContent;  // Get the third column of third row
+        if (directionsData[pathNameFromMap] && directionsData[pathNameFromMap].related_paths[nextPathName]) {
+            const direction = directionsData[pathNameFromMap].related_paths[nextPathName];
+            newRow.cells[4].textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+        }
+    }
+} else {
+    // If path names are different, provide a different direction
+    const nextPathName = pathNameFromTable;  // Get next path name from table
+    if (directionsData[pathNameFromMap] && directionsData[pathNameFromMap].related_paths[nextPathName]) {
+        const direction = directionsData[pathNameFromMap].related_paths[nextPathName];
+        newRow.cells[4].textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+    }
+}
+
+                      
+                    // Highlight paths on the map
+                    highlightPaths(result.path, skipFirstPath);  // Call the function with skipFirstPath flag
+                } else {
+                    console.log('The second row of the table does not exist.');
+                }
+                 
+            }
+        })
+        .catch(error => console.error('Error calculating shortest path:', error));
+});
+
+document.getElementById('liveSearchBtn').addEventListener('click', function() {
+    const coordSource4 = document.getElementById('coordSource4').value;
+    const coordSource = document.getElementById('coordSource').value;
+    const coordDestination = document.getElementById('coordDestination').value;
+    const coordMode = document.getElementById('coordMode').value;
+
+    if (!coordSource || !coordDestination || !coordMode) {
+        alert('Please select source, destination, and mode.');
+        return;
+    }
+    if (previousPolyline) {
+        map.removeLayer(previousPolyline);
+        previousPolyline = null; // Reset
+    }
+    if (previousFarthestPolyline) {
+        map.removeLayer(previousFarthestPolyline);
+        previousFarthestPolyline = null; // Reset
+    }
+    // Split the coordinates from the text input
+    const [lat1, lng1] = coordSource4.split(',').map(Number);
+    const liveLatLng = L.latLng(lat1, lng1);  // Live coordinate (coordSource4)
+
+    // Call the function to find the path containing the live coordinate
+    const foundLayer = findPathContainingLiveCoordinate(liveLatLng);
+    if (!foundLayer) {
+        console.log('No matching path found for the live coordinate.');
+        return;
+    }
+
+    const [lat2, lng2] = coordSource.split(',').map(Number);
+    const distanceBetweenCoords = calculateDistance(L.latLng(lat1, lng1), L.latLng(lat2, lng2)); // Distance between coordSource4 and coordSource
+
+    const userLatLng = L.latLng(lat2, lng2);  // This is the coordSource LatLng
+
+    // Find the nearest point or LineString endpoint to the user-selected coordinate
+    const nearestLocation = findNearestPoint(userLatLng, featureLayers);
+
+    if (!nearestLocation) {
+        alert('No nearest location found.');
+        return;
+    }
+
+    let source;
+    if (nearestLocation.latLng) { // If it's a LineString coordinate (nearest endpoint)
+        source = nearestLocation.latLng; // Use the closest endpoint
+    } else {
+        source = nearestLocation.name; // It's already a point
+    }
+
+    // Proceed with shortest path calculation using the found source (nearest Point or endpoint)
+    fetch(`/shortest-path?source=${source}&destination=${coordDestination}&mode=${coordMode}`)
+        .then(response => response.json())
+        .then(result => {
+            const resultDiv = document.getElementById('coordResult');
+            const table = document.getElementById('coordPathTable');
+            const tbody = table.querySelector('tbody');
+
+            if (result.error) {
+                resultDiv.textContent = result.error;
+                table.style.display = 'none';
+            } else {
+                // Total distance will include the distance between coordSource4 and coordSource
+                let totalDistance = distanceBetweenCoords;
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
+
+                tbody.innerHTML = ''; // Clear previous results
+
+                // Add the new row with coordSource4 and coordSource
+                let newRow = document.createElement('tr');
+                
+                let fromCell = document.createElement('td');
+                fromCell.textContent = coordSource4;
+                newRow.appendChild(fromCell);
+
+                let toCell = document.createElement('td');
+                toCell.textContent = coordSource;
+                newRow.appendChild(toCell);
+
+                let pathCell = document.createElement('td');
+                pathCell.textContent = '';  // Leave path blank
+                newRow.appendChild(pathCell);
+
+                let distanceCell = document.createElement('td');
+                newRow.appendChild(distanceCell);
+
+                let directionCell = document.createElement('td');
+                directionCell.textContent = '';  // Leave directions blank
+                newRow.appendChild(directionCell);
+
+                tbody.appendChild(newRow);
+
+                // Iterate through the result path to populate the rest of the table
+                result.path.forEach((pathEntry, index) => {
+                    const { from, to, path, distance } = pathEntry;
+
+                    let row = document.createElement('tr');
+
+                    let fromCell = document.createElement('td');
+                    fromCell.textContent = from;
+                    row.appendChild(fromCell);
+
+                    let toCell = document.createElement('td');
+                    toCell.textContent = to;
+                    row.appendChild(toCell);
+
+                    let pathCell = document.createElement('td');
+                    pathCell.textContent = path;
+                    row.appendChild(pathCell);
+
+                    let distanceCell = document.createElement('td');
+                    distanceCell.textContent = distance;
+                    row.appendChild(distanceCell);
+
+                    totalDistance += distance;  // Add this path's distance to the total
+
+                    // Get direction for this path
+                    let direction = '';
+                    if (index < result.path.length - 1) { // Check if there is a next path
+                        const nextPathName = result.path[index + 1].path;
+                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                        }
+                    } else { // For the last row, say "Destination"
+                        direction = `Destination in ${distance.toFixed(2)} metres`;
+                    }
+
+                    let directionCell = document.createElement('td');
+                    directionCell.textContent = direction;
+                    row.appendChild(directionCell);
+
+                    tbody.appendChild(row);
+                });
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`; // Update with total distance
+                table.style.display = 'table';
+
+                // New Section: Check path in second row, third column
+                const secondRow = table.querySelector('tbody').rows[1];  // Get the second row (index 1)
+                if (secondRow) {
+                    const pathNameFromTable = secondRow.cells[2].textContent;  // Third column of second row
+                    const pathNameFromMap = foundLayer.feature.properties.name;  // The name of the path where live coordinate lies
+                    let interpolatedPoints = [];  // To store interpolated points for distance calculation
+                    let skipFirstPath = false;  // Initialize variable to skip the first path
+                    
+                    // Compare the path names and call the appropriate highlighting function
+if (pathNameFromTable === pathNameFromMap) {
+    interpolatedPoints = highlightFarthestInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+    skipFirstPath = true;  // Skip the first path
+} else {
+    interpolatedPoints = highlightInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+}
+
+// Step 4: Calculate the total distance for the first row using interpolated points
+const totalInterpolatedDistance = calculateTotalDistance(interpolatedPoints);  // Total distance in meters
+
+// Update the first row's distance cell with the total interpolated distance
+newRow.cells[3].textContent = `${totalInterpolatedDistance.toFixed(2)} meters`;
+
+// New logic to determine directions based on path names after calculating distance
+if (pathNameFromTable === pathNameFromMap) {
+    // If path names are the same, use the related path direction from directionsData
+    const thirdRow = table.querySelector('tbody').rows[2];  // Check the third row
+    if (thirdRow) {
+        const nextPathName = thirdRow.cells[2].textContent;  // Get the third column of third row
+        if (directionsData[pathNameFromMap] && directionsData[pathNameFromMap].related_paths[nextPathName]) {
+            const direction = directionsData[pathNameFromMap].related_paths[nextPathName];
+            newRow.cells[4].textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+        }
+    }
+} else {
+    // If path names are different, provide a different direction
+    const nextPathName = pathNameFromTable;  // Get next path name from table
+    if (directionsData[pathNameFromMap] && directionsData[pathNameFromMap].related_paths[nextPathName]) {
+        const direction = directionsData[pathNameFromMap].related_paths[nextPathName];
+        newRow.cells[4].textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+    }
+}
+
+                      
+                    // Highlight paths on the map
+                    highlightPaths(result.path, skipFirstPath);  // Call the function with skipFirstPath flag
+                } else {
+                    console.log('The second row of the table does not exist.');
+                }
+                 
+            }
+        })
+        .catch(error => console.error('Error calculating shortest path:', error));
+});
+
+
+
+// Function to interpolate between two coordinates, ensuring points are correctly placed even on straight lines
+function interpolateCoordinates(coord1, coord2, numPoints) {
+    let interpolatedPoints = [];
+    let latDiff = coord2[1] - coord1[1];
+    let lngDiff = coord2[0] - coord1[0];
+
+    // Ensure we always interpolate even when the line is straight by dividing the lat and lng difference
+    for (let i = 0; i <= numPoints; i++) {
+        let factor = i / numPoints;  // Calculate interpolation factor (between 0 and 1)
+        
+        // Interpolate both latitude and longitude using linear interpolation
+        let interpolatedLat = coord1[1] + (latDiff * factor);
+        let interpolatedLng = coord1[0] + (lngDiff * factor);
+        
+        interpolatedPoints.push([interpolatedLng, interpolatedLat]);
+    }
+
+    return interpolatedPoints;
+}
+
+
+// Function to extract all coordinates including interpolated points along the LineString
+function extractCoordinates(lineCoords, numInterpolatedPoints) {
+    let allCoordinates = [];
+
+    for (let i = 0; i < lineCoords.length - 1; i++) {
+        let coord1 = [lineCoords[i].lng, lineCoords[i].lat];
+        let coord2 = [lineCoords[i + 1].lng, lineCoords[i + 1].lat];
+        let segmentPoints = interpolateCoordinates(coord1, coord2, numInterpolatedPoints);
+        allCoordinates = allCoordinates.concat(segmentPoints);
+
+       
+    }
+
+    return allCoordinates;
+}
+
+
+// Function to find the closest interpolated point to the live coordinate
+function findClosestInterpolatedPoint(liveCoord, interpolatedPoints) {
+    let closestPoint = null;
+    let shortestDistance = Infinity;
+
+    interpolatedPoints.forEach(point => {
+        let pointLatLng = L.latLng(point[1], point[0]);
+        let distance = calculateDistance(liveCoord, pointLatLng);
+        if (distance < shortestDistance) {
+            shortestDistance = distance;
+            closestPoint = point;
+        }
+    });
+
+    return closestPoint;
+}
+
+// Global variables to store the current polyline and circles
+let currentPolyline = null;
+let currentCircles = [];
+
+// Function to remove the current polyline and circles from the map
+function clearCurrentPolylineAndCircles() {
+    if (currentPolyline) {
+        map.removeLayer(currentPolyline);  // Remove the polyline from the map
+        currentPolyline = null;  // Reset the reference
+    }
+    currentCircles.forEach(circle => {
+        map.removeLayer(circle);  // Remove each circle from the map
+    });
+    currentCircles = [];  // Reset the array
+}
+
+
+// Modified function to find the closest path where live coordinates belong, interpolate points, and call the new function
+function findPathContainingLiveCoordinate(liveLatLng) {
+    let foundLayer = null;
+    let closestPath = null;
+    let shortestDistance = Infinity;
+
+    // Iterate through all path layers to find the closest path to the live coordinate
+    pathLayers.forEach(layerObj => {
+        const lineCoords = layerObj.layer.getLatLngs();
+
+        // Loop through each segment formed by consecutive points
+        for (let i = 0; i < lineCoords.length - 1; i++) {
+            const segmentStart = lineCoords[i];
+            const segmentEnd = lineCoords[i + 1];
+
+            // Project the liveLatLng onto the current segment
+            const projectedPoint = projectOntoSegment(liveLatLng, segmentStart, segmentEnd);
+
+            // Calculate the distance between the liveLatLng and the projected point
+            const distance = calculateDistance(liveLatLng, projectedPoint);
+
+            // Check if the projected point is on the segment and if the distance is smaller than our threshold
+            if (isPointOnSegment(projectedPoint, segmentStart, segmentEnd) && distance < 2 && distance < shortestDistance) {
+                foundLayer = layerObj.layer;
+                shortestDistance = distance;
+                closestPath = layerObj;
+            }
+        }
+    });
+
+    // If a path is found
+    if (closestPath) {
+        console.log(`Live coordinate belongs to path: ${closestPath.name}`);
+
+        // Get the coordinates of the LineString where live coordinates lie
+        const lineCoords = closestPath.layer.getLatLngs();
+
+        // Interpolate 1000 points along the path
+        const interpolatedPoints = extractCoordinates(lineCoords, 1000);
+
+        // Find the closest interpolated point to the live coordinate
+        const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, interpolatedPoints);
+
+        // Find the nearest endpoint to the live coordinate
+        const nearestEndpoint = findNearestEndpoint(liveLatLng, lineCoords);
+
+        // Find the farthest endpoint to the live coordinate
+        const farthestEndpoint = findFarthestEndpoint(liveLatLng, lineCoords);
+
+        // Log the live coordinate, the closest interpolated point, nearest endpoint, and farthest endpoint
+        console.log(`Live coordinate: ${liveLatLng.lat}, ${liveLatLng.lng}`);
+        console.log(`Closest interpolated point: ${closestInterpolatedPoint[1]}, ${closestInterpolatedPoint[0]}`);
+        console.log(`Nearest endpoint: ${nearestEndpoint.lat}, ${nearestEndpoint.lng}`);
+        console.log(`Farthest endpoint: ${farthestEndpoint.lat}, ${farthestEndpoint.lng}`);
+    } else {
+        console.log('No matching path found for the live coordinate.');
+    }
+
+    return foundLayer;
+}
+
+// Helper function to calculate the distance between two coordinates (Haversine formula or Leaflet's distanceTo)
+function calculateDistance(latlng1, latlng2) {
+    return latlng1.distanceTo(latlng2); // Using Leaflet's built-in method
+}
+
+// Helper function to project a point onto a line segment
+function projectOntoSegment(point, segmentStart, segmentEnd) {
+    const x1 = segmentStart.lng, y1 = segmentStart.lat;
+    const x2 = segmentEnd.lng, y2 = segmentEnd.lat;
+    const x3 = point.lng, y3 = point.lat;
+
+    const px = x2 - x1;
+    const py = y2 - y1;
+    const norm = px * px + py * py;
+    const u = ((x3 - x1) * px + (y3 - y1) * py) / norm;
+
+    const clampedU = Math.max(Math.min(u, 1), 0); // Clamp the projection factor to [0, 1]
+    return L.latLng(y1 + clampedU * py, x1 + clampedU * px);
+}
+
+// Helper function to check if a point is on a segment between two points (using a small tolerance)
+function isPointOnSegment(point, segmentStart, segmentEnd) {
+    const tolerance = 0.00001; // Adjust tolerance as needed
+    const minLat = Math.min(segmentStart.lat, segmentEnd.lat) - tolerance;
+    const maxLat = Math.max(segmentStart.lat, segmentEnd.lat) + tolerance;
+    const minLng = Math.min(segmentStart.lng, segmentEnd.lng) - tolerance;
+    const maxLng = Math.max(segmentStart.lng, segmentEnd.lng) + tolerance;
+
+    return point.lat >= minLat && point.lat <= maxLat && point.lng >= minLng && point.lng <= maxLng;
+}
+
+// Function to find the nearest point or LineString endpoint to the selected coordinate
+function findNearestPoint(userLatLng, featureLayers) {
+    let nearestPoint = null;
+    let shortestDistance = Infinity;
+
+    featureLayers.forEach(featureLayer => {
+        // For Point features, compare directly
+        if (featureLayer.featureType === "Point") {
+            const pointLatLng = featureLayer.layer.getLatLng();
+            const distance = calculateDistance(userLatLng, pointLatLng);
+
+            if (distance < shortestDistance) {
+                shortestDistance = distance;
+                nearestPoint = featureLayer;
+            }
+        }
+        // For LineString features, check the closest endpoint (first or last)
+        else if (featureLayer.featureType === "LineString") {
+            const lineCoords = featureLayer.layer.getLatLngs();
+            const closestEndpoint = findNearestEndpoint(userLatLng, lineCoords);  // Only consider endpoints
+            const distance = calculateDistance(userLatLng, closestEndpoint);
+
+            if (distance < shortestDistance) {
+                shortestDistance = distance;
+                nearestPoint = { // Store the closest endpoint on the LineString
+                    name: featureLayer.name,
+                    latLng: closestEndpoint  // Use closest endpoint
+                };
+            }
+        }
+    });
+
+    return nearestPoint;
+}
+
+
+// Function to find the nearest endpoint (first or last) of a LineString to the selected coordinate
+function findNearestEndpoint(userLatLng, lineLatLngs) {
+    const firstPoint = L.latLng(lineLatLngs[0].lat, lineLatLngs[0].lng);
+    const lastPoint = L.latLng(lineLatLngs[lineLatLngs.length - 1].lat, lineLatLngs[lineLatLngs.length - 1].lng);
+
+    const distanceToFirst = calculateDistance(userLatLng, firstPoint);
+    const distanceToLast = calculateDistance(userLatLng, lastPoint);
+
+    // Return the closer endpoint
+    return distanceToFirst < distanceToLast ? firstPoint : lastPoint;
+}
+
+// Function to find the farthest endpoint (first or last) of a LineString to the selected coordinate
+function findFarthestEndpoint(userLatLng, lineLatLngs) {
+    const firstPoint = L.latLng(lineLatLngs[0].lat, lineLatLngs[0].lng);
+    const lastPoint = L.latLng(lineLatLngs[lineLatLngs.length - 1].lat, lineLatLngs[lineLatLngs.length - 1].lng);
+
+    const distanceToFirst = calculateDistance(userLatLng, firstPoint);
+    const distanceToLast = calculateDistance(userLatLng, lastPoint);
+
+    // Return the farther endpoint
+    return distanceToFirst > distanceToLast ? firstPoint : lastPoint;
+}
+
+
+
+
+
+
+
+
+
+
+
+// Draggable marker to capture live coordinates
+var liveMarker = L.marker(map.getCenter(), { draggable: true, zIndexOffset: 1000 }).addTo(map);
+liveMarker.bindTooltip("Drag me to get coordinates").openTooltip();
+
+// Function to find the nearest path to the live coordinates
+function findNearestPath(latLng) {
+    let closestPathLayer = null;
+    let shortestDistance = Infinity;
+
+    // Iterate over each path layer to find the nearest path
+    pathLayers.forEach(layerObj => {
+        const lineCoords = layerObj.layer.getLatLngs();
+
+        // Loop through each segment in the LineString
+        for (let i = 0; i < lineCoords.length - 1; i++) {
+            const segmentStart = lineCoords[i];
+            const segmentEnd = lineCoords[i + 1];
+            const projectedPoint = projectOntoSegment(latLng, segmentStart, segmentEnd);
+            const distance = latLng.distanceTo(projectedPoint);
+
+            if (distance < shortestDistance) {
+                shortestDistance = distance;
+                closestPathLayer = layerObj;
+            }
+        }
+    });
+
+    return closestPathLayer;
+}
+
+// Update live coordinates and set coordSource3 and coordSource4 with the nearest endpoint and closest interpolated point
+liveMarker.on('move', function (e) {
+    const latLng = e.target.getLatLng();
+    document.getElementById('coordSource2').value = `${latLng.lat}, ${latLng.lng}`;
+
+    // Step 1: Find the nearest path to the live coordinates
+    const closestPathLayer = findNearestPath(latLng);
+
+    if (closestPathLayer) {
+        // Step 2: Interpolate points along the closest path
+        const lineCoords = closestPathLayer.layer.getLatLngs();
+        const interpolatedPoints = extractCoordinates(lineCoords, 1000); // Generates interpolated points along the path
+
+        // Step 3: Find the closest interpolated point to the live coordinate
+        const closestInterpolatedPoint = findClosestInterpolatedPoint(latLng, interpolatedPoints);
+
+        // Step 4: Find the nearest endpoint to the closest interpolated point
+        const nearestEndpoint = findNearestEndpoint(L.latLng(closestInterpolatedPoint[1], closestInterpolatedPoint[0]), lineCoords);
+
+        // Step 5: Update coordSource3 with the nearest endpoint coordinates
+        document.getElementById('coordSource').value = `${nearestEndpoint.lat}, ${nearestEndpoint.lng}`;
+
+        // Step 6: Update coordSource4 with the closest interpolated point coordinates
+        document.getElementById('coordSource4').value = `${closestInterpolatedPoint[1]}, ${closestInterpolatedPoint[0]}`;
+    } else {
+        document.getElementById('coordSource').value = ''; // Clear if no path is found
+        document.getElementById('coordSource4').value = ''; // Clear if no path is found
+    }
+});
+
+
+
+
+    </script>
+</body>
+</html>

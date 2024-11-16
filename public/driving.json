@@ -1,0 +1,4586 @@
+[
+    {
+        "point": "POINT 13",
+        "adjacent_point": "POINT 14",
+        "path": "path 1",
+        "distance": 126.1856285506808
+    },
+    {
+        "point": "POINT 13",
+        "adjacent_point": "POINT 18",
+        "path": "path 3.1",
+        "distance": 241.20594869186127
+    },
+    {
+        "point": "POINT 13",
+        "adjacent_point": "POINT 213",
+        "path": "path 176",
+        "distance": 12.891077510694089
+    },
+    {
+        "point": "POINT 14",
+        "adjacent_point": "POINT 13",
+        "path": "path 1",
+        "distance": 126.1856285506808
+    },
+    {
+        "point": "POINT 14",
+        "adjacent_point": "POINT 16",
+        "path": "path 177",
+        "distance": 42.132548363982664
+    },
+    {
+        "point": "POINT 14",
+        "adjacent_point": "POINT 215",
+        "path": "path 179",
+        "distance": 78.48392808700812
+    },
+    {
+        "point": "POINT 15",
+        "adjacent_point": "POINT 16",
+        "path": "path 2",
+        "distance": 63.169621800194584
+    },
+    {
+        "point": "POINT 15",
+        "adjacent_point": "POINT 17",
+        "path": "path 3",
+        "distance": 455.4213123370551
+    },
+    {
+        "point": "POINT 15",
+        "adjacent_point": "POINT 215",
+        "path": "path 180",
+        "distance": 25.001901581253698
+    },
+    {
+        "point": "POINT 16",
+        "adjacent_point": "POINT 15",
+        "path": "path 2",
+        "distance": 63.169621800194584
+    },
+    {
+        "point": "POINT 16",
+        "adjacent_point": "POINT 14",
+        "path": "path 177",
+        "distance": 42.132548363982664
+    },
+    {
+        "point": "POINT 16",
+        "adjacent_point": "POINT 214",
+        "path": "path 178",
+        "distance": 44.61127485926873
+    },
+    {
+        "point": "POINT 17",
+        "adjacent_point": "POINT 15",
+        "path": "path 3",
+        "distance": 455.4213123370551
+    },
+    {
+        "point": "POINT 17",
+        "adjacent_point": "POINT 216",
+        "path": "path 181",
+        "distance": 157.25296161967304
+    },
+    {
+        "point": "POINT 17",
+        "adjacent_point": "POINT 22",
+        "path": "path 186",
+        "distance": 238.6486144596107
+    },
+    {
+        "point": "POINT 18",
+        "adjacent_point": "POINT 13",
+        "path": "path 3.1",
+        "distance": 241.20594869186127
+    },
+    {
+        "point": "POINT 18",
+        "adjacent_point": "POINT 21",
+        "path": "path 5",
+        "distance": 56.0694362324279
+    },
+    {
+        "point": "POINT 18",
+        "adjacent_point": "POINT 19",
+        "path": "path 184",
+        "distance": 32.86841280848722
+    },
+    {
+        "point": "POINT 19",
+        "adjacent_point": "POINT 20",
+        "path": "path 4",
+        "distance": 24.04986515702356
+    },
+    {
+        "point": "POINT 19",
+        "adjacent_point": "POINT 216",
+        "path": "path 183",
+        "distance": 133.96034365204798
+    },
+    {
+        "point": "POINT 19",
+        "adjacent_point": "POINT 18",
+        "path": "path 184",
+        "distance": 32.86841280848722
+    },
+    {
+        "point": "POINT 19",
+        "adjacent_point": "POINT 21",
+        "path": "path 185",
+        "distance": 26.740443868953733
+    },
+    {
+        "point": "POINT 20",
+        "adjacent_point": "POINT 19",
+        "path": "path 4",
+        "distance": 24.04986515702356
+    },
+    {
+        "point": "POINT 21",
+        "adjacent_point": "POINT 18",
+        "path": "path 5",
+        "distance": 56.0694362324279
+    },
+    {
+        "point": "POINT 21",
+        "adjacent_point": "POINT 22",
+        "path": "path 6",
+        "distance": 323.26927050713283
+    },
+    {
+        "point": "POINT 21",
+        "adjacent_point": "POINT 19",
+        "path": "path 185",
+        "distance": 26.740443868953733
+    },
+    {
+        "point": "POINT 22",
+        "adjacent_point": "POINT 21",
+        "path": "path 6",
+        "distance": 323.26927050713283
+    },
+    {
+        "point": "POINT 22",
+        "adjacent_point": "POINT 17",
+        "path": "path 186",
+        "distance": 238.6486144596107
+    },
+    {
+        "point": "POINT 22",
+        "adjacent_point": "POINT 24",
+        "path": "path 187",
+        "distance": 49.94208050101145
+    },
+    {
+        "point": "POINT 23",
+        "adjacent_point": "POINT 24",
+        "path": "PATH 8",
+        "distance": 13.284275568740192
+    },
+    {
+        "point": "POINT 24",
+        "adjacent_point": "POINT 23",
+        "path": "PATH 8",
+        "distance": 13.284275568740192
+    },
+    {
+        "point": "POINT 24",
+        "adjacent_point": "POINT 22",
+        "path": "path 187",
+        "distance": 49.94208050101145
+    },
+    {
+        "point": "POINT 24",
+        "adjacent_point": "POINT 38",
+        "path": "path 188",
+        "distance": 71.96997693590669
+    },
+    {
+        "point": "POINT 25",
+        "adjacent_point": "POINT 26",
+        "path": "BIG PATH 2",
+        "distance": 9.517847288165234
+    },
+    {
+        "point": "POINT 26",
+        "adjacent_point": "POINT 25",
+        "path": "BIG PATH 2",
+        "distance": 9.517847288165234
+    },
+    {
+        "point": "POINT 26",
+        "adjacent_point": "POINT 38",
+        "path": "path 189",
+        "distance": 61.82303304823755
+    },
+    {
+        "point": "POINT 26",
+        "adjacent_point": "POINT 53",
+        "path": "path 190",
+        "distance": 42.572787372978325
+    },
+    {
+        "point": "POINT 27",
+        "adjacent_point": "POINT 28",
+        "path": "BIG PATH 3",
+        "distance": 37.53490389647183
+    },
+    {
+        "point": "POINT 27",
+        "adjacent_point": "POINT 53",
+        "path": "path 191",
+        "distance": 15.399809965837749
+    },
+    {
+        "point": "POINT 27",
+        "adjacent_point": "POINT 217",
+        "path": "path 192",
+        "distance": 50.49606906335107
+    },
+    {
+        "point": "POINT 28",
+        "adjacent_point": "POINT 27",
+        "path": "BIG PATH 3",
+        "distance": 37.53490389647183
+    },
+    {
+        "point": "POINT 30",
+        "adjacent_point": "POINT 243",
+        "path": "BIG PATH 4",
+        "distance": 34.76988732776644
+    },
+    {
+        "point": "POINT 30",
+        "adjacent_point": "POINT 32",
+        "path": "BIG PATH 5",
+        "distance": 61.34985934157844
+    },
+    {
+        "point": "POINT 32",
+        "adjacent_point": "POINT 30",
+        "path": "BIG PATH 5",
+        "distance": 61.34985934157844
+    },
+    {
+        "point": "POINT 33",
+        "adjacent_point": "POINT 34",
+        "path": "PATH 9",
+        "distance": 110.62149649187168
+    },
+    {
+        "point": "POINT 34",
+        "adjacent_point": "POINT 33",
+        "path": "PATH 9",
+        "distance": 110.62149649187168
+    },
+    {
+        "point": "POINT 34",
+        "adjacent_point": "POINT 35",
+        "path": "PATH 10",
+        "distance": 59.54359459875562
+    },
+    {
+        "point": "POINT 34",
+        "adjacent_point": "POINT 64",
+        "path": "path 355",
+        "distance": 89.45908467426122
+    },
+    {
+        "point": "POINT 35",
+        "adjacent_point": "POINT 34",
+        "path": "PATH 10",
+        "distance": 59.54359459875562
+    },
+    {
+        "point": "POINT 35",
+        "adjacent_point": "POINT 252",
+        "path": "path 240",
+        "distance": 58.180405483547645
+    },
+    {
+        "point": "POINT 35",
+        "adjacent_point": "POINT 36",
+        "path": "path 242",
+        "distance": 14.323169349986697
+    },
+    {
+        "point": "POINT 36",
+        "adjacent_point": "POINT 37",
+        "path": "PATH 11",
+        "distance": 74.09148399041797
+    },
+    {
+        "point": "POINT 36",
+        "adjacent_point": "POINT 35",
+        "path": "path 242",
+        "distance": 14.323169349986697
+    },
+    {
+        "point": "POINT 37",
+        "adjacent_point": "POINT 36",
+        "path": "PATH 11",
+        "distance": 74.09148399041797
+    },
+    {
+        "point": "POINT 37",
+        "adjacent_point": "POINT 50",
+        "path": "path 243",
+        "distance": 16.726890684130368
+    },
+    {
+        "point": "POINT 38",
+        "adjacent_point": "POINT 39",
+        "path": "PATH 11.1",
+        "distance": 48.393521017510125
+    },
+    {
+        "point": "POINT 38",
+        "adjacent_point": "POINT 24",
+        "path": "path 188",
+        "distance": 71.96997693590669
+    },
+    {
+        "point": "POINT 38",
+        "adjacent_point": "POINT 26",
+        "path": "path 189",
+        "distance": 61.82303304823755
+    },
+    {
+        "point": "POINT 38",
+        "adjacent_point": "POINT 254",
+        "path": "path 245",
+        "distance": 9.692240025458979
+    },
+    {
+        "point": "POINT 39",
+        "adjacent_point": "POINT 38",
+        "path": "PATH 11.1",
+        "distance": 48.393521017510125
+    },
+    {
+        "point": "POINT 39",
+        "adjacent_point": "POINT 244",
+        "path": "path 228",
+        "distance": 16.6836170936909
+    },
+    {
+        "point": "POINT 39",
+        "adjacent_point": "POINT 248",
+        "path": "path 235",
+        "distance": 26.58444046710038
+    },
+    {
+        "point": "POINT 40",
+        "adjacent_point": "POINT 41",
+        "path": "PATH 12",
+        "distance": 32.93153435198732
+    },
+    {
+        "point": "POINT 40",
+        "adjacent_point": "POINT 68",
+        "path": "PATH 31 FROM LIBRARY TO PARKING BEHIND LIBRARY",
+        "distance": 46.80683218235993
+    },
+    {
+        "point": "POINT 40",
+        "adjacent_point": "POINT 199",
+        "path": "path 164",
+        "distance": 20.243840525413116
+    },
+    {
+        "point": "POINT 41",
+        "adjacent_point": "POINT 40",
+        "path": "PATH 12",
+        "distance": 32.93153435198732
+    },
+    {
+        "point": "POINT 41",
+        "adjacent_point": "POINT 50",
+        "path": "PATH 17",
+        "distance": 16.515793205758523
+    },
+    {
+        "point": "POINT 41",
+        "adjacent_point": "POINT 203",
+        "path": "path 163",
+        "distance": 34.720402433035986
+    },
+    {
+        "point": "POINT 42",
+        "adjacent_point": "POINT 43",
+        "path": "PATH 13",
+        "distance": 68.21396438388304
+    },
+    {
+        "point": "POINT 42",
+        "adjacent_point": "POINT 59",
+        "path": "PATH 23",
+        "distance": 54.28251823177626
+    },
+    {
+        "point": "POINT 42",
+        "adjacent_point": "POINT 47",
+        "path": "PATH 157",
+        "distance": 2.873388319961221
+    },
+    {
+        "point": "POINT 43",
+        "adjacent_point": "POINT 42",
+        "path": "PATH 13",
+        "distance": 68.21396438388304
+    },
+    {
+        "point": "POINT 43",
+        "adjacent_point": "POINT 73",
+        "path": "PATH 156",
+        "distance": 3.401178719171172
+    },
+    {
+        "point": "POINT 43",
+        "adjacent_point": "POINT 59",
+        "path": "PATH 159",
+        "distance": 44.877090770886966
+    },
+    {
+        "point": "POINT 45",
+        "adjacent_point": "POINT 197",
+        "path": "PATH 14",
+        "distance": 37.42419406200937
+    },
+    {
+        "point": "POINT 45",
+        "adjacent_point": "POINT 61",
+        "path": "PATH 26",
+        "distance": 37.59016914194248
+    },
+    {
+        "point": "POINT 45",
+        "adjacent_point": "POINT 82",
+        "path": "PATH 40",
+        "distance": 51.63565495887335
+    },
+    {
+        "point": "POINT 45",
+        "adjacent_point": "POINT 195",
+        "path": "path 367",
+        "distance": 1.3800519453550968
+    },
+    {
+        "point": "POINT 46",
+        "adjacent_point": "POINT 47",
+        "path": "PATH 15",
+        "distance": 60.0118939769573
+    },
+    {
+        "point": "POINT 46",
+        "adjacent_point": "POINT 95",
+        "path": "PATH 154",
+        "distance": 0.8406373923747976
+    },
+    {
+        "point": "POINT 46",
+        "adjacent_point": "POINT 74",
+        "path": "PATH 155",
+        "distance": 29.832033445467793
+    },
+    {
+        "point": "POINT 47",
+        "adjacent_point": "POINT 46",
+        "path": "PATH 15",
+        "distance": 60.0118939769573
+    },
+    {
+        "point": "POINT 47",
+        "adjacent_point": "POINT 42",
+        "path": "PATH 157",
+        "distance": 2.873388319961221
+    },
+    {
+        "point": "POINT 47",
+        "adjacent_point": "POINT 199",
+        "path": "PATH 158",
+        "distance": 17.62000405539222
+    },
+    {
+        "point": "POINT 48",
+        "adjacent_point": "POINT 49",
+        "path": "PATH 16",
+        "distance": 32.34833520686274
+    },
+    {
+        "point": "POINT 48",
+        "adjacent_point": "POINT 51",
+        "path": "PATH 18",
+        "distance": 93.58601542174918
+    },
+    {
+        "point": "POINT 48",
+        "adjacent_point": "POINT 56",
+        "path": "path 167",
+        "distance": 36.358121443022576
+    },
+    {
+        "point": "POINT 49",
+        "adjacent_point": "POINT 48",
+        "path": "PATH 16",
+        "distance": 32.34833520686274
+    },
+    {
+        "point": "POINT 49",
+        "adjacent_point": "POINT 67",
+        "path": "PATH 30",
+        "distance": 20.728390553744894
+    },
+    {
+        "point": "POINT 49",
+        "adjacent_point": "POINT 204",
+        "path": "path 168",
+        "distance": 17.257899354119726
+    },
+    {
+        "point": "POINT 49",
+        "adjacent_point": "POINT 64",
+        "path": "path 354",
+        "distance": 25.42175386610091
+    },
+    {
+        "point": "POINT 50",
+        "adjacent_point": "POINT 41",
+        "path": "PATH 17",
+        "distance": 16.515793205758523
+    },
+    {
+        "point": "POINT 50",
+        "adjacent_point": "POINT 37",
+        "path": "path 243",
+        "distance": 16.726890684130368
+    },
+    {
+        "point": "POINT 51",
+        "adjacent_point": "POINT 48",
+        "path": "PATH 18",
+        "distance": 93.58601542174918
+    },
+    {
+        "point": "POINT 51",
+        "adjacent_point": "POINT 62",
+        "path": "PATH 28",
+        "distance": 30.697376546960193
+    },
+    {
+        "point": "POINT 51",
+        "adjacent_point": "POINT 70",
+        "path": "path 165",
+        "distance": 17.93048456616287
+    },
+    {
+        "point": "POINT 52",
+        "adjacent_point": "POINT 53",
+        "path": "PATH 19",
+        "distance": 22.327482294006494
+    },
+    {
+        "point": "POINT 52",
+        "adjacent_point": "POINT 233",
+        "path": "path 214",
+        "distance": 9.228618808161878
+    },
+    {
+        "point": "POINT 53",
+        "adjacent_point": "POINT 52",
+        "path": "PATH 19",
+        "distance": 22.327482294006494
+    },
+    {
+        "point": "POINT 53",
+        "adjacent_point": "POINT 26",
+        "path": "path 190",
+        "distance": 42.572787372978325
+    },
+    {
+        "point": "POINT 53",
+        "adjacent_point": "POINT 27",
+        "path": "path 191",
+        "distance": 15.399809965837749
+    },
+    {
+        "point": "POINT 54",
+        "adjacent_point": "POINT 55",
+        "path": "PATH 20",
+        "distance": 57.99937641099428
+    },
+    {
+        "point": "POINT 54",
+        "adjacent_point": "POINT 268",
+        "path": "path 263",
+        "distance": 5.4966195145775645
+    },
+    {
+        "point": "POINT 54",
+        "adjacent_point": "POINT 310",
+        "path": "path 357",
+        "distance": 7.671572424471591
+    },
+    {
+        "point": "POINT 55",
+        "adjacent_point": "POINT 54",
+        "path": "PATH 20",
+        "distance": 57.99937641099428
+    },
+    {
+        "point": "POINT 55",
+        "adjacent_point": "POINT 56",
+        "path": "PATH 21",
+        "distance": 15.259186938719564
+    },
+    {
+        "point": "POINT 55",
+        "adjacent_point": "POINT 265",
+        "path": "path 259",
+        "distance": 28.2437818815602
+    },
+    {
+        "point": "POINT 56",
+        "adjacent_point": "POINT 55",
+        "path": "PATH 21",
+        "distance": 15.259186938719564
+    },
+    {
+        "point": "POINT 56",
+        "adjacent_point": "POINT 48",
+        "path": "path 167",
+        "distance": 36.358121443022576
+    },
+    {
+        "point": "POINT 56",
+        "adjacent_point": "POINT 205",
+        "path": "Untitled path.1",
+        "distance": 25.129232935610172
+    },
+    {
+        "point": "POINT 56",
+        "adjacent_point": "POINT 310",
+        "path": "path 319",
+        "distance": 59.886069718041
+    },
+    {
+        "point": "POINT 57",
+        "adjacent_point": "POINT 58",
+        "path": "PATH 22",
+        "distance": 12.421115667773758
+    },
+    {
+        "point": "POINT 58",
+        "adjacent_point": "POINT 57",
+        "path": "PATH 22",
+        "distance": 12.421115667773758
+    },
+    {
+        "point": "POINT 58",
+        "adjacent_point": "POINT 267",
+        "path": "path 261",
+        "distance": 9.81679816761606
+    },
+    {
+        "point": "POINT 59",
+        "adjacent_point": "POINT 42",
+        "path": "PATH 23",
+        "distance": 54.28251823177626
+    },
+    {
+        "point": "POINT 59",
+        "adjacent_point": "POINT 60",
+        "path": "PATH 24",
+        "distance": 13.185793365807834
+    },
+    {
+        "point": "POINT 59",
+        "adjacent_point": "POINT 43",
+        "path": "PATH 159",
+        "distance": 44.877090770886966
+    },
+    {
+        "point": "POINT 60",
+        "adjacent_point": "POINT 59",
+        "path": "PATH 24",
+        "distance": 13.185793365807834
+    },
+    {
+        "point": "POINT 60",
+        "adjacent_point": "POINT 200",
+        "path": "PATH 160",
+        "distance": 15.12299092513332
+    },
+    {
+        "point": "POINT 60",
+        "adjacent_point": "POINT 201",
+        "path": "PATH 161",
+        "distance": 14.233608978479706
+    },
+    {
+        "point": "POINT 60",
+        "adjacent_point": "POINT 202",
+        "path": "path 162",
+        "distance": 11.879870098188404
+    },
+    {
+        "point": "POINT 61",
+        "adjacent_point": "POINT 45",
+        "path": "PATH 26",
+        "distance": 37.59016914194248
+    },
+    {
+        "point": "POINT 61",
+        "adjacent_point": "POINT 80",
+        "path": "PATH 38",
+        "distance": 31.687415637762527
+    },
+    {
+        "point": "POINT 61",
+        "adjacent_point": "POINT 81",
+        "path": "PATH 39",
+        "distance": 45.43424376656149
+    },
+    {
+        "point": "POINT 61",
+        "adjacent_point": "POINT 196",
+        "path": "PATH 148",
+        "distance": 38.36918844300806
+    },
+    {
+        "point": "POINT 62",
+        "adjacent_point": "POINT 51",
+        "path": "PATH 28",
+        "distance": 30.697376546960193
+    },
+    {
+        "point": "POINT 62",
+        "adjacent_point": "POINT 283",
+        "path": "path 282",
+        "distance": 4.3003640180491916
+    },
+    {
+        "point": "POINT 63",
+        "adjacent_point": "POINT 64",
+        "path": "PATH 29",
+        "distance": 4.132071084948471
+    },
+    {
+        "point": "POINT 63",
+        "adjacent_point": "POINT 251",
+        "path": "path 239",
+        "distance": 3.8956616957895966
+    },
+    {
+        "point": "POINT 64",
+        "adjacent_point": "POINT 63",
+        "path": "PATH 29",
+        "distance": 4.132071084948471
+    },
+    {
+        "point": "POINT 64",
+        "adjacent_point": "POINT 49",
+        "path": "path 354",
+        "distance": 25.42175386610091
+    },
+    {
+        "point": "POINT 64",
+        "adjacent_point": "POINT 34",
+        "path": "path 355",
+        "distance": 89.45908467426122
+    },
+    {
+        "point": "POINT 65",
+        "adjacent_point": "POINT 66",
+        "path": "PATH FROM SCIENCE COMPLEX TO SCIENCE COMPLEX PARKING",
+        "distance": 19.191190154773476
+    },
+    {
+        "point": "POINT 65",
+        "adjacent_point": "POINT 246",
+        "path": "path 231",
+        "distance": 3.281390023447431
+    },
+    {
+        "point": "POINT 66",
+        "adjacent_point": "POINT 65",
+        "path": "PATH FROM SCIENCE COMPLEX TO SCIENCE COMPLEX PARKING",
+        "distance": 19.191190154773476
+    },
+    {
+        "point": "POINT 66",
+        "adjacent_point": "POINT 251",
+        "path": "path 238",
+        "distance": 3.2467346519047062
+    },
+    {
+        "point": "POINT 67",
+        "adjacent_point": "POINT 49",
+        "path": "PATH 30",
+        "distance": 20.728390553744894
+    },
+    {
+        "point": "POINT 67",
+        "adjacent_point": "POINT 247",
+        "path": "path 233",
+        "distance": 2.2551377870534774
+    },
+    {
+        "point": "POINT 68",
+        "adjacent_point": "POINT 40",
+        "path": "PATH 31 FROM LIBRARY TO PARKING BEHIND LIBRARY",
+        "distance": 46.80683218235993
+    },
+    {
+        "point": "POINT 68",
+        "adjacent_point": "POINT 252",
+        "path": "path 241",
+        "distance": 19.61864321145685
+    },
+    {
+        "point": "POINT 69",
+        "adjacent_point": "POINT 70",
+        "path": "PATH 32",
+        "distance": 18.75121449315497
+    },
+    {
+        "point": "POINT 69",
+        "adjacent_point": "POINT 169",
+        "path": "PATH 1 AROUND AUDITORIUM",
+        "distance": 51.846915415744526
+    },
+    {
+        "point": "POINT 69",
+        "adjacent_point": "POINT 170",
+        "path": "PATH 2 AROUND AUDITORIUM",
+        "distance": 38.73094890836724
+    },
+    {
+        "point": "POINT 70",
+        "adjacent_point": "POINT 69",
+        "path": "PATH 32",
+        "distance": 18.75121449315497
+    },
+    {
+        "point": "POINT 70",
+        "adjacent_point": "POINT 51",
+        "path": "path 165",
+        "distance": 17.93048456616287
+    },
+    {
+        "point": "POINT 70",
+        "adjacent_point": "POINT 199",
+        "path": "path 166",
+        "distance": 23.631092302878738
+    },
+    {
+        "point": "POINT 71",
+        "adjacent_point": "POINT 72",
+        "path": "PATH 33",
+        "distance": 21.196009361441096
+    },
+    {
+        "point": "POINT 71",
+        "adjacent_point": "POINT 77",
+        "path": "PATH 36",
+        "distance": 23.56533897245162
+    },
+    {
+        "point": "POINT 71",
+        "adjacent_point": "POINT 293",
+        "path": "path 299",
+        "distance": 3.7020174461002093
+    },
+    {
+        "point": "POINT 72",
+        "adjacent_point": "POINT 71",
+        "path": "PATH 33",
+        "distance": 21.196009361441096
+    },
+    {
+        "point": "POINT 72",
+        "adjacent_point": "POINT 313",
+        "path": "path 326",
+        "distance": 3.597230895792186
+    },
+    {
+        "point": "POINT 73",
+        "adjacent_point": "POINT 74",
+        "path": "PATH 34",
+        "distance": 50.75190886342989
+    },
+    {
+        "point": "POINT 73",
+        "adjacent_point": "POINT 195",
+        "path": "PATH 147",
+        "distance": 31.732422684196134
+    },
+    {
+        "point": "POINT 73",
+        "adjacent_point": "POINT 197",
+        "path": "path 150",
+        "distance": 20.035706692077884
+    },
+    {
+        "point": "POINT 73",
+        "adjacent_point": "POINT 43",
+        "path": "PATH 156",
+        "distance": 3.401178719171172
+    },
+    {
+        "point": "POINT 74",
+        "adjacent_point": "POINT 73",
+        "path": "PATH 34",
+        "distance": 50.75190886342989
+    },
+    {
+        "point": "POINT 74",
+        "adjacent_point": "POINT 94",
+        "path": "PATH 46",
+        "distance": 22.44270435566418
+    },
+    {
+        "point": "POINT 74",
+        "adjacent_point": "POINT 46",
+        "path": "PATH 155",
+        "distance": 29.832033445467793
+    },
+    {
+        "point": "POINT 75",
+        "adjacent_point": "POINT 76",
+        "path": "PATH 35",
+        "distance": 39.579986268765786
+    },
+    {
+        "point": "POINT 75",
+        "adjacent_point": "POINT 93",
+        "path": "PATH 45.1",
+        "distance": 10.86108938411975
+    },
+    {
+        "point": "POINT 75",
+        "adjacent_point": "POINT 94",
+        "path": "path 152",
+        "distance": 23.21873627542096
+    },
+    {
+        "point": "POINT 76",
+        "adjacent_point": "POINT 75",
+        "path": "PATH 35",
+        "distance": 39.579986268765786
+    },
+    {
+        "point": "POINT 76",
+        "adjacent_point": "POINT 109",
+        "path": "PATH 55",
+        "distance": 22.67728146585334
+    },
+    {
+        "point": "POINT 76",
+        "adjacent_point": "POINT 197",
+        "path": "path 151",
+        "distance": 39.76029313052432
+    },
+    {
+        "point": "POINT 77",
+        "adjacent_point": "POINT 71",
+        "path": "PATH 36",
+        "distance": 23.56533897245162
+    },
+    {
+        "point": "POINT 77",
+        "adjacent_point": "POINT 110",
+        "path": "PATH 57",
+        "distance": 12.100511184468989
+    },
+    {
+        "point": "POINT 77",
+        "adjacent_point": "POINT 295",
+        "path": "path 298",
+        "distance": 12.94553972674936
+    },
+    {
+        "point": "POINT 78",
+        "adjacent_point": "POINT 79",
+        "path": "PATH 37",
+        "distance": 28.85344091940819
+    },
+    {
+        "point": "POINT 78",
+        "adjacent_point": "POINT 323",
+        "path": "path 342",
+        "distance": 10.423998883123375
+    },
+    {
+        "point": "POINT 79",
+        "adjacent_point": "POINT 78",
+        "path": "PATH 37",
+        "distance": 28.85344091940819
+    },
+    {
+        "point": "POINT 79",
+        "adjacent_point": "POINT 116",
+        "path": "path 304",
+        "distance": 20.86903238996173
+    },
+    {
+        "point": "POINT 79",
+        "adjacent_point": "POINT 104",
+        "path": "path 372",
+        "distance": 23.885890433054406
+    },
+    {
+        "point": "POINT 80",
+        "adjacent_point": "POINT 61",
+        "path": "PATH 38",
+        "distance": 31.687415637762527
+    },
+    {
+        "point": "POINT 80",
+        "adjacent_point": "POINT 137",
+        "path": "PATH 135",
+        "distance": 8.060318048649503
+    },
+    {
+        "point": "POINT 80",
+        "adjacent_point": "POINT 133",
+        "path": "PATH 136",
+        "distance": 25.46707770983285
+    },
+    {
+        "point": "POINT 81",
+        "adjacent_point": "POINT 61",
+        "path": "PATH 39",
+        "distance": 45.43424376656149
+    },
+    {
+        "point": "POINT 81",
+        "adjacent_point": "POINT 189",
+        "path": "PATH 139",
+        "distance": 49.318171808084664
+    },
+    {
+        "point": "POINT 81",
+        "adjacent_point": "POINT 90",
+        "path": "PATH 140",
+        "distance": 19.58843452136809
+    },
+    {
+        "point": "POINT 82",
+        "adjacent_point": "POINT 45",
+        "path": "PATH 40",
+        "distance": 51.63565495887335
+    },
+    {
+        "point": "POINT 82",
+        "adjacent_point": "POINT 92",
+        "path": "PATH 44.1",
+        "distance": 20.84945335756925
+    },
+    {
+        "point": "POINT 82",
+        "adjacent_point": "POINT 90",
+        "path": "path 366",
+        "distance": 8.242867830541412
+    },
+    {
+        "point": "POINT 83",
+        "adjacent_point": "POINT 84",
+        "path": "PATH 43",
+        "distance": 10.789164614488241
+    },
+    {
+        "point": "POINT 83",
+        "adjacent_point": "POINT 85",
+        "path": "PATH 44",
+        "distance": 56.56904341447055
+    },
+    {
+        "point": "POINT 83",
+        "adjacent_point": "POINT 187",
+        "path": "PATH 133",
+        "distance": 4.838312467219831
+    },
+    {
+        "point": "POINT 84",
+        "adjacent_point": "POINT 83",
+        "path": "PATH 43",
+        "distance": 10.789164614488241
+    },
+    {
+        "point": "POINT 84",
+        "adjacent_point": "POINT 332",
+        "path": "path 364",
+        "distance": 1.6272861068128852
+    },
+    {
+        "point": "POINT 85",
+        "adjacent_point": "POINT 83",
+        "path": "PATH 44",
+        "distance": 56.56904341447055
+    },
+    {
+        "point": "POINT 85",
+        "adjacent_point": "POINT 138",
+        "path": "PATH 78",
+        "distance": 20.513007957979518
+    },
+    {
+        "point": "POINT 85",
+        "adjacent_point": "POINT 186",
+        "path": "PATH 132",
+        "distance": 17.511737916862817
+    },
+    {
+        "point": "POINT 86",
+        "adjacent_point": "POINT 87",
+        "path": "PATH 45",
+        "distance": 111.98848558942805
+    },
+    {
+        "point": "POINT 86",
+        "adjacent_point": "POINT 128",
+        "path": "PATH 400",
+        "distance": 4.032728667862072
+    },
+    {
+        "point": "POINT 87",
+        "adjacent_point": "POINT 86",
+        "path": "PATH 45",
+        "distance": 111.98848558942805
+    },
+    {
+        "point": "POINT 87",
+        "adjacent_point": "POINT 119",
+        "path": "PATH 62.1",
+        "distance": 11.738503527092195
+    },
+    {
+        "point": "POINT 87",
+        "adjacent_point": "POINT 88",
+        "path": "PATH 63",
+        "distance": 13.831951976581424
+    },
+    {
+        "point": "POINT 87",
+        "adjacent_point": "POINT 125",
+        "path": "PATH 68",
+        "distance": 1.8433247217175477
+    },
+    {
+        "point": "POINT 88",
+        "adjacent_point": "POINT 89",
+        "path": "PATH 42",
+        "distance": 10.496267882062284
+    },
+    {
+        "point": "POINT 88",
+        "adjacent_point": "POINT 87",
+        "path": "PATH 63",
+        "distance": 13.831951976581424
+    },
+    {
+        "point": "POINT 88",
+        "adjacent_point": "POINT 175",
+        "path": "PATH 104",
+        "distance": 10.254064163405985
+    },
+    {
+        "point": "POINT 89",
+        "adjacent_point": "POINT 88",
+        "path": "PATH 42",
+        "distance": 10.496267882062284
+    },
+    {
+        "point": "POINT 89",
+        "adjacent_point": "POINT 334",
+        "path": "path 368",
+        "distance": 2.513084930083789
+    },
+    {
+        "point": "POINT 90",
+        "adjacent_point": "POINT 91",
+        "path": "PATH 43.1",
+        "distance": 20.46626572784103
+    },
+    {
+        "point": "POINT 90",
+        "adjacent_point": "POINT 176",
+        "path": "PATH 108",
+        "distance": 17.54409876293927
+    },
+    {
+        "point": "POINT 90",
+        "adjacent_point": "POINT 81",
+        "path": "PATH 140",
+        "distance": 19.58843452136809
+    },
+    {
+        "point": "POINT 90",
+        "adjacent_point": "POINT 82",
+        "path": "path 366",
+        "distance": 8.242867830541412
+    },
+    {
+        "point": "POINT 91",
+        "adjacent_point": "POINT 90",
+        "path": "PATH 43.1",
+        "distance": 20.46626572784103
+    },
+    {
+        "point": "POINT 92",
+        "adjacent_point": "POINT 82",
+        "path": "PATH 44.1",
+        "distance": 20.84945335756925
+    },
+    {
+        "point": "POINT 93",
+        "adjacent_point": "POINT 75",
+        "path": "PATH 45.1",
+        "distance": 10.86108938411975
+    },
+    {
+        "point": "POINT 93",
+        "adjacent_point": "POINT 297",
+        "path": "path 301",
+        "distance": 0.9565181193292441
+    },
+    {
+        "point": "POINT 94",
+        "adjacent_point": "POINT 74",
+        "path": "PATH 46",
+        "distance": 22.44270435566418
+    },
+    {
+        "point": "POINT 94",
+        "adjacent_point": "POINT 75",
+        "path": "path 152",
+        "distance": 23.21873627542096
+    },
+    {
+        "point": "POINT 94",
+        "adjacent_point": "POINT 291",
+        "path": "path 295",
+        "distance": 5.358242478410244
+    },
+    {
+        "point": "POINT 95",
+        "adjacent_point": "POINT 96",
+        "path": "PATH 47",
+        "distance": 25.689363963924343
+    },
+    {
+        "point": "POINT 95",
+        "adjacent_point": "POINT 198",
+        "path": "PATH 153",
+        "distance": 5.87773785451171
+    },
+    {
+        "point": "POINT 95",
+        "adjacent_point": "POINT 46",
+        "path": "PATH 154",
+        "distance": 0.8406373923747976
+    },
+    {
+        "point": "POINT 96",
+        "adjacent_point": "POINT 95",
+        "path": "PATH 47",
+        "distance": 25.689363963924343
+    },
+    {
+        "point": "POINT 96",
+        "adjacent_point": "POINT 290",
+        "path": "path 292",
+        "distance": 13.978589942097233
+    },
+    {
+        "point": "POINT 96",
+        "adjacent_point": "POINT 291",
+        "path": "path 293",
+        "distance": 9.782620007243132
+    },
+    {
+        "point": "POINT 96",
+        "adjacent_point": "POINT 293",
+        "path": "path 296",
+        "distance": 29.23080568722318
+    },
+    {
+        "point": "POINT 97",
+        "adjacent_point": "POINT 98",
+        "path": "PATH 48",
+        "distance": 28.274197002207345
+    },
+    {
+        "point": "POINT 97",
+        "adjacent_point": "POINT 208",
+        "path": "path 170",
+        "distance": 7.286952541167095
+    },
+    {
+        "point": "POINT 98",
+        "adjacent_point": "POINT 97",
+        "path": "PATH 48",
+        "distance": 28.274197002207345
+    },
+    {
+        "point": "POINT 98",
+        "adjacent_point": "POINT 209",
+        "path": "path 171",
+        "distance": 9.269713314343097
+    },
+    {
+        "point": "POINT 98",
+        "adjacent_point": "POINT 99",
+        "path": "path 172",
+        "distance": 8.852356181184074
+    },
+    {
+        "point": "POINT 99",
+        "adjacent_point": "POINT 100",
+        "path": "PATH 49",
+        "distance": 21.400546875771738
+    },
+    {
+        "point": "POINT 99",
+        "adjacent_point": "POINT 103",
+        "path": "PATH 52",
+        "distance": 14.670776599040979
+    },
+    {
+        "point": "POINT 99",
+        "adjacent_point": "POINT 98",
+        "path": "path 172",
+        "distance": 8.852356181184074
+    },
+    {
+        "point": "POINT 100",
+        "adjacent_point": "POINT 99",
+        "path": "PATH 49",
+        "distance": 21.400546875771738
+    },
+    {
+        "point": "POINT 100",
+        "adjacent_point": "POINT 102",
+        "path": "PATH 51",
+        "distance": 23.519884060203495
+    },
+    {
+        "point": "POINT 100",
+        "adjacent_point": "POINT 210",
+        "path": "path 173",
+        "distance": 5.59172289683229
+    },
+    {
+        "point": "POINT 101",
+        "adjacent_point": "POINT 102",
+        "path": "PATH 50",
+        "distance": 26.180849072514068
+    },
+    {
+        "point": "POINT 101",
+        "adjacent_point": "POINT 211",
+        "path": "path 174",
+        "distance": 7.499887295129368
+    },
+    {
+        "point": "POINT 102",
+        "adjacent_point": "POINT 101",
+        "path": "PATH 50",
+        "distance": 26.180849072514068
+    },
+    {
+        "point": "POINT 102",
+        "adjacent_point": "POINT 100",
+        "path": "PATH 51",
+        "distance": 23.519884060203495
+    },
+    {
+        "point": "POINT 102",
+        "adjacent_point": "POINT 212",
+        "path": "path 175",
+        "distance": 2.3372228128514454
+    },
+    {
+        "point": "POINT 103",
+        "adjacent_point": "POINT 99",
+        "path": "PATH 52",
+        "distance": 14.670776599040979
+    },
+    {
+        "point": "POINT 104",
+        "adjacent_point": "POINT 105",
+        "path": "PATH 53",
+        "distance": 13.757129483949967
+    },
+    {
+        "point": "POINT 104",
+        "adjacent_point": "POINT 301",
+        "path": "path 371",
+        "distance": 12.420253928672672
+    },
+    {
+        "point": "POINT 104",
+        "adjacent_point": "POINT 79",
+        "path": "path 372",
+        "distance": 23.885890433054406
+    },
+    {
+        "point": "POINT 105",
+        "adjacent_point": "POINT 104",
+        "path": "PATH 53",
+        "distance": 13.757129483949967
+    },
+    {
+        "point": "POINT 105",
+        "adjacent_point": "POINT 106",
+        "path": "PATH 54",
+        "distance": 6.298082122730024
+    },
+    {
+        "point": "POINT 105",
+        "adjacent_point": "POINT 108",
+        "path": "path 310",
+        "distance": 17.857086324083536
+    },
+    {
+        "point": "POINT 106",
+        "adjacent_point": "POINT 105",
+        "path": "PATH 54",
+        "distance": 6.298082122730024
+    },
+    {
+        "point": "POINT 108",
+        "adjacent_point": "POINT 109",
+        "path": "PATH 56",
+        "distance": 2.9913068361413235
+    },
+    {
+        "point": "POINT 108",
+        "adjacent_point": "POINT 299",
+        "path": "path 309",
+        "distance": 4.234839485278197
+    },
+    {
+        "point": "POINT 108",
+        "adjacent_point": "POINT 105",
+        "path": "path 310",
+        "distance": 17.857086324083536
+    },
+    {
+        "point": "POINT 109",
+        "adjacent_point": "POINT 76",
+        "path": "PATH 55",
+        "distance": 22.67728146585334
+    },
+    {
+        "point": "POINT 109",
+        "adjacent_point": "POINT 108",
+        "path": "PATH 56",
+        "distance": 2.9913068361413235
+    },
+    {
+        "point": "POINT 110",
+        "adjacent_point": "POINT 77",
+        "path": "PATH 57",
+        "distance": 12.100511184468989
+    },
+    {
+        "point": "POINT 110",
+        "adjacent_point": "POINT 296",
+        "path": "path 300",
+        "distance": 2.900521108639224
+    },
+    {
+        "point": "POINT 110",
+        "adjacent_point": "POINT 300",
+        "path": "path 306",
+        "distance": 6.59836050265376
+    },
+    {
+        "point": "POINT 111",
+        "adjacent_point": "POINT 112",
+        "path": "PATH 58",
+        "distance": 0.4023489597270726
+    },
+    {
+        "point": "POINT 111",
+        "adjacent_point": "POINT 115",
+        "path": "PATH 60",
+        "distance": 18.099461958985632
+    },
+    {
+        "point": "POINT 111",
+        "adjacent_point": "POINT 300",
+        "path": "path 308",
+        "distance": 0.8646017961760167
+    },
+    {
+        "point": "POINT 112",
+        "adjacent_point": "POINT 111",
+        "path": "PATH 58",
+        "distance": 0.4023489597270726
+    },
+    {
+        "point": "POINT 113",
+        "adjacent_point": "POINT 114",
+        "path": "PATH 59",
+        "distance": 0.32953476573850055
+    },
+    {
+        "point": "POINT 113",
+        "adjacent_point": "POINT 300",
+        "path": "path 305",
+        "distance": 4.283807686039552
+    },
+    {
+        "point": "POINT 113",
+        "adjacent_point": "POINT 116",
+        "path": "path 307",
+        "distance": 18.434425494509686
+    },
+    {
+        "point": "POINT 114",
+        "adjacent_point": "POINT 113",
+        "path": "PATH 59",
+        "distance": 0.32953476573850055
+    },
+    {
+        "point": "POINT 115",
+        "adjacent_point": "POINT 111",
+        "path": "PATH 60",
+        "distance": 18.099461958985632
+    },
+    {
+        "point": "POINT 115",
+        "adjacent_point": "POINT 116",
+        "path": "path 373",
+        "distance": 5.599179989698101
+    },
+    {
+        "point": "POINT 116",
+        "adjacent_point": "POINT 117",
+        "path": "PATH 61",
+        "distance": 9.61719522178357
+    },
+    {
+        "point": "POINT 116",
+        "adjacent_point": "POINT 79",
+        "path": "path 304",
+        "distance": 20.86903238996173
+    },
+    {
+        "point": "POINT 116",
+        "adjacent_point": "POINT 113",
+        "path": "path 307",
+        "distance": 18.434425494509686
+    },
+    {
+        "point": "POINT 116",
+        "adjacent_point": "POINT 115",
+        "path": "path 373",
+        "distance": 5.599179989698101
+    },
+    {
+        "point": "POINT 117",
+        "adjacent_point": "POINT 116",
+        "path": "PATH 61",
+        "distance": 9.61719522178357
+    },
+    {
+        "point": "POINT 117",
+        "adjacent_point": "POINT 118",
+        "path": "PATH 62",
+        "distance": 1.3067997683382853
+    },
+    {
+        "point": "POINT 117",
+        "adjacent_point": "POINT 299",
+        "path": "path 303",
+        "distance": 7.914542967284238
+    },
+    {
+        "point": "POINT 118",
+        "adjacent_point": "POINT 117",
+        "path": "PATH 62",
+        "distance": 1.3067997683382853
+    },
+    {
+        "point": "POINT 119",
+        "adjacent_point": "POINT 87",
+        "path": "PATH 62.1",
+        "distance": 11.738503527092195
+    },
+    {
+        "point": "POINT 119",
+        "adjacent_point": "POINT 171",
+        "path": "path 101",
+        "distance": 5.670097876560544
+    },
+    {
+        "point": "POINT 120",
+        "adjacent_point": "POINT 121",
+        "path": "PATH 64",
+        "distance": 9.943139594643295
+    },
+    {
+        "point": "POINT 120",
+        "adjacent_point": "POINT 123",
+        "path": "PATH 67",
+        "distance": 46.944592115641235
+    },
+    {
+        "point": "POINT 120",
+        "adjacent_point": "POINT 190",
+        "path": "PATH 142",
+        "distance": 6.720867668480002
+    },
+    {
+        "point": "POINT 121",
+        "adjacent_point": "POINT 120",
+        "path": "PATH 64",
+        "distance": 9.943139594643295
+    },
+    {
+        "point": "POINT 121",
+        "adjacent_point": "POINT 122",
+        "path": "PATH 65",
+        "distance": 16.606106894787974
+    },
+    {
+        "point": "POINT 121",
+        "adjacent_point": "POINT 176",
+        "path": "PATH 141",
+        "distance": 24.944025763889858
+    },
+    {
+        "point": "POINT 122",
+        "adjacent_point": "POINT 121",
+        "path": "PATH 65",
+        "distance": 16.606106894787974
+    },
+    {
+        "point": "POINT 122",
+        "adjacent_point": "POINT 191",
+        "path": "PATH 143",
+        "distance": 3.331999626471044
+    },
+    {
+        "point": "POINT 123",
+        "adjacent_point": "POINT 124",
+        "path": "PATH 66",
+        "distance": 43.375571561477244
+    },
+    {
+        "point": "POINT 123",
+        "adjacent_point": "POINT 120",
+        "path": "PATH 67",
+        "distance": 46.944592115641235
+    },
+    {
+        "point": "POINT 123",
+        "adjacent_point": "POINT 303",
+        "path": "path 318",
+        "distance": 6.980233475410655
+    },
+    {
+        "point": "POINT 124",
+        "adjacent_point": "POINT 123",
+        "path": "PATH 66",
+        "distance": 43.375571561477244
+    },
+    {
+        "point": "POINT 124",
+        "adjacent_point": "POINT 191",
+        "path": "path 149",
+        "distance": 6.940661175907441
+    },
+    {
+        "point": "POINT 124",
+        "adjacent_point": "POINT 192",
+        "path": "path 375",
+        "distance": 15.793040898539425
+    },
+    {
+        "point": "POINT 125",
+        "adjacent_point": "POINT 87",
+        "path": "PATH 68",
+        "distance": 1.8433247217175477
+    },
+    {
+        "point": "POINT 126",
+        "adjacent_point": "POINT 127",
+        "path": "PARKING LINE NEAR ADMIN PARKING",
+        "distance": 55.51090045388992
+    },
+    {
+        "point": "POINT 127",
+        "adjacent_point": "POINT 126",
+        "path": "PARKING LINE NEAR ADMIN PARKING",
+        "distance": 55.51090045388992
+    },
+    {
+        "point": "POINT 128",
+        "adjacent_point": "POINT 129",
+        "path": "PATH 69",
+        "distance": 77.66212788559679
+    },
+    {
+        "point": "POINT 128",
+        "adjacent_point": "POINT 86",
+        "path": "PATH 400",
+        "distance": 4.032728667862072
+    },
+    {
+        "point": "POINT 129",
+        "adjacent_point": "POINT 128",
+        "path": "PATH 69",
+        "distance": 77.66212788559679
+    },
+    {
+        "point": "POINT 129",
+        "adjacent_point": "POINT 167",
+        "path": "PATH 99",
+        "distance": 15.783158420578182
+    },
+    {
+        "point": "POINT 129",
+        "adjacent_point": "POINT 166",
+        "path": "PATH 113",
+        "distance": 8.071778946836838
+    },
+    {
+        "point": "POINT 130",
+        "adjacent_point": "POINT 131",
+        "path": "PATH 70",
+        "distance": 4.462076758666592
+    },
+    {
+        "point": "POINT 130",
+        "adjacent_point": "POINT 132",
+        "path": "PATH 71",
+        "distance": 10.279844089933945
+    },
+    {
+        "point": "POINT 130",
+        "adjacent_point": "POINT 134",
+        "path": "PATH 73",
+        "distance": 4.516458808591344
+    },
+    {
+        "point": "POINT 131",
+        "adjacent_point": "POINT 130",
+        "path": "PATH 70",
+        "distance": 4.462076758666592
+    },
+    {
+        "point": "POINT 132",
+        "adjacent_point": "POINT 130",
+        "path": "PATH 71",
+        "distance": 10.279844089933945
+    },
+    {
+        "point": "POINT 132",
+        "adjacent_point": "POINT 133",
+        "path": "PATH 72",
+        "distance": 0.8471829578071343
+    },
+    {
+        "point": "POINT 132",
+        "adjacent_point": "POINT 189",
+        "path": "PATH 138",
+        "distance": 0.8695536479583451
+    },
+    {
+        "point": "POINT 133",
+        "adjacent_point": "POINT 132",
+        "path": "PATH 72",
+        "distance": 0.8471829578071343
+    },
+    {
+        "point": "POINT 133",
+        "adjacent_point": "POINT 80",
+        "path": "PATH 136",
+        "distance": 25.46707770983285
+    },
+    {
+        "point": "POINT 133",
+        "adjacent_point": "POINT 189",
+        "path": "PATH 137",
+        "distance": 0.7584133504377959
+    },
+    {
+        "point": "POINT 134",
+        "adjacent_point": "POINT 130",
+        "path": "PATH 73",
+        "distance": 4.516458808591344
+    },
+    {
+        "point": "POINT 134",
+        "adjacent_point": "POINT 136",
+        "path": "PATH 76",
+        "distance": 12.315564136010234
+    },
+    {
+        "point": "POINT 134",
+        "adjacent_point": "POINT 183",
+        "path": "path 20.1",
+        "distance": 5.752424054778078
+    },
+    {
+        "point": "POINT 135",
+        "adjacent_point": "POINT 136",
+        "path": "PATH 75",
+        "distance": 6.208877036185485
+    },
+    {
+        "point": "POINT 136",
+        "adjacent_point": "POINT 135",
+        "path": "PATH 75",
+        "distance": 6.208877036185485
+    },
+    {
+        "point": "POINT 136",
+        "adjacent_point": "POINT 134",
+        "path": "PATH 76",
+        "distance": 12.315564136010234
+    },
+    {
+        "point": "POINT 136",
+        "adjacent_point": "POINT 146",
+        "path": "PATH 78.1",
+        "distance": 20.423167856778385
+    },
+    {
+        "point": "POINT 136",
+        "adjacent_point": "POINT 150",
+        "path": "PATH 126.1",
+        "distance": 10.68399215627123
+    },
+    {
+        "point": "POINT 137",
+        "adjacent_point": "POINT 138",
+        "path": "PATH 77",
+        "distance": 20.661283135158097
+    },
+    {
+        "point": "POINT 137",
+        "adjacent_point": "POINT 188",
+        "path": "PATH 134",
+        "distance": 3.9537742853251143
+    },
+    {
+        "point": "POINT 137",
+        "adjacent_point": "POINT 80",
+        "path": "PATH 135",
+        "distance": 8.060318048649503
+    },
+    {
+        "point": "POINT 138",
+        "adjacent_point": "POINT 137",
+        "path": "PATH 77",
+        "distance": 20.661283135158097
+    },
+    {
+        "point": "POINT 138",
+        "adjacent_point": "POINT 85",
+        "path": "PATH 78",
+        "distance": 20.513007957979518
+    },
+    {
+        "point": "POINT 138",
+        "adjacent_point": "POINT 184",
+        "path": "PATH 131",
+        "distance": 1.4913017561575885
+    },
+    {
+        "point": "POINT 139",
+        "adjacent_point": "POINT 140",
+        "path": "PATH 79",
+        "distance": 16.98002664899053
+    },
+    {
+        "point": "POINT 139",
+        "adjacent_point": "POINT 141",
+        "path": "PATH 80",
+        "distance": 12.392263750259527
+    },
+    {
+        "point": "POINT 139",
+        "adjacent_point": "POINT 184",
+        "path": "PATH 129",
+        "distance": 4.437346799190807
+    },
+    {
+        "point": "POINT 140",
+        "adjacent_point": "POINT 139",
+        "path": "PATH 79",
+        "distance": 16.98002664899053
+    },
+    {
+        "point": "POINT 140",
+        "adjacent_point": "POINT 328",
+        "path": "path 361",
+        "distance": 1.8441833262082001
+    },
+    {
+        "point": "POINT 141",
+        "adjacent_point": "POINT 139",
+        "path": "PATH 80",
+        "distance": 12.392263750259527
+    },
+    {
+        "point": "POINT 141",
+        "adjacent_point": "POINT 142",
+        "path": "PATH 81",
+        "distance": 12.133608786867178
+    },
+    {
+        "point": "POINT 141",
+        "adjacent_point": "POINT 330",
+        "path": "path 374",
+        "distance": 13.477339331311768
+    },
+    {
+        "point": "POINT 142",
+        "adjacent_point": "POINT 141",
+        "path": "PATH 81",
+        "distance": 12.133608786867178
+    },
+    {
+        "point": "POINT 142",
+        "adjacent_point": "POINT 145",
+        "path": "PATH 83",
+        "distance": 2.7683307546670206
+    },
+    {
+        "point": "POINT 142",
+        "adjacent_point": "POINT 150",
+        "path": "PATH 127",
+        "distance": 2.556904462241226
+    },
+    {
+        "point": "POINT 143",
+        "adjacent_point": "POINT 144",
+        "path": "PATH 82",
+        "distance": 4.900735368969469
+    },
+    {
+        "point": "POINT 143",
+        "adjacent_point": "POINT 148",
+        "path": "PATH 122",
+        "distance": 5.057641456140532
+    },
+    {
+        "point": "POINT 143",
+        "adjacent_point": "POINT 151",
+        "path": "PATH 122.1",
+        "distance": 4.1673724442061175
+    },
+    {
+        "point": "POINT 144",
+        "adjacent_point": "POINT 143",
+        "path": "PATH 82",
+        "distance": 4.900735368969469
+    },
+    {
+        "point": "POINT 145",
+        "adjacent_point": "POINT 142",
+        "path": "PATH 83",
+        "distance": 2.7683307546670206
+    },
+    {
+        "point": "POINT 146",
+        "adjacent_point": "POINT 136",
+        "path": "PATH 78.1",
+        "distance": 20.423167856778385
+    },
+    {
+        "point": "POINT 146",
+        "adjacent_point": "POINT 149",
+        "path": "PATH 80.1",
+        "distance": 4.359281500204541
+    },
+    {
+        "point": "POINT 146",
+        "adjacent_point": "POINT 153",
+        "path": "PATH 124.1",
+        "distance": 3.619974767546089
+    },
+    {
+        "point": "POINT 147",
+        "adjacent_point": "POINT 148",
+        "path": "PATH 79.1",
+        "distance": 5.512762913625952
+    },
+    {
+        "point": "POINT 148",
+        "adjacent_point": "POINT 147",
+        "path": "PATH 79.1",
+        "distance": 5.512762913625952
+    },
+    {
+        "point": "POINT 148",
+        "adjacent_point": "POINT 161",
+        "path": "PATH 121",
+        "distance": 12.35465052633985
+    },
+    {
+        "point": "POINT 148",
+        "adjacent_point": "POINT 143",
+        "path": "PATH 122",
+        "distance": 5.057641456140532
+    },
+    {
+        "point": "POINT 149",
+        "adjacent_point": "POINT 146",
+        "path": "PATH 80.1",
+        "distance": 4.359281500204541
+    },
+    {
+        "point": "POINT 150",
+        "adjacent_point": "POINT 151",
+        "path": "PATH 83.1",
+        "distance": 7.299195372203107
+    },
+    {
+        "point": "POINT 150",
+        "adjacent_point": "POINT 181",
+        "path": "PATH 126",
+        "distance": 5.291823535105139
+    },
+    {
+        "point": "POINT 150",
+        "adjacent_point": "POINT 136",
+        "path": "PATH 126.1",
+        "distance": 10.68399215627123
+    },
+    {
+        "point": "POINT 150",
+        "adjacent_point": "POINT 142",
+        "path": "PATH 127",
+        "distance": 2.556904462241226
+    },
+    {
+        "point": "POINT 151",
+        "adjacent_point": "POINT 150",
+        "path": "PATH 83.1",
+        "distance": 7.299195372203107
+    },
+    {
+        "point": "POINT 151",
+        "adjacent_point": "POINT 143",
+        "path": "PATH 122.1",
+        "distance": 4.1673724442061175
+    },
+    {
+        "point": "POINT 151",
+        "adjacent_point": "POINT 181",
+        "path": "PATH 124",
+        "distance": 4.954732516693504
+    },
+    {
+        "point": "POINT 152",
+        "adjacent_point": "POINT 153",
+        "path": "PATH 84",
+        "distance": 14.631879709611923
+    },
+    {
+        "point": "POINT 152",
+        "adjacent_point": "POINT 161",
+        "path": "path  91",
+        "distance": 4.520263453561632
+    },
+    {
+        "point": "POINT 152",
+        "adjacent_point": "POINT 162",
+        "path": "PATH 120",
+        "distance": 2.5883352995437954
+    },
+    {
+        "point": "POINT 153",
+        "adjacent_point": "POINT 152",
+        "path": "PATH 84",
+        "distance": 14.631879709611923
+    },
+    {
+        "point": "POINT 153",
+        "adjacent_point": "POINT 177",
+        "path": "PATH 115",
+        "distance": 13.846931747214551
+    },
+    {
+        "point": "POINT 153",
+        "adjacent_point": "POINT 146",
+        "path": "PATH 124.1",
+        "distance": 3.619974767546089
+    },
+    {
+        "point": "POINT 154",
+        "adjacent_point": "POINT 155",
+        "path": "PATH 85",
+        "distance": 22.362699340053478
+    },
+    {
+        "point": "POINT 154",
+        "adjacent_point": "POINT 156",
+        "path": "PATH 86",
+        "distance": 4.922149937676557
+    },
+    {
+        "point": "POINT 154",
+        "adjacent_point": "POINT 158",
+        "path": "PATH 111",
+        "distance": 16.16943404938078
+    },
+    {
+        "point": "POINT 155",
+        "adjacent_point": "POINT 154",
+        "path": "PATH 85",
+        "distance": 22.362699340053478
+    },
+    {
+        "point": "POINT 155",
+        "adjacent_point": "POINT 166",
+        "path": "PATH 97",
+        "distance": 19.9125082609752
+    },
+    {
+        "point": "POINT 155",
+        "adjacent_point": "POINT 177",
+        "path": "PATH 114",
+        "distance": 11.42172475064
+    },
+    {
+        "point": "POINT 156",
+        "adjacent_point": "POINT 154",
+        "path": "PATH 86",
+        "distance": 4.922149937676557
+    },
+    {
+        "point": "POINT 157",
+        "adjacent_point": "POINT 158",
+        "path": "PATH 87",
+        "distance": 10.151303084726782
+    },
+    {
+        "point": "POINT 158",
+        "adjacent_point": "POINT 157",
+        "path": "PATH 87",
+        "distance": 10.151303084726782
+    },
+    {
+        "point": "POINT 158",
+        "adjacent_point": "POINT 175",
+        "path": "PATH 110",
+        "distance": 18.52301345881009
+    },
+    {
+        "point": "POINT 158",
+        "adjacent_point": "POINT 154",
+        "path": "PATH 111",
+        "distance": 16.16943404938078
+    },
+    {
+        "point": "POINT 159",
+        "adjacent_point": "POINT 160",
+        "path": "PATH 88",
+        "distance": 7.063843370960255
+    },
+    {
+        "point": "POINT 159",
+        "adjacent_point": "POINT 175",
+        "path": "PATH 105",
+        "distance": 11.085413045630933
+    },
+    {
+        "point": "POINT 159",
+        "adjacent_point": "POINT 176",
+        "path": "PATH 106",
+        "distance": 5.693535868117779
+    },
+    {
+        "point": "POINT 160",
+        "adjacent_point": "POINT 159",
+        "path": "PATH 88",
+        "distance": 7.063843370960255
+    },
+    {
+        "point": "POINT 161",
+        "adjacent_point": "POINT 152",
+        "path": "path  91",
+        "distance": 4.520263453561632
+    },
+    {
+        "point": "POINT 161",
+        "adjacent_point": "POINT 179",
+        "path": "PATH 117",
+        "distance": 10.144489558185182
+    },
+    {
+        "point": "POINT 161",
+        "adjacent_point": "POINT 148",
+        "path": "PATH 121",
+        "distance": 12.35465052633985
+    },
+    {
+        "point": "POINT 162",
+        "adjacent_point": "POINT 163",
+        "path": "path 92",
+        "distance": 11.102463439043753
+    },
+    {
+        "point": "POINT 162",
+        "adjacent_point": "POINT 178",
+        "path": "PATH 116",
+        "distance": 13.317481446903743
+    },
+    {
+        "point": "POINT 162",
+        "adjacent_point": "POINT 152",
+        "path": "PATH 120",
+        "distance": 2.5883352995437954
+    },
+    {
+        "point": "POINT 163",
+        "adjacent_point": "POINT 162",
+        "path": "path 92",
+        "distance": 11.102463439043753
+    },
+    {
+        "point": "POINT 163",
+        "adjacent_point": "POINT 164",
+        "path": "path 94",
+        "distance": 4.956737691200757
+    },
+    {
+        "point": "POINT 163",
+        "adjacent_point": "POINT 165",
+        "path": "PATH 96",
+        "distance": 6.374903817501293
+    },
+    {
+        "point": "POINT 163",
+        "adjacent_point": "POINT 180",
+        "path": "PATH 120.1",
+        "distance": 1.045467057762179
+    },
+    {
+        "point": "POINT 164",
+        "adjacent_point": "POINT 163",
+        "path": "path 94",
+        "distance": 4.956737691200757
+    },
+    {
+        "point": "POINT 164",
+        "adjacent_point": "POINT 165",
+        "path": "path 95",
+        "distance": 4.085764409096143
+    },
+    {
+        "point": "POINT 164",
+        "adjacent_point": "POINT 178",
+        "path": "PATH 116.1",
+        "distance": 2.2319423054911915
+    },
+    {
+        "point": "POINT 165",
+        "adjacent_point": "POINT 164",
+        "path": "path 95",
+        "distance": 4.085764409096143
+    },
+    {
+        "point": "POINT 165",
+        "adjacent_point": "POINT 163",
+        "path": "PATH 96",
+        "distance": 6.374903817501293
+    },
+    {
+        "point": "POINT 166",
+        "adjacent_point": "POINT 155",
+        "path": "PATH 97",
+        "distance": 19.9125082609752
+    },
+    {
+        "point": "POINT 166",
+        "adjacent_point": "POINT 168",
+        "path": "PATH 100",
+        "distance": 17.985223525066697
+    },
+    {
+        "point": "POINT 166",
+        "adjacent_point": "POINT 129",
+        "path": "PATH 113",
+        "distance": 8.071778946836838
+    },
+    {
+        "point": "POINT 167",
+        "adjacent_point": "POINT 129",
+        "path": "PATH 99",
+        "distance": 15.783158420578182
+    },
+    {
+        "point": "POINT 168",
+        "adjacent_point": "POINT 166",
+        "path": "PATH 100",
+        "distance": 17.985223525066697
+    },
+    {
+        "point": "POINT 169",
+        "adjacent_point": "POINT 69",
+        "path": "PATH 1 AROUND AUDITORIUM",
+        "distance": 51.846915415744526
+    },
+    {
+        "point": "POINT 169",
+        "adjacent_point": "POINT 286",
+        "path": "path 286",
+        "distance": 4.542228333808516
+    },
+    {
+        "point": "POINT 169",
+        "adjacent_point": "POINT 170",
+        "path": "path 348",
+        "distance": 29.36427858236018
+    },
+    {
+        "point": "POINT 170",
+        "adjacent_point": "POINT 69",
+        "path": "PATH 2 AROUND AUDITORIUM",
+        "distance": 38.73094890836724
+    },
+    {
+        "point": "POINT 170",
+        "adjacent_point": "POINT 169",
+        "path": "path 348",
+        "distance": 29.36427858236018
+    },
+    {
+        "point": "POINT 170",
+        "adjacent_point": "POINT 198",
+        "path": "path 358",
+        "distance": 2.5828830879975713
+    },
+    {
+        "point": "POINT 171",
+        "adjacent_point": "POINT 119",
+        "path": "path 101",
+        "distance": 5.670097876560544
+    },
+    {
+        "point": "POINT 171",
+        "adjacent_point": "POINT 172",
+        "path": "PATH 102",
+        "distance": 5.970585829968432
+    },
+    {
+        "point": "POINT 171",
+        "adjacent_point": "POINT 173",
+        "path": "PATH 103",
+        "distance": 55.75442943080414
+    },
+    {
+        "point": "POINT 171",
+        "adjacent_point": "POINT 191",
+        "path": "PATH 144",
+        "distance": 34.55198868189851
+    },
+    {
+        "point": "POINT 172",
+        "adjacent_point": "POINT 171",
+        "path": "PATH 102",
+        "distance": 5.970585829968432
+    },
+    {
+        "point": "POINT 173",
+        "adjacent_point": "POINT 171",
+        "path": "PATH 103",
+        "distance": 55.75442943080414
+    },
+    {
+        "point": "POINT 173",
+        "adjacent_point": "POINT 335",
+        "path": "path 369",
+        "distance": 46.00617062596834
+    },
+    {
+        "point": "POINT 173",
+        "adjacent_point": "POINT 193",
+        "path": "path 376",
+        "distance": 16.145528149237993
+    },
+    {
+        "point": "POINT 175",
+        "adjacent_point": "POINT 88",
+        "path": "PATH 104",
+        "distance": 10.254064163405985
+    },
+    {
+        "point": "POINT 175",
+        "adjacent_point": "POINT 159",
+        "path": "PATH 105",
+        "distance": 11.085413045630933
+    },
+    {
+        "point": "POINT 175",
+        "adjacent_point": "POINT 158",
+        "path": "PATH 110",
+        "distance": 18.52301345881009
+    },
+    {
+        "point": "POINT 176",
+        "adjacent_point": "POINT 159",
+        "path": "PATH 106",
+        "distance": 5.693535868117779
+    },
+    {
+        "point": "POINT 176",
+        "adjacent_point": "POINT 90",
+        "path": "PATH 108",
+        "distance": 17.54409876293927
+    },
+    {
+        "point": "POINT 176",
+        "adjacent_point": "POINT 121",
+        "path": "PATH 141",
+        "distance": 24.944025763889858
+    },
+    {
+        "point": "POINT 177",
+        "adjacent_point": "POINT 155",
+        "path": "PATH 114",
+        "distance": 11.42172475064
+    },
+    {
+        "point": "POINT 177",
+        "adjacent_point": "POINT 153",
+        "path": "PATH 115",
+        "distance": 13.846931747214551
+    },
+    {
+        "point": "POINT 177",
+        "adjacent_point": "POINT 178",
+        "path": "PATH 115.1",
+        "distance": 5.328454233913058
+    },
+    {
+        "point": "POINT 178",
+        "adjacent_point": "POINT 177",
+        "path": "PATH 115.1",
+        "distance": 5.328454233913058
+    },
+    {
+        "point": "POINT 178",
+        "adjacent_point": "POINT 162",
+        "path": "PATH 116",
+        "distance": 13.317481446903743
+    },
+    {
+        "point": "POINT 178",
+        "adjacent_point": "POINT 164",
+        "path": "PATH 116.1",
+        "distance": 2.2319423054911915
+    },
+    {
+        "point": "POINT 179",
+        "adjacent_point": "POINT 161",
+        "path": "PATH 117",
+        "distance": 10.144489558185182
+    },
+    {
+        "point": "POINT 180",
+        "adjacent_point": "POINT 163",
+        "path": "PATH 120.1",
+        "distance": 1.045467057762179
+    },
+    {
+        "point": "POINT 181",
+        "adjacent_point": "POINT 151",
+        "path": "PATH 124",
+        "distance": 4.954732516693504
+    },
+    {
+        "point": "POINT 181",
+        "adjacent_point": "POINT 182",
+        "path": "PATH 125",
+        "distance": 7.5597571423292695
+    },
+    {
+        "point": "POINT 181",
+        "adjacent_point": "POINT 150",
+        "path": "PATH 126",
+        "distance": 5.291823535105139
+    },
+    {
+        "point": "POINT 182",
+        "adjacent_point": "POINT 181",
+        "path": "PATH 125",
+        "distance": 7.5597571423292695
+    },
+    {
+        "point": "POINT 182",
+        "adjacent_point": "POINT 333",
+        "path": "path 365",
+        "distance": 2.8170709789587485
+    },
+    {
+        "point": "POINT 183",
+        "adjacent_point": "POINT 134",
+        "path": "path 20.1",
+        "distance": 5.752424054778078
+    },
+    {
+        "point": "POINT 184",
+        "adjacent_point": "POINT 139",
+        "path": "PATH 129",
+        "distance": 4.437346799190807
+    },
+    {
+        "point": "POINT 184",
+        "adjacent_point": "POINT 185",
+        "path": "PATH 130",
+        "distance": 17.14544884830722
+    },
+    {
+        "point": "POINT 184",
+        "adjacent_point": "POINT 138",
+        "path": "PATH 131",
+        "distance": 1.4913017561575885
+    },
+    {
+        "point": "POINT 185",
+        "adjacent_point": "POINT 184",
+        "path": "PATH 130",
+        "distance": 17.14544884830722
+    },
+    {
+        "point": "POINT 186",
+        "adjacent_point": "POINT 85",
+        "path": "PATH 132",
+        "distance": 17.511737916862817
+    },
+    {
+        "point": "POINT 186",
+        "adjacent_point": "POINT 331",
+        "path": "path 363",
+        "distance": 1.1950659421562417
+    },
+    {
+        "point": "POINT 187",
+        "adjacent_point": "POINT 83",
+        "path": "PATH 133",
+        "distance": 4.838312467219831
+    },
+    {
+        "point": "POINT 188",
+        "adjacent_point": "POINT 137",
+        "path": "PATH 134",
+        "distance": 3.9537742853251143
+    },
+    {
+        "point": "POINT 189",
+        "adjacent_point": "POINT 133",
+        "path": "PATH 137",
+        "distance": 0.7584133504377959
+    },
+    {
+        "point": "POINT 189",
+        "adjacent_point": "POINT 132",
+        "path": "PATH 138",
+        "distance": 0.8695536479583451
+    },
+    {
+        "point": "POINT 189",
+        "adjacent_point": "POINT 81",
+        "path": "PATH 139",
+        "distance": 49.318171808084664
+    },
+    {
+        "point": "POINT 190",
+        "adjacent_point": "POINT 120",
+        "path": "PATH 142",
+        "distance": 6.720867668480002
+    },
+    {
+        "point": "POINT 191",
+        "adjacent_point": "POINT 122",
+        "path": "PATH 143",
+        "distance": 3.331999626471044
+    },
+    {
+        "point": "POINT 191",
+        "adjacent_point": "POINT 171",
+        "path": "PATH 144",
+        "distance": 34.55198868189851
+    },
+    {
+        "point": "POINT 191",
+        "adjacent_point": "POINT 124",
+        "path": "path 149",
+        "distance": 6.940661175907441
+    },
+    {
+        "point": "POINT 192",
+        "adjacent_point": "POINT 193",
+        "path": "PATH 145",
+        "distance": 87.12871603467006
+    },
+    {
+        "point": "POINT 192",
+        "adjacent_point": "POINT 124",
+        "path": "path 375",
+        "distance": 15.793040898539425
+    },
+    {
+        "point": "POINT 193",
+        "adjacent_point": "POINT 192",
+        "path": "PATH 145",
+        "distance": 87.12871603467006
+    },
+    {
+        "point": "POINT 193",
+        "adjacent_point": "POINT 173",
+        "path": "path 376",
+        "distance": 16.145528149237993
+    },
+    {
+        "point": "POINT 195",
+        "adjacent_point": "POINT 73",
+        "path": "PATH 147",
+        "distance": 31.732422684196134
+    },
+    {
+        "point": "POINT 195",
+        "adjacent_point": "POINT 45",
+        "path": "path 367",
+        "distance": 1.3800519453550968
+    },
+    {
+        "point": "POINT 196",
+        "adjacent_point": "POINT 61",
+        "path": "PATH 148",
+        "distance": 38.36918844300806
+    },
+    {
+        "point": "POINT 197",
+        "adjacent_point": "POINT 45",
+        "path": "PATH 14",
+        "distance": 37.42419406200937
+    },
+    {
+        "point": "POINT 197",
+        "adjacent_point": "POINT 73",
+        "path": "path 150",
+        "distance": 20.035706692077884
+    },
+    {
+        "point": "POINT 197",
+        "adjacent_point": "POINT 76",
+        "path": "path 151",
+        "distance": 39.76029313052432
+    },
+    {
+        "point": "POINT 198",
+        "adjacent_point": "POINT 95",
+        "path": "PATH 153",
+        "distance": 5.87773785451171
+    },
+    {
+        "point": "POINT 198",
+        "adjacent_point": "POINT 289",
+        "path": "path 290",
+        "distance": 17.463484359538903
+    },
+    {
+        "point": "POINT 198",
+        "adjacent_point": "POINT 170",
+        "path": "path 358",
+        "distance": 2.5828830879975713
+    },
+    {
+        "point": "POINT 199",
+        "adjacent_point": "POINT 47",
+        "path": "PATH 158",
+        "distance": 17.62000405539222
+    },
+    {
+        "point": "POINT 199",
+        "adjacent_point": "POINT 40",
+        "path": "path 164",
+        "distance": 20.243840525413116
+    },
+    {
+        "point": "POINT 199",
+        "adjacent_point": "POINT 70",
+        "path": "path 166",
+        "distance": 23.631092302878738
+    },
+    {
+        "point": "POINT 200",
+        "adjacent_point": "POINT 60",
+        "path": "PATH 160",
+        "distance": 15.12299092513332
+    },
+    {
+        "point": "POINT 201",
+        "adjacent_point": "POINT 60",
+        "path": "PATH 161",
+        "distance": 14.233608978479706
+    },
+    {
+        "point": "POINT 202",
+        "adjacent_point": "POINT 60",
+        "path": "path 162",
+        "distance": 11.879870098188404
+    },
+    {
+        "point": "POINT 203",
+        "adjacent_point": "POINT 41",
+        "path": "path 163",
+        "distance": 34.720402433035986
+    },
+    {
+        "point": "POINT 204",
+        "adjacent_point": "POINT 49",
+        "path": "path 168",
+        "distance": 17.257899354119726
+    },
+    {
+        "point": "POINT 204",
+        "adjacent_point": "POINT 248",
+        "path": "path 236",
+        "distance": 21.711298989330142
+    },
+    {
+        "point": "POINT 204",
+        "adjacent_point": "POINT 205",
+        "path": "path 352",
+        "distance": 3.7720734523979074
+    },
+    {
+        "point": "POINT 205",
+        "adjacent_point": "POINT 56",
+        "path": "Untitled path.1",
+        "distance": 25.129232935610172
+    },
+    {
+        "point": "POINT 205",
+        "adjacent_point": "POINT 263",
+        "path": "path 253",
+        "distance": 12.274872965351122
+    },
+    {
+        "point": "POINT 205",
+        "adjacent_point": "POINT 204",
+        "path": "path 352",
+        "distance": 3.7720734523979074
+    },
+    {
+        "point": "POINT 206",
+        "adjacent_point": "POINT 207",
+        "path": "path 169",
+        "distance": 66.3141604419676
+    },
+    {
+        "point": "POINT 206",
+        "adjacent_point": "POINT 271",
+        "path": "path 274",
+        "distance": 13.787847565879462
+    },
+    {
+        "point": "POINT 206",
+        "adjacent_point": "POINT 277",
+        "path": "path 320",
+        "distance": 20.121932247386944
+    },
+    {
+        "point": "POINT 206",
+        "adjacent_point": "POINT 288",
+        "path": "path 323",
+        "distance": 5.518735628301368
+    },
+    {
+        "point": "POINT 207",
+        "adjacent_point": "POINT 206",
+        "path": "path 169",
+        "distance": 66.3141604419676
+    },
+    {
+        "point": "POINT 207",
+        "adjacent_point": "POINT 312",
+        "path": "path 324",
+        "distance": 7.045872223803821
+    },
+    {
+        "point": "POINT 208",
+        "adjacent_point": "POINT 97",
+        "path": "path 170",
+        "distance": 7.286952541167095
+    },
+    {
+        "point": "POINT 209",
+        "adjacent_point": "POINT 98",
+        "path": "path 171",
+        "distance": 9.269713314343097
+    },
+    {
+        "point": "POINT 210",
+        "adjacent_point": "POINT 100",
+        "path": "path 173",
+        "distance": 5.59172289683229
+    },
+    {
+        "point": "POINT 210",
+        "adjacent_point": "POINT 316",
+        "path": "path 330",
+        "distance": 4.2750190876490795
+    },
+    {
+        "point": "POINT 211",
+        "adjacent_point": "POINT 101",
+        "path": "path 174",
+        "distance": 7.499887295129368
+    },
+    {
+        "point": "POINT 212",
+        "adjacent_point": "POINT 102",
+        "path": "path 175",
+        "distance": 2.3372228128514454
+    },
+    {
+        "point": "POINT 213",
+        "adjacent_point": "POINT 13",
+        "path": "path 176",
+        "distance": 12.891077510694089
+    },
+    {
+        "point": "POINT 214",
+        "adjacent_point": "POINT 16",
+        "path": "path 178",
+        "distance": 44.61127485926873
+    },
+    {
+        "point": "POINT 215",
+        "adjacent_point": "POINT 14",
+        "path": "path 179",
+        "distance": 78.48392808700812
+    },
+    {
+        "point": "POINT 215",
+        "adjacent_point": "POINT 15",
+        "path": "path 180",
+        "distance": 25.001901581253698
+    },
+    {
+        "point": "POINT 215",
+        "adjacent_point": "POINT 216",
+        "path": "path 182",
+        "distance": 166.82387427131798
+    },
+    {
+        "point": "POINT 216",
+        "adjacent_point": "POINT 17",
+        "path": "path 181",
+        "distance": 157.25296161967304
+    },
+    {
+        "point": "POINT 216",
+        "adjacent_point": "POINT 215",
+        "path": "path 182",
+        "distance": 166.82387427131798
+    },
+    {
+        "point": "POINT 216",
+        "adjacent_point": "POINT 19",
+        "path": "path 183",
+        "distance": 133.96034365204798
+    },
+    {
+        "point": "POINT 217",
+        "adjacent_point": "POINT 27",
+        "path": "path 192",
+        "distance": 50.49606906335107
+    },
+    {
+        "point": "POINT 217",
+        "adjacent_point": "POINT 237",
+        "path": "path 217",
+        "distance": 32.45383850297431
+    },
+    {
+        "point": "POINT 217",
+        "adjacent_point": "POINT 236",
+        "path": "path 224",
+        "distance": 8.894683911503616
+    },
+    {
+        "point": "POINT 218",
+        "adjacent_point": "POINT 219",
+        "path": "path 193",
+        "distance": 31.60430750954201
+    },
+    {
+        "point": "POINT 219",
+        "adjacent_point": "POINT 218",
+        "path": "path 193",
+        "distance": 31.60430750954201
+    },
+    {
+        "point": "POINT 219",
+        "adjacent_point": "POINT 232",
+        "path": "path 209",
+        "distance": 12.380210046270472
+    },
+    {
+        "point": "POINT 219",
+        "adjacent_point": "POINT 233",
+        "path": "path 211",
+        "distance": 23.578284385854914
+    },
+    {
+        "point": "POINT 220",
+        "adjacent_point": "POINT 221",
+        "path": "path 194",
+        "distance": 13.383765580212897
+    },
+    {
+        "point": "POINT 221",
+        "adjacent_point": "POINT 220",
+        "path": "path 194",
+        "distance": 13.383765580212897
+    },
+    {
+        "point": "POINT 221",
+        "adjacent_point": "POINT 222",
+        "path": "path 195",
+        "distance": 11.413780323597214
+    },
+    {
+        "point": "POINT 221",
+        "adjacent_point": "POINT 232",
+        "path": "path 208",
+        "distance": 16.88028273036444
+    },
+    {
+        "point": "POINT 222",
+        "adjacent_point": "POINT 221",
+        "path": "path 195",
+        "distance": 11.413780323597214
+    },
+    {
+        "point": "POINT 222",
+        "adjacent_point": "POINT 223",
+        "path": "path 196",
+        "distance": 17.21145617221197
+    },
+    {
+        "point": "POINT 222",
+        "adjacent_point": "POINT 229",
+        "path": "path 206",
+        "distance": 37.11877748797282
+    },
+    {
+        "point": "POINT 223",
+        "adjacent_point": "POINT 222",
+        "path": "path 196",
+        "distance": 17.21145617221197
+    },
+    {
+        "point": "POINT 223",
+        "adjacent_point": "POINT 224",
+        "path": "path 197",
+        "distance": 17.835018788770537
+    },
+    {
+        "point": "POINT 223",
+        "adjacent_point": "POINT 228",
+        "path": "path 202",
+        "distance": 37.248093218635546
+    },
+    {
+        "point": "POINT 224",
+        "adjacent_point": "POINT 223",
+        "path": "path 197",
+        "distance": 17.835018788770537
+    },
+    {
+        "point": "POINT 224",
+        "adjacent_point": "POINT 225",
+        "path": "path 198",
+        "distance": 36.54973009377595
+    },
+    {
+        "point": "POINT 225",
+        "adjacent_point": "POINT 224",
+        "path": "path 198",
+        "distance": 36.54973009377595
+    },
+    {
+        "point": "POINT 225",
+        "adjacent_point": "POINT 226",
+        "path": "path 199",
+        "distance": 36.21452332858556
+    },
+    {
+        "point": "POINT 225",
+        "adjacent_point": "POINT 228",
+        "path": "path 203",
+        "distance": 18.006034725423483
+    },
+    {
+        "point": "POINT 226",
+        "adjacent_point": "POINT 225",
+        "path": "path 199",
+        "distance": 36.21452332858556
+    },
+    {
+        "point": "POINT 226",
+        "adjacent_point": "POINT 227",
+        "path": "path 200",
+        "distance": 27.249223955816785
+    },
+    {
+        "point": "POINT 227",
+        "adjacent_point": "POINT 226",
+        "path": "path 200",
+        "distance": 27.249223955816785
+    },
+    {
+        "point": "POINT 227",
+        "adjacent_point": "POINT 228",
+        "path": "path 201",
+        "distance": 25.32923535588893
+    },
+    {
+        "point": "POINT 228",
+        "adjacent_point": "POINT 227",
+        "path": "path 201",
+        "distance": 25.32923535588893
+    },
+    {
+        "point": "POINT 228",
+        "adjacent_point": "POINT 223",
+        "path": "path 202",
+        "distance": 37.248093218635546
+    },
+    {
+        "point": "POINT 228",
+        "adjacent_point": "POINT 225",
+        "path": "path 203",
+        "distance": 18.006034725423483
+    },
+    {
+        "point": "POINT 228",
+        "adjacent_point": "POINT 229",
+        "path": "path 204",
+        "distance": 16.07323546711349
+    },
+    {
+        "point": "POINT 229",
+        "adjacent_point": "POINT 228",
+        "path": "path 204",
+        "distance": 16.07323546711349
+    },
+    {
+        "point": "POINT 229",
+        "adjacent_point": "POINT 230",
+        "path": "path 205",
+        "distance": 24.402333089850494
+    },
+    {
+        "point": "POINT 229",
+        "adjacent_point": "POINT 222",
+        "path": "path 206",
+        "distance": 37.11877748797282
+    },
+    {
+        "point": "POINT 229",
+        "adjacent_point": "POINT 231",
+        "path": "path 207",
+        "distance": 14.082976831038154
+    },
+    {
+        "point": "POINT 230",
+        "adjacent_point": "POINT 229",
+        "path": "path 205",
+        "distance": 24.402333089850494
+    },
+    {
+        "point": "POINT 231",
+        "adjacent_point": "POINT 229",
+        "path": "path 207",
+        "distance": 14.082976831038154
+    },
+    {
+        "point": "POINT 231",
+        "adjacent_point": "POINT 232",
+        "path": "path 210",
+        "distance": 21.083226582547823
+    },
+    {
+        "point": "POINT 231",
+        "adjacent_point": "POINT 234",
+        "path": "path 213",
+        "distance": 35.70210859590834
+    },
+    {
+        "point": "POINT 231",
+        "adjacent_point": "POINT 235",
+        "path": "path 215",
+        "distance": 32.35596041719538
+    },
+    {
+        "point": "POINT 231",
+        "adjacent_point": "POINT 236",
+        "path": "path 216",
+        "distance": 28.70370701213577
+    },
+    {
+        "point": "POINT 232",
+        "adjacent_point": "POINT 221",
+        "path": "path 208",
+        "distance": 16.88028273036444
+    },
+    {
+        "point": "POINT 232",
+        "adjacent_point": "POINT 219",
+        "path": "path 209",
+        "distance": 12.380210046270472
+    },
+    {
+        "point": "POINT 232",
+        "adjacent_point": "POINT 231",
+        "path": "path 210",
+        "distance": 21.083226582547823
+    },
+    {
+        "point": "POINT 233",
+        "adjacent_point": "POINT 219",
+        "path": "path 211",
+        "distance": 23.578284385854914
+    },
+    {
+        "point": "POINT 233",
+        "adjacent_point": "POINT 234",
+        "path": "path 212",
+        "distance": 17.71229950890611
+    },
+    {
+        "point": "POINT 233",
+        "adjacent_point": "POINT 52",
+        "path": "path 214",
+        "distance": 9.228618808161878
+    },
+    {
+        "point": "POINT 234",
+        "adjacent_point": "POINT 233",
+        "path": "path 212",
+        "distance": 17.71229950890611
+    },
+    {
+        "point": "POINT 234",
+        "adjacent_point": "POINT 231",
+        "path": "path 213",
+        "distance": 35.70210859590834
+    },
+    {
+        "point": "POINT 235",
+        "adjacent_point": "POINT 231",
+        "path": "path 215",
+        "distance": 32.35596041719538
+    },
+    {
+        "point": "POINT 235",
+        "adjacent_point": "POINT 238",
+        "path": "path 226",
+        "distance": 6.713131550082667
+    },
+    {
+        "point": "POINT 235",
+        "adjacent_point": "POINT 243",
+        "path": "path 227",
+        "distance": 19.377980923604373
+    },
+    {
+        "point": "POINT 236",
+        "adjacent_point": "POINT 231",
+        "path": "path 216",
+        "distance": 28.70370701213577
+    },
+    {
+        "point": "POINT 236",
+        "adjacent_point": "POINT 217",
+        "path": "path 224",
+        "distance": 8.894683911503616
+    },
+    {
+        "point": "POINT 236",
+        "adjacent_point": "POINT 238",
+        "path": "path 225",
+        "distance": 5.300866095291036
+    },
+    {
+        "point": "POINT 237",
+        "adjacent_point": "POINT 217",
+        "path": "path 217",
+        "distance": 32.45383850297431
+    },
+    {
+        "point": "POINT 237",
+        "adjacent_point": "POINT 238",
+        "path": "path 218",
+        "distance": 13.232854800037984
+    },
+    {
+        "point": "POINT 237",
+        "adjacent_point": "POINT 239",
+        "path": "path 219",
+        "distance": 23.050073145441075
+    },
+    {
+        "point": "POINT 238",
+        "adjacent_point": "POINT 237",
+        "path": "path 218",
+        "distance": 13.232854800037984
+    },
+    {
+        "point": "POINT 238",
+        "adjacent_point": "POINT 236",
+        "path": "path 225",
+        "distance": 5.300866095291036
+    },
+    {
+        "point": "POINT 238",
+        "adjacent_point": "POINT 235",
+        "path": "path 226",
+        "distance": 6.713131550082667
+    },
+    {
+        "point": "POINT 239",
+        "adjacent_point": "POINT 237",
+        "path": "path 219",
+        "distance": 23.050073145441075
+    },
+    {
+        "point": "POINT 239",
+        "adjacent_point": "POINT 240",
+        "path": "path 222",
+        "distance": 32.87949934409732
+    },
+    {
+        "point": "POINT 239",
+        "adjacent_point": "POINT 242",
+        "path": "path 223",
+        "distance": 19.862247295001115
+    },
+    {
+        "point": "POINT 240",
+        "adjacent_point": "POINT 241",
+        "path": "path 220",
+        "distance": 7.66173587430472
+    },
+    {
+        "point": "POINT 240",
+        "adjacent_point": "POINT 239",
+        "path": "path 222",
+        "distance": 32.87949934409732
+    },
+    {
+        "point": "POINT 241",
+        "adjacent_point": "POINT 240",
+        "path": "path 220",
+        "distance": 7.66173587430472
+    },
+    {
+        "point": "POINT 241",
+        "adjacent_point": "POINT 242",
+        "path": "path 221",
+        "distance": 30.539540690920454
+    },
+    {
+        "point": "POINT 242",
+        "adjacent_point": "POINT 241",
+        "path": "path 221",
+        "distance": 30.539540690920454
+    },
+    {
+        "point": "POINT 242",
+        "adjacent_point": "POINT 239",
+        "path": "path 223",
+        "distance": 19.862247295001115
+    },
+    {
+        "point": "POINT 243",
+        "adjacent_point": "POINT 30",
+        "path": "BIG PATH 4",
+        "distance": 34.76988732776644
+    },
+    {
+        "point": "POINT 243",
+        "adjacent_point": "POINT 235",
+        "path": "path 227",
+        "distance": 19.377980923604373
+    },
+    {
+        "point": "POINT 244",
+        "adjacent_point": "POINT 39",
+        "path": "path 228",
+        "distance": 16.6836170936909
+    },
+    {
+        "point": "POINT 244",
+        "adjacent_point": "POINT 245",
+        "path": "path 229",
+        "distance": 12.809425739703375
+    },
+    {
+        "point": "POINT 244",
+        "adjacent_point": "POINT 246",
+        "path": "path 230",
+        "distance": 23.653963126380123
+    },
+    {
+        "point": "POINT 245",
+        "adjacent_point": "POINT 244",
+        "path": "path 229",
+        "distance": 12.809425739703375
+    },
+    {
+        "point": "POINT 246",
+        "adjacent_point": "POINT 244",
+        "path": "path 230",
+        "distance": 23.653963126380123
+    },
+    {
+        "point": "POINT 246",
+        "adjacent_point": "POINT 65",
+        "path": "path 231",
+        "distance": 3.281390023447431
+    },
+    {
+        "point": "POINT 246",
+        "adjacent_point": "POINT 247",
+        "path": "path 232",
+        "distance": 7.376166623737174
+    },
+    {
+        "point": "POINT 247",
+        "adjacent_point": "POINT 246",
+        "path": "path 232",
+        "distance": 7.376166623737174
+    },
+    {
+        "point": "POINT 247",
+        "adjacent_point": "POINT 67",
+        "path": "path 233",
+        "distance": 2.2551377870534774
+    },
+    {
+        "point": "POINT 247",
+        "adjacent_point": "POINT 248",
+        "path": "path 234",
+        "distance": 11.195557711203215
+    },
+    {
+        "point": "POINT 248",
+        "adjacent_point": "POINT 247",
+        "path": "path 234",
+        "distance": 11.195557711203215
+    },
+    {
+        "point": "POINT 248",
+        "adjacent_point": "POINT 39",
+        "path": "path 235",
+        "distance": 26.58444046710038
+    },
+    {
+        "point": "POINT 248",
+        "adjacent_point": "POINT 204",
+        "path": "path 236",
+        "distance": 21.711298989330142
+    },
+    {
+        "point": "POINT 249",
+        "adjacent_point": "POINT 250",
+        "path": "path 236.1",
+        "distance": 29.862163046485588
+    },
+    {
+        "point": "POINT 249",
+        "adjacent_point": "POINT 251",
+        "path": "path 237",
+        "distance": 6.062689099965946
+    },
+    {
+        "point": "POINT 250",
+        "adjacent_point": "POINT 249",
+        "path": "path 236.1",
+        "distance": 29.862163046485588
+    },
+    {
+        "point": "POINT 250",
+        "adjacent_point": "POINT 253",
+        "path": "path 244",
+        "distance": 30.226778815672592
+    },
+    {
+        "point": "POINT 251",
+        "adjacent_point": "POINT 249",
+        "path": "path 237",
+        "distance": 6.062689099965946
+    },
+    {
+        "point": "POINT 251",
+        "adjacent_point": "POINT 66",
+        "path": "path 238",
+        "distance": 3.2467346519047062
+    },
+    {
+        "point": "POINT 251",
+        "adjacent_point": "POINT 63",
+        "path": "path 239",
+        "distance": 3.8956616957895966
+    },
+    {
+        "point": "POINT 252",
+        "adjacent_point": "POINT 35",
+        "path": "path 240",
+        "distance": 58.180405483547645
+    },
+    {
+        "point": "POINT 252",
+        "adjacent_point": "POINT 68",
+        "path": "path 241",
+        "distance": 19.61864321145685
+    },
+    {
+        "point": "POINT 253",
+        "adjacent_point": "POINT 250",
+        "path": "path 244",
+        "distance": 30.226778815672592
+    },
+    {
+        "point": "POINT 254",
+        "adjacent_point": "POINT 38",
+        "path": "path 245",
+        "distance": 9.692240025458979
+    },
+    {
+        "point": "POINT 254",
+        "adjacent_point": "POINT 255",
+        "path": "path 246",
+        "distance": 15.380284417513753
+    },
+    {
+        "point": "POINT 254",
+        "adjacent_point": "POINT 257",
+        "path": "path 248",
+        "distance": 27.238136461320238
+    },
+    {
+        "point": "POINT 255",
+        "adjacent_point": "POINT 254",
+        "path": "path 246",
+        "distance": 15.380284417513753
+    },
+    {
+        "point": "POINT 255",
+        "adjacent_point": "POINT 256",
+        "path": "path 247",
+        "distance": 4.7748310782668755
+    },
+    {
+        "point": "POINT 256",
+        "adjacent_point": "POINT 255",
+        "path": "path 247",
+        "distance": 4.7748310782668755
+    },
+    {
+        "point": "POINT 257",
+        "adjacent_point": "POINT 254",
+        "path": "path 248",
+        "distance": 27.238136461320238
+    },
+    {
+        "point": "POINT 257",
+        "adjacent_point": "POINT 259",
+        "path": "path 250",
+        "distance": 28.783859833145797
+    },
+    {
+        "point": "POINT 258",
+        "adjacent_point": "POINT 259",
+        "path": "path 249",
+        "distance": 27.5351167376011
+    },
+    {
+        "point": "POINT 258",
+        "adjacent_point": "POINT 326",
+        "path": "path 350",
+        "distance": 3.7994849455381527
+    },
+    {
+        "point": "POINT 258",
+        "adjacent_point": "POINT 327",
+        "path": "path 351",
+        "distance": 10.472664952923893
+    },
+    {
+        "point": "POINT 259",
+        "adjacent_point": "POINT 258",
+        "path": "path 249",
+        "distance": 27.5351167376011
+    },
+    {
+        "point": "POINT 259",
+        "adjacent_point": "POINT 257",
+        "path": "path 250",
+        "distance": 28.783859833145797
+    },
+    {
+        "point": "POINT 259",
+        "adjacent_point": "POINT 260",
+        "path": "path 349",
+        "distance": 6.04217642914802
+    },
+    {
+        "point": "POINT 260",
+        "adjacent_point": "POINT 261",
+        "path": "path 251",
+        "distance": 11.468344468537515
+    },
+    {
+        "point": "POINT 260",
+        "adjacent_point": "POINT 266",
+        "path": "path 258",
+        "distance": 10.577817142463044
+    },
+    {
+        "point": "POINT 260",
+        "adjacent_point": "POINT 259",
+        "path": "path 349",
+        "distance": 6.04217642914802
+    },
+    {
+        "point": "POINT 261",
+        "adjacent_point": "POINT 260",
+        "path": "path 251",
+        "distance": 11.468344468537515
+    },
+    {
+        "point": "POINT 261",
+        "adjacent_point": "POINT 262",
+        "path": "path 252",
+        "distance": 16.362170359158416
+    },
+    {
+        "point": "POINT 262",
+        "adjacent_point": "POINT 261",
+        "path": "path 252",
+        "distance": 16.362170359158416
+    },
+    {
+        "point": "POINT 262",
+        "adjacent_point": "POINT 265",
+        "path": "path 256",
+        "distance": 9.418212951465945
+    },
+    {
+        "point": "POINT 262",
+        "adjacent_point": "POINT 263",
+        "path": "path 257",
+        "distance": 4.783956546340864
+    },
+    {
+        "point": "POINT 263",
+        "adjacent_point": "POINT 205",
+        "path": "path 253",
+        "distance": 12.274872965351122
+    },
+    {
+        "point": "POINT 263",
+        "adjacent_point": "POINT 264",
+        "path": "path 255",
+        "distance": 9.239046368881601
+    },
+    {
+        "point": "POINT 263",
+        "adjacent_point": "POINT 262",
+        "path": "path 257",
+        "distance": 4.783956546340864
+    },
+    {
+        "point": "POINT 264",
+        "adjacent_point": "POINT 263",
+        "path": "path 255",
+        "distance": 9.239046368881601
+    },
+    {
+        "point": "POINT 265",
+        "adjacent_point": "POINT 262",
+        "path": "path 256",
+        "distance": 9.418212951465945
+    },
+    {
+        "point": "POINT 265",
+        "adjacent_point": "POINT 55",
+        "path": "path 259",
+        "distance": 28.2437818815602
+    },
+    {
+        "point": "POINT 265",
+        "adjacent_point": "POINT 266",
+        "path": "path 260",
+        "distance": 27.12620650796541
+    },
+    {
+        "point": "POINT 266",
+        "adjacent_point": "POINT 260",
+        "path": "path 258",
+        "distance": 10.577817142463044
+    },
+    {
+        "point": "POINT 266",
+        "adjacent_point": "POINT 265",
+        "path": "path 260",
+        "distance": 27.12620650796541
+    },
+    {
+        "point": "POINT 267",
+        "adjacent_point": "POINT 58",
+        "path": "path 261",
+        "distance": 9.81679816761606
+    },
+    {
+        "point": "POINT 267",
+        "adjacent_point": "POINT 268",
+        "path": "path 262",
+        "distance": 5.4279067777072765
+    },
+    {
+        "point": "POINT 267",
+        "adjacent_point": "POINT 272",
+        "path": "path 267",
+        "distance": 35.29744059068748
+    },
+    {
+        "point": "POINT 268",
+        "adjacent_point": "POINT 267",
+        "path": "path 262",
+        "distance": 5.4279067777072765
+    },
+    {
+        "point": "POINT 268",
+        "adjacent_point": "POINT 54",
+        "path": "path 263",
+        "distance": 5.4966195145775645
+    },
+    {
+        "point": "POINT 268",
+        "adjacent_point": "POINT 269",
+        "path": "path 264",
+        "distance": 17.468960819014484
+    },
+    {
+        "point": "POINT 269",
+        "adjacent_point": "POINT 268",
+        "path": "path 264",
+        "distance": 17.468960819014484
+    },
+    {
+        "point": "POINT 269",
+        "adjacent_point": "POINT 270",
+        "path": "path 265",
+        "distance": 16.35330115086893
+    },
+    {
+        "point": "POINT 269",
+        "adjacent_point": "POINT 276",
+        "path": "path 273",
+        "distance": 19.67117182911621
+    },
+    {
+        "point": "POINT 270",
+        "adjacent_point": "POINT 269",
+        "path": "path 265",
+        "distance": 16.35330115086893
+    },
+    {
+        "point": "POINT 270",
+        "adjacent_point": "POINT 271",
+        "path": "path 266",
+        "distance": 14.905851704087281
+    },
+    {
+        "point": "POINT 270",
+        "adjacent_point": "POINT 274",
+        "path": "path 272",
+        "distance": 39.13001759972667
+    },
+    {
+        "point": "POINT 271",
+        "adjacent_point": "POINT 270",
+        "path": "path 266",
+        "distance": 14.905851704087281
+    },
+    {
+        "point": "POINT 271",
+        "adjacent_point": "POINT 275",
+        "path": "path 271",
+        "distance": 38.6991885006687
+    },
+    {
+        "point": "POINT 271",
+        "adjacent_point": "POINT 206",
+        "path": "path 274",
+        "distance": 13.787847565879462
+    },
+    {
+        "point": "POINT 272",
+        "adjacent_point": "POINT 267",
+        "path": "path 267",
+        "distance": 35.29744059068748
+    },
+    {
+        "point": "POINT 272",
+        "adjacent_point": "POINT 273",
+        "path": "path 268",
+        "distance": 14.766631808117728
+    },
+    {
+        "point": "POINT 273",
+        "adjacent_point": "POINT 272",
+        "path": "path 268",
+        "distance": 14.766631808117728
+    },
+    {
+        "point": "POINT 273",
+        "adjacent_point": "POINT 274",
+        "path": "path 269",
+        "distance": 17.739950556174964
+    },
+    {
+        "point": "POINT 273",
+        "adjacent_point": "POINT 276",
+        "path": "path 346",
+        "distance": 20.302644376872085
+    },
+    {
+        "point": "POINT 274",
+        "adjacent_point": "POINT 273",
+        "path": "path 269",
+        "distance": 17.739950556174964
+    },
+    {
+        "point": "POINT 274",
+        "adjacent_point": "POINT 275",
+        "path": "path 270",
+        "distance": 15.244503257975008
+    },
+    {
+        "point": "POINT 274",
+        "adjacent_point": "POINT 270",
+        "path": "path 272",
+        "distance": 39.13001759972667
+    },
+    {
+        "point": "POINT 275",
+        "adjacent_point": "POINT 274",
+        "path": "path 270",
+        "distance": 15.244503257975008
+    },
+    {
+        "point": "POINT 275",
+        "adjacent_point": "POINT 271",
+        "path": "path 271",
+        "distance": 38.6991885006687
+    },
+    {
+        "point": "POINT 276",
+        "adjacent_point": "POINT 269",
+        "path": "path 273",
+        "distance": 19.67117182911621
+    },
+    {
+        "point": "POINT 276",
+        "adjacent_point": "POINT 273",
+        "path": "path 346",
+        "distance": 20.302644376872085
+    },
+    {
+        "point": "POINT 277",
+        "adjacent_point": "POINT 278",
+        "path": "path 275",
+        "distance": 33.01626347001747
+    },
+    {
+        "point": "POINT 277",
+        "adjacent_point": "POINT 206",
+        "path": "path 320",
+        "distance": 20.121932247386944
+    },
+    {
+        "point": "POINT 277",
+        "adjacent_point": "POINT 310",
+        "path": "path 321",
+        "distance": 28.87816139565147
+    },
+    {
+        "point": "POINT 278",
+        "adjacent_point": "POINT 277",
+        "path": "path 275",
+        "distance": 33.01626347001747
+    },
+    {
+        "point": "POINT 278",
+        "adjacent_point": "POINT 279",
+        "path": "path 276",
+        "distance": 25.451300625534582
+    },
+    {
+        "point": "POINT 278",
+        "adjacent_point": "POINT 285",
+        "path": "path 283",
+        "distance": 21.003561615114172
+    },
+    {
+        "point": "POINT 279",
+        "adjacent_point": "POINT 278",
+        "path": "path 276",
+        "distance": 25.451300625534582
+    },
+    {
+        "point": "POINT 279",
+        "adjacent_point": "POINT 280",
+        "path": "path 277",
+        "distance": 4.479673390613791
+    },
+    {
+        "point": "POINT 279",
+        "adjacent_point": "POINT 284",
+        "path": "path 281",
+        "distance": 14.060805122463787
+    },
+    {
+        "point": "POINT 280",
+        "adjacent_point": "POINT 279",
+        "path": "path 277",
+        "distance": 4.479673390613791
+    },
+    {
+        "point": "POINT 280",
+        "adjacent_point": "POINT 281",
+        "path": "path 278",
+        "distance": 14.460322505377434
+    },
+    {
+        "point": "POINT 281",
+        "adjacent_point": "POINT 280",
+        "path": "path 278",
+        "distance": 14.460322505377434
+    },
+    {
+        "point": "POINT 281",
+        "adjacent_point": "POINT 282",
+        "path": "path 279",
+        "distance": 35.21040762230013
+    },
+    {
+        "point": "POINT 282",
+        "adjacent_point": "POINT 281",
+        "path": "path 279",
+        "distance": 35.21040762230013
+    },
+    {
+        "point": "POINT 282",
+        "adjacent_point": "POINT 283",
+        "path": "path 280",
+        "distance": 14.116889980589098
+    },
+    {
+        "point": "POINT 283",
+        "adjacent_point": "POINT 282",
+        "path": "path 280",
+        "distance": 14.116889980589098
+    },
+    {
+        "point": "POINT 283",
+        "adjacent_point": "POINT 62",
+        "path": "path 282",
+        "distance": 4.3003640180491916
+    },
+    {
+        "point": "POINT 283",
+        "adjacent_point": "POINT 284",
+        "path": "path 345",
+        "distance": 16.62259419129883
+    },
+    {
+        "point": "POINT 284",
+        "adjacent_point": "POINT 279",
+        "path": "path 281",
+        "distance": 14.060805122463787
+    },
+    {
+        "point": "POINT 284",
+        "adjacent_point": "POINT 283",
+        "path": "path 345",
+        "distance": 16.62259419129883
+    },
+    {
+        "point": "POINT 285",
+        "adjacent_point": "POINT 278",
+        "path": "path 283",
+        "distance": 21.003561615114172
+    },
+    {
+        "point": "POINT 285",
+        "adjacent_point": "POINT 286",
+        "path": "path 284",
+        "distance": 7.457349964768297
+    },
+    {
+        "point": "POINT 285",
+        "adjacent_point": "POINT 287",
+        "path": "path 287",
+        "distance": 10.99879236766386
+    },
+    {
+        "point": "POINT 285",
+        "adjacent_point": "POINT 288",
+        "path": "path 288",
+        "distance": 47.781783668951824
+    },
+    {
+        "point": "POINT 286",
+        "adjacent_point": "POINT 285",
+        "path": "path 284",
+        "distance": 7.457349964768297
+    },
+    {
+        "point": "POINT 286",
+        "adjacent_point": "POINT 287",
+        "path": "path 285",
+        "distance": 9.966471965663215
+    },
+    {
+        "point": "POINT 286",
+        "adjacent_point": "POINT 169",
+        "path": "path 286",
+        "distance": 4.542228333808516
+    },
+    {
+        "point": "POINT 287",
+        "adjacent_point": "POINT 286",
+        "path": "path 285",
+        "distance": 9.966471965663215
+    },
+    {
+        "point": "POINT 287",
+        "adjacent_point": "POINT 285",
+        "path": "path 287",
+        "distance": 10.99879236766386
+    },
+    {
+        "point": "POINT 287",
+        "adjacent_point": "POINT 289",
+        "path": "path 289",
+        "distance": 13.769851759908985
+    },
+    {
+        "point": "POINT 288",
+        "adjacent_point": "POINT 285",
+        "path": "path 288",
+        "distance": 47.781783668951824
+    },
+    {
+        "point": "POINT 288",
+        "adjacent_point": "POINT 311",
+        "path": "path 322",
+        "distance": 12.446027076033355
+    },
+    {
+        "point": "POINT 288",
+        "adjacent_point": "POINT 206",
+        "path": "path 323",
+        "distance": 5.518735628301368
+    },
+    {
+        "point": "POINT 289",
+        "adjacent_point": "POINT 287",
+        "path": "path 289",
+        "distance": 13.769851759908985
+    },
+    {
+        "point": "POINT 289",
+        "adjacent_point": "POINT 198",
+        "path": "path 290",
+        "distance": 17.463484359538903
+    },
+    {
+        "point": "POINT 289",
+        "adjacent_point": "POINT 290",
+        "path": "path 291",
+        "distance": 12.683673189671982
+    },
+    {
+        "point": "POINT 290",
+        "adjacent_point": "POINT 289",
+        "path": "path 291",
+        "distance": 12.683673189671982
+    },
+    {
+        "point": "POINT 290",
+        "adjacent_point": "POINT 96",
+        "path": "path 292",
+        "distance": 13.978589942097233
+    },
+    {
+        "point": "POINT 291",
+        "adjacent_point": "POINT 96",
+        "path": "path 293",
+        "distance": 9.782620007243132
+    },
+    {
+        "point": "POINT 291",
+        "adjacent_point": "POINT 292",
+        "path": "path 294",
+        "distance": 2.915523230973183
+    },
+    {
+        "point": "POINT 291",
+        "adjacent_point": "POINT 94",
+        "path": "path 295",
+        "distance": 5.358242478410244
+    },
+    {
+        "point": "POINT 292",
+        "adjacent_point": "POINT 291",
+        "path": "path 294",
+        "distance": 2.915523230973183
+    },
+    {
+        "point": "POINT 293",
+        "adjacent_point": "POINT 96",
+        "path": "path 296",
+        "distance": 29.23080568722318
+    },
+    {
+        "point": "POINT 293",
+        "adjacent_point": "POINT 294",
+        "path": "path 297",
+        "distance": 6.4835185162805
+    },
+    {
+        "point": "POINT 293",
+        "adjacent_point": "POINT 71",
+        "path": "path 299",
+        "distance": 3.7020174461002093
+    },
+    {
+        "point": "POINT 294",
+        "adjacent_point": "POINT 293",
+        "path": "path 297",
+        "distance": 6.4835185162805
+    },
+    {
+        "point": "POINT 295",
+        "adjacent_point": "POINT 77",
+        "path": "path 298",
+        "distance": 12.94553972674936
+    },
+    {
+        "point": "POINT 295",
+        "adjacent_point": "POINT 314",
+        "path": "path 328",
+        "distance": 3.940968207218139
+    },
+    {
+        "point": "POINT 296",
+        "adjacent_point": "POINT 110",
+        "path": "path 300",
+        "distance": 2.900521108639224
+    },
+    {
+        "point": "POINT 297",
+        "adjacent_point": "POINT 93",
+        "path": "path 301",
+        "distance": 0.9565181193292441
+    },
+    {
+        "point": "POINT 298",
+        "adjacent_point": "POINT 299",
+        "path": "path 302",
+        "distance": 3.001893319540273
+    },
+    {
+        "point": "POINT 299",
+        "adjacent_point": "POINT 298",
+        "path": "path 302",
+        "distance": 3.001893319540273
+    },
+    {
+        "point": "POINT 299",
+        "adjacent_point": "POINT 117",
+        "path": "path 303",
+        "distance": 7.914542967284238
+    },
+    {
+        "point": "POINT 299",
+        "adjacent_point": "POINT 108",
+        "path": "path 309",
+        "distance": 4.234839485278197
+    },
+    {
+        "point": "POINT 300",
+        "adjacent_point": "POINT 113",
+        "path": "path 305",
+        "distance": 4.283807686039552
+    },
+    {
+        "point": "POINT 300",
+        "adjacent_point": "POINT 110",
+        "path": "path 306",
+        "distance": 6.59836050265376
+    },
+    {
+        "point": "POINT 300",
+        "adjacent_point": "POINT 111",
+        "path": "path 308",
+        "distance": 0.8646017961760167
+    },
+    {
+        "point": "POINT 301",
+        "adjacent_point": "POINT 302",
+        "path": "path 311",
+        "distance": 7.817002077710462
+    },
+    {
+        "point": "POINT 301",
+        "adjacent_point": "POINT 303",
+        "path": "path 370",
+        "distance": 14.90464745214964
+    },
+    {
+        "point": "POINT 301",
+        "adjacent_point": "POINT 104",
+        "path": "path 371",
+        "distance": 12.420253928672672
+    },
+    {
+        "point": "POINT 302",
+        "adjacent_point": "POINT 301",
+        "path": "path 311",
+        "distance": 7.817002077710462
+    },
+    {
+        "point": "POINT 303",
+        "adjacent_point": "POINT 304",
+        "path": "path 312",
+        "distance": 16.01161330413212
+    },
+    {
+        "point": "POINT 303",
+        "adjacent_point": "POINT 123",
+        "path": "path 318",
+        "distance": 6.980233475410655
+    },
+    {
+        "point": "POINT 303",
+        "adjacent_point": "POINT 301",
+        "path": "path 370",
+        "distance": 14.90464745214964
+    },
+    {
+        "point": "POINT 304",
+        "adjacent_point": "POINT 303",
+        "path": "path 312",
+        "distance": 16.01161330413212
+    },
+    {
+        "point": "POINT 304",
+        "adjacent_point": "POINT 305",
+        "path": "path 313",
+        "distance": 13.950472597837173
+    },
+    {
+        "point": "POINT 304",
+        "adjacent_point": "POINT 308",
+        "path": "path 316",
+        "distance": 18.815395534614794
+    },
+    {
+        "point": "POINT 304",
+        "adjacent_point": "POINT 309",
+        "path": "path 317",
+        "distance": 6.987693935454768
+    },
+    {
+        "point": "POINT 305",
+        "adjacent_point": "POINT 304",
+        "path": "path 313",
+        "distance": 13.950472597837173
+    },
+    {
+        "point": "POINT 305",
+        "adjacent_point": "POINT 306",
+        "path": "path 314",
+        "distance": 2.425160857917826
+    },
+    {
+        "point": "POINT 305",
+        "adjacent_point": "POINT 307",
+        "path": "path 315",
+        "distance": 30.347175459711917
+    },
+    {
+        "point": "POINT 306",
+        "adjacent_point": "POINT 305",
+        "path": "path 314",
+        "distance": 2.425160857917826
+    },
+    {
+        "point": "POINT 307",
+        "adjacent_point": "POINT 305",
+        "path": "path 315",
+        "distance": 30.347175459711917
+    },
+    {
+        "point": "POINT 308",
+        "adjacent_point": "POINT 304",
+        "path": "path 316",
+        "distance": 18.815395534614794
+    },
+    {
+        "point": "POINT 309",
+        "adjacent_point": "POINT 304",
+        "path": "path 317",
+        "distance": 6.987693935454768
+    },
+    {
+        "point": "POINT 310",
+        "adjacent_point": "POINT 56",
+        "path": "path 319",
+        "distance": 59.886069718041
+    },
+    {
+        "point": "POINT 310",
+        "adjacent_point": "POINT 277",
+        "path": "path 321",
+        "distance": 28.87816139565147
+    },
+    {
+        "point": "POINT 310",
+        "adjacent_point": "POINT 54",
+        "path": "path 357",
+        "distance": 7.671572424471591
+    },
+    {
+        "point": "POINT 311",
+        "adjacent_point": "POINT 288",
+        "path": "path 322",
+        "distance": 12.446027076033355
+    },
+    {
+        "point": "POINT 312",
+        "adjacent_point": "POINT 207",
+        "path": "path 324",
+        "distance": 7.045872223803821
+    },
+    {
+        "point": "POINT 312",
+        "adjacent_point": "POINT 313",
+        "path": "path 325",
+        "distance": 22.733991710920503
+    },
+    {
+        "point": "POINT 312",
+        "adjacent_point": "POINT 315",
+        "path": "path 329",
+        "distance": 18.96313223388832
+    },
+    {
+        "point": "POINT 313",
+        "adjacent_point": "POINT 312",
+        "path": "path 325",
+        "distance": 22.733991710920503
+    },
+    {
+        "point": "POINT 313",
+        "adjacent_point": "POINT 72",
+        "path": "path 326",
+        "distance": 3.597230895792186
+    },
+    {
+        "point": "POINT 313",
+        "adjacent_point": "POINT 314",
+        "path": "path 327",
+        "distance": 15.832898874125753
+    },
+    {
+        "point": "POINT 314",
+        "adjacent_point": "POINT 313",
+        "path": "path 327",
+        "distance": 15.832898874125753
+    },
+    {
+        "point": "POINT 314",
+        "adjacent_point": "POINT 295",
+        "path": "path 328",
+        "distance": 3.940968207218139
+    },
+    {
+        "point": "POINT 314",
+        "adjacent_point": "POINT 325",
+        "path": "path 343",
+        "distance": 20.99454430035005
+    },
+    {
+        "point": "POINT 315",
+        "adjacent_point": "POINT 312",
+        "path": "path 329",
+        "distance": 18.96313223388832
+    },
+    {
+        "point": "POINT 315",
+        "adjacent_point": "POINT 316",
+        "path": "path 338",
+        "distance": 12.808398624911009
+    },
+    {
+        "point": "POINT 315",
+        "adjacent_point": "POINT 321",
+        "path": "path 339",
+        "distance": 2.571117439608774
+    },
+    {
+        "point": "POINT 316",
+        "adjacent_point": "POINT 210",
+        "path": "path 330",
+        "distance": 4.2750190876490795
+    },
+    {
+        "point": "POINT 316",
+        "adjacent_point": "POINT 317",
+        "path": "path 331",
+        "distance": 24.807839900555162
+    },
+    {
+        "point": "POINT 316",
+        "adjacent_point": "POINT 315",
+        "path": "path 338",
+        "distance": 12.808398624911009
+    },
+    {
+        "point": "POINT 317",
+        "adjacent_point": "POINT 316",
+        "path": "path 331",
+        "distance": 24.807839900555162
+    },
+    {
+        "point": "POINT 317",
+        "adjacent_point": "POINT 318",
+        "path": "path 332",
+        "distance": 15.14754733422059
+    },
+    {
+        "point": "POINT 318",
+        "adjacent_point": "POINT 317",
+        "path": "path 332",
+        "distance": 15.14754733422059
+    },
+    {
+        "point": "POINT 318",
+        "adjacent_point": "POINT 319",
+        "path": "path 333",
+        "distance": 17.2881724436877
+    },
+    {
+        "point": "POINT 318",
+        "adjacent_point": "POINT 321",
+        "path": "path 335",
+        "distance": 24.680144551614266
+    },
+    {
+        "point": "POINT 319",
+        "adjacent_point": "POINT 318",
+        "path": "path 333",
+        "distance": 17.2881724436877
+    },
+    {
+        "point": "POINT 319",
+        "adjacent_point": "POINT 320",
+        "path": "path 334",
+        "distance": 15.730856986782861
+    },
+    {
+        "point": "POINT 319",
+        "adjacent_point": "POINT 322",
+        "path": "path 336",
+        "distance": 13.574276111705686
+    },
+    {
+        "point": "POINT 320",
+        "adjacent_point": "POINT 319",
+        "path": "path 334",
+        "distance": 15.730856986782861
+    },
+    {
+        "point": "POINT 320",
+        "adjacent_point": "POINT 323",
+        "path": "path 337",
+        "distance": 25.404746000635665
+    },
+    {
+        "point": "POINT 321",
+        "adjacent_point": "POINT 318",
+        "path": "path 335",
+        "distance": 24.680144551614266
+    },
+    {
+        "point": "POINT 321",
+        "adjacent_point": "POINT 315",
+        "path": "path 339",
+        "distance": 2.571117439608774
+    },
+    {
+        "point": "POINT 321",
+        "adjacent_point": "POINT 324",
+        "path": "path 340",
+        "distance": 16.788788451069447
+    },
+    {
+        "point": "POINT 322",
+        "adjacent_point": "POINT 319",
+        "path": "path 336",
+        "distance": 13.574276111705686
+    },
+    {
+        "point": "POINT 322",
+        "adjacent_point": "POINT 324",
+        "path": "path 347",
+        "distance": 12.050108262126843
+    },
+    {
+        "point": "POINT 323",
+        "adjacent_point": "POINT 320",
+        "path": "path 337",
+        "distance": 25.404746000635665
+    },
+    {
+        "point": "POINT 323",
+        "adjacent_point": "POINT 78",
+        "path": "path 342",
+        "distance": 10.423998883123375
+    },
+    {
+        "point": "POINT 323",
+        "adjacent_point": "POINT 325",
+        "path": "path 344",
+        "distance": 5.458618111667663
+    },
+    {
+        "point": "POINT 324",
+        "adjacent_point": "POINT 321",
+        "path": "path 340",
+        "distance": 16.788788451069447
+    },
+    {
+        "point": "POINT 324",
+        "adjacent_point": "POINT 325",
+        "path": "path 341",
+        "distance": 10.846476869426015
+    },
+    {
+        "point": "POINT 324",
+        "adjacent_point": "POINT 322",
+        "path": "path 347",
+        "distance": 12.050108262126843
+    },
+    {
+        "point": "POINT 325",
+        "adjacent_point": "POINT 324",
+        "path": "path 341",
+        "distance": 10.846476869426015
+    },
+    {
+        "point": "POINT 325",
+        "adjacent_point": "POINT 314",
+        "path": "path 343",
+        "distance": 20.99454430035005
+    },
+    {
+        "point": "POINT 325",
+        "adjacent_point": "POINT 323",
+        "path": "path 344",
+        "distance": 5.458618111667663
+    },
+    {
+        "point": "POINT 326",
+        "adjacent_point": "POINT 258",
+        "path": "path 350",
+        "distance": 3.7994849455381527
+    },
+    {
+        "point": "POINT 327",
+        "adjacent_point": "POINT 258",
+        "path": "path 351",
+        "distance": 10.472664952923893
+    },
+    {
+        "point": "POINT 328",
+        "adjacent_point": "POINT 140",
+        "path": "path 361",
+        "distance": 1.8441833262082001
+    },
+    {
+        "point": "POINT 329",
+        "adjacent_point": "POINT 330",
+        "path": "path 362",
+        "distance": 1.6206602766111797
+    },
+    {
+        "point": "POINT 330",
+        "adjacent_point": "POINT 329",
+        "path": "path 362",
+        "distance": 1.6206602766111797
+    },
+    {
+        "point": "POINT 330",
+        "adjacent_point": "POINT 141",
+        "path": "path 374",
+        "distance": 13.477339331311768
+    },
+    {
+        "point": "POINT 331",
+        "adjacent_point": "POINT 186",
+        "path": "path 363",
+        "distance": 1.1950659421562417
+    },
+    {
+        "point": "POINT 332",
+        "adjacent_point": "POINT 84",
+        "path": "path 364",
+        "distance": 1.6272861068128852
+    },
+    {
+        "point": "POINT 333",
+        "adjacent_point": "POINT 182",
+        "path": "path 365",
+        "distance": 2.8170709789587485
+    },
+    {
+        "point": "POINT 334",
+        "adjacent_point": "POINT 89",
+        "path": "path 368",
+        "distance": 2.513084930083789
+    },
+    {
+        "point": "POINT 335",
+        "adjacent_point": "POINT 173",
+        "path": "path 369",
+        "distance": 46.00617062596834
+    }
+]

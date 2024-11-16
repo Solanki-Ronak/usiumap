@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masked GeoJSON Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        /* Global Styles */
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box; /* Ensure padding and borders are included in element width/height */
+}
+
+/* Container holds both the map and the clickable items */
+#container {
+    display: flex;
+    height: 100vh;
+    background-color: white;
+}
+
+/* Hide scrollbars but still allow scrolling */
+#leftBox {
+    width: 30%;
+    background-color: black;
+    color: white;
+    position: relative;
+    transition: height 0.5s ease;
+    height: 100vh;
+    overflow-y: scroll; /* Allow vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    padding-right: 10px;
+    scrollbar-width: none; /* Hide scrollbars in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbars in IE and Edge */
+}
+
+/* Hide scrollbars for WebKit browsers (Chrome, Safari, etc.) */
+#leftBox::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+
+
+/* Right side (Content): takes 30% of the width */
+#rightBox {
+
+    width: 70%; /* Adjusted to take 70% of the screen */
+    background-color: #f4f4f4;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+
+    
+}
+#leftBox img {
+    
+    display: block;
+    margin: 20px auto; /* Center the image horizontally */
+    max-width: 100%; /* Make it responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+/* Common styles for all buttons including directions, searchAreaBtn, selectMapBtn, liveLocationBtn */
+
+#searchAreaBtn,
+#selectMapBtn,
+#liveLocationBtn,#walkingBtn,#disabledBtn,#drivingBtn,#navigationBtn,#startBtn,#navigationMapBtn,#startMapBtn,#mapDisabledBtn,#mapDrivingBtn,#mapWalkingBtn {
+    display: block; /* Make the button take up its own line */
+    margin: 20px auto; /* Center the button horizontally */
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-size: 15px;
+    width: 250px; /* Set a maximum width */
+}
+
+/* Add hover effect for the buttons */
+
+#searchAreaBtn:hover,
+#selectMapBtn:hover,
+#liveLocationBtn:hover {
+    background-color: orange;
+}
+#directionsBtn {
+    display: block; /* Make the button take up its own line */
+    margin: 20px auto; /* Center the button horizontally */
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-size: 15px;
+    width: 250px; /* Set a maximum width */
+}
+
+/* Add hover effect for the buttons */
+#directionsBtn:hover
+ {
+    background-color: orange;
+}
+
+
+#searchBar {
+    
+    margin-left: 10px;
+    width: 97%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: black;
+    color: white;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's width */
+}
+
+#newsearchBar {
+    margin-left: 10px;
+    width: 97%;
+    padding: 8px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: black;
+    color: white;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's width */
+}
+
+
+/* Styling for the fixed Locations heading */
+#locationsHeading {
+    color: orange; /* Make the heading orange */
+    margin-left: 14px; /* Match the left margin with the search bar */
+    margin-bottom: 10px;
+    position: relative; /* Keep the heading fixed relative to its container */
+}
+
+#heading {
+    color: orange; /* Make the heading orange */
+    text-align: center; /* Match the left margin with the search bar */
+    margin-bottom: 10px;
+    position: relative; /* Keep the heading fixed relative to its container */
+}
+
+#heading1 {
+    color: orange; /* Make the heading orange */
+    text-align: left; /* Match the left margin with the search bar */
+   
+    position: relative; /* Keep the heading fixed relative to its container */
+}
+
+#heading2 {
+    color: orange; /* Make the heading orange */
+    text-align: left; /* Match the left margin with the search bar */
+    
+    position: relative; /* Keep the heading fixed relative to its container */
+}
+#heading3 {
+    color: white; /* Make the heading orange */
+    text-align: left; /* Match the left margin with the search bar */
+    
+    position: relative; /* Keep the heading fixed relative to its container */
+}
+#heading4 {
+    color: white; /* Make the heading orange */
+    text-align: left; /* Match the left margin with the search bar */
+    
+    position: relative; /* Keep the heading fixed relative to its container */
+}
+#heading5 {
+    color: orange; /* Make the heading orange */
+    text-align: left; /* Match the left margin with the search bar */
+    margin-top:50px;
+    position: relative; /* Keep the heading fixed relative to its container */
+}
+
+#heading6 {
+    color: orange; /* Make the heading orange */
+    text-align: left; /* Match the left margin with the search bar */
+    
+    position: relative; /* Keep the heading fixed relative to its container */
+}
+
+
+/* Scrollable content */
+.scrollable-content {
+    overflow-y: auto;
+    flex-grow: 1;
+    max-height: calc(100vh - 60px); /* Adjust based on padding */
+    scrollbar-width: none; /* Hide scrollbars in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbars in IE and Edge */
+}
+
+/* Hide scrollbars for WebKit browsers like Chrome and Safari */
+.scrollable-content::-webkit-scrollbar {
+    display: none;
+}
+
+/* Clickable item styling */
+.clickable-item {
+    background-color: black;
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Prevent padding from affecting the width */
+}
+
+/* Hover effect on clickable items */
+.clickable-item:hover {
+    background-color: orange;
+}
+
+/* Map container should take full height of the left side */
+#map {
+    height: 100vh;
+    width: 100%; /* Full width of the left box */
+}
+
+/* Hide controls by default */
+#controls1, #controls2, #controls3 {
+    display: none;
+    padding: 10px;
+    box-sizing: border-box; /* Ensure padding fits within the element */
+}
+/* Center the table and increase font size */
+#leftBox table {
+    display: block; /* Make the table a block element to allow centering */
+    margin: 20px auto; /* Center the table horizontally and add some top margin */
+    font-size: 18px; /* Increase the font size */
+    width: 80%; /* Optionally, limit the table's width */
+}
+
+#leftBox table td {
+    padding: 10px; /* Add padding inside the table cells for better spacing */
+    text-align: left; /* Align text to the left for a clean look */
+}
+
+/* Responsive layout adjustments */
+@media screen and (max-width: 768px) {
+    #container {
+        flex-direction: column-reverse; /* Stack the leftBox at the bottom */
+    }
+
+    #leftBox {
+        width: 100%;
+        height: 35vh; /* LeftBox takes 35% of the screen height */
+    }
+
+    #rightBox {
+        width: 100%;
+        height: 65vh; /* RightBox takes 65% of the screen height */
+        overflow-y: hidden; /* Prevent vertical overflow on small screens */
+    }
+}
+
+/* Adjust further for even smaller screens */
+@media screen and (max-width: 500px) {
+    #leftBox {
+        height: 35vh; /* Maintain the height */
+    }
+
+    #rightBox {
+        height: 65vh; /* Maintain the height */
+    }
+
+    #searchBar {
+        font-size: 14px;
+    }
+
+    .clickable-item {
+        font-size: 12px;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+       <!-- HTML structure for the left box -->
+       <div id="leftBox">
+       
+         <h2 id="heading"></h2>
+         
+        <input type="text" id="searchBar" placeholder="Search..." />
+        <h3 id="locationsHeading">Locations</h3>
+        <div class="scrollable-content" id="mainItems"> <!-- Main items list -->
+            <div class="clickable-item" id="transportation">Transportation</div>
+            <div class="clickable-item" id="restaurants">Restaurants</div>
+            <div class="clickable-item" id="sports">Sports</div>
+            <div class="clickable-item" id="lecturers">Lecturers</div>
+            <div class="clickable-item" id="parking">Parking Lots</div>
+            <div class="clickable-item" id="classrooms">Classrooms</div>
+            <div class="clickable-item" id="swimming-pool">Swimming Pool</div>
+            <div class="clickable-item" id="science-school">School of Science</div>
+            <div class="clickable-item" id="humanities-school">School of Humanities</div>
+            <div class="clickable-item" id="library">Library</div>
+            <div class="clickable-item" id="lilian-k">Lilian K Beam Building</div>
+            <div class="clickable-item" id="administration">Administration</div>
+            <div class="clickable-item" id="humanities-school">School of Humanities</div>
+            <div class="clickable-item" id="library">Library</div>
+            <div class="clickable-item" id="lilian-k">Lilian K Beam Building</div>
+            <div class="clickable-item" id="administration">Administration</div>
+        </div>
+    
+        <div class="scrollable-content" id="transportationItems" style="display: none;"> <!-- Transportation sub-items -->
+            <div class="clickable-item">Transportation Office</div>
+        </div>
+    
+        <div class="scrollable-content" id="sportsItems" style="display: none;"> <!-- Sports sub-items -->
+            <div class="clickable-item">Basketball Court</div>
+            <div class="clickable-item">Football Pitch</div>
+            <div class="clickable-item">Tennis</div>
+            <div class="clickable-item">Pool Table</div>
+        </div>
+    
+        <div class="scrollable-content" id="restaurantsItems" style="display: none;"> <!-- Restaurants sub-items -->
+            <div class="clickable-item">Paul's Caffe</div>
+            <div class="clickable-item">Sironi</div>
+            <div class="clickable-item">Caffe Latte</div>
+        </div>
+    </div>
+    
+
+        <!-- Controls on the Right -->
+        <div id="rightBox">
+    <div id="controls1">
+        <select id="featureSelect">
+            <option value="">Select a feature</option>
+        </select>
+        <button id="searchBtn">Search</button>
+    </div><br>
+
+    <div id="controls2">
+        <label for="source">Source:</label>
+        <select id="source">
+            <option value="">Select Source</option>
+        </select>
+
+        <label for="destination">Destination:</label>
+        <select id="destination">
+            <option value="">Select Destination</option>
+        </select>
+
+        <label for="mode">Mode:</label>
+        <select id="mode">
+            <option value="">Select Mode</option>
+            <option value="walking">Walking</option>
+            <option value="driving">Driving</option>
+            <option value="disabled">Disabled</option>
+        </select>
+
+        <button id="searchBtn1">Search</button>
+        
+        <div id="result"></div>
+        <table id="pathTable" border="1" style="display:none;">
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Path</th>
+                    <th>Distance</th>
+                    <th>Directions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    
+    <div id="controls3">
+        <label for="coordSource">Choose the Source by clicking on the map:</label>
+        <input type="text" id="coordSource1" readonly />
+        <input type="text" id="coordSource" readonly />
+    
+        <label for="coordDestination">Destination:</label>
+        <select id="coordDestination">
+            <option value="">Select Destination</option>
+        </select>
+    
+        <label for="coordMode">Mode:</label>
+        <select id="coordMode">
+            <option value="">Select Mode</option>
+            <option value="walking">Walking</option>
+            <option value="driving">Driving</option>
+            <option value="disabled">Disabled</option>
+        </select>
+    
+        <button id="coordSearchBtn">Search</button>
+    
+        <div id="coordResult"></div>
+        <table id="coordPathTable" border="1" style="display:none;">
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Path</th>
+                    <th>Distance</th>
+                    <th>Directions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div id="map"></div>
+        </div>
+    </div>
+    
+    
+   
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+
+// Wait for the DOM to load before adding event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Event listeners for normal divs
+    document.getElementById('transportation').addEventListener('click', function() {
+        showSubItems('transportationItems', 'Transportation');
+    });
+
+    document.getElementById('sports').addEventListener('click', function() {
+        showSubItems('sportsItems', 'Sports');
+    });
+
+    document.getElementById('restaurants').addEventListener('click', function() {
+        showSubItems('restaurantsItems', 'Restaurants');
+    });
+
+    // Function to show sub-items and hide the main list
+    function showSubItems(subItemId, headingText) {
+        // Hide main items
+        document.getElementById('mainItems').style.display = 'none';
+
+        // Show the selected sub-items
+        document.getElementById(subItemId).style.display = 'block';
+
+        // Show the back button and heading
+       
+        document.getElementById('heading').style.display = 'block';  // Display heading
+        document.getElementById('heading').innerText = headingText;  // Set heading text
+    }
+
+    // Back button functionality to go back to the main items
+ 
+
+    function handleSubDivClick(locationName, customDetails) {
+    const point = customLocations[locationName];
+
+    // Automatically set the destination in both dropdowns (controls2 and controls3)
+    document.getElementById('destination').value = point;
+    document.getElementById('coordDestination').value = point;
+
+    // Convert the locationName to title case
+    const titleCasedLocation = toTitleCase(locationName);
+
+    // Hide the search bar and show back button and content
+    document.getElementById('searchBar').style.display = 'none';
+
+    // Show the back button, heading, image, directions button, and table with custom content
+    const content = `
+        <h1 id="heading">${titleCasedLocation}</h1> <!-- Title-cased location name -->
+        <img src="messi.jpeg" alt="${titleCasedLocation}" style="width:100%;max-width:200px;" />
+        <button id="directionsBtn">Directions</button>
+        <table border="1" style="margin-top: 10px;">
+            <tr><td>Location</td><td>${customDetails.location}</td></tr>
+            <tr><td>Phone Number</td><td>${customDetails.phoneNumber}</td></tr>
+            <tr><td>Email Address</td><td>${customDetails.email}</td></tr>
+            <tr><td>Other</td><td>${customDetails.other}</td></tr>
+        </table>
+    `;
+
+    document.getElementById('leftBox').innerHTML = content;
+
+    // Add event listener for the Directions button
+    document.getElementById('directionsBtn').addEventListener('click', function () {
+        showDirectionsSubSubDiv(locationName); // Call a new function to show the Directions options
+    });
+}
+
+// Title case conversion function
+function toTitleCase(str) {
+    return str.toLowerCase().split(' ').map(function(word) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join(' ');
+}
+
+function showDirectionsSubSubDiv(destinationName) {
+    // Convert destinationName to title case
+    const titleCasedDestination = toTitleCase(destinationName);
+
+    // Replace content with the new sub-sub div containing the buttons and headings
+    const directionsContent = `
+        <h2 id="heading">Destination: ${titleCasedDestination}</h2> <!-- Title case applied -->
+        <h3 id="locationsHeading">Choose a starting location</h3>
+        <button id="searchAreaBtn">Search an Area</button>
+        <button id="selectMapBtn">Select an area on the map</button>
+        <button id="liveLocationBtn">Use live location</button>
+    `;
+
+    document.getElementById('leftBox').innerHTML = directionsContent;
+
+    document.getElementById('searchAreaBtn').addEventListener('click', function () {
+        showSearchAreaOptions(destinationName);  // Pass the destinationName to the function
+    });
+
+    document.getElementById('selectMapBtn').addEventListener('click', function () {
+        showModeSelectionSubDivForMap(destinationName); // Call the new function for map mode selection
+    });
+
+    document.getElementById('liveLocationBtn').addEventListener('click', function () {
+        alert("Use live location functionality clicked!");
+    });
+}
+
+// Title case conversion function
+function toTitleCase(str) {
+    return str.toLowerCase().split(' ').map(function(word) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join(' ');
+}
+// New function to show mode selection for the map when "Select an area on the map" is clicked
+function showModeSelectionSubDivForMap(destinationName) {
+
+
+
+
+    function toTitleCase(str) {
+        return str.toLowerCase().split(' ').map(function(word) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        }).join(' ');
+    }
+
+    // Convert sourceName and destinationName to title case
+  
+    const titleCasedDestinationName = toTitleCase(destinationName);
+    // Content for the new sub-div
+    const modeSelectionContentForMap = `
+
+     <h2 id="heading1">Selected Source:</h2>
+    <h2 id="heading3">Dropped Pin</h2> <!-- Display the source name below the heading -->
+
+    <h2 id="heading2">Selected Destination:</h2>
+    <h2 id="heading4">${titleCasedDestinationName}</h2>
+    <hr>
+ <h3 id="heading5">Choose a mode of tranportation:</h3>
+
+        
+       
+        
+        <!-- Buttons for selecting mode of transportation -->
+        <div id="modeSelectionForMap">
+            <button id="mapWalkingBtn" class="map-mode-btn">Walking</button>
+            <button id="mapDrivingBtn" class="map-mode-btn">Driving</button>
+            <button id="mapDisabledBtn" class="map-mode-btn">Disabled</button>
+        </div>
+        <hr>
+        <!-- Start Button -->
+        <button id="startMapBtn" style="margin-top: 20px;">Get Directions</button>
+        <button id="navigationMapBtn" style="margin-top: 20px;">Start Navigation</button>
+        <hr>
+
+        <!-- Section to display directions below the Start button -->
+        <div id="mapDirectionsOutput" style="margin-top: 20px;">
+            <h3 id="heading6">Directions:</h3>
+            <p id="mapDirectionsText">No directions available yet.</p>
+        </div>
+    `;
+
+    // Replace the content of the left box with this new content
+    document.getElementById('leftBox').innerHTML = modeSelectionContentForMap;
+
+    // Add functionality to highlight the selected mode and set the mode in controls3
+    document.querySelectorAll('.map-mode-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            // Remove the yellow background from all buttons
+            document.querySelectorAll('.map-mode-btn').forEach(btn => {
+                btn.style.backgroundColor = ''; // Reset background color
+            });
+
+            // Highlight the clicked button
+            this.style.backgroundColor = 'orange'; // Highlight the selected mode
+
+            // Set the mode in controls3
+            const selectedModeForMap = this.textContent.toLowerCase(); // Get the mode as lowercase
+            document.getElementById('coordMode').value = selectedModeForMap; // Set the mode in controls3
+        });
+    });
+
+    // Add event listener for the Start button
+    document.getElementById('startMapBtn').addEventListener('click', function () {
+        // Check if a mode is selected
+        const selectedModeForMap = [...document.querySelectorAll('.map-mode-btn')].find(btn => btn.style.backgroundColor === 'orange')?.textContent;
+
+        if (!selectedModeForMap) {
+            alert('Please select a mode of transportation.');
+            return;
+        }
+
+        // Trigger the Search button in controls3 programmatically
+        document.getElementById('coordSearchBtn').click();
+
+        // After triggering the search, extract the directions from the table and display them below the Start button
+        setTimeout(displayMapDirections, 500); // Delay to ensure table data is updated
+    });
+}
+// Function to extract directions from the last column of the coordPathTable and display them
+function displayMapDirections() {
+    const directionCells = document.querySelectorAll('#coordPathTable tbody tr td:nth-child(5)'); // Get all cells in the last column (Directions)
+    let directionsText = '';
+
+    directionCells.forEach(cell => {
+        const direction = cell.textContent.trim();
+        if (direction) {
+            directionsText += direction + '<br><hr>'; // Append direction with a line break
+        }
+    });
+
+    if (!directionsText) {
+        directionsText = 'No directions available.';
+    }
+
+    // Display the directions below the Start button
+    document.getElementById('mapDirectionsText').innerHTML = directionsText;
+}
+
+
+// Function to handle search area options
+function showSearchAreaOptions(destinationName) {
+    const areaSelectionContent = `
+         <input type="text" id="newsearchBar" placeholder="Search..." />
+        <h3 id="locationsHeading">Locations</h3>
+        <div class="scrollable-content" id="newMainItems"> <!-- Main items list -->
+            <div class="clickable-item" id="newTransportation">Transportation</div>
+            <div class="clickable-item" id="newRestaurants">Restaurants</div>
+            <div class="clickable-item" id="newSports">Sports</div>
+            <div class="clickable-item" id="newLecturers">Lecturers</div>
+            <div class="clickable-item" id="newParking">Parking Lots</div>
+            <div class="clickable-item" id="newClassrooms">Classrooms</div>
+            <div class="clickable-item" id="newSwimmingPool">Swimming Pool</div>
+            <div class="clickable-item" id="newScienceSchool">School of Science</div>
+            <div class="clickable-item" id="newHumanitiesSchool">School of Humanities</div>
+            <div class="clickable-item" id="newLibrary">Library</div>
+            <div class="clickable-item" id="newLilianK">Lilian K Beam Building</div>
+            <div class="clickable-item" id="newAdministration">Administration</div>
+        </div>
+        
+        <!-- Additional sub-items can be dynamically created like this -->
+        <div class="scrollable-content" id="newTransportationItems" style="display: none;"> <!-- Transportation sub-items -->
+            <div class="clickable-item" data-source="Transportation Office">Transportation Office</div>
+        </div>
+        <div class="scrollable-content" id="newSportsItems" style="display: none;"> <!-- Sports sub-items -->
+            <div class="clickable-item" data-source="Basketball Court">Basketball Court</div>
+            <div class="clickable-item" data-source="Football Pitch">Football Pitch</div>
+            <div class="clickable-item" data-source="Tennis">Tennis</div>
+        </div>
+    `;
+    document.getElementById('leftBox').innerHTML = areaSelectionContent;
+
+    // Add event listeners for main items to show sub-items
+    document.getElementById('newTransportation').addEventListener('click', function () {
+        showNewSubItems('newTransportationItems', destinationName);  // Pass the destination name
+    });
+
+    document.getElementById('newSports').addEventListener('click', function () {
+        showNewSubItems('newSportsItems', destinationName);  // Pass the destination name
+    });
+
+    function showNewSubItems(subItemId, destinationName) {
+        // Hide main items and show the selected sub-items
+        document.getElementById('newMainItems').style.display = 'none';
+        document.getElementById(subItemId).style.display = 'block';
+
+        // Add event listeners for sub-items to register the source
+        document.querySelectorAll(`#${subItemId} .clickable-item`).forEach(item => {
+            item.addEventListener('click', function () {
+                // Get the clicked location name, trim it to remove extra spaces
+                const locationName = this.textContent.trim();
+
+                // Normalize the case to match keys in customLocations
+                const normalizedLocationName = locationName.toUpperCase(); // Convert both to uppercase for consistency
+
+                // Look up the corresponding point from customLocations
+                const source = customLocations[normalizedLocationName]; // Use normalizedLocationName
+
+                if (source) {
+                    document.getElementById('source').value = source; // Set in controls2 only
+                  
+
+                    // Now show the new sub-div to select mode and start the journey
+                    showModeSelectionSubDiv(locationName, destinationName); // Pass both source and destination names
+                } else {
+                    alert(`Location "${locationName}" not found in customLocations.`);
+                }
+            });
+        });
+    }
+}
+
+function showModeSelectionSubDiv(sourceName, destinationName) {
+    // Helper function to convert a string to title case
+    function toTitleCase(str) {
+        return str.toLowerCase().split(' ').map(function(word) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        }).join(' ');
+    }
+
+    // Convert sourceName and destinationName to title case
+    const titleCasedSourceName = toTitleCase(sourceName);
+    const titleCasedDestinationName = toTitleCase(destinationName);
+
+    // Content for the new sub-div with title-cased source and destination
+    const modeSelectionContent = `
+        <h2 id="heading1">Selected Source:</h2>
+    <h2 id="heading3">${titleCasedSourceName}</h2> <!-- Display the source name below the heading -->
+
+    <h2 id="heading2">Selected Destination:</h2>
+    <h2 id="heading4">${titleCasedDestinationName}</h2>
+    <hr>
+    <h3 id="heading5">Choose a mode of tranportation:</h3>
+        <!-- Buttons for selecting mode of transportation -->
+        <div id="modeSelection">
+            <button id="walkingBtn" class="mode-btn">Walking</button>
+            <button id="drivingBtn" class="mode-btn">Driving</button>
+            <button id="disabledBtn" class="mode-btn">Disabled</button>
+        </div>
+        <hr>
+        <!-- Start Button -->
+        <button id="startBtn" style="margin-top: 20px;">Get Directions</button>
+        
+        <button id="navigationBtn" style="margin-top: 20px;">Start Navigation</button>
+        <hr>
+        <!-- New section to display directions below the Start button -->
+        <div id="directionsOutput" style="margin-top: 20px;">
+            <h3 id="heading6">Directions:</h3>
+            <p id="directionsText">No directions available yet.</p>
+        </div>
+    `;
+
+    // Replace the content of the left box with this new content
+    document.getElementById('leftBox').innerHTML = modeSelectionContent;
+
+    // Add functionality to highlight the selected mode (as a radio button effect) and set the mode in controls2
+    document.querySelectorAll('.mode-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            // Remove the yellow background from all buttons
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.style.backgroundColor = ''; // Reset background color
+            });
+
+            // Highlight the clicked button
+            this.style.backgroundColor = 'orange'; // Highlight the selected mode
+
+            // Set the mode in controls2
+            const selectedMode = this.textContent.toLowerCase(); // Get the mode as lowercase (walking, driving, or disabled)
+            document.getElementById('mode').value = selectedMode; // Set the mode in controls2
+        });
+    });
+
+    // Add event listener for the Start button
+    document.getElementById('startBtn').addEventListener('click', function () {
+        // Check if a mode is selected
+        const selectedMode = [...document.querySelectorAll('.mode-btn')].find(btn => btn.style.backgroundColor === 'orange')?.textContent;
+
+        if (!selectedMode) {
+            alert('Please select a mode of transportation.');
+            return;
+        }
+
+        // Trigger the Search button in controls2 programmatically
+        document.getElementById('searchBtn1').click();
+
+        // After triggering the search, extract the directions from the table and display them below the Start button
+        setTimeout(displayDirections, 500); // Delay to ensure table data is updated
+    });
+}
+
+
+
+function displayDirections() {
+    const directionCells = document.querySelectorAll('#pathTable tbody tr td:nth-child(5)'); // Get all cells in the last column (Directions)
+    let directionsText = '';
+
+    directionCells.forEach(cell => {
+        const direction = cell.textContent.trim();
+        if (direction) {
+            // Append direction with a line break and an <hr> after each direction
+            directionsText += direction + '<br><hr>';
+        }
+    });
+
+    if (!directionsText) {
+        directionsText = 'No directions available.';
+    }
+
+    // Display the directions below the Start button with <hr> separators
+    document.getElementById('directionsText').innerHTML = directionsText;
+}
+
+    // Event listeners for sub-div clicks
+    document.getElementById('transportationItems').addEventListener('click', function() {
+        handleSubDivClick('TRANSPORTATION OFFICE', {
+            location: 'Opposite Pauls caffe back entrance',
+            phoneNumber: '07863322789',
+            email: 'tranport@gmail.com',
+            other: 'Open everyday'
+        });
+    });
+
+    document.getElementById('sportsItems').addEventListener('click', function(event) {
+        const target = event.target;
+        if (target.innerText === 'Basketball Court') {
+            handleSubDivClick('BASKETBALL COURT', {
+                location: 'Sports Complex',
+                phoneNumber: '07863322765',
+                email: 'sports@gmail.com',
+                other: 'Open on weekends'
+            });
+        } else if (target.innerText === 'Football Pitch') {
+            handleSubDivClick('FOOTBALL PITCH', {
+                location: 'Main Campus Ground',
+                phoneNumber: '07863322776',
+                email: 'football@gmail.com',
+                other: 'Training every evening'
+            });
+        }
+    });
+
+    document.getElementById('restaurantsItems').addEventListener('click', function(event) {
+        const target = event.target;
+        if (target.innerText === "Paul's Caffe") {
+            handleSubDivClick('PAULS CAFFE', {
+                location: 'Student Centre',
+                phoneNumber: '07863322719',
+                email: 'pauls@gmail.com',
+                other: 'Very popular'
+            });
+        } else if (target.innerText === 'Sironi') {
+            handleSubDivClick('SIRONI', {
+                location: 'Student Centre',
+                phoneNumber: '07863322719',
+                email: 'sironi@gmail.com',
+                other: 'Very good restaurant'
+            });
+        } else if (target.innerText === 'Caffe Latte') {
+            handleSubDivClick('CAFFE LATTA', {
+                location: 'Student Centre',
+                phoneNumber: '07863322720',
+                email: 'caffelatte@gmail.com',
+                other: 'Great coffee options'
+            });
+        }
+    });
+});
+
+
+        var map = L.map('map').setView([-1.219737, 36.879385], 15);
+
+        // Store layers for later reference
+        var featureLayers = [];
+        var pathLayers = [];
+        var usiuBorderLayer;
+
+        fetch('14.geojson')
+    .then(response => response.json())
+    .then(data => {
+        var featureSelect = document.getElementById('featureSelect');
+        L.geoJSON(data, {
+            pointToLayer: function (feature, latlng) {
+                var marker = L.marker(latlng);
+                marker.bindPopup(feature.properties.name);
+                featureLayers.push({
+                    name: feature.properties.name,
+                    layer: marker,
+                    featureType: feature.geometry.type
+                });
+                return marker;
+            },
+            style: function (feature) {
+                var isUSIUBorder = feature.properties.name === 'USIU BORDER';
+                return {
+                    color: isUSIUBorder ? '#000' : (feature.properties.borderColor || '#000'),
+                    fillColor: isUSIUBorder ? '#27a147 ' : (feature.properties.fillColor || '#ccc'),
+                    fillOpacity: isUSIUBorder ? 1 : 0.7,
+                    weight: isUSIUBorder ? 5 : 2,
+                    zIndex: isUSIUBorder ? 1000 : (feature.properties.zIndex || 1)
+                };
+            },
+            onEachFeature: function (feature, layer) {
+                var option = document.createElement('option');
+                option.value = feature.properties.name;
+                option.text = feature.properties.name;
+                featureSelect.appendChild(option);
+
+                // Register live coordinates for any clicked feature except 'USIU BORDER'
+                layer.on('click', function (e) {
+                    var latlng = e.latlng; // Get the coordinates of the clicked point
+
+                    // Handle 'USIU BORDER' clicks (clear inputs)
+                    if (feature.properties.name === 'USIU BORDER') {
+                        document.getElementById('coordSource1').value = '';
+                        document.getElementById('coordSource').value = '';
+                        return; // Exit, no further processing for USIU BORDER
+                    }
+
+                    // Handle LineString or Polygon features (excluding 'USIU BORDER')
+                    if (feature.geometry.type === "LineString" || feature.geometry.type === "Polygon") {
+                        // Update the first input with live coordinates of the clicked point
+                        document.getElementById('coordSource1').value = `${latlng.lat}, ${latlng.lng}`;
+
+                        // Handle LineString features for nearest endpoint
+                        if (feature.geometry.type === "LineString") {
+                            const lineCoords = layer.getLatLngs(); // Get the coordinates of the LineString
+
+                            // Find the closest endpoint of the clicked LineString
+                            const closestEndpoint = findNearestEndpoint(latlng, lineCoords);
+
+                            // Update the second input with the closest endpoint of the LineString
+                            document.getElementById('coordSource').value = `${closestEndpoint.lat}, ${closestEndpoint.lng}`;
+                        } else {
+                            // Clear coordSource input for Polygons, as no nearest endpoint is needed
+                            document.getElementById('coordSource').value = '';
+                        }
+                    }
+                });
+
+                if (feature.geometry.type === "LineString") {
+                    pathLayers.push({
+                        name: feature.properties.name,
+                        layer: layer
+                    });
+                }
+
+                if (feature.properties && feature.properties.name) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            }
+        }).addTo(map);
+
+        if (usiuBorderLayer) {
+            var maskBounds = usiuBorderLayer.getBounds();
+            L.polygon(usiuBorderLayer.getLatLngs(), {
+                color: '#000',
+                fillColor: '#fff',
+                fillOpacity: 1,
+                zIndex: 1000
+            }).addTo(map);
+        }
+    })
+    .catch(error => console.error('Error loading the GeoJSON file:', error));
+
+
+    map.on('click', function(e) {
+    var latlng = e.latlng;
+
+    // Reset the validity flag
+    var isValidFeature = false;
+    var closestFeature = null;
+    var shortestDistance = Infinity;
+
+    // Loop through the featureLayers to check if clicked on LineString or Polygon (excluding 'USIU BORDER')
+    featureLayers.forEach(function(featureLayer) {
+        // Exclude "USIU BORDER" explicitly
+        if (featureLayer.name === 'USIU BORDER') {
+            return; // Skip processing for USIU BORDER
+        }
+
+        // Handle LineStrings
+        if (featureLayer.featureType === 'LineString') {
+            const lineCoords = featureLayer.layer.getLatLngs();
+            const nearestEndpoint = findNearestEndpoint(latlng, lineCoords);
+            const distanceToNearest = calculateDistance(latlng, nearestEndpoint);
+
+            // Check if click is near the LineString (adjust distance threshold as needed)
+            if (distanceToNearest < 2 && distanceToNearest < shortestDistance) {
+                isValidFeature = true; // Valid LineString feature clicked
+                shortestDistance = distanceToNearest; // Track the closest distance
+                closestFeature = featureLayer; // Track the closest feature
+            }
+        }
+        // Handle Polygons
+        else if (featureLayer.featureType === 'Polygon') {
+            if (featureLayer.layer.getBounds().contains(latlng)) {
+                isValidFeature = true; // Valid Polygon feature clicked
+            }
+        }
+    });
+ // If the click was on a valid LineString, interpolate and log the points
+ if (isValidFeature && closestFeature) {
+        const lineCoords = closestFeature.layer.getLatLngs();
+        
+        // Interpolate 1000 points along the LineString
+        const interpolatedPoints = extractCoordinates(lineCoords, 1000);
+        
+        // Log all interpolated points to the console
+        console.log('Interpolated points along the clicked LineString:');
+        interpolatedPoints.forEach(point => {
+            console.log(`Latitude: ${point[1]}, Longitude: ${point[0]}`);
+        });
+    } else {
+        console.log('Click was not on a valid LineString.');
+    }
+    // If the click was on a valid LineString or Polygon (excluding USIU BORDER), update the coordSource1 with live coordinates
+    if (isValidFeature) {
+        document.getElementById('coordSource1').value = `${latlng.lat}, ${latlng.lng}`;
+
+        // Log the closest LineString name to the console
+        if (closestFeature && closestFeature.name) {
+            console.log(`The closest LineString is: ${closestFeature.name}`);
+        }
+    } else {
+        // If the click was outside valid features or on 'USIU BORDER', clear the input
+        document.getElementById('coordSource1').value = '';
+        document.getElementById('coordSource').value = '';
+    }
+
+    // Find the nearest endpoint of the LineString and update coordSource (second input)
+    var nearestEndpoint = findNearestPoint(latlng, featureLayers);
+    if (nearestEndpoint && nearestEndpoint.latLng) {
+        document.getElementById('coordSource').value = `${nearestEndpoint.latLng.lat}, ${nearestEndpoint.latLng.lng}`;
+    } else {
+        document.getElementById('coordSource').value = 'No nearest endpoint found';
+    }
+});
+
+
+
+
+        // Define the points from POINT 13 to POINT 335 excluding specific points
+        const availablePoints = [];
+        for (let i = 13; i <= 335; i++) {
+            if (![29, 31, 44, 107, 174, 194].includes(i)) {
+                availablePoints.push(`POINT ${i}`);
+            }
+        }
+// Add custom locations and map them to specific points
+const customLocations = {
+    "USIU GATE A": "POINT 86",
+    "USIU GATE B": "POINT 100",
+    "LIBRARY": "POINT 150",
+    "SCHOOL OF HUMANITIES": "POINT 200",
+    "ADMINISTRATION": "POINT 200",
+    "SWIMMING POOL": "POINT 160",
+    "TRANSPORTATION OFFICE": "POINT 161",
+    "PAULS CAFFE": "POINT 162",
+    "SIRONI": "POINT 163",
+    "CAFFE LATTA": "POINT 164",
+    "BASKETBALL COURT": "POINT 165",
+    "FOOTBALL PITCH": "POINT 166"
+
+};
+        // Function to populate source and destination dropdowns with filtered points
+        function populateDropdowns() {
+            const sourceSelect = document.getElementById('source');
+            const destinationSelect = document.getElementById('destination');
+            const coordDestinationSelect = document.getElementById('coordDestination');
+
+            // Clear previous options
+            sourceSelect.innerHTML = '<option value="">Select Source</option>';
+            destinationSelect.innerHTML = '<option value="">Select Destination</option>';
+            coordDestinationSelect.innerHTML = '<option value="">Select Destination</option>';
+
+            // Populate the dropdowns with the available points
+            availablePoints.forEach(point => {
+                const optionSource = document.createElement('option');
+                optionSource.value = point;
+                optionSource.textContent = point;
+                sourceSelect.appendChild(optionSource);
+
+                const optionDestination = document.createElement('option');
+                optionDestination.value = point;
+                optionDestination.textContent = point;
+                destinationSelect.appendChild(optionDestination);
+
+                const optionCoordDestination = document.createElement('option');
+        optionCoordDestination.value = point;
+        optionCoordDestination.textContent = point;
+        coordDestinationSelect.appendChild(optionCoordDestination);
+            });
+        
+// Populate the dropdowns with custom locations
+Object.keys(customLocations).forEach(location => {
+        const point = customLocations[location];
+
+        const optionSource = document.createElement('option');
+        optionSource.value = point; // Map custom location to POINT value
+        optionSource.textContent = location;
+        sourceSelect.appendChild(optionSource);
+
+        const optionDestination = document.createElement('option');
+        optionDestination.value = point; // Map custom location to POINT value
+        optionDestination.textContent = location;
+        destinationSelect.appendChild(optionDestination);
+
+        const optionCoordDestination = document.createElement('option');
+        optionCoordDestination.value = point; // Map custom location to POINT value
+        optionCoordDestination.textContent = location;
+        coordDestinationSelect.appendChild(optionCoordDestination);
+    });
+}
+
+        // Call the function to populate the dropdowns when the page loads
+        document.addEventListener('DOMContentLoaded', populateDropdowns);
+
+       // Fetch the directions file (1.json)
+let directionsData = {};
+
+fetch('1.json')
+    .then(response => response.json())
+    .then(data => {
+        directionsData = data; // Store the directions data for later use
+    })
+    .catch(error => console.error('Error loading directions JSON:', error));
+
+// Update the search button click handler to also populate the directions
+document.getElementById('searchBtn1').addEventListener('click', function() {
+    const source = document.getElementById('source').value;
+    const destination = document.getElementById('destination').value;
+    const mode = document.getElementById('mode').value;
+
+
+// Modify the validation logic to provide more specific error messages
+if (!source) {
+    alert('Please select a Source point.');
+    return;
+}
+
+if (!mode) {
+    alert('Please choose a means of transportation.');
+    return;
+}
+
+if (!destination) {
+    alert('Please select a Destination Point.');
+    return;
+}
+
+    fetch(`/shortest-path?source=${source}&destination=${destination}&mode=${mode}`)
+        .then(response => response.json())
+        .then(result => {
+            const resultDiv = document.getElementById('result');
+            const table = document.getElementById('pathTable');
+            const tbody = table.querySelector('tbody');
+
+            if (result.error) {
+                resultDiv.textContent = result.error;
+                table.style.display = 'none';
+            } else {
+                resultDiv.textContent = `Total Distance: ${result.distance.toFixed(2)} units`;
+
+                tbody.innerHTML = ''; // Clear previous results
+
+                // Iterate through the result path to populate the table and add directions
+                result.path.forEach((pathEntry, index) => {
+                    const { from, to, path, distance } = pathEntry;
+
+                    let row = document.createElement('tr');
+
+                    let fromCell = document.createElement('td');
+                    fromCell.textContent = from;
+                    row.appendChild(fromCell);
+
+                    let toCell = document.createElement('td');
+                    toCell.textContent = to;
+                    row.appendChild(toCell);
+
+                    let pathCell = document.createElement('td');
+                    pathCell.textContent = path;
+                    row.appendChild(pathCell);
+
+                    let distanceCell = document.createElement('td');
+                    distanceCell.textContent = distance;
+                    row.appendChild(distanceCell);
+
+                    // Get direction for this path
+                    let direction = '';
+                    if (index < result.path.length - 1) { // Check if there is a next path
+                        const nextPathName = result.path[index + 1].path;
+                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                        }
+                    } else { // For the last row, say "Destination"
+                        direction = `Destination in ${distance.toFixed(2)} metres`;
+                    }
+
+                    let directionCell = document.createElement('td');
+                    directionCell.textContent = direction;
+                    row.appendChild(directionCell);
+
+                    tbody.appendChild(row);
+                });
+
+                table.style.display = 'table';
+
+                // Highlight paths on the map
+                highlightPaths(result.path);
+            }
+        })
+        .catch(error => console.error('Error calculating shortest path:', error));
+});
+
+function highlightPaths(paths, skipFirstPath) {
+    // Reset all path colors to default
+    pathLayers.forEach(layerObj => {
+        layerObj.layer.setStyle({
+            color: layerObj.layer.feature.properties.borderColor || '#000',
+            fillColor: layerObj.layer.feature.properties.fillColor || '#ccc'
+        });
+
+        // Remove previous polylines (if any)
+        if (layerObj.polyline) {
+            map.removeLayer(layerObj.polyline);
+        }
+    });
+
+    // Highlight the paths that are part of the shortest route
+    paths.forEach(({ path, from, to }, index) => {
+        // Skip the first path if the skipFirstPath flag is true
+        if (index === 0 && skipFirstPath) {
+            console.log(`Skipping highlighting for path: ${path}`);
+            return;
+        }
+
+        const matchingLayer = pathLayers.find(layerObj => layerObj.name === path);
+        if (matchingLayer) {
+            // Set the color to red for the shortest route
+            matchingLayer.layer.setStyle({ color: 'red' });
+
+            // Extract the coordinates from the matching path layer and draw a polyline
+            const coordinates = matchingLayer.layer.feature.geometry.coordinates.map(coord => [coord[1], coord[0]]); // Switch lat, lon
+
+            const polyline = L.polyline(coordinates, { color: 'red', weight: 2 }).addTo(map);
+
+            // Store the polyline on the layer object for potential future cleanup
+            matchingLayer.polyline = polyline;
+        }
+    });
+}
+
+
+
+// Global variable to store the previously drawn polyline
+let previousPolyline = null;
+
+// New function to find the closest interpolated point, nearest endpoint, and draw the black polyline
+function highlightInterpolatedPath(liveLatLng, coordSource) {
+    // Clear the previous polyline if it exists
+    if (previousPolyline) {
+        map.removeLayer(previousPolyline); // Remove the previous polyline from the map
+        previousPolyline = null; // Reset the variable
+    }
+
+    const pathLayer = findPathContainingLiveCoordinate(liveLatLng);
+
+    if (pathLayer) {
+        const lineCoords = pathLayer.getLatLngs();
+        
+        // Extract all the coordinates from the path (with interpolation)
+        const extractedCoords = extractCoordinates(lineCoords, 1000); // You can adjust the number of interpolated points
+        
+        // Find the closest interpolated point to the live coordinate
+        const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, extractedCoords);
+        
+        // Find the nearest endpoint to the live coordinate
+        const nearestEndpoint = findNearestEndpoint(liveLatLng, lineCoords);
+
+        // Find the index of the closest interpolated point and nearest endpoint in the extracted coordinates
+        const closestIndex = extractedCoords.findIndex(coord =>
+            coord[0] === closestInterpolatedPoint[0] && coord[1] === closestInterpolatedPoint[1]);
+        const nearestIndex = extractedCoords.findIndex(coord =>
+            coord[0] === nearestEndpoint.lng && coord[1] === nearestEndpoint.lat);
+
+        // Ensure the indices are valid and log the range of coordinates between them
+        if (closestIndex !== -1 && nearestIndex !== -1) {
+            const startIndex = Math.min(closestIndex, nearestIndex);
+            const endIndex = Math.max(closestIndex, nearestIndex);
+
+            console.log('Coordinates between the closest interpolated point and the nearest endpoint:');
+            
+            // Store the coordinates to connect them with a polyline
+            const coordsToConnect = [];
+            for (let i = startIndex; i <= endIndex; i++) {
+                coordsToConnect.push([extractedCoords[i][1], extractedCoords[i][0]]);  // Store the coordinate in [lat, lng] format
+            }
+
+            // Draw a black polyline connecting the coordinates (new polyline)
+            previousPolyline = L.polyline(coordsToConnect, { color: 'red', weight: 2 }).addTo(map);
+
+            return coordsToConnect;  // Return the coordinates for distance calculation
+
+        } else {
+            console.log('Could not find valid indices for closest point or nearest endpoint.');
+        }
+    } else {
+        console.log('No matching path found for the live coordinate.');
+    }
+
+    return [];  // Return empty if no valid path was found
+}
+
+// Global variable to store the previously drawn polyline for the farthest endpoint
+let previousFarthestPolyline = null;
+
+// New function to find the closest interpolated point, farthest endpoint, and draw the green polyline
+function highlightFarthestInterpolatedPath(liveLatLng, coordSource) {
+    // Clear the previous polyline if it exists
+    if (previousFarthestPolyline) {
+        map.removeLayer(previousFarthestPolyline); // Remove the previous polyline from the map
+        previousFarthestPolyline = null; // Reset the variable
+    }
+
+    const pathLayer = findPathContainingLiveCoordinate(liveLatLng);
+
+    if (pathLayer) {
+        const lineCoords = pathLayer.getLatLngs();
+        
+        // Extract all the coordinates from the path (with interpolation)
+        const extractedCoords = extractCoordinates(lineCoords, 1000); // You can adjust the number of interpolated points
+        
+        // Find the closest interpolated point to the live coordinate
+        const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, extractedCoords);
+        
+        // Find the farthest endpoint to the live coordinate
+        const farthestEndpoint = findFarthestEndpoint(liveLatLng, lineCoords);
+
+        // Find the index of the closest interpolated point and farthest endpoint in the extracted coordinates
+        const closestIndex = extractedCoords.findIndex(coord =>
+            coord[0] === closestInterpolatedPoint[0] && coord[1] === closestInterpolatedPoint[1]);
+        const farthestIndex = extractedCoords.findIndex(coord =>
+            coord[0] === farthestEndpoint.lng && coord[1] === farthestEndpoint.lat);
+
+        // Ensure the indices are valid and log the range of coordinates between them
+        if (closestIndex !== -1 && farthestIndex !== -1) {
+            const startIndex = Math.min(closestIndex, farthestIndex);
+            const endIndex = Math.max(closestIndex, farthestIndex);
+
+            console.log('Coordinates between the closest interpolated point and the farthest endpoint:');
+            
+            // Store the coordinates to connect them with a polyline
+            const coordsToConnect = [];
+            for (let i = startIndex; i <= endIndex; i++) {
+                coordsToConnect.push([extractedCoords[i][1], extractedCoords[i][0]]);  // Store the coordinate in [lat, lng] format
+            }
+
+            // Draw a green polyline connecting the coordinates (new polyline)
+            previousFarthestPolyline = L.polyline(coordsToConnect, { color: 'red', weight: 3 }).addTo(map);
+
+            return coordsToConnect;  // Return the coordinates for distance calculation
+
+        } else {
+            console.log('Could not find valid indices for closest point or farthest endpoint.');
+        }
+    } else {
+        console.log('No matching path found for the live coordinate.');
+    }
+
+    return [];  // Return empty if no valid path was found
+}
+
+// Function to calculate total distance between a list of coordinates
+function calculateTotalDistance(coords) {
+    let totalDistance = 0;
+    for (let i = 0; i < coords.length - 1; i++) {
+        const pointA = L.latLng(coords[i][0], coords[i][1]);
+        const pointB = L.latLng(coords[i + 1][0], coords[i + 1][1]);
+        totalDistance += pointA.distanceTo(pointB); // Calculate distance between two points
+    }
+    return totalDistance;
+}
+
+document.getElementById('coordSearchBtn').addEventListener('click', function() {
+    const coordSource1 = document.getElementById('coordSource1').value;
+    const coordSource = document.getElementById('coordSource').value;
+    const coordDestination = document.getElementById('coordDestination').value;
+    const coordMode = document.getElementById('coordMode').value;
+
+    // Modify the validation logic to provide more specific error messages
+if (!coordSource) {
+    alert('Please select a valid point on the map by clicking a path or a building in the map.');
+    return;
+}
+
+if (!coordMode) {
+    alert('Please choose a means of transportation.');
+    return;
+}
+
+if (!coordDestination) {
+    alert('Please select a destination.');
+    return;
+}
+
+    if (previousPolyline) {
+        map.removeLayer(previousPolyline);
+        previousPolyline = null; // Reset
+    }
+    if (previousFarthestPolyline) {
+        map.removeLayer(previousFarthestPolyline);
+        previousFarthestPolyline = null; // Reset
+    }
+    // Split the coordinates from the text input
+    const [lat1, lng1] = coordSource1.split(',').map(Number);
+    const liveLatLng = L.latLng(lat1, lng1);  // Live coordinate (coordSource1)
+
+    // Call the function to find the path containing the live coordinate
+    const foundLayer = findPathContainingLiveCoordinate(liveLatLng);
+    if (!foundLayer) {
+        console.log('No matching path found for the live coordinate.');
+        return;
+    }
+
+    const [lat2, lng2] = coordSource.split(',').map(Number);
+    const distanceBetweenCoords = calculateDistance(L.latLng(lat1, lng1), L.latLng(lat2, lng2)); // Distance between coordSource1 and coordSource
+
+    const userLatLng = L.latLng(lat2, lng2);  // This is the coordSource LatLng
+
+    // Find the nearest point or LineString endpoint to the user-selected coordinate
+    const nearestLocation = findNearestPoint(userLatLng, featureLayers);
+
+    if (!nearestLocation) {
+        alert('No nearest location found.');
+        return;
+    }
+
+    let source;
+    if (nearestLocation.latLng) { // If it's a LineString coordinate (nearest endpoint)
+        source = nearestLocation.latLng; // Use the closest endpoint
+    } else {
+        source = nearestLocation.name; // It's already a point
+    }
+
+    // Proceed with shortest path calculation using the found source (nearest Point or endpoint)
+    fetch(`/shortest-path?source=${source}&destination=${coordDestination}&mode=${coordMode}`)
+        .then(response => response.json())
+        .then(result => {
+            const resultDiv = document.getElementById('coordResult');
+            const table = document.getElementById('coordPathTable');
+            const tbody = table.querySelector('tbody');
+
+            if (result.error) {
+                resultDiv.textContent = result.error;
+                table.style.display = 'none';
+            } else {
+                // Total distance will include the distance between coordSource1 and coordSource
+                let totalDistance = distanceBetweenCoords;
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
+
+                tbody.innerHTML = ''; // Clear previous results
+
+                // Add the new row with coordSource1 and coordSource
+                let newRow = document.createElement('tr');
+                
+                let fromCell = document.createElement('td');
+                fromCell.textContent = coordSource1;
+                newRow.appendChild(fromCell);
+
+                let toCell = document.createElement('td');
+                toCell.textContent = coordSource;
+                newRow.appendChild(toCell);
+
+                let pathCell = document.createElement('td');
+                pathCell.textContent = '';  // Leave path blank
+                newRow.appendChild(pathCell);
+
+                let distanceCell = document.createElement('td');
+                newRow.appendChild(distanceCell);
+
+                let directionCell = document.createElement('td');
+                directionCell.textContent = '';  // Leave directions blank
+                newRow.appendChild(directionCell);
+
+                tbody.appendChild(newRow);
+
+                // Iterate through the result path to populate the rest of the table
+                result.path.forEach((pathEntry, index) => {
+                    const { from, to, path, distance } = pathEntry;
+
+                    let row = document.createElement('tr');
+
+                    let fromCell = document.createElement('td');
+                    fromCell.textContent = from;
+                    row.appendChild(fromCell);
+
+                    let toCell = document.createElement('td');
+                    toCell.textContent = to;
+                    row.appendChild(toCell);
+
+                    let pathCell = document.createElement('td');
+                    pathCell.textContent = path;
+                    row.appendChild(pathCell);
+
+                    let distanceCell = document.createElement('td');
+                    distanceCell.textContent = distance;
+                    row.appendChild(distanceCell);
+
+                    totalDistance += distance;  // Add this path's distance to the total
+
+                    // Get direction for this path
+                    let direction = '';
+                    if (index < result.path.length - 1) { // Check if there is a next path
+                        const nextPathName = result.path[index + 1].path;
+                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                        }
+                    } else { // For the last row, say "Destination"
+                        direction = `Destination in ${distance.toFixed(2)} metres`;
+                    }
+
+                    let directionCell = document.createElement('td');
+                    directionCell.textContent = direction;
+                    row.appendChild(directionCell);
+
+                    tbody.appendChild(row);
+                });
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`; // Update with total distance
+                table.style.display = 'table';
+
+                // New Section: Check path in second row, third column
+                const secondRow = table.querySelector('tbody').rows[1];  // Get the second row (index 1)
+                if (secondRow) {
+                    const pathNameFromTable = secondRow.cells[2].textContent;  // Third column of second row
+                    const pathNameFromMap = foundLayer.feature.properties.name;  // The name of the path where live coordinate lies
+                    let interpolatedPoints = [];  // To store interpolated points for distance calculation
+                    let skipFirstPath = false;  // Initialize variable to skip the first path
+                    
+                    // Compare the path names and call the appropriate highlighting function
+if (pathNameFromTable === pathNameFromMap) {
+    interpolatedPoints = highlightFarthestInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+    skipFirstPath = true;  // Skip the first path
+} else {
+    interpolatedPoints = highlightInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+}
+
+// Step 4: Calculate the total distance for the first row using interpolated points
+const totalInterpolatedDistance = calculateTotalDistance(interpolatedPoints);  // Total distance in meters
+
+// Update the first row's distance cell with the total interpolated distance
+newRow.cells[3].textContent = `${totalInterpolatedDistance.toFixed(2)} meters`;
+
+// New logic to determine directions based on path names after calculating distance
+if (pathNameFromTable === pathNameFromMap) {
+    // If path names are the same, use the related path direction from directionsData
+    const thirdRow = table.querySelector('tbody').rows[2];  // Check the third row
+    if (thirdRow) {
+        const nextPathName = thirdRow.cells[2].textContent;  // Get the third column of third row
+        if (directionsData[pathNameFromMap] && directionsData[pathNameFromMap].related_paths[nextPathName]) {
+            const direction = directionsData[pathNameFromMap].related_paths[nextPathName];
+            newRow.cells[4].textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+        }
+    }
+} else {
+    // If path names are different, provide a different direction
+    const nextPathName = pathNameFromTable;  // Get next path name from table
+    if (directionsData[pathNameFromMap] && directionsData[pathNameFromMap].related_paths[nextPathName]) {
+        const direction = directionsData[pathNameFromMap].related_paths[nextPathName];
+        newRow.cells[4].textContent = `${direction} after ${totalInterpolatedDistance.toFixed(2)} meters`;
+    }
+}
+
+                      
+                    // Highlight paths on the map
+                    highlightPaths(result.path, skipFirstPath);  // Call the function with skipFirstPath flag
+                } else {
+                    console.log('The second row of the table does not exist.');
+                }
+                 
+            }
+        })
+        .catch(error => console.error('Error calculating shortest path:', error));
+});
+
+
+// Function to interpolate between two coordinates, ensuring points are correctly placed even on straight lines
+function interpolateCoordinates(coord1, coord2, numPoints) {
+    let interpolatedPoints = [];
+    let latDiff = coord2[1] - coord1[1];
+    let lngDiff = coord2[0] - coord1[0];
+
+    // Ensure we always interpolate even when the line is straight by dividing the lat and lng difference
+    for (let i = 0; i <= numPoints; i++) {
+        let factor = i / numPoints;  // Calculate interpolation factor (between 0 and 1)
+        
+        // Interpolate both latitude and longitude using linear interpolation
+        let interpolatedLat = coord1[1] + (latDiff * factor);
+        let interpolatedLng = coord1[0] + (lngDiff * factor);
+        
+        interpolatedPoints.push([interpolatedLng, interpolatedLat]);
+    }
+
+    return interpolatedPoints;
+}
+
+
+// Function to extract all coordinates including interpolated points along the LineString
+function extractCoordinates(lineCoords, numInterpolatedPoints) {
+    let allCoordinates = [];
+
+    for (let i = 0; i < lineCoords.length - 1; i++) {
+        let coord1 = [lineCoords[i].lng, lineCoords[i].lat];
+        let coord2 = [lineCoords[i + 1].lng, lineCoords[i + 1].lat];
+        let segmentPoints = interpolateCoordinates(coord1, coord2, numInterpolatedPoints);
+        allCoordinates = allCoordinates.concat(segmentPoints);
+
+        // Log the points from this segment
+        segmentPoints.forEach(point => {
+            console.log(`Interpolated Point: Latitude: ${point[1]}, Longitude: ${point[0]}`);
+        });
+    }
+
+    return allCoordinates;
+}
+
+
+// Function to find the closest interpolated point to the live coordinate
+function findClosestInterpolatedPoint(liveCoord, interpolatedPoints) {
+    let closestPoint = null;
+    let shortestDistance = Infinity;
+
+    interpolatedPoints.forEach(point => {
+        let pointLatLng = L.latLng(point[1], point[0]);
+        let distance = calculateDistance(liveCoord, pointLatLng);
+        if (distance < shortestDistance) {
+            shortestDistance = distance;
+            closestPoint = point;
+        }
+    });
+
+    return closestPoint;
+}
+
+// Global variables to store the current polyline and circles
+let currentPolyline = null;
+let currentCircles = [];
+
+// Function to remove the current polyline and circles from the map
+function clearCurrentPolylineAndCircles() {
+    if (currentPolyline) {
+        map.removeLayer(currentPolyline);  // Remove the polyline from the map
+        currentPolyline = null;  // Reset the reference
+    }
+    currentCircles.forEach(circle => {
+        map.removeLayer(circle);  // Remove each circle from the map
+    });
+    currentCircles = [];  // Reset the array
+}
+
+
+// Modified function to find the closest path where live coordinates belong, interpolate points, and call the new function
+function findPathContainingLiveCoordinate(liveLatLng) {
+    let foundLayer = null;
+    let closestPath = null;
+    let shortestDistance = Infinity;
+
+    // Iterate through all path layers to find the closest path to the live coordinate
+    pathLayers.forEach(layerObj => {
+        const lineCoords = layerObj.layer.getLatLngs();
+
+        // Loop through each segment formed by consecutive points
+        for (let i = 0; i < lineCoords.length - 1; i++) {
+            const segmentStart = lineCoords[i];
+            const segmentEnd = lineCoords[i + 1];
+
+            // Project the liveLatLng onto the current segment
+            const projectedPoint = projectOntoSegment(liveLatLng, segmentStart, segmentEnd);
+
+            // Calculate the distance between the liveLatLng and the projected point
+            const distance = calculateDistance(liveLatLng, projectedPoint);
+
+            // Check if the projected point is on the segment and if the distance is smaller than our threshold
+            if (isPointOnSegment(projectedPoint, segmentStart, segmentEnd) && distance < 2 && distance < shortestDistance) {
+                foundLayer = layerObj.layer;
+                shortestDistance = distance;
+                closestPath = layerObj;
+            }
+        }
+    });
+
+    // If a path is found
+    if (closestPath) {
+        console.log(`Live coordinate belongs to path: ${closestPath.name}`);
+
+        // Get the coordinates of the LineString where live coordinates lie
+        const lineCoords = closestPath.layer.getLatLngs();
+
+        // Interpolate 1000 points along the path
+        const interpolatedPoints = extractCoordinates(lineCoords, 1000);
+
+        // Find the closest interpolated point to the live coordinate
+        const closestInterpolatedPoint = findClosestInterpolatedPoint(liveLatLng, interpolatedPoints);
+
+        // Find the nearest endpoint to the live coordinate
+        const nearestEndpoint = findNearestEndpoint(liveLatLng, lineCoords);
+
+        // Find the farthest endpoint to the live coordinate
+        const farthestEndpoint = findFarthestEndpoint(liveLatLng, lineCoords);
+
+        // Log the live coordinate, the closest interpolated point, nearest endpoint, and farthest endpoint
+        console.log(`Live coordinate: ${liveLatLng.lat}, ${liveLatLng.lng}`);
+        console.log(`Closest interpolated point: ${closestInterpolatedPoint[1]}, ${closestInterpolatedPoint[0]}`);
+        console.log(`Nearest endpoint: ${nearestEndpoint.lat}, ${nearestEndpoint.lng}`);
+        console.log(`Farthest endpoint: ${farthestEndpoint.lat}, ${farthestEndpoint.lng}`);
+    } else {
+        console.log('No matching path found for the live coordinate.');
+    }
+
+    return foundLayer;
+}
+
+// Helper function to calculate the distance between two coordinates (Haversine formula or Leaflet's distanceTo)
+function calculateDistance(latlng1, latlng2) {
+    return latlng1.distanceTo(latlng2); // Using Leaflet's built-in method
+}
+
+// Helper function to project a point onto a line segment
+function projectOntoSegment(point, segmentStart, segmentEnd) {
+    const x1 = segmentStart.lng, y1 = segmentStart.lat;
+    const x2 = segmentEnd.lng, y2 = segmentEnd.lat;
+    const x3 = point.lng, y3 = point.lat;
+
+    const px = x2 - x1;
+    const py = y2 - y1;
+    const norm = px * px + py * py;
+    const u = ((x3 - x1) * px + (y3 - y1) * py) / norm;
+
+    const clampedU = Math.max(Math.min(u, 1), 0); // Clamp the projection factor to [0, 1]
+    return L.latLng(y1 + clampedU * py, x1 + clampedU * px);
+}
+
+// Helper function to check if a point is on a segment between two points (using a small tolerance)
+function isPointOnSegment(point, segmentStart, segmentEnd) {
+    const tolerance = 0.00001; // Adjust tolerance as needed
+    const minLat = Math.min(segmentStart.lat, segmentEnd.lat) - tolerance;
+    const maxLat = Math.max(segmentStart.lat, segmentEnd.lat) + tolerance;
+    const minLng = Math.min(segmentStart.lng, segmentEnd.lng) - tolerance;
+    const maxLng = Math.max(segmentStart.lng, segmentEnd.lng) + tolerance;
+
+    return point.lat >= minLat && point.lat <= maxLat && point.lng >= minLng && point.lng <= maxLng;
+}
+
+// Function to find the nearest point or LineString endpoint to the selected coordinate
+function findNearestPoint(userLatLng, featureLayers) {
+    let nearestPoint = null;
+    let shortestDistance = Infinity;
+
+    featureLayers.forEach(featureLayer => {
+        // For Point features, compare directly
+        if (featureLayer.featureType === "Point") {
+            const pointLatLng = featureLayer.layer.getLatLng();
+            const distance = calculateDistance(userLatLng, pointLatLng);
+
+            if (distance < shortestDistance) {
+                shortestDistance = distance;
+                nearestPoint = featureLayer;
+            }
+        }
+        // For LineString features, check the closest endpoint (first or last)
+        else if (featureLayer.featureType === "LineString") {
+            const lineCoords = featureLayer.layer.getLatLngs();
+            const closestEndpoint = findNearestEndpoint(userLatLng, lineCoords);  // Only consider endpoints
+            const distance = calculateDistance(userLatLng, closestEndpoint);
+
+            if (distance < shortestDistance) {
+                shortestDistance = distance;
+                nearestPoint = { // Store the closest endpoint on the LineString
+                    name: featureLayer.name,
+                    latLng: closestEndpoint  // Use closest endpoint
+                };
+            }
+        }
+    });
+
+    return nearestPoint;
+}
+
+
+// Function to find the nearest endpoint (first or last) of a LineString to the selected coordinate
+function findNearestEndpoint(userLatLng, lineLatLngs) {
+    const firstPoint = L.latLng(lineLatLngs[0].lat, lineLatLngs[0].lng);
+    const lastPoint = L.latLng(lineLatLngs[lineLatLngs.length - 1].lat, lineLatLngs[lineLatLngs.length - 1].lng);
+
+    const distanceToFirst = calculateDistance(userLatLng, firstPoint);
+    const distanceToLast = calculateDistance(userLatLng, lastPoint);
+
+    // Return the closer endpoint
+    return distanceToFirst < distanceToLast ? firstPoint : lastPoint;
+}
+
+// Function to find the farthest endpoint (first or last) of a LineString to the selected coordinate
+function findFarthestEndpoint(userLatLng, lineLatLngs) {
+    const firstPoint = L.latLng(lineLatLngs[0].lat, lineLatLngs[0].lng);
+    const lastPoint = L.latLng(lineLatLngs[lineLatLngs.length - 1].lat, lineLatLngs[lineLatLngs.length - 1].lng);
+
+    const distanceToFirst = calculateDistance(userLatLng, firstPoint);
+    const distanceToLast = calculateDistance(userLatLng, lastPoint);
+
+    // Return the farther endpoint
+    return distanceToFirst > distanceToLast ? firstPoint : lastPoint;
+}
+
+
+    </script>
+</body>
+</html>
