@@ -1,0 +1,478 @@
+do you see these two codes
+
+document.getElementById('coordSearchBtn').addEventListener('click', function() {
+    const coordSource1 = document.getElementById('coordSource1').value;
+    const coordSource = document.getElementById('coordSource').value;
+    const coordDestination = document.getElementById('coordDestination').value;
+    const coordMode = document.getElementById('coordMode').value;
+    const directionsList1 = document.getElementById('directionsList1');
+
+    if (!coordSource ) {
+        alert('Please click on a path or a building until a popup appears of the name of the path or building.');
+        return;
+    }
+    if ( !coordDestination || !coordMode) {
+        alert('Please select destination, and mode.');
+        return;
+    }
+    if (previousPolyline) {
+        map.removeLayer(previousPolyline);
+        previousPolyline = null; // Reset
+    }
+    if (previousFarthestPolyline) {
+        map.removeLayer(previousFarthestPolyline);
+        previousFarthestPolyline = null; // Reset
+    }
+    // Split the coordinates from the text input
+    const [lat1, lng1] = coordSource1.split(',').map(Number);
+    const liveLatLng = L.latLng(lat1, lng1);  // Live coordinate (coordSource1)
+
+    // Call the function to find the path containing the live coordinate
+    const foundLayer = findPathContainingLiveCoordinate(liveLatLng);
+    if (!foundLayer) {
+        console.log('No matching path found for the live coordinate.');
+        return;
+    }
+
+    const [lat2, lng2] = coordSource.split(',').map(Number);
+    const distanceBetweenCoords = calculateDistance(L.latLng(lat1, lng1), L.latLng(lat2, lng2)); // Distance between coordSource1 and coordSource
+
+    const userLatLng = L.latLng(lat2, lng2);  // This is the coordSource LatLng
+
+    // Find the nearest point or LineString endpoint to the user-selected coordinate
+    const nearestLocation = findNearestPoint(userLatLng, featureLayers);
+
+    if (!nearestLocation) {
+        alert('No nearest location found.');
+        return;
+    }
+
+    let source;
+    if (nearestLocation.latLng) { // If it's a LineString coordinate (nearest endpoint)
+        source = nearestLocation.latLng; // Use the closest endpoint
+    } else {
+        source = nearestLocation.name; // It's already a point
+    }
+
+    // Proceed with shortest path calculation using the found source (nearest Point or endpoint)
+    fetch(`/shortest-path?source=${source}&destination=${coordDestination}&mode=${coordMode}`)
+        .then(response => response.json())
+        .then(result => {
+            const resultDiv = document.getElementById('coordResult');
+            const table = document.getElementById('coordPathTable');
+            const tbody = table.querySelector('tbody');
+
+            if (result.error) {
+                resultDiv.textContent = result.error;
+                table.style.display = 'none';
+                directionsList1.innerHTML = '';
+                document.getElementById('directionsDisplay1').style.display = 'none';
+            } else {
+                // Total distance will include the distance between coordSource1 and coordSource
+                let totalDistance = distanceBetweenCoords;
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
+
+                tbody.innerHTML = ''; // Clear previous results
+                directionsList1.innerHTML = '';
+                // Add the new row with coordSource1 and coordSource
+                let newRow = document.createElement('tr');
+                
+                let fromCell = document.createElement('td');
+                fromCell.textContent = coordSource1;
+                newRow.appendChild(fromCell);
+
+                let toCell = document.createElement('td');
+                toCell.textContent = coordSource;
+                newRow.appendChild(toCell);
+
+                let pathCell = document.createElement('td');
+                pathCell.textContent = '';  // Leave path blank
+                newRow.appendChild(pathCell);
+
+                let distanceCell = document.createElement('td');
+                newRow.appendChild(distanceCell);
+
+                let directionCell = document.createElement('td');
+                directionCell.textContent = '';  // Leave directions blank
+                newRow.appendChild(directionCell);
+
+                tbody.appendChild(newRow);
+                
+
+                // Iterate through the result path to populate the rest of the table
+                result.path.forEach((pathEntry, index) => {
+                    const { from, to, path, distance } = pathEntry;
+
+                    let row = document.createElement('tr');
+
+                    let fromCell = document.createElement('td');
+                    fromCell.textContent = from;
+                    row.appendChild(fromCell);
+
+                    let toCell = document.createElement('td');
+                    toCell.textContent = to;
+                    row.appendChild(toCell);
+
+                    let pathCell = document.createElement('td');
+                    pathCell.textContent = path;
+                    row.appendChild(pathCell);
+
+                    let distanceCell = document.createElement('td');
+                    distanceCell.textContent = distance;
+                    row.appendChild(distanceCell);
+
+                    totalDistance += distance;  // Add this path's distance to the total
+
+                    // Get direction for this path
+                    let direction = '';
+                    if (index < result.path.length - 1) { // Check if there is a next path
+                        const nextPathName = result.path[index + 1].path;
+                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                        }
+                    } else { // For the last row, say "Destination"
+                        direction = `Destination in ${distance.toFixed(2)} metres`;
+                    }
+// Add the direction as a div in the directionsDisplay section
+if (direction) {
+    const directionItem = createDirectionItem(direction);
+    directionsList1.appendChild(directionItem);  // or directionsList2 for liveSearchBtn
+}
+                    let directionCell = document.createElement('td');
+                    directionCell.textContent = direction;
+                    row.appendChild(directionCell);
+
+                    tbody.appendChild(row);
+                });
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`; // Update with total distance
+                table.style.display = 'table';
+                document.getElementById('directionsDisplay1').style.display = 'block';
+                // New Section: Check path in second row, third column
+                const secondRow = table.querySelector('tbody').rows[1];  // Get the second row (index 1)
+                if (secondRow) {
+                    const pathNameFromTable = secondRow.cells[2].textContent;  // Third column of second row
+                    const pathNameFromMap = foundLayer.feature.properties.name;  // The name of the path where live coordinate lies
+                    let interpolatedPoints = [];  // To store interpolated points for distance calculation
+                    let skipFirstPath = false;  // Initialize variable to skip the first path
+                    
+                    // Compare the path names and call the appropriate highlighting function
+if (pathNameFromTable === pathNameFromMap) {
+    interpolatedPoints = highlightFarthestInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+    skipFirstPath = true;  // Skip the first path
+} else {
+    interpolatedPoints = highlightInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+}
+
+// Step 4: Calculate the total distance for the first row using interpolated points
+const totalInterpolatedDistance = calculateTotalDistance(interpolatedPoints);  // Total distance in meters
+
+// Update the first row's distance cell with the total interpolated distance
+newRow.cells[3].textContent = `${totalInterpolatedDistance.toFixed(2)} meters`;
+
+if (pathNameFromTable === pathNameFromMap) {
+    // When path names are the same
+    const thirdRow = table.querySelector('tbody').rows[2];  // Check the third row
+    if (thirdRow) {
+        // Always set direction to "Head straight"
+        const direction = `Head straight for ${totalInterpolatedDistance.toFixed(2)} meters`;
+        newRow.cells[4].textContent = direction;
+
+        // Create the direction item with image and add to directionsList1 as the first item
+        const directionItem = createDirectionItem(direction);
+        directionItem.className = 'direction-item';
+        directionsList1.insertBefore(directionItem, directionsList1.firstChild);
+    }
+} else {
+    // When path names are different
+    // Always set direction to "Head straight"
+    const direction = `Head straight for ${totalInterpolatedDistance.toFixed(2)} meters`;
+    newRow.cells[4].textContent = direction;
+
+    // Create the direction item with image and add to directionsList1 as the first item
+    const directionItem = createDirectionItem(direction);
+    directionItem.className = 'direction-item';
+    directionsList1.insertBefore(directionItem, directionsList1.firstChild);
+}
+                      
+                    // Highlight paths on the map
+                    highlightPaths(result.path, skipFirstPath); 
+                   // Extract coordinates and display black dots
+                   displayAllPathPoints(result, foundLayer, pathNameFromMap, liveLatLng, pathNameFromTable);
+                } else {
+                    console.log('The second row of the table does not exist.');
+                }
+                 
+            }
+        })
+        .catch(error => console.error('Error calculating shortest path:', error));
+});
+
+document.getElementById('liveSearchBtn').addEventListener('click', function() {
+    const coordSource4 = document.getElementById('coordSource4').value;
+    const coordSource = document.getElementById('coordSource').value;
+    const coordDestination = document.getElementById('coordDestination').value;
+    const coordMode = document.getElementById('coordMode').value;
+    const directionsList2 = document.getElementById('directionsList2'); 
+    
+    if (!coordDestination || !coordMode) {
+        alert('Please select destination and mode.');
+        return;
+    }
+
+   // Replace this alert with the modal
+   if (!coordSource4) {
+        showOutsideCampusModal();
+        return;
+    }
+    if (previousPolyline) {
+        map.removeLayer(previousPolyline);
+        previousPolyline = null; // Reset
+    }
+    if (previousFarthestPolyline) {
+        map.removeLayer(previousFarthestPolyline);
+        previousFarthestPolyline = null; // Reset
+    }
+    // Split the coordinates from the text input
+    const [lat1, lng1] = coordSource4.split(',').map(Number);
+    const liveLatLng = L.latLng(lat1, lng1);  // Live coordinate (coordSource4)
+
+    // Call the function to find the path containing the live coordinate
+    const foundLayer = findPathContainingLiveCoordinate(liveLatLng);
+    if (!foundLayer) {
+        console.log('No matching path found for the live coordinate.');
+        return;
+    }
+
+    const [lat2, lng2] = coordSource.split(',').map(Number);
+    const distanceBetweenCoords = calculateDistance(L.latLng(lat1, lng1), L.latLng(lat2, lng2)); // Distance between coordSource4 and coordSource
+
+    const userLatLng = L.latLng(lat2, lng2);  // This is the coordSource LatLng
+
+    // Find the nearest point or LineString endpoint to the user-selected coordinate
+    const nearestLocation = findNearestPoint(userLatLng, featureLayers);
+
+    if (!nearestLocation) {
+        alert('No nearest location found.');
+        return;
+    }
+
+    let source;
+    if (nearestLocation.latLng) { // If it's a LineString coordinate (nearest endpoint)
+        source = nearestLocation.latLng; // Use the closest endpoint
+    } else {
+        source = nearestLocation.name; // It's already a point
+    }
+
+    // Proceed with shortest path calculation using the found source (nearest Point or endpoint)
+    fetch(`/shortest-path?source=${source}&destination=${coordDestination}&mode=${coordMode}`)
+        .then(response => response.json())
+        .then(result => {
+            const resultDiv = document.getElementById('coordResult');
+            const table = document.getElementById('coordPathTable');
+            const tbody = table.querySelector('tbody');
+
+            if (result.error) {
+                resultDiv.textContent = result.error;
+                table.style.display = 'none';
+                directionsList2.innerHTML = '';
+        document.getElementById('directionsDisplay2').style.display = 'none';
+            } else {
+                // Total distance will include the distance between coordSource4 and coordSource
+                let totalDistance = distanceBetweenCoords;
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
+
+                tbody.innerHTML = ''; // Clear previous results
+                directionsList2.innerHTML = '';
+                // Add the new row with coordSource4 and coordSource
+                let newRow = document.createElement('tr');
+                
+                let fromCell = document.createElement('td');
+                fromCell.textContent = coordSource4;
+                newRow.appendChild(fromCell);
+
+                let toCell = document.createElement('td');
+                toCell.textContent = coordSource;
+                newRow.appendChild(toCell);
+
+                let pathCell = document.createElement('td');
+                pathCell.textContent = '';  // Leave path blank
+                newRow.appendChild(pathCell);
+
+                let distanceCell = document.createElement('td');
+                newRow.appendChild(distanceCell);
+
+                let directionCell = document.createElement('td');
+                directionCell.textContent = '';  // Leave directions blank
+                newRow.appendChild(directionCell);
+
+                tbody.appendChild(newRow);
+
+                // Iterate through the result path to populate the rest of the table
+                result.path.forEach((pathEntry, index) => {
+                    const { from, to, path, distance } = pathEntry;
+
+                    let row = document.createElement('tr');
+
+                    let fromCell = document.createElement('td');
+                    fromCell.textContent = from;
+                    row.appendChild(fromCell);
+
+                    let toCell = document.createElement('td');
+                    toCell.textContent = to;
+                    row.appendChild(toCell);
+
+                    let pathCell = document.createElement('td');
+                    pathCell.textContent = path;
+                    row.appendChild(pathCell);
+
+                    let distanceCell = document.createElement('td');
+                    distanceCell.textContent = distance;
+                    row.appendChild(distanceCell);
+
+                    totalDistance += distance;  // Add this path's distance to the total
+
+                    // Get direction for this path
+                    let direction = '';
+                    if (index < result.path.length - 1) { // Check if there is a next path
+                        const nextPathName = result.path[index + 1].path;
+                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                        }
+                    } else { // For the last row, say "Destination"
+                        direction = `Destination in ${distance.toFixed(2)} metres`;
+                    }
+                   if (direction) {
+    const directionItem = createDirectionItem(direction);
+    directionsList2.appendChild(directionItem);  // or directionsList2 for liveSearchBtn
+}
+
+                    let directionCell = document.createElement('td');
+                    directionCell.textContent = direction;
+                    row.appendChild(directionCell);
+
+                    tbody.appendChild(row);
+                });
+
+                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`; // Update with total distance
+                table.style.display = 'table';
+                document.getElementById('directionsDisplay2').style.display = 'block';
+                // New Section: Check path in second row, third column
+                const secondRow = table.querySelector('tbody').rows[1];  // Get the second row (index 1)
+                if (secondRow) {
+                    const pathNameFromTable = secondRow.cells[2].textContent;  // Third column of second row
+                    const pathNameFromMap = foundLayer.feature.properties.name;  // The name of the path where live coordinate lies
+                    let interpolatedPoints = [];  // To store interpolated points for distance calculation
+                    let skipFirstPath = false;  // Initialize variable to skip the first path
+                    
+                    // Compare the path names and call the appropriate highlighting function
+if (pathNameFromTable === pathNameFromMap) {
+    interpolatedPoints = highlightFarthestInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+    skipFirstPath = true;  // Skip the first path
+} else {
+    interpolatedPoints = highlightInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
+}
+
+// Step 4: Calculate the total distance for the first row using interpolated points
+const totalInterpolatedDistance = calculateTotalDistance(interpolatedPoints);  // Total distance in meters
+
+// Update the first row's distance cell with the total interpolated distance
+newRow.cells[3].textContent = `${totalInterpolatedDistance.toFixed(2)} meters`;
+
+if (pathNameFromTable === pathNameFromMap) {
+    // When path names are the same
+    const thirdRow = table.querySelector('tbody').rows[2];  // Check the third row
+    if (thirdRow) {
+        // Always set direction to "Head straight"
+        const direction = `Head straight for ${totalInterpolatedDistance.toFixed(2)} meters`;
+        newRow.cells[4].textContent = direction;
+
+        // Create the direction item with image and add to directionsList2 as the first item
+        const directionItem = createDirectionItem(direction);
+        directionItem.className = 'direction-item';
+        directionsList2.insertBefore(directionItem, directionsList2.firstChild);
+    }
+} else {
+    // When path names are different
+    // Always set direction to "Head straight"
+    const direction = `Head straight for ${totalInterpolatedDistance.toFixed(2)} meters`;
+    newRow.cells[4].textContent = direction;
+
+    // Create the direction item with image and add to directionsList2 as the first item
+    const directionItem = createDirectionItem(direction);
+    directionItem.className = 'direction-item';
+    directionsList2.insertBefore(directionItem, directionsList2.firstChild);
+}
+
+                      
+                    // Highlight paths on the map
+                    highlightPaths(result.path, skipFirstPath);  // Call the function with skipFirstPath flag
+                    
+                    displayLivePathPoints(result, foundLayer, pathNameFromMap, liveLatLng, pathNameFromTable);
+               
+                } else {
+                    console.log('The second row of the table does not exist.');
+                }
+                 
+            }
+        })
+        .catch(error => console.error('Error calculating shortest path:', error));
+});
+
+
+
+i want to make the following changes to it
+
+1. the first direction which is shown on coordsearchbtn, which is head straight for ...
+i want to fix that so it does the following, this new direction will appaear as a standalone by going thorugh some conditions, if the starting point where the interpolated poonts, start or where the red circle starts, is an end point of a linestring, the row of head staright should not appear, instead the second row should be the first row and the head staright will be comined inside the second row which has now become the frist row
+
+so if the source point chosen on coordsearch , that is on the coordsource, and coordsource1  is an  end point of a line string, the first direction which was head staright should not appear on the first row, the first row will be the second row, and if it was Turn left, the word Head Straight should be combined to it, so it should be Head Straight and Tutn left, only for this row, the rest will remain normal
+
+that is if it is an end point
+
+if it is not and end point, the coordsource1 and coordsource, it means it should remain the same way it is just leave it normally
+
+
+but i want to make changes when the first row is head straight row, i want to add something to it
+it should say head straight and a direction for ..metres, this is when it is the first row, here the above condition was not met, it is not an end point
+
+so to initially it was just head staright for 5 metres or another, so i want to make it head staright and direction after 5 metres, this direction will be reteived from 1.json file
+
+let directionsData = {};
+
+fetch('1.json')
+    .then(response => response.json())
+    .then(data => {
+        directionsData = data; // Store the directions data for later use
+    })
+    .catch(error => console.error('Error loading directions JSON:', error));
+
+
+so it should do the following, it will first points which is obtained after clicking on a path, it will check coordsource1 and coordsource, so it will see that path name where the points belong and compare that path to the next path on the table, then it will find the directions from the json file
+
+"path 1": {
+    "related_paths": {
+      "path 176": "Turn slight right",
+      "path 179": "Turn slight right",
+      "path 3.1": "Turn left",
+      "path 177": "Turn slight right"
+    }
+  },
+
+so this is the part  of the 1.json file
+
+so lets say my coordinates lies on the path 1 and the next path on the table is path 3.1 , my first row on the directions should be Head Straight and Turn left after 5 metres, somehing like that
+
+
+so this principle should apply to both the buttons above and tell me what to change in my code or add
+
+
+
+
+Inside the section where the first row is populated, change it as follows:
+
+Check if the coordinate is an endpoint.
+If it is an endpoint, merge the "Head Straight" direction into the next row.
+If it isn't, modify the "Head Straight" direction to include additional information using the 1.json data.

@@ -123,8 +123,13 @@
             <span class="close">&times;</span>
             <h2>Edit Point</h2>
             <div class="form-group">
-                <label>Point Name:</label>
-                <input type="text" id="edit-point-value">
+                <label>Select Point:</label>
+                <select id="edit-point-value" class="point-select">
+                    <option value="">Select a point</option>
+                    ${Object.entries(POINT_MAPPINGS).map(([location, point]) => 
+                        `<option value="${point}">${location} (${point})</option>`
+                    ).join('')}
+                </select>
             </div>
             <div class="modal-buttons">
                 <button onclick="updatePoint()">Update</button>

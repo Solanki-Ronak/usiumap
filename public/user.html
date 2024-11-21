@@ -6,2011 +6,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Masked GeoJSON Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <style>
-.next-direction-container {
-    margin-top: 8px;
-    padding: 12px 15px;
-    background-color: #333;
-    border-radius: 4px;
-    font-size: 0.9em;
-    color: #ccc;
-}
-
-.next-direction-prefix {
-    color: #ff6600;
-    font-weight: bold;
-    margin-right: 8px;
-    font-size: 0.95em;
-    display: block;
-    margin-bottom: 4px;
-}
-
-.next-direction-text {
-    color: #fff;
-    font-size: 0.95em;
-}
-
-.next-direction-container img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    vertical-align: middle;
-}
-.direction-from-table {
-    background-color: #333;
-    color: white;
-    font-size: 1.2em;
-    padding: 15px;
-    margin: 30px 0;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-    /* Basic Reset */
-/* Basic Reset and Container Styles */
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-h1, h2, h3, h4, h5, h6, 
-.heading-wrapper, 
-#sourceHeading, 
-#destinationHeading,
-#sub9DestinationHeading1,
-#sub9DestinationHeading2,
-#sub8SourceHeading,
-#sub8DestinationHeading,
-#sub9SourceHeading,
-#sub9DestinationHeading {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-}
-
-.button-text {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-}
-.container {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-}
-
-/* Map Styles */
-#map {
-    width: 70%;
-    height: 100%;
-}
-
-/* Controls Container */
-#controls {
-    width: 30%;
-    height: 100%;
-    background-color: #000;
-    position: relative;
-    overflow: hidden;
-}
-#directionDisplayContainer{
-    display: none;
+    <link id="theme-stylesheet" rel="stylesheet" href="style1.css">
     
-}
-/* Controls Part 1 */
-#controlspart1 {
-    display: none;
-    background-color: #000;
-    color: white;
-    height: 100%;
-    overflow-y: auto;
-}
-
-#controlspart2 {
-    height: 100%;
-    background-color: #000;
-    position: relative;
-    overflow: hidden;
-    width: 100%; /* Add this */
-}
-
-#searchContainer {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #000;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
-}
-
-#searchBar {
-    width: 92%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    background-color: #222;
-    color: white;
-    font-size: 1em;
-    margin: 0 auto;
-}
-
-#locationsHeading {
-    position: sticky; /* Change from fixed to sticky */
-    top: 60px;
-    width: 100%; /* Change from 30% to 100% */
-    margin: 0;
-    padding: 10px 20px;
-    color: #ff6600;
-    background-color: #000;
-    z-index: 1000;
-    text-align: left;
-}
-
-#categoryContainer {
-    margin-top: 0; /* Change from 120px to 0 */
-    padding: 10px 20px;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    box-sizing: border-box;
-    height: calc(100% - 100px); /* Adjust this value based on the height of search + heading */
-}
-
-#categoryContainer::-webkit-scrollbar {
-    display: none;
-}
-
-.location-category {
-    padding: 10px 20px;
-    margin: 8px 0;
-    background-color: #222;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: left;
-    color: white;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    height:1.4em;
-    font-size: 18px;
-}
-
-.location-category:hover {
-    background-color: #ff6600;
-}
-
-/* Sub Div Container */
-#subDivContainer {
-    position: relative;
-    height: 100%;
-    background-color: #000;
-    overflow: hidden;
-    display: none;
-    width: 100%; 
-}
-
-#backButton {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background-color: #ff6600;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    z-index: 1001;
-    font-weight: bold;
-}
-
-#backButton:hover {
-    background-color: #999;
-}
-
-#subDivHeading {
-    position: sticky;
-    top: 60px;
-   
-    width: 100%;
-    margin: 0;
-    padding: 10px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    z-index: 1000;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-#subSearchContainer {
-    position: sticky;
-    top: 120px;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #000;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
-}
-
-#subSearchBar {
-    width: 92%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    background-color: #222;
-    color: white;
-    font-size: 1em;
-    margin: 0 auto;
-}
-
-#subLocationsHeading {
-    position: sticky;
-    top: 180px;
-   
-    width: 100%;
-    margin: 0;
-    padding: 10px 20px;
-    color: #ff6600;
-    background-color: #000;
-    z-index: 1000;
-    text-align: left;
-}
-
-#subDivContent {
-    margin-top: 60px;
-    padding: 10px 20px;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    height: calc(100% - 240px);
-}
-
-#subDivContent::-webkit-scrollbar {
-    display: none;
-}
-#sub3DivContainer {
-    display: none;
-    background-color: #000;
-    color: white;
-    height: 100%;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    position: relative;
-    box-sizing: border-box;
-}
-
-#sub3DivContainer::-webkit-scrollbar {
-    display: none;
-}
-
-/* Fixed Header Elements */
-#backButtonSub3 {
-    position: fixed;
-    top: 10px;
-    right: 20px;
-    background-color: #ff6600;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    z-index: 1002;
-    font-weight: bold;
-}
-
-#backButtonSub3:hover {
-    background-color: #999;
-}
-#sub3DivHeading {
-    position: fixed;
-    top: 50px;
-    width: 30%;
-    right: 0;
-    padding: 10px;
-    margin: 0;
-    color: white;
-    background-color: transparent;
-    text-align: center;
-    z-index: 1002;
-    font-size: 1.5em;
-    font-weight: bold;
-    box-sizing: border-box;
-    transform: translateX(0); /* Remove any transform if it was there */
-}
-
-/* Also adjust the header-background */
-.header-background {
-    position: fixed;
-    top: 0;
-    right: 0;  /* Add this */
-    width: 30%;  /* Add this */
-    height: 110px;
-    background-color: #000;
-    z-index: 1001;
-}
-
-
-/* Content Container */
-.sub3-content {
-    margin-top: 110px; /* Match the header-background height */
-    padding: 20px;
-    position: relative;
-    z-index: 1000;
-}
-
-#sub3Image {
-    width: 220px;
-    height: auto;
-    margin: 30px auto;
-    display: block;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-}
-
-#directionsBtn {
-    margin: 20px auto;
-    padding: 12px 25px;
-    background-color: #ff6600;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    display: block;
-    transition: background-color 0.3s ease;
-}
-
-#directionsBtn:hover {
-    background-color: #999;
-    transform: translateY(-2px);
-}
-
-#overviewHeading {
-    color: white;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 30px 0 20px;
-    position: relative;
-    display: inline-block;
-}
-
-#overviewHeading::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #ff6600;
-    margin-top: 5px;
-}
-
-/* Enhanced Table Styles */
-#detailsTable {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-#detailsTable td {
-    padding: 15px;
-    border: none;
-    color: white;
-    background-color: #222;
-}
-
-#detailsTable tr {
-    transition: background-color 0.3s ease;
-}
-
-#detailsTable tr:hover {
-    background-color: #333;
-}
-
-#detailsTable td:first-child {
-    width: 30%;
-    font-weight: bold;
-    color: #ff6600;
-    background-color: #1a1a1a;
-    border-right: 2px solid #333;
-}
-
-#detailsTable tr:not(:last-child) td {
-    border-bottom: 1px solid #333;
-}
-
-
-
-
-/* Common Back Button Styles */
-#backButtonSub4, #backButtonSub5, #backButtonSub6,
-#backButtonSub7, #backButtonSub8, #backButtonSub9 {
-
-   
-    position: fixed;
-    top: 10px;
-    right: 20px;
-    background-color: #ff6600;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    z-index: 1002;
-    font-weight: bold;
-}
-
-
-
-
-#backButtonSub4:hover, #backButtonSub5:hover, #backButtonSub6:hover,
-#backButtonSub7:hover, #backButtonSub8:hover, #backButtonSub9:hover {
-    background-color: #999;
-}
-
-
-
-
-
-#sub4DivContainer {
-    display: none;
-    background-color: #000;
-    color: white;
-    height: 100%;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    position: relative;
-    box-sizing: border-box;
-}
-
-#sub4DivContainer::-webkit-scrollbar {
-    display: none;
-}
-
-#sub4DestinationHeading {
-    position: sticky;
-    top: 60px; 
-    width: 100%;
-    margin: 0;
-    padding: 10px;
-    color: white;
-    background-color: #000;
-    text-align: left;
-    z-index: 1000;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-#sub4DestinationHeading2 {
-    position: sticky;
-    top: 140px; 
-    width: 100%;
-    margin: 0;
-    padding: 10px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    z-index: 1000;
-    font-size: 18px;
-    font-weight: bold;
-    /* Remove display: inline-block from here */
-}
-
-
-
-
-#sub5DivContainer {
-    display: none;
-    background-color: #000;
-    color: white;
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    box-sizing: border-box;
-}
-
-
-
-
-
-
-
-.button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    margin-top: 90px;
-    padding: 20px;
-}
-
-/* Individual Button Styling */
-.navigation-button {
-    background-color: #1a1a1a;
-    border: none;
-    border-radius: 12px;
-    padding: 20px;
-    width: 80%;
-    max-width: 300px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.navigation-button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2);
-}
-
-.navigation-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255, 102, 0, 0.1), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.navigation-button:hover::before {
-    transform: translateX(100%);
-}
-
-/* Button Icon Container */
-.button-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ff6600;
-    border-radius: 50%;
-    padding: 8px;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
-}
-
-/* Common Zoom Animation for Icons */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.4);
-    }
-    50% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 10px rgba(255, 102, 0, 0);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0);
-    }
-}
-
-/* Enhance animation on hover */
-.navigation-button:hover .button-icon {
-    animation: pulseHover 1s infinite;
-}
-
-@keyframes pulseHover {
-    0% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.6);
-    }
-    50% {
-        transform: scale(1.2);
-        box-shadow: 0 0 0 15px rgba(255, 102, 0, 0);
-    }
-    100% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0);
-    }
-}
-
-/* Button Text Styling */
-.button-text {
-    color: white;
-    font-weight: bold;
-    font-size: 1.1em;
-    text-align: left;
-    flex-grow: 1;
-}
-
-/* Animated Border Effect */
-.navigation-button::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    background: linear-gradient(45deg, #ff6600, #ff8533) border-box;
-    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.navigation-button:hover::after {
-    opacity: 1;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .navigation-button {
-        width: 90%;
-        padding: 15px;
-    }
-
-    .button-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .button-text {
-        font-size: 1em;
-    }
-}
-/* Add a wrapper span in your HTML around the text */
-.heading-wrapper {
-    display: inline-block;
-    position: relative;
-}
-
-/* Move the underline styles to the wrapper's after element */
-.heading-wrapper::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #ff6600;
-    margin-top: 5px;
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-}
-
-
-
-
-
-
-
-#sub5Heading {
-    position: sticky;
-    top: 60px;
-   
-    width: 100%;
-    margin: 0;
-    padding: 10px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    z-index: 1000;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-
-
-#sub5SearchBar {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    background-color: #222;
-    color: white;
-    font-size: 1em;
-    margin: 0 auto;
-}
-
-#sub5Content {
-    margin-top: 60px;
-    padding: 10px 20px;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    height: calc(100% - 190px);
-}
-
-#sub5Content::-webkit-scrollbar {
-    display: none;
-}
-
-#sub5DivContainer::-webkit-scrollbar {
-    display: none;
-}
-
-
-
-#sub6Heading {
-    position: sticky;
-    top: 60px;
-   
-    width: 100%;
-    margin: 0;
-    padding: 10px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    z-index: 1000;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-
-
-#sub6SearchBar {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    background-color: #222;
-    color: white;
-    font-size: 1em;
-    margin: 0 auto;
-}
-
-#sub6Content {
-    margin-top: 60px;
-    padding: 10px 20px;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    height: calc(100% - 190px);
-}
-
-#sub6Content::-webkit-scrollbar {
-    display: none;
-}
-
-
-
-#sub6DivContainer {
-    display: none;
-    background-color: #000;
-    color: white;
-    height: 100%;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    position: relative;
-    box-sizing: border-box;
-}
-
-#sub6DivContainer::-webkit-scrollbar {
-    display: none;
-}
-
-
-
-
-
-
-
-
-#sub7DivContainer {
-    display: none;
-    background-color: #000;
-    color: white;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-}
-
-.header-background1 {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 30%;
-    height: 200px; /* Adjusted height to accommodate all fixed elements */
-    background-color: #000;
-    z-index: 1001;
-}
-
-
-
-#sourceHeading, #destinationHeading {
-    position: fixed;
-    width: 25%;
-    right: 0;
-    margin: 0;
-    padding: 10px 20px;
-    color: white;
-    background-color: transparent;
-    text-align: left;
-    font-weight: bold;
-    z-index: 1002;
-    font-size: 20px;
-}
-
-#sourceHeading {
-    top: 60px;
-}
-
-#destinationHeading {
-    top: 110px;
-}
-
-
-
-
-.scrollable-content {
-    height: calc(100% - 160px);
-    margin-top: 160px;
-    overflow-y: auto;
-    padding: 20px;
-    padding-bottom: 80px; /* Increased bottom padding */
-    display: flex;
-    flex-direction: column;
-    background-color: #000;
-}
-
-
-.scrollable-content::-webkit-scrollbar {
-    display: none;
-}
-
-/* Mode Selection Section */
-#sub9DestinationHeading1 {
-    margin: 20px 0 15px 0;
-    padding: 10px;
-    color: white;
-    text-align: center;
-}
-
-
-
-/* Action Buttons Section */
-#sub9DestinationHeading2 {
-    margin: 0 0 15px 0;
-    padding: 10px;
-    color: white;
-    text-align: center;
-}
-#modeButtons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin: 25px 0;
-    padding: 0 20px;
-}
-
-/* Action Buttons Container */
-#actionButtons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin: 25px 0;
-    padding: 0 20px;
-}
-
-/* Common Button Styles */
-.mode-btn, #getDirectionsBtn, #startJourneyBtn {
-    background-color: #1a1a1a;
-    border: none;
-    border-radius: 12px;
-    padding: 16px 20px;
-    width: 85%;
-    max-width: 300px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-/* Button Hover Effects */
-.mode-btn:hover, #getDirectionsBtn:hover, #startJourneyBtn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2);
-}
-
-/* Button Gradient Sweep Effect */
-.mode-btn::before, #getDirectionsBtn::before, #startJourneyBtn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255, 102, 0, 0.1), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.mode-btn:hover::before, #getDirectionsBtn:hover::before, #startJourneyBtn:hover::before {
-    transform: translateX(100%);
-}
-
-/* Button Icon Container */
-.button-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ff6600;
-    border-radius: 50%;
-    padding: 8px;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
-}
-
-/* Pulsing Animation */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.4);
-    }
-    50% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 10px rgba(255, 102, 0, 0);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0);
-    }
-}
-
-/* Enhanced Hover Animation */
-.mode-btn:hover .button-icon, 
-#getDirectionsBtn:hover .button-icon, 
-#startJourneyBtn:hover .button-icon {
-    animation: pulseHover 1s infinite;
-}
-
-@keyframes pulseHover {
-    0% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.6);
-    }
-    50% {
-        transform: scale(1.2);
-        box-shadow: 0 0 0 15px rgba(255, 102, 0, 0);
-    }
-    100% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0);
-    }
-}
-
-/* Button Text */
-.button-text {
-    color: white;
-    font-weight: bold;
-    font-size: 1.1em;
-    text-align: left;
-    flex-grow: 1;
-}
-
-/* Active State for Mode Buttons */
-.mode-btn.active {
-    background-color: #ff6600;
-    transform: scale(1.02);
-}
-
-.mode-btn.active .button-icon {
-    background-color: #ffffff;
-}
-
-.mode-btn.active .button-icon svg {
-    stroke: #ff6600;
-}
-
-/* Animated Border Effect */
-.mode-btn::after, #getDirectionsBtn::after, #startJourneyBtn::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    background: linear-gradient(45deg, #ff6600, #ff8533) border-box;
-    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.mode-btn:hover::after, #getDirectionsBtn:hover::after, #startJourneyBtn:hover::after {
-    opacity: 1;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .mode-btn, #getDirectionsBtn, #startJourneyBtn {
-        width: 90%;
-        padding: 14px;
-    }
-
-    .button-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .button-text {
-        font-size: 1em;
-    }
-}
-
-
-#currentDirection {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    background-color: #222;
-    color: white;
-    font-size: 1em;
-    
-}
-
-
-
-
-
-#directionsDisplay {
-    display: none;
-    background-color: #222;
-    border-radius: 8px;
-    margin-top: 20px;
-    margin-bottom: 40px; /* Added bottom margin */
-    width: 100%;
-    box-sizing: border-box;
-}
-
-#directionsList {
-    padding: 10px 20px 30px; /* Increased bottom padding */
-}
-
-#directionsList div:last-child {
-    margin-bottom: 20px; /* Added margin to last item */
-}
-
-#directionsDisplay h2 {
-    padding: 15px 20px;
-    margin: 0;
-    color: #ff6600;
-    border-bottom: 2px solid #444;
-    background-color: #222;
-}
-
-
-
-#directionsList div {
-    padding: 12px 0;
-    border-bottom: 1px solid #444;
-    color: white;
-}
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-#sub8DivContainer {
-    display: none;
-    background-color: #000;
-    color: white;
-    height: 100%;
-    width: 100%;
-    overflow-y: auto;
-    scrollbar-width: none; /* For Firefox */
-    -ms-overflow-style: none; /* For Internet Explorer and Edge */
-}
-
-#sub8DivContainer::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Opera */
-}
-.header-background1 {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 30%;
-    height: 200px; /* Adjusted height to accommodate all fixed elements */
-    background-color: #000;
-    z-index: 1001;
-}
-
-
-
-#sub8SourceHeading, #sub8DestinationHeading {
-    position: fixed;
-    width: 25%;
-    right: 0;
-    margin: 0;
-    padding: 10px 20px;
-    color: white;
-    background-color: transparent;
-    text-align: left;
-    font-weight: bold;
-    z-index: 1002;
-    font-size: 20px;
-}
-
-#sub8SourceHeading {
-    top: 60px;
-}
-
-#sub8DestinationHeading {
-    top: 110px;
-}
-
-
-
-
-.scrollable-content {
-    height: calc(100% - 160px);
-    margin-top: 160px;
-    overflow-y: auto;
-    padding: 20px;
-    padding-bottom: 80px; /* Increased bottom padding */
-    display: flex;
-    flex-direction: column;
-    background-color: #000;
-}
-
-
-.scrollable-content::-webkit-scrollbar {
-    display: none;
-}
-
-/* Mode Selection Section */
-#sub9DestinationHeading1 {
-    margin: 20px 0 15px 0;
-    padding: 10px;
-    color: white;
-    text-align: center;
-}
-
-
-
-/* Action Buttons Section */
-#sub9DestinationHeading2 {
-    margin: 0 0 15px 0;
-    padding: 10px;
-    color: white;
-    text-align: center;
-}
-
-
-
-
-
-#modeButtonsSub8 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin: 25px 0;
-    padding: 0 20px;
-}
-
-/* Action Buttons Container */
-#actionButtonsSub8 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin: 25px 0;
-    padding: 0 20px;
-}
-
-/* Common Button Styles */
-#modeButtonsSub8 .mode-btn, 
-#getDirectionsBtnSub8, 
-#startJourneyBtnSub8 {
-    background-color: #1a1a1a;
-    border: none;
-    border-radius: 12px;
-    padding: 16px 20px;
-    width: 85%;
-    max-width: 300px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-/* Button Hover Effects */
-#modeButtonsSub8 .mode-btn:hover, 
-#getDirectionsBtnSub8:hover, 
-#startJourneyBtnSub8:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2);
-}
-
-/* Button Gradient Sweep Effect */
-#modeButtonsSub8 .mode-btn::before, 
-#getDirectionsBtnSub8::before, 
-#startJourneyBtnSub8::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255, 102, 0, 0.1), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-#modeButtonsSub8 .mode-btn:hover::before, 
-#getDirectionsBtnSub8:hover::before, 
-#startJourneyBtnSub8:hover::before {
-    transform: translateX(100%);
-}
-
-/* Button Icon Container */
-.button-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ff6600;
-    border-radius: 50%;
-    padding: 8px;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
-}
-
-/* Pulsing Animation */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.4);
-    }
-    50% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 10px rgba(255, 102, 0, 0);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0);
-    }
-}
-
-/* Enhanced Hover Animation */
-#modeButtonsSub8 .mode-btn:hover .button-icon, 
-#getDirectionsBtnSub8:hover .button-icon, 
-#startJourneyBtnSub8:hover .button-icon {
-    animation: pulseHover 1s infinite;
-}
-
-@keyframes pulseHover {
-    0% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.6);
-    }
-    50% {
-        transform: scale(1.2);
-        box-shadow: 0 0 0 15px rgba(255, 102, 0, 0);
-    }
-    100% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0);
-    }
-}
-
-/* Button Text */
-.button-text {
-    color: white;
-    font-weight: bold;
-    font-size: 1.1em;
-    text-align: left;
-    flex-grow: 1;
-}
-
-/* Active State for Mode Buttons */
-#modeButtonsSub8 .mode-btn.active {
-    background-color: #ff6600;
-    transform: scale(1.02);
-}
-
-#modeButtonsSub8 .mode-btn.active .button-icon {
-    background-color: #ffffff;
-}
-
-#modeButtonsSub8 .mode-btn.active .button-icon svg {
-    stroke: #ff6600;
-}
-
-/* Animated Border Effect */
-#modeButtonsSub8 .mode-btn::after, 
-#getDirectionsBtnSub8::after, 
-#startJourneyBtnSub8::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    background: linear-gradient(45deg, #ff6600, #ff8533) border-box;
-    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-#modeButtonsSub8 .mode-btn:hover::after, 
-#getDirectionsBtnSub8:hover::after, 
-#startJourneyBtnSub8:hover::after {
-    opacity: 1;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    #modeButtonsSub8 .mode-btn, 
-    #getDirectionsBtnSub8, 
-    #startJourneyBtnSub8 {
-        width: 90%;
-        padding: 14px;
-    }
-
-    .button-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .button-text {
-        font-size: 1em;
-    }
-}
-
-
-
-#currentDirection {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    background-color: #222;
-    color: white;
-    font-size: 1em;
-    
-}
-
-
-
-
-
-#directionsDisplay1 {
-    display: none;
-    background-color: #222;
-    border-radius: 8px;
-    margin-top: 20px;
-    margin-bottom: 40px; /* Added bottom margin */
-    width: 100%;
-    box-sizing: border-box;
-}
-
-#directionsList1 {
-    padding: 10px 20px 30px; /* Increased bottom padding */
-}
-
-#directionsList1 div:last-child {
-    border-bottom: none;
-    padding-bottom: 20px;
-}
-
-#directionsDisplay1 h2 {
-    padding: 15px 20px;
-    margin: 0;
-    color: #ff6600;
-    border-bottom: 2px solid #444;
-    background-color: #222;
-}
-
-
-
-#directionsList1 div {
-    padding: 12px 0;
-    border-bottom: 1px solid #444;
-    color: white;
-}
-
-
-
-
-
-
-#sub9DivContainer {
-    display: none;
-    background-color: #000;
-    color: white;
-    height: 100%;
-    width: 100%;
-    overflow-y: auto;
-    scrollbar-width: none; /* For Firefox */
-    -ms-overflow-style: none; /* For Internet Explorer and Edge */
-}
-
-#sub9DivContainer::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Opera */
-}
-
-
-
-#sub9SourceHeading, #sub9DestinationHeading {
-    position: fixed;
-    width: 25%;
-    right: 0;
-    margin: 0;
-    padding: 10px 20px;
-    color: white;
-    background-color: transparent;
-    text-align: left;
-    font-weight: bold;
-    z-index: 1002;
-    font-size: 20px;
-}
-
-#sub9SourceHeading {
-    top: 60px;
-}
-
-#sub9DestinationHeading {
-    top: 110px;
-}
-
-
-
-
-.scrollable-content {
-    height: calc(100% - 160px);
-    margin-top: 160px;
-    overflow-y: auto;
-    padding: 20px;
-    padding-bottom: 80px; /* Increased bottom padding */
-    display: flex;
-    flex-direction: column;
-    background-color: #000;
-}
-
-
-.scrollable-content::-webkit-scrollbar {
-    display: none;
-}
-
-/* Mode Selection Section */
-#sub9DestinationHeading1 {
-    margin: 20px 0 15px 0;
-    padding: 10px;
-    color: white;
-    text-align: center;
-}
-
-
-
-
-/* Action Buttons Section */
-#sub9DestinationHeading2 {
-    margin: 0 0 15px 0;
-    padding: 10px;
-    color: white;
-    text-align: center;
-}
-
-#modeButtonsSub9 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin: 25px 0;
-    padding: 0 20px;
-}
-
-/* Action Buttons Container */
-#actionButtonsSub9 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin: 25px 0;
-    padding: 0 20px;
-}
-
-/* Common Button Styles */
-#modeButtonsSub9 .mode-btn, 
-#getDirectionsBtnSub9, 
-#startJourneyBtnSub9 {
-    background-color: #1a1a1a;
-    border: none;
-    border-radius: 12px;
-    padding: 16px 20px;
-    width: 85%;
-    max-width: 300px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-/* Button Hover Effects */
-#modeButtonsSub9 .mode-btn:hover, 
-#getDirectionsBtnSub9:hover, 
-#startJourneyBtnSub9:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2);
-}
-
-/* Button Gradient Sweep Effect */
-#modeButtonsSub9 .mode-btn::before, 
-#getDirectionsBtnSub9::before, 
-#startJourneyBtnSub9::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255, 102, 0, 0.1), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-#modeButtonsSub9 .mode-btn:hover::before, 
-#getDirectionsBtnSub9:hover::before, 
-#startJourneyBtnSub9:hover::before {
-    transform: translateX(100%);
-}
-
-/* Button Icon Container */
-.button-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ff6600;
-    border-radius: 50%;
-    padding: 8px;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
-}
-
-/* Pulsing Animation */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.4);
-    }
-    50% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 10px rgba(255, 102, 0, 0);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0);
-    }
-}
-
-/* Enhanced Hover Animation */
-#modeButtonsSub9 .mode-btn:hover .button-icon, 
-#getDirectionsBtnSub9:hover .button-icon, 
-#startJourneyBtnSub9:hover .button-icon {
-    animation: pulseHover 1s infinite;
-}
-
-@keyframes pulseHover {
-    0% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.6);
-    }
-    50% {
-        transform: scale(1.2);
-        box-shadow: 0 0 0 15px rgba(255, 102, 0, 0);
-    }
-    100% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 0 rgba(255, 102, 0, 0);
-    }
-}
-
-/* Button Text */
-.button-text {
-    color: white;
-    font-weight: bold;
-    font-size: 1.1em;
-    text-align: left;
-    flex-grow: 1;
-}
-
-/* Active State for Mode Buttons */
-#modeButtonsSub9 .mode-btn.active {
-    background-color: #ff6600;
-    transform: scale(1.02);
-}
-
-#modeButtonsSub9 .mode-btn.active .button-icon {
-    background-color: #ffffff;
-}
-
-#modeButtonsSub9 .mode-btn.active .button-icon svg {
-    stroke: #ff6600;
-}
-
-/* Animated Border Effect */
-#modeButtonsSub9 .mode-btn::after, 
-#getDirectionsBtnSub9::after, 
-#startJourneyBtnSub9::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    background: linear-gradient(45deg, #ff6600, #ff8533) border-box;
-    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-#modeButtonsSub9 .mode-btn:hover::after, 
-#getDirectionsBtnSub9:hover::after, 
-#startJourneyBtnSub9:hover::after {
-    opacity: 1;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    #modeButtonsSub9 .mode-btn, 
-    #getDirectionsBtnSub9, 
-    #startJourneyBtnSub9 {
-        width: 90%;
-        padding: 14px;
-    }
-
-    .button-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .button-text {
-        font-size: 1em;
-    }
-
-}
-#currentDirection {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    background-color: #222;
-    color: white;
-    font-size: 1em;
-    
-}
-
-
-
-
-
-#directionsDisplay2 {
-    display: none;
-    background-color: #222;
-    border-radius: 8px;
-    margin-top: 20px;
-    margin-bottom: 40px; /* Added bottom margin */
-    width: 100%;
-    box-sizing: border-box;
-}
-
-#directionsList2 {
-    padding: 10px 20px 30px; /* Increased bottom padding */
-}
-
-#directionsList2 div:last-child {
-    margin-bottom: 20px; /* Added margin to last item */
-}
-
-#directionsDisplay2 h2 {
-    padding: 15px 20px;
-    margin: 0;
-    color: #ff6600;
-    border-bottom: 2px solid #444;
-    background-color: #222;
-}
-
-
-
-#directionsList2 div {
-    padding: 12px 0;
-    border-bottom: 1px solid #444;
-    color: white;
-}
-
-
-#subnav7Container,
-#subnav8Container,
-#subnav9Container {
-    display: none;
-    background-color: #000;
-    color: white;
-    height: 100%;
-    width: 100%;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    position: relative;
-    box-sizing: border-box;
-}
-
-#subnav7Container::-webkit-scrollbar,
-#subnav8Container::-webkit-scrollbar,
-#subnav9Container::-webkit-scrollbar {
-    display: none;
-}
-
-#exitNavButtonSub7,
-#exitNavButtonSub8,
-#exitNavButtonSub9 {
-    position: fixed;
-    top: 10px;
-    right: 20px;
-    background-color: #ff6600;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    z-index: 1002;
-    font-weight: bold;
-}
-
-#exitNavButtonSub7:hover,
-#exitNavButtonSub8:hover,
-#exitNavButtonSub9:hover {
-    background-color: #999;
-}
-
-#sourceHeadingNav7,
-#destinationHeadingNav7,
-#sourceHeadingNav8,
-#destinationHeadingNav8,
-#sourceHeadingNav9,
-#destinationHeadingNav9 {
-    position: fixed;
-    width: 25%;
-    right: 0;
-    margin: 0;
-    padding: 10px 20px;
-    color: white;
-    background-color: transparent;
-    text-align: left;
-    font-weight: bold;
-    z-index: 1002;
-    font-size: 20px;
-}
-
-#sourceHeadingNav7,
-#sourceHeadingNav8,
-#sourceHeadingNav9 {
-    top: 60px;
-}
-
-#destinationHeadingNav7,
-#destinationHeadingNav8,
-#destinationHeadingNav9 {
-    top: 110px;
-}
-
-@media (max-width: 768px) {
-
-:root {
---map-height: 60vh;
---controls-initial: 40vh;
---controls-expanded: 70vh;
---transition-duration: 0.3s;
-}
-.container {
-flex-direction: column;
-height: 100vh;
-position: relative;
-overflow: hidden;
-}
-
-#map {
-width: 100%;
-height: var(--map-height);
-position: fixed;
-top: 0;
-left: 0;
-}
-
-
-#controls {
-position: absolute;
-bottom: 0;
-left: 0;
-width: 100%;
-height: var(--controls-initial);
-background: #000;
-transition: height var(--transition-duration) ease;
-z-index: 1000;
-border-radius: 20px 20px 0 0;
-}
-/* Back button styling - positioned at the top-right corner within the container width */
-#backButton, #backButtonSub3, #backButtonSub4,
-#backButtonSub5, #backButtonSub6, #backButtonSub7,
-#backButtonSub8, #backButtonSub9 {
-position: absolute;
-top: 10px;
-right: 10px;
-background-color: #ff6600;
-border: none;
-padding: 8px 15px;
-border-radius: 5px;
-cursor: pointer;
-color: white;
-z-index: 1002;
-font-weight: bold;
-}
-
-
-
-#sub3DivContainer .header-background {
-position: absolute;
-top: 50px; /* Below the back button */
-right: 0;
-width: 100%;
-height: 110px;
-z-index: 1000;
-}
-
-/* Position the heading inside the header background */
-#sub3DivHeading {
-position: absolute;
-top: 60px; /* Adjust to place it centrally within the header background */
-width: 100%;
-text-align: center;
-color: white;
-font-size: 1.5em;
-font-weight: bold;
-z-index: 1001; /* Keeps it above the header background */
-}
-
-
-#sub7DivContainer .header-background1 {
-position: absolute;
-top: 50px; /* Below the back button */
-right: 0;
-width: 100%;
-height: 110px;
-z-index: 1000;
-}
-
-/* Position the source and destination headings inside the header background */
-#sourceHeading, #destinationHeading {
-position: absolute;
-width: 100%;
-text-align: center;
-color: white;
-font-size: 1.2em;
-font-weight: bold;
-z-index: 1001; /* Keeps it above the header background */
-}
-
-/* Adjust top positions for each heading */
-#sourceHeading {
-top: 60px; /* Centered within the header background */
-}
-
-#destinationHeading {
-top: 90px; /* Adjust to position below the source heading */
-}
-#sub8DivContainer .header-background1 {
-position: absolute;
-top: 50px; /* Below the back button */
-right: 0;
-width: 100%;
-height: 110px;
-z-index: 1000;
-}
-
-/* Position the source and destination headings inside the header background for sub8 */
-#sub8SourceHeading, #sub8DestinationHeading {
-position: absolute;
-width: 100%;
-text-align: center;
-color: white;
-font-size: 1.2em;
-font-weight: bold;
-z-index: 1001; /* Keeps it above the header background */
-}
-
-/* Adjust top positions for each heading in sub8 */
-#sub8SourceHeading {
-top: 60px; /* Centered within the header background */
-}
-
-#sub8DestinationHeading {
-top: 90px; /* Position below the source heading */
-}
-
-#sub9SourceHeading, #sub9DestinationHeading {
-position: absolute;
-width: 100%;
-text-align: center;
-color: white;
-font-size: 1.2em;
-font-weight: bold;
-z-index: 1001; /* Keeps it above the header background */
-}
-
-/* Adjust top positions for each heading in sub9 */
-#sub9SourceHeading {
-top: 60px; /* Centered within the header background */
-}
-
-#sub9DestinationHeading {
-top: 90px; /* Position below the source heading */
-}
-
-#sub9DivContainer .header-background1 {
-position: absolute;
-top: 50px; /* Below the back button */
-right: 0;
-width: 100%;
-height: 110px;
-z-index: 1000;
-}
-.sub3-content {
-margin-top: 20px; /* Match the header-background height */
-
-}
-}
-
-    </style>
 </head>
 <body>
     <div class="container">
         <!-- Left side for the map -->
-        <div id="map"></div>
+        <div id="map">
+            
+        </div>
         
         <!-- Right side for controls -->
         <div id="controls">
             
-            
+            <div id="theme-toggle">
+                <button id="theme-switch" data-tooltip="Toggle theme">
+                    <svg id="sun-icon" class="theme-icon active" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="moon-icon" class="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
             <div id="controlspart1">
             <div id="controls1">
                 <select id="featureSelect">
@@ -2137,6 +163,7 @@ margin-top: 20px; /* Match the header-background height */
             <div id="subDivContent"></div>
         </div>
         <div id="sub3DivContainer">
+            
             <div class="header-background"></div>
             <button id="backButtonSub3" onclick="goBackToSubDiv()">← Back</button>
            
@@ -2298,7 +325,10 @@ margin-top: 20px; /* Match the header-background height */
                 <span class="button-text">Start Journey</span>
             </button>
         </div>
-
+<div id="totalDistanceDisplay" style="display: none; background-color: #fcc807; border-radius: 8px; margin-top: 20px; margin-bottom: 20px; width: 100%; box-sizing: border-box;   border: 2px solid #2c3992;">
+    <h2 style="padding: 15px 20px; margin: 0; color: #2c3992; border-bottom: 2px solid #2c3992; background-color: white;">Total Distance</h2>
+    <div id="totalDistanceValue" style="padding: 15px 20px; color: #2c3992; font-size: 1.1em;"></div>
+</div>
         
 
         <div id="directionsDisplay" style="display: none;">
@@ -2385,7 +415,11 @@ margin-top: 20px; /* Match the header-background height */
             </button>
         </div>
 
-
+<!-- For sub8DivContainer, add this above directionsDisplay1 -->
+<div id="totalDistanceDisplay1" style="display: none; background-color: #222; border-radius: 8px; margin-top: 20px; margin-bottom: 20px; width: 100%; box-sizing: border-box;">
+    <h2 style="padding: 15px 20px; margin: 0; color: #ff6600; border-bottom: 2px solid #444; background-color: #222;">Total Distance</h2>
+    <div id="totalDistanceValue1" style="padding: 15px 20px; color: white; font-size: 1.1em;"></div>
+</div>
 
 
     <div id="directionsDisplay1" style="display: none; background-color: #222; border-radius: 8px; margin-top: 20px; margin-bottom: 40px; width: 100%; box-sizing: border-box;">
@@ -2469,6 +503,12 @@ margin-top: 20px; /* Match the header-background height */
                 </div>
                 <span class="button-text">Start Journey</span>
             </button>
+        </div>
+
+
+        <div id="totalDistanceDisplay2" style="display: none; background-color: #222; border-radius: 8px; margin-top: 20px; margin-bottom: 20px; width: 100%; box-sizing: border-box;">
+            <h2 style="padding: 15px 20px; margin: 0; color: #ff6600; border-bottom: 2px solid #444; background-color: #222;">Total Distance</h2>
+            <div id="totalDistanceValue2" style="padding: 15px 20px; color: white; font-size: 1.1em;"></div>
         </div>
     <div id="directionsDisplay2" style="display: none; background-color: #222; border-radius: 8px; margin-top: 20px; margin-bottom: 40px; width: 100%; box-sizing: border-box;">
         <h2 style="padding: 15px 20px; margin: 0; color: #ff6600; border-bottom: 2px solid #444; background-color: #222;">Directions</h2>
@@ -2893,27 +933,39 @@ function displayAllPathPoints(result, foundLayer, pathNameFromMap, liveLatLng, p
         initialPathPoints = highlightInterpolatedPath(liveLatLng);
     }
 
-    // Display markers for the initial path points
-    initialPathPoints.forEach((point, index, arr) => {
-        allPathPoints.push(point);
-        const isEndpoint = (index === 0 || index === arr.length - 1);
-        const marker = L.circleMarker(point, {
-            radius: isEndpoint ? 5 : 3,
-            fillColor: isEndpoint ? 'green' : '#000',
-            color: isEndpoint ? 'green' : '#000',
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 1
-        }).addTo(map);
+    let previousPoint = null; // Reset previousPoint for each path
 
-        if (isEndpoint) {
-            endpointMarkers.push({
-                marker: marker,
-                pathIndex: 0
-            });
-        }
-        interpolatedMarkers.push(marker);
-    });
+initialPathPoints.forEach((point, index, arr) => {
+    allPathPoints.push(point);
+    const isEndpoint = (index === 0 || index === arr.length - 1);
+    
+    const marker = L.circleMarker(point, {
+        radius: isEndpoint ? 3 : 3,
+        fillColor: isEndpoint ? '#000' : '#000',
+        color: isEndpoint ? '#000' : '#000',
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 1
+    }).addTo(map);
+
+    if (previousPoint) {
+        L.polyline([previousPoint, point], {
+            color: '#000',
+            weight: 8,
+            opacity: 1
+        }).addTo(map);
+    }
+    previousPoint = point;
+
+    if (isEndpoint) {
+        endpointMarkers.push({
+            marker: marker,
+            pathIndex: 0
+        });
+    }
+    interpolatedMarkers.push(marker);
+});
+previousPoint = null;
 
     // Handle all other paths
     result.path.forEach((pathEntry, pathIndex) => {
@@ -2922,18 +974,30 @@ function displayAllPathPoints(result, foundLayer, pathNameFromMap, liveLatLng, p
             const lineCoords = matchingLayer.layer.getLatLngs();
             const interpolatedPoints = extractCoordinates(lineCoords, 1000);
 
+            previousPoint = null; // Reset for new path segment
+
             interpolatedPoints.forEach((point, index, arr) => {
                 const pointLatLng = [point[1], point[0]];
                 allPathPoints.push(pointLatLng);
                 const isEndpoint = (index === 0 || index === arr.length - 1);
+                
                 const marker = L.circleMarker(pointLatLng, {
-                    radius: isEndpoint ? 5 : 3,
-                    fillColor: isEndpoint ? 'green' : '#000',
-                    color: isEndpoint ? 'green' : '#000',
+                    radius: isEndpoint ? 3 : 3,
+                    fillColor: isEndpoint ? '#000' : '#000',
+                    color: isEndpoint ? '#000' : '#000',
                     weight: 1,
                     opacity: 1,
                     fillOpacity: 1
                 }).addTo(map);
+
+                if (previousPoint) {
+                    L.polyline([previousPoint, pointLatLng], {
+                        color: '#000',
+                        weight: 8,
+                        opacity: 1
+                    }).addTo(map);
+                }
+                previousPoint = pointLatLng;
 
                 if (isEndpoint) {
                     endpointMarkers.push({
@@ -2944,6 +1008,7 @@ function displayAllPathPoints(result, foundLayer, pathNameFromMap, liveLatLng, p
                 }
                 interpolatedMarkers.push(marker);
             });
+            previousPoint = null;
         }
     });
 
@@ -2952,17 +1017,17 @@ function displayAllPathPoints(result, foundLayer, pathNameFromMap, liveLatLng, p
         const firstDirection = getDirectionFromTable1(0);
         document.getElementById('currentDirection8').value = firstDirection;
     }
-
+    
     // Create draggable red circle at the closest interpolated point
     if (startPoint) {
         redCircleMarker = L.marker(startPoint, {
-            icon: L.divIcon({
-                className: 'custom-div-icon',
-                html: '<div style="background-color: red; width: 15px; height: 15px; border-radius: 50%;"></div>',
-                iconSize: [15, 15],
-                iconAnchor: [7.5, 7.5]
-            }),
-            draggable: true
+            icon: L.icon({
+        iconUrl: 'start.png',
+        iconSize: [32, 32],     // Size of the icon (adjust based on your image)
+        iconSize: [18, 18],
+        iconAnchor: [7.5, 7.5] // Point from which popups should open relative to iconAnchor
+    }),
+    draggable: true
         }).addTo(map);
 
         // Add drag event handlers with direction updates
@@ -3056,27 +1121,41 @@ function displayLivePathPoints(result, foundLayer, pathNameFromMap, liveLatLng, 
         initialPathPoints = highlightInterpolatedPath(liveLatLng);
     }
 
-    // Display markers for the initial path points
-    initialPathPoints.forEach((point, index, arr) => {
-        allPathPoints.push(point);
-        const isEndpoint = (index === 0 || index === arr.length - 1);
-        const marker = L.circleMarker(point, {
-            radius: isEndpoint ? 5 : 3,
-            fillColor: isEndpoint ? 'green' : '#000',
-            color: isEndpoint ? 'green' : '#000',
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 1
-        }).addTo(map);
+    let previousPoint = null; // Reset previousPoint for each path
 
-        if (isEndpoint) {
-            endpointMarkers.push({
-                marker: marker,
-                pathIndex: 0
-            });
-        }
-        interpolatedMarkers.push(marker);
-    });
+// Your existing initialization code...
+
+initialPathPoints.forEach((point, index, arr) => {
+    allPathPoints.push(point);
+    const isEndpoint = (index === 0 || index === arr.length - 1);
+    
+    const marker = L.circleMarker(point, {
+        radius: isEndpoint ? 3 : 3,
+        fillColor: isEndpoint ? '#000' : '#000',
+        color: isEndpoint ? '#000' : '#000',
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 1
+    }).addTo(map);
+
+    if (previousPoint) {
+        L.polyline([previousPoint, point], {
+            color: '#000',
+            weight: 8,
+            opacity: 1
+        }).addTo(map);
+    }
+    previousPoint = point;
+
+    if (isEndpoint) {
+        endpointMarkers.push({
+            marker: marker,
+            pathIndex: 0
+        });
+    }
+    interpolatedMarkers.push(marker);
+});
+previousPoint = null; 
 
     // Handle all other paths
     result.path.forEach((pathEntry, pathIndex) => {
@@ -3085,18 +1164,30 @@ function displayLivePathPoints(result, foundLayer, pathNameFromMap, liveLatLng, 
             const lineCoords = matchingLayer.layer.getLatLngs();
             const interpolatedPoints = extractCoordinates(lineCoords, 1000);
 
+            previousPoint = null; // Reset for new path segment
+
             interpolatedPoints.forEach((point, index, arr) => {
                 const pointLatLng = [point[1], point[0]];
                 allPathPoints.push(pointLatLng);
                 const isEndpoint = (index === 0 || index === arr.length - 1);
+                
                 const marker = L.circleMarker(pointLatLng, {
-                    radius: isEndpoint ? 5 : 3,
-                    fillColor: isEndpoint ? 'green' : '#000',
-                    color: isEndpoint ? 'green' : '#000',
+                    radius: isEndpoint ? 3 : 3,
+                    fillColor: isEndpoint ? '#000' : '#000',
+                    color: isEndpoint ? '#000' : '#000',
                     weight: 1,
                     opacity: 1,
                     fillOpacity: 1
                 }).addTo(map);
+
+                if (previousPoint) {
+                    L.polyline([previousPoint, pointLatLng], {
+                        color: '#000',
+                        weight: 8,
+                        opacity: 1
+                    }).addTo(map);
+                }
+                previousPoint = pointLatLng;
 
                 if (isEndpoint) {
                     endpointMarkers.push({
@@ -3107,6 +1198,7 @@ function displayLivePathPoints(result, foundLayer, pathNameFromMap, liveLatLng, 
                 }
                 interpolatedMarkers.push(marker);
             });
+            previousPoint = null; 
         }
     });
 
@@ -3119,13 +1211,13 @@ function displayLivePathPoints(result, foundLayer, pathNameFromMap, liveLatLng, 
     // Create draggable red circle at the closest interpolated point
     if (startPoint) {
         redCircleMarker = L.marker(startPoint, {
-            icon: L.divIcon({
-                className: 'custom-div-icon',
-                html: '<div style="background-color: red; width: 15px; height: 15px; border-radius: 50%;"></div>',
-                iconSize: [15, 15],
-                iconAnchor: [7.5, 7.5]
-            }),
-            draggable: true
+            icon: L.icon({
+        iconUrl: 'start.png',
+        iconSize: [32, 32],     // Size of the icon (adjust based on your image)
+        iconSize: [18, 18],
+        iconAnchor: [7.5, 7.5] // Point from which popups should open relative to iconAnchor
+    }),
+    draggable: true
         }).addTo(map);
 
         // Add drag event handlers with direction updates
@@ -3232,14 +1324,14 @@ function addInterpolatedPoints(result) {
             
             // Create red circle at the correct start point
             redCircleMarker = L.marker(firstEndpoint, {
-                icon: L.divIcon({
-                    className: 'custom-div-icon',
-                    html: '<div style="background-color: red; width: 15px; height: 15px; border-radius: 50%;"></div>',
-                    iconSize: [15, 15],
-                    iconAnchor: [7.5, 7.5]
-                }),
-                draggable: true
-            }).addTo(map);
+    icon: L.icon({
+        iconUrl: 'start.png',
+        iconSize: [32, 32],     // Size of the icon (adjust based on your image)
+        iconSize: [18, 18],
+        iconAnchor: [7.5, 7.5] // Point from which popups should open relative to iconAnchor
+    }),
+    draggable: true
+}).addTo(map);
 
             // Add drag event handlers
             redCircleMarker.on('drag', function(e) {
@@ -3272,31 +1364,44 @@ function addInterpolatedPoints(result) {
             const lineCoords = matchingLayer.layer.getLatLngs();
             const interpolatedPoints = extractCoordinates(lineCoords, 1000);
             
-            interpolatedPoints.forEach((point, index, arr) => {
-                const pointLatLng = [point[1], point[0]];
-                allPathPoints.push(pointLatLng);
-                
-                const isEndpoint = (index === 0 || index === arr.length - 1);
-                
-                const marker = L.circleMarker(pointLatLng, {
-                    radius: isEndpoint ? 5 : 3,
-                    fillColor: isEndpoint ? 'green' : '#000',
-                    color: isEndpoint ? 'green' : '#000',
-                    weight: 1,
-                    opacity: 1,
-                    fillOpacity: 1
-                }).addTo(map);
+            let previousPoint = null; // Reset previousPoint for each new path
+        
+        interpolatedPoints.forEach((point, index, arr) => {
+            const pointLatLng = [point[1], point[0]];
+            allPathPoints.push(pointLatLng);
+            
+            const isEndpoint = (index === 0 || index === arr.length - 1);
+            
+            const marker = L.circleMarker(pointLatLng, {
+                radius: isEndpoint ? 3 : 3,
+                fillColor: isEndpoint ? '#000' : '#000',
+                color: isEndpoint ? '#000' : '#000',
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 1
+            }).addTo(map);
 
-                if (isEndpoint) {
-                    endpointMarkers.push({
-                        marker: marker,
-                        pathIndex: pathIndex,
-                        isLastEndpoint: (pathIndex === result.path.length - 1 && index === arr.length - 1)
-                    });
-                }
-                
-                interpolatedMarkers.push(marker);
-            });
+            // Connect to previous point if it exists and is in the same path
+            if (previousPoint) {
+                L.polyline([previousPoint, pointLatLng], {
+                    color: '#000',
+                    weight: 6,
+                    opacity: 1
+                }).addTo(map);
+            }
+            previousPoint = pointLatLng; // Update previousPoint within the same path
+
+            if (isEndpoint) {
+                endpointMarkers.push({
+                    marker: marker,
+                    pathIndex: pathIndex,
+                    isLastEndpoint: (pathIndex === result.path.length - 1 && index === arr.length - 1)
+                });
+            }
+            
+            interpolatedMarkers.push(marker);
+        });
+        previousPoint = null;
         }
     });
 
@@ -3392,9 +1497,65 @@ function createDirectionItem(directionText) {
 
     return directionDiv;
 }
+let walkingData = null;
+let drivingData = null;
+let disabledData = null;
 
-// Modified searchBtn1 event listener
-document.getElementById('searchBtn1').addEventListener('click', function() {
+// Dijkstra's algorithm helper function remains the same
+function findShortestPath(adjacencyList, source, destination) {
+    let distances = {};
+    let prev = {};
+    let pq = [];
+
+    // Initialize distances
+    adjacencyList.forEach(point => {
+        distances[point.point] = Infinity;
+        prev[point.point] = null;
+    });
+    distances[source] = 0;
+
+    pq.push({ point: source, distance: 0 });
+
+    while (pq.length > 0) {
+        pq.sort((a, b) => a.distance - b.distance);
+        let { point: current } = pq.shift();
+
+        if (current === destination) {
+            let path = [];
+            let totalDistance = distances[destination];
+
+            while (prev[current]) {
+                const segment = adjacencyList.find(
+                    adj => adj.point === prev[current] && adj.adjacent_point === current
+                );
+                path.unshift({
+                    from: prev[current],
+                    to: current,
+                    path: segment.path,
+                    distance: segment.distance,
+                });
+                current = prev[current];
+            }
+
+            return { path, distance: totalDistance };
+        }
+
+        adjacencyList
+            .filter(adj => adj.point === current)
+            .forEach(({ adjacent_point, distance }) => {
+                const newDistance = distances[current] + distance;
+                if (newDistance < distances[adjacent_point]) {
+                    distances[adjacent_point] = newDistance;
+                    prev[adjacent_point] = current;
+                    pq.push({ point: adjacent_point, distance: newDistance });
+                }
+            });
+    }
+    return { error: 'No path found.' };
+}
+
+// Update searchBtn1 click handler with correct file paths
+document.getElementById('searchBtn1').addEventListener('click', async function() {
     const source = document.getElementById('source').value;
     const destination = document.getElementById('destination').value;
     const mode = document.getElementById('mode').value;
@@ -3404,70 +1565,104 @@ document.getElementById('searchBtn1').addEventListener('click', function() {
         return;
     }
 
-    fetch(`/shortest-path?source=${source}&destination=${destination}&mode=${mode}`)
-        .then(response => response.json())
-        .then(result => {
-            const resultDiv = document.getElementById('result');
-            const table = document.getElementById('pathTable');
-            const tbody = table.querySelector('tbody');
-            const directionsList = document.getElementById('directionsList');
-
-            if (result.error) {
-                resultDiv.textContent = result.error;
-                table.style.display = 'none';
-                directionsList.innerHTML = '';
-                document.getElementById('directionsDisplay').style.display = 'none';
-            } else {
-                resultDiv.textContent = `Total Distance: ${result.distance.toFixed(2)} units`;
-
-                tbody.innerHTML = '';
-                directionsList.innerHTML = '';
-
-                result.path.forEach((pathEntry, index) => {
-                    const { from, to, path, distance } = pathEntry;
-                    
-                    // Create table row
-                    let row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${from}</td>
-                        <td>${to}</td>
-                        <td>${path}</td>
-                        <td>${distance.toFixed(2)}</td>
-                    `;
-
-                    // Get direction
-                    let direction = '';
-                    if (index < result.path.length - 1) {
-                        const nextPathName = result.path[index + 1].path;
-                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
-                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
-                        }
-                    } else {
-                        direction = `Destination in ${distance.toFixed(2)} metres`;
-                    }
-
-                    // Add direction to table
-                    let directionCell = document.createElement('td');
-                    directionCell.textContent = direction;
-                    row.appendChild(directionCell);
-                    tbody.appendChild(row);
-
-                    // Add direction with image to directions list
-                    if (direction) {
-                        directionsList.appendChild(createDirectionItem(direction));
-                    }
-                });
-
-                table.style.display = 'table';
-                document.getElementById('directionsDisplay').style.display = 'block';
-                
-                // Highlight the paths on the map
-                highlightPaths(result.path);
-                addInterpolatedPoints(result); 
+    try {
+        // Get the right data based on mode
+        let routingData;
+        if (mode === 'walking') {
+            if (!walkingData) {
+                const response = await fetch('hello.json'); // Updated path
+                walkingData = await response.json();
             }
-        })
-        .catch(error => console.error('Error calculating shortest path:', error));
+            routingData = walkingData;
+        } else if (mode === 'driving') {
+            if (!drivingData) {
+                const response = await fetch('driving.json'); // Updated path
+                drivingData = await response.json();
+            }
+            routingData = drivingData;
+        } else if (mode === 'disabled') {
+            if (!disabledData) {
+                const response = await fetch('access.json'); // Updated path
+                disabledData = await response.json();
+            }
+            routingData = disabledData;
+        }
+
+        // Calculate shortest path
+        const result = findShortestPath(routingData, source, destination);
+        
+        // Update UI with result
+        const resultDiv = document.getElementById('result');
+        const table = document.getElementById('pathTable');
+        const tbody = table.querySelector('tbody');
+        const directionsList = document.getElementById('directionsList');
+        const totalDistanceDiv = document.getElementById('totalDistanceDisplay');
+        const totalDistanceValue = document.getElementById('totalDistanceValue');
+
+        if (result.error) {
+            resultDiv.textContent = result.error;
+            table.style.display = 'none';
+            directionsList.innerHTML = '';
+            totalDistanceDiv.style.display = 'none';
+            document.getElementById('directionsDisplay').style.display = 'none';
+        } else {
+            tbody.innerHTML = '';
+            directionsList.innerHTML = '';
+            let totalDistance = 0;
+
+            result.path.forEach((pathEntry, index) => {
+                const { from, to, path, distance } = pathEntry;
+                totalDistance += distance;
+
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${from}</td>
+                    <td>${to}</td>
+                    <td>${path}</td>
+                    <td>${distance.toFixed(2)}</td>
+                `;
+
+                let direction = '';
+                if (index < result.path.length - 1) {
+                    const nextPathName = result.path[index + 1].path;
+                    if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                        direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                    }
+                } else {
+                    direction = `Destination in ${distance.toFixed(2)} metres`;
+                }
+
+                if (index === 0) {
+                    direction = `Head Straight and ${direction}`;
+                }
+
+                let directionCell = document.createElement('td');
+                directionCell.textContent = direction;
+                row.appendChild(directionCell);
+                tbody.appendChild(row);
+
+                if (direction) {
+                    const directionItem = createDirectionItem(direction);
+                    directionsList.appendChild(directionItem);
+                }
+            });
+
+            resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} metres`;
+            totalDistanceValue.textContent = `Total Distance: ${totalDistance.toFixed(2)} metres`;
+            totalDistanceDiv.style.display = 'block';
+
+            table.style.display = 'table';
+            document.getElementById('directionsDisplay').style.display = 'block';
+
+            highlightPaths(result.path);
+            addInterpolatedPoints(result);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error loading routing data. Please try again.');
+    }
 });
+
 
 // Add this CSS to your existing styles
 const styles = document.createElement('style');
@@ -3620,34 +1815,112 @@ function calculateTotalDistance(coords) {
     return totalDistance;
 }
 
-document.getElementById('coordSearchBtn').addEventListener('click', function() {
+
+// Function to check if a point is an endpoint
+function isEndpoint(point, lineString) {
+    const coordinates = lineString.getLatLngs();
+    const firstPoint = coordinates[0];
+    const lastPoint = coordinates[coordinates.length - 1];
+    
+    return (point.lat === firstPoint.lat && point.lng === firstPoint.lng) ||
+           (point.lat === lastPoint.lat && point.lng === lastPoint.lng);
+}
+
+// Function to process directions and combine if needed
+function processDirections(tbody, liveLatLng, foundLayer, pathNameFromMap, totalInterpolatedDistance, directionsList) {
+    // Clear the directions list
+    directionsList.innerHTML = '';
+    
+    // Get all rows
+    const allRows = tbody.querySelectorAll('tr');
+    if (allRows.length < 2) return;
+
+    const firstRow = allRows[0];
+    const secondRow = allRows[1];
+    const secondRowPath = secondRow.cells[2].textContent;
+
+    // Check if starting point is an endpoint
+    const isStartingPointEndpoint = isEndpoint(liveLatLng, foundLayer);
+
+    if (isStartingPointEndpoint) {
+        // Hide first row
+        firstRow.style.display = 'none';
+        
+        // Get direction from second row
+        let secondRowDirection = secondRow.cells[4].textContent;
+        
+        // Combine "Head straight and" with the second row direction
+        const combinedDirection = `Head straight and ${secondRowDirection}`;
+        secondRow.cells[4].textContent = combinedDirection;
+        
+        // Create direction item with image
+        const directionItem = createDirectionItem(combinedDirection);
+        directionsList.appendChild(directionItem);
+        
+        // Add remaining directions
+        for (let i = 2; i < allRows.length; i++) {
+            const direction = allRows[i].cells[4].textContent;
+            if (direction) {
+                const directionItem = createDirectionItem(direction);
+                directionsList.appendChild(directionItem);
+            }
+        }
+    } else {
+        // For non-endpoint case
+        // Get the direction between current path and next path
+        const nextDirection = directionsData[pathNameFromMap]?.related_paths[secondRowPath] || '';
+        const firstDirection = `Head straight...${nextDirection} for ${totalInterpolatedDistance.toFixed(2)} metres`;
+        
+        // Update first row's direction
+        firstRow.cells[4].textContent = firstDirection;
+        
+        // Create direction item with image for first row
+        const firstDirectionItem = createDirectionItem(firstDirection);
+        directionsList.appendChild(firstDirectionItem);
+        
+        // Add all remaining directions
+        for (let i = 1; i < allRows.length; i++) {
+            const direction = allRows[i].cells[4].textContent;
+            if (direction) {
+                const directionItem = createDirectionItem(direction);
+                directionsList.appendChild(directionItem);
+            }
+        }
+    }
+}
+
+// coordSearchBtn click handler
+document.getElementById('coordSearchBtn').addEventListener('click', async function() {
     const coordSource1 = document.getElementById('coordSource1').value;
     const coordSource = document.getElementById('coordSource').value;
     const coordDestination = document.getElementById('coordDestination').value;
     const coordMode = document.getElementById('coordMode').value;
     const directionsList1 = document.getElementById('directionsList1');
 
-    if (!coordSource ) {
+    // Initial validations remain the same
+    if (!coordSource) {
         alert('Please click on a path or a building until a popup appears of the name of the path or building.');
         return;
     }
-    if ( !coordDestination || !coordMode) {
+    if (!coordDestination || !coordMode) {
         alert('Please select destination, and mode.');
         return;
     }
+
+    // Clear previous polylines
     if (previousPolyline) {
         map.removeLayer(previousPolyline);
-        previousPolyline = null; // Reset
+        previousPolyline = null;
     }
     if (previousFarthestPolyline) {
         map.removeLayer(previousFarthestPolyline);
-        previousFarthestPolyline = null; // Reset
+        previousFarthestPolyline = null;
     }
-    // Split the coordinates from the text input
-    const [lat1, lng1] = coordSource1.split(',').map(Number);
-    const liveLatLng = L.latLng(lat1, lng1);  // Live coordinate (coordSource1)
 
-    // Call the function to find the path containing the live coordinate
+    // Process coordinates
+    const [lat1, lng1] = coordSource1.split(',').map(Number);
+    const liveLatLng = L.latLng(lat1, lng1);
+
     const foundLayer = findPathContainingLiveCoordinate(liveLatLng);
     if (!foundLayer) {
         console.log('No matching path found for the live coordinate.');
@@ -3655,209 +1928,182 @@ document.getElementById('coordSearchBtn').addEventListener('click', function() {
     }
 
     const [lat2, lng2] = coordSource.split(',').map(Number);
-    const distanceBetweenCoords = calculateDistance(L.latLng(lat1, lng1), L.latLng(lat2, lng2)); // Distance between coordSource1 and coordSource
+    const distanceBetweenCoords = calculateDistance(L.latLng(lat1, lng1), L.latLng(lat2, lng2));
+    const userLatLng = L.latLng(lat2, lng2);
 
-    const userLatLng = L.latLng(lat2, lng2);  // This is the coordSource LatLng
-
-    // Find the nearest point or LineString endpoint to the user-selected coordinate
     const nearestLocation = findNearestPoint(userLatLng, featureLayers);
-
     if (!nearestLocation) {
         alert('No nearest location found.');
         return;
     }
 
-    let source;
-    if (nearestLocation.latLng) { // If it's a LineString coordinate (nearest endpoint)
-        source = nearestLocation.latLng; // Use the closest endpoint
-    } else {
-        source = nearestLocation.name; // It's already a point
-    }
-
-    // Proceed with shortest path calculation using the found source (nearest Point or endpoint)
-    fetch(`/shortest-path?source=${source}&destination=${coordDestination}&mode=${coordMode}`)
-        .then(response => response.json())
-        .then(result => {
-            const resultDiv = document.getElementById('coordResult');
-            const table = document.getElementById('coordPathTable');
-            const tbody = table.querySelector('tbody');
-
-            if (result.error) {
-                resultDiv.textContent = result.error;
-                table.style.display = 'none';
-                directionsList1.innerHTML = '';
-                document.getElementById('directionsDisplay1').style.display = 'none';
-            } else {
-                // Total distance will include the distance between coordSource1 and coordSource
-                let totalDistance = distanceBetweenCoords;
-
-                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
-
-                tbody.innerHTML = ''; // Clear previous results
-                directionsList1.innerHTML = '';
-                // Add the new row with coordSource1 and coordSource
-                let newRow = document.createElement('tr');
-                
-                let fromCell = document.createElement('td');
-                fromCell.textContent = coordSource1;
-                newRow.appendChild(fromCell);
-
-                let toCell = document.createElement('td');
-                toCell.textContent = coordSource;
-                newRow.appendChild(toCell);
-
-                let pathCell = document.createElement('td');
-                pathCell.textContent = '';  // Leave path blank
-                newRow.appendChild(pathCell);
-
-                let distanceCell = document.createElement('td');
-                newRow.appendChild(distanceCell);
-
-                let directionCell = document.createElement('td');
-                directionCell.textContent = '';  // Leave directions blank
-                newRow.appendChild(directionCell);
-
-                tbody.appendChild(newRow);
-
-                // Iterate through the result path to populate the rest of the table
-                result.path.forEach((pathEntry, index) => {
-                    const { from, to, path, distance } = pathEntry;
-
-                    let row = document.createElement('tr');
-
-                    let fromCell = document.createElement('td');
-                    fromCell.textContent = from;
-                    row.appendChild(fromCell);
-
-                    let toCell = document.createElement('td');
-                    toCell.textContent = to;
-                    row.appendChild(toCell);
-
-                    let pathCell = document.createElement('td');
-                    pathCell.textContent = path;
-                    row.appendChild(pathCell);
-
-                    let distanceCell = document.createElement('td');
-                    distanceCell.textContent = distance;
-                    row.appendChild(distanceCell);
-
-                    totalDistance += distance;  // Add this path's distance to the total
-
-                    // Get direction for this path
-                    let direction = '';
-                    if (index < result.path.length - 1) { // Check if there is a next path
-                        const nextPathName = result.path[index + 1].path;
-                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
-                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
-                        }
-                    } else { // For the last row, say "Destination"
-                        direction = `Destination in ${distance.toFixed(2)} metres`;
-                    }
-// Add the direction as a div in the directionsDisplay section
-if (direction) {
-    const directionItem = createDirectionItem(direction);
-    directionsList1.appendChild(directionItem);  // or directionsList2 for liveSearchBtn
-}
-                    let directionCell = document.createElement('td');
-                    directionCell.textContent = direction;
-                    row.appendChild(directionCell);
-
-                    tbody.appendChild(row);
-                });
-
-                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`; // Update with total distance
-                table.style.display = 'table';
-                document.getElementById('directionsDisplay1').style.display = 'block';
-                // New Section: Check path in second row, third column
-                const secondRow = table.querySelector('tbody').rows[1];  // Get the second row (index 1)
-                if (secondRow) {
-                    const pathNameFromTable = secondRow.cells[2].textContent;  // Third column of second row
-                    const pathNameFromMap = foundLayer.feature.properties.name;  // The name of the path where live coordinate lies
-                    let interpolatedPoints = [];  // To store interpolated points for distance calculation
-                    let skipFirstPath = false;  // Initialize variable to skip the first path
-                    
-                    // Compare the path names and call the appropriate highlighting function
-if (pathNameFromTable === pathNameFromMap) {
-    interpolatedPoints = highlightFarthestInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
-    skipFirstPath = true;  // Skip the first path
-} else {
-    interpolatedPoints = highlightInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
-}
-
-// Step 4: Calculate the total distance for the first row using interpolated points
-const totalInterpolatedDistance = calculateTotalDistance(interpolatedPoints);  // Total distance in meters
-
-// Update the first row's distance cell with the total interpolated distance
-newRow.cells[3].textContent = `${totalInterpolatedDistance.toFixed(2)} meters`;
-
-if (pathNameFromTable === pathNameFromMap) {
-    // When path names are the same
-    const thirdRow = table.querySelector('tbody').rows[2];  // Check the third row
-    if (thirdRow) {
-        // Always set direction to "Head straight"
-        const direction = `Head straight for ${totalInterpolatedDistance.toFixed(2)} meters`;
-        newRow.cells[4].textContent = direction;
-
-        // Create the direction item with image and add to directionsList1 as the first item
-        const directionItem = createDirectionItem(direction);
-        directionItem.className = 'direction-item';
-        directionsList1.insertBefore(directionItem, directionsList1.firstChild);
-    }
-} else {
-    // When path names are different
-    // Always set direction to "Head straight"
-    const direction = `Head straight for ${totalInterpolatedDistance.toFixed(2)} meters`;
-    newRow.cells[4].textContent = direction;
-
-    // Create the direction item with image and add to directionsList1 as the first item
-    const directionItem = createDirectionItem(direction);
-    directionItem.className = 'direction-item';
-    directionsList1.insertBefore(directionItem, directionsList1.firstChild);
-}
-                      
-                    // Highlight paths on the map
-                    highlightPaths(result.path, skipFirstPath); 
-                   // Extract coordinates and display black dots
-                   displayAllPathPoints(result, foundLayer, pathNameFromMap, liveLatLng, pathNameFromTable);
-                } else {
-                    console.log('The second row of the table does not exist.');
-                }
-                 
+    // Get routing data based on mode
+    let routingData;
+    try {
+        if (coordMode === 'walking') {
+            if (!walkingData) {
+                const response = await fetch('hello.json');
+                walkingData = await response.json();
             }
-        })
-        .catch(error => console.error('Error calculating shortest path:', error));
+            routingData = walkingData;
+        } else if (coordMode === 'driving') {
+            if (!drivingData) {
+                const response = await fetch('driving.json');
+                drivingData = await response.json();
+            }
+            routingData = drivingData;
+        } else if (coordMode === 'disabled') {
+            if (!disabledData) {
+                const response = await fetch('access.json');
+                disabledData = await response.json();
+            }
+            routingData = disabledData;
+        }
+
+        // Get source from nearest location
+        let source;
+        if (nearestLocation.latLng) {
+            source = nearestLocation.latLng;
+        } else {
+            source = nearestLocation.name;
+        }
+
+        // Calculate shortest path
+        const result = findShortestPath(routingData, source, coordDestination);
+
+        // Update UI elements
+        const resultDiv = document.getElementById('coordResult');
+        const table = document.getElementById('coordPathTable');
+        const tbody = table.querySelector('tbody');
+
+        if (result.error) {
+            resultDiv.textContent = result.error;
+            table.style.display = 'none';
+            directionsList1.innerHTML = '';
+            totalDistanceDisplay1.style.display = 'none';
+            document.getElementById('directionsDisplay1').style.display = 'none';
+            return;
+        }
+
+        // Reset UI
+        let totalDistance = distanceBetweenCoords;
+        tbody.innerHTML = '';
+        directionsList1.innerHTML = '';
+
+        // Create first row
+        let newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${coordSource1}</td>
+            <td>${coordSource}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        `;
+        tbody.appendChild(newRow);
+
+        // Add path rows
+        result.path.forEach((pathEntry, index) => {
+            const { from, to, path, distance } = pathEntry;
+            totalDistance += distance;
+
+            let row = document.createElement('tr');
+            let direction = '';
+            
+            if (index < result.path.length - 1) {
+                const nextPathName = result.path[index + 1].path;
+                if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                    direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                }
+            } else {
+                direction = `Destination in ${distance.toFixed(2)} metres`;
+            }
+
+            row.innerHTML = `
+                <td>${from}</td>
+                <td>${to}</td>
+                <td>${path}</td>
+                <td>${distance.toFixed(2)}</td>
+                <td>${direction}</td>
+            `;
+            tbody.appendChild(row);
+
+            if (direction) {
+                const directionItem = createDirectionItem(direction);
+                directionsList1.appendChild(directionItem);
+            }
+        });
+
+        // Update distance displays
+        totalDistanceValue1.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
+        totalDistanceDisplay1.style.display = 'block';
+        resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
+        table.style.display = 'table';
+        document.getElementById('directionsDisplay1').style.display = 'block';
+
+        // Process path visualization
+        const secondRow = tbody.rows[1];
+        if (secondRow) {
+            const pathNameFromTable = secondRow.cells[2].textContent;
+            const pathNameFromMap = foundLayer.feature.properties.name;
+            let interpolatedPoints = [];
+            let skipFirstPath = false;
+
+            if (pathNameFromTable === pathNameFromMap) {
+                interpolatedPoints = highlightFarthestInterpolatedPath(liveLatLng, coordSource);
+                skipFirstPath = true;
+            } else {
+                interpolatedPoints = highlightInterpolatedPath(liveLatLng, coordSource);
+            }
+
+            const totalInterpolatedDistance = calculateTotalDistance(interpolatedPoints);
+            newRow.cells[3].textContent = `${totalInterpolatedDistance.toFixed(2)} meters`;
+
+            processDirections(tbody, liveLatLng, foundLayer, pathNameFromMap, totalInterpolatedDistance, directionsList1);
+            highlightPaths(result.path, skipFirstPath);
+            displayAllPathPoints(result, foundLayer, pathNameFromMap, liveLatLng, pathNameFromTable);
+        }
+
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error calculating route. Please try again.');
+    }
 });
 
-document.getElementById('liveSearchBtn').addEventListener('click', function() {
+
+document.getElementById('liveSearchBtn').addEventListener('click', async function() {
     const coordSource4 = document.getElementById('coordSource4').value;
     const coordSource = document.getElementById('coordSource').value;
     const coordDestination = document.getElementById('coordDestination').value;
     const coordMode = document.getElementById('coordMode').value;
     const directionsList2 = document.getElementById('directionsList2'); 
+    const totalDistanceDiv2 = document.getElementById('totalDistanceDisplay2');
+    const totalDistanceValue2 = document.getElementById('totalDistanceValue2');
     
+    // Initial validations
     if (!coordDestination || !coordMode) {
         alert('Please select destination and mode.');
         return;
     }
 
-   // Replace this alert with the modal
-   if (!coordSource4) {
+    if (!coordSource4) {
         showOutsideCampusModal();
         return;
     }
+
+    // Clear previous polylines
     if (previousPolyline) {
         map.removeLayer(previousPolyline);
-        previousPolyline = null; // Reset
+        previousPolyline = null;
     }
     if (previousFarthestPolyline) {
         map.removeLayer(previousFarthestPolyline);
-        previousFarthestPolyline = null; // Reset
+        previousFarthestPolyline = null;
     }
-    // Split the coordinates from the text input
-    const [lat1, lng1] = coordSource4.split(',').map(Number);
-    const liveLatLng = L.latLng(lat1, lng1);  // Live coordinate (coordSource4)
 
-    // Call the function to find the path containing the live coordinate
+    // Process coordinates
+    const [lat1, lng1] = coordSource4.split(',').map(Number);
+    const liveLatLng = L.latLng(lat1, lng1);
+
     const foundLayer = findPathContainingLiveCoordinate(liveLatLng);
     if (!foundLayer) {
         console.log('No matching path found for the live coordinate.');
@@ -3865,181 +2111,146 @@ document.getElementById('liveSearchBtn').addEventListener('click', function() {
     }
 
     const [lat2, lng2] = coordSource.split(',').map(Number);
-    const distanceBetweenCoords = calculateDistance(L.latLng(lat1, lng1), L.latLng(lat2, lng2)); // Distance between coordSource4 and coordSource
+    const distanceBetweenCoords = calculateDistance(L.latLng(lat1, lng1), L.latLng(lat2, lng2));
+    const userLatLng = L.latLng(lat2, lng2);
 
-    const userLatLng = L.latLng(lat2, lng2);  // This is the coordSource LatLng
-
-    // Find the nearest point or LineString endpoint to the user-selected coordinate
     const nearestLocation = findNearestPoint(userLatLng, featureLayers);
-
     if (!nearestLocation) {
         alert('No nearest location found.');
         return;
     }
 
-    let source;
-    if (nearestLocation.latLng) { // If it's a LineString coordinate (nearest endpoint)
-        source = nearestLocation.latLng; // Use the closest endpoint
-    } else {
-        source = nearestLocation.name; // It's already a point
-    }
-
-    // Proceed with shortest path calculation using the found source (nearest Point or endpoint)
-    fetch(`/shortest-path?source=${source}&destination=${coordDestination}&mode=${coordMode}`)
-        .then(response => response.json())
-        .then(result => {
-            const resultDiv = document.getElementById('coordResult');
-            const table = document.getElementById('coordPathTable');
-            const tbody = table.querySelector('tbody');
-
-            if (result.error) {
-                resultDiv.textContent = result.error;
-                table.style.display = 'none';
-                directionsList2.innerHTML = '';
-        document.getElementById('directionsDisplay2').style.display = 'none';
-            } else {
-                // Total distance will include the distance between coordSource4 and coordSource
-                let totalDistance = distanceBetweenCoords;
-
-                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
-
-                tbody.innerHTML = ''; // Clear previous results
-                directionsList2.innerHTML = '';
-                // Add the new row with coordSource4 and coordSource
-                let newRow = document.createElement('tr');
-                
-                let fromCell = document.createElement('td');
-                fromCell.textContent = coordSource4;
-                newRow.appendChild(fromCell);
-
-                let toCell = document.createElement('td');
-                toCell.textContent = coordSource;
-                newRow.appendChild(toCell);
-
-                let pathCell = document.createElement('td');
-                pathCell.textContent = '';  // Leave path blank
-                newRow.appendChild(pathCell);
-
-                let distanceCell = document.createElement('td');
-                newRow.appendChild(distanceCell);
-
-                let directionCell = document.createElement('td');
-                directionCell.textContent = '';  // Leave directions blank
-                newRow.appendChild(directionCell);
-
-                tbody.appendChild(newRow);
-
-                // Iterate through the result path to populate the rest of the table
-                result.path.forEach((pathEntry, index) => {
-                    const { from, to, path, distance } = pathEntry;
-
-                    let row = document.createElement('tr');
-
-                    let fromCell = document.createElement('td');
-                    fromCell.textContent = from;
-                    row.appendChild(fromCell);
-
-                    let toCell = document.createElement('td');
-                    toCell.textContent = to;
-                    row.appendChild(toCell);
-
-                    let pathCell = document.createElement('td');
-                    pathCell.textContent = path;
-                    row.appendChild(pathCell);
-
-                    let distanceCell = document.createElement('td');
-                    distanceCell.textContent = distance;
-                    row.appendChild(distanceCell);
-
-                    totalDistance += distance;  // Add this path's distance to the total
-
-                    // Get direction for this path
-                    let direction = '';
-                    if (index < result.path.length - 1) { // Check if there is a next path
-                        const nextPathName = result.path[index + 1].path;
-                        if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
-                            direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
-                        }
-                    } else { // For the last row, say "Destination"
-                        direction = `Destination in ${distance.toFixed(2)} metres`;
-                    }
-                   if (direction) {
-    const directionItem = createDirectionItem(direction);
-    directionsList2.appendChild(directionItem);  // or directionsList2 for liveSearchBtn
-}
-
-                    let directionCell = document.createElement('td');
-                    directionCell.textContent = direction;
-                    row.appendChild(directionCell);
-
-                    tbody.appendChild(row);
-                });
-
-                resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`; // Update with total distance
-                table.style.display = 'table';
-                document.getElementById('directionsDisplay2').style.display = 'block';
-                // New Section: Check path in second row, third column
-                const secondRow = table.querySelector('tbody').rows[1];  // Get the second row (index 1)
-                if (secondRow) {
-                    const pathNameFromTable = secondRow.cells[2].textContent;  // Third column of second row
-                    const pathNameFromMap = foundLayer.feature.properties.name;  // The name of the path where live coordinate lies
-                    let interpolatedPoints = [];  // To store interpolated points for distance calculation
-                    let skipFirstPath = false;  // Initialize variable to skip the first path
-                    
-                    // Compare the path names and call the appropriate highlighting function
-if (pathNameFromTable === pathNameFromMap) {
-    interpolatedPoints = highlightFarthestInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
-    skipFirstPath = true;  // Skip the first path
-} else {
-    interpolatedPoints = highlightInterpolatedPath(liveLatLng, coordSource);  // Store interpolated points
-}
-
-// Step 4: Calculate the total distance for the first row using interpolated points
-const totalInterpolatedDistance = calculateTotalDistance(interpolatedPoints);  // Total distance in meters
-
-// Update the first row's distance cell with the total interpolated distance
-newRow.cells[3].textContent = `${totalInterpolatedDistance.toFixed(2)} meters`;
-
-if (pathNameFromTable === pathNameFromMap) {
-    // When path names are the same
-    const thirdRow = table.querySelector('tbody').rows[2];  // Check the third row
-    if (thirdRow) {
-        // Always set direction to "Head straight"
-        const direction = `Head straight for ${totalInterpolatedDistance.toFixed(2)} meters`;
-        newRow.cells[4].textContent = direction;
-
-        // Create the direction item with image and add to directionsList2 as the first item
-        const directionItem = createDirectionItem(direction);
-        directionItem.className = 'direction-item';
-        directionsList2.insertBefore(directionItem, directionsList2.firstChild);
-    }
-} else {
-    // When path names are different
-    // Always set direction to "Head straight"
-    const direction = `Head straight for ${totalInterpolatedDistance.toFixed(2)} meters`;
-    newRow.cells[4].textContent = direction;
-
-    // Create the direction item with image and add to directionsList2 as the first item
-    const directionItem = createDirectionItem(direction);
-    directionItem.className = 'direction-item';
-    directionsList2.insertBefore(directionItem, directionsList2.firstChild);
-}
-
-                      
-                    // Highlight paths on the map
-                    highlightPaths(result.path, skipFirstPath);  // Call the function with skipFirstPath flag
-                    
-                    displayLivePathPoints(result, foundLayer, pathNameFromMap, liveLatLng, pathNameFromTable);
-               
-                } else {
-                    console.log('The second row of the table does not exist.');
-                }
-                 
+    try {
+        // Get routing data based on mode
+        let routingData;
+        if (coordMode === 'walking') {
+            if (!walkingData) {
+                const response = await fetch('hello.json');
+                walkingData = await response.json();
             }
-        })
-        .catch(error => console.error('Error calculating shortest path:', error));
-});
+            routingData = walkingData;
+        } else if (coordMode === 'driving') {
+            if (!drivingData) {
+                const response = await fetch('driving.json');
+                drivingData = await response.json();
+            }
+            routingData = drivingData;
+        } else if (coordMode === 'disabled') {
+            if (!disabledData) {
+                const response = await fetch('access.json');
+                disabledData = await response.json();
+            }
+            routingData = disabledData;
+        }
 
+        // Get source from nearest location
+        let source;
+        if (nearestLocation.latLng) {
+            source = nearestLocation.latLng;
+        } else {
+            source = nearestLocation.name;
+        }
+
+        // Calculate shortest path
+        const result = findShortestPath(routingData, source, coordDestination);
+
+        // Update UI elements
+        const resultDiv = document.getElementById('coordResult');
+        const table = document.getElementById('coordPathTable');
+        const tbody = table.querySelector('tbody');
+
+        if (result.error) {
+            resultDiv.textContent = result.error;
+            table.style.display = 'none';
+            directionsList2.innerHTML = '';
+            totalDistanceDiv2.style.display = 'none';
+            document.getElementById('directionsDisplay2').style.display = 'none';
+            return;
+        }
+
+        // Reset UI and initialize total distance
+        let totalDistance = distanceBetweenCoords;
+        tbody.innerHTML = '';
+        directionsList2.innerHTML = '';
+
+        // Create first row with live location info
+        let newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${coordSource4}</td>
+            <td>${coordSource}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        `;
+        tbody.appendChild(newRow);
+
+        // Process path results
+        result.path.forEach((pathEntry, index) => {
+            const { from, to, path, distance } = pathEntry;
+            let row = document.createElement('tr');
+            let direction = '';
+
+            if (index < result.path.length - 1) {
+                const nextPathName = result.path[index + 1].path;
+                if (directionsData[path] && directionsData[path].related_paths[nextPathName]) {
+                    direction = `${directionsData[path].related_paths[nextPathName]} after ${distance.toFixed(2)} metres`;
+                }
+            } else {
+                direction = `Destination in ${distance.toFixed(2)} metres`;
+            }
+
+            row.innerHTML = `
+                <td>${from}</td>
+                <td>${to}</td>
+                <td>${path}</td>
+                <td>${distance.toFixed(2)}</td>
+                <td>${direction}</td>
+            `;
+            tbody.appendChild(row);
+
+            if (direction) {
+                const directionItem = createDirectionItem(direction);
+                directionsList2.appendChild(directionItem);
+            }
+
+            totalDistance += distance;
+        });
+
+        // Update distance displays
+        totalDistanceValue2.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
+        totalDistanceDiv2.style.display = 'block';
+        resultDiv.textContent = `Total Distance: ${totalDistance.toFixed(2)} meters`;
+        table.style.display = 'table';
+        document.getElementById('directionsDisplay2').style.display = 'block';
+
+        // Process path visualization
+        const secondRow = tbody.rows[1];
+        if (secondRow) {
+            const pathNameFromTable = secondRow.cells[2].textContent;
+            const pathNameFromMap = foundLayer.feature.properties.name;
+            let interpolatedPoints = [];
+            let skipFirstPath = false;
+
+            if (pathNameFromTable === pathNameFromMap) {
+                interpolatedPoints = highlightFarthestInterpolatedPath(liveLatLng, coordSource);
+                skipFirstPath = true;
+            } else {
+                interpolatedPoints = highlightInterpolatedPath(liveLatLng, coordSource);
+            }
+
+            const totalInterpolatedDistance = calculateTotalDistance(interpolatedPoints);
+            newRow.cells[3].textContent = `${totalInterpolatedDistance.toFixed(2)} meters`;
+
+            processDirections(tbody, liveLatLng, foundLayer, pathNameFromMap, totalInterpolatedDistance, directionsList2);
+            highlightPaths(result.path, skipFirstPath);
+            displayLivePathPoints(result, foundLayer, pathNameFromMap, liveLatLng, pathNameFromTable);
+        }
+
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error calculating route. Please try again.');
+    }
+});
 
 
 // Function to interpolate between two coordinates, ensuring points are correctly placed even on straight lines
@@ -4752,8 +2963,6 @@ function showWarningModal() {
 let isNavigationActive = false;
 const REROUTE_WARNING_DISTANCE = 40; // Distance in meters
 let rerooteModalShown = false; // To prevent multiple modals
-
-// Modify your live marker's move event
 liveMarker.on('move', function(e) {
     const latLng = e.target.getLatLng();
     const point = [latLng.lng, latLng.lat];
@@ -4774,8 +2983,12 @@ liveMarker.on('move', function(e) {
             document.getElementById('coordSource').value = `${nearestEndpoint.lat}, ${nearestEndpoint.lng}`;
             document.getElementById('coordSource4').value = `${closestInterpolatedPoint[1]}, ${closestInterpolatedPoint[0]}`;
 
-            // Control red circle when navigation is active
-            if (isNavigationActive && redCircleMarker) {
+            // Check if any navigation container is open
+            const isInNavigation = ['subnav7Container', 'subnav8Container', 'subnav9Container']
+                .some(containerId => document.getElementById(containerId).style.display === 'block');
+
+            // Only control red circle when in navigation containers
+            if (isInNavigation && redCircleMarker) {
                 const distanceToRedCircle = latLng.distanceTo(redCircleMarker.getLatLng());
                 
                 // If close enough, move red circle
@@ -4813,6 +3026,11 @@ liveMarker.on('move', function(e) {
                 }
             }
         }
+    } else {
+        // Point is outside USIU - clear all coordinate fields
+        document.getElementById('coordSource2').value = '';
+        document.getElementById('coordSource').value = '';
+        document.getElementById('coordSource4').value = '';
     }
 });
 
@@ -5570,8 +3788,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 }
 
+function showModeValidationModal() {
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        text-align: center;
+    `;
+    
+    modal.innerHTML = `
+        <h3 style="margin-bottom: 15px; color: #dc3545;">Mode Required</h3>
+        <p style="margin-bottom: 20px;">Please choose a mode before getting directions.</p>
+        <button style="padding: 8px 16px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            Cancel
+        </button>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Handle close button
+    const closeButton = modal.querySelector('button');
+    closeButton.onclick = () => {
+        document.body.removeChild(modal);
+    };
+}
+
+// Function to check if a mode is selected
+function isModeSelected(containerId) {
+    const modeButtonSelectors = {
+        'sub7DivContainer': '#modeButtons .mode-btn.active',
+        'sub8DivContainer': '#modeButtonsSub8 .mode-btn.active',
+        'sub9DivContainer': '#modeButtonsSub9 .mode-btn.active'
+    };
+
+    const selector = modeButtonSelectors[containerId];
+    return document.querySelector(selector) !== null;
+}
 
     document.getElementById("getDirectionsBtn").addEventListener("click", () => {
+        if (!isModeSelected('sub7DivContainer')) {
+        showModeValidationModal();
+        return;
+    }
+        showLoadingOverlay();
         const sourceText = capitalizeWords(document.getElementById("sourceHeading").textContent.replace('Source: ', ''));
         const destinationText = capitalizeWords(document.getElementById("destinationHeading").textContent.replace('Destination: ', ''));
 
@@ -5722,9 +3988,57 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function isModeSelected(containerId) {
+    const modeButtonSelectors = {
+        'sub7DivContainer': '#modeButtons .mode-btn.active',
+        'sub8DivContainer': '#modeButtonsSub8 .mode-btn.active',
+        'sub9DivContainer': '#modeButtonsSub9 .mode-btn.active'
+    };
 
+    const selector = modeButtonSelectors[containerId];
+    const activeMode = document.querySelector(selector);
+    console.log('Active mode found:', activeMode); // Debug log
+    return activeMode !== null;
+}
+
+function showModeValidationModal() {
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        text-align: center;
+    `;
+    
+    modal.innerHTML = `
+        <h3 style="margin-bottom: 15px; color: #dc3545;">Mode Required</h3>
+        <p style="margin-bottom: 20px;">Please choose a mode before getting directions.</p>
+        <button style="padding: 8px 16px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            Cancel
+        </button>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Handle close button
+    const closeButton = modal.querySelector('button');
+    closeButton.onclick = () => {
+        document.body.removeChild(modal);
+    };
+}
     // Sub8 Get Directions functionality
     document.getElementById("getDirectionsBtnSub8").addEventListener("click", async () => {
+        if (!isModeSelected('sub8DivContainer')) {
+        showModeValidationModal();
+        return;
+    }
+        showLoadingOverlay();
     document.getElementById("sourceType").value = "clickOnMap"; 
     const destinationText = capitalizeWords(
         document.getElementById("sub8DestinationHeading").textContent.trim().replace('Destination: ', '')
@@ -5743,6 +4057,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.getElementById("getDirectionsBtnSub9").addEventListener("click", async () => {
+    showLoadingOverlay();
     document.getElementById("sourceType").value = "liveLoc";
     const destinationText = capitalizeWords(
         document.getElementById("sub9DestinationHeading").textContent.trim().replace('Destination: ', '')
@@ -6348,821 +4663,18 @@ function closeSub3DivContainer() {
     document.getElementById('sub3DivContainer').style.display = 'none'; // Hide the container
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth > 768) return;
 
-    const controls = document.getElementById('controls');
-    const categoryContainer = document.getElementById('categoryContainer');
-    const subDivContainer = document.getElementById('subDivContainer');
-    const subDivContent = document.getElementById('subDivContent');
-    const sub3DivContainer = document.getElementById('sub3DivContainer');
-    const sub3Content = document.querySelector('.sub3-content');
-    
-    let startY = 0;
-    let startHeight = 0;
-    let isExpanded = false;
-    let isDragging = false;
-    let lastScrollTop = 0;
 
-    function isAtTop(element) {
-        return Math.abs(element.scrollTop) < 1;
-    }
 
-    function initializePanelHandlers(container, scrollableContent) {
-        container.addEventListener('touchstart', (e) => {
-            if (container.style.display !== 'none') {
-                startY = e.touches[0].clientY;
-                startHeight = controls.offsetHeight;
-                isDragging = true;
-                lastScrollTop = scrollableContent.scrollTop;
-            }
-        });
 
-        container.addEventListener('touchmove', (e) => {
-            if (!isDragging || container.style.display === 'none') return;
 
-            if (isExpanded && !isAtTop(scrollableContent)) {
-                isDragging = false;
-                return;
-            }
 
-            const deltaY = e.touches[0].clientY - startY;
-            const newHeight = startHeight - deltaY;
-            const minHeight = window.innerHeight * 0.4;
-            const maxHeight = window.innerHeight * 0.7;
 
-            if (newHeight >= minHeight && newHeight <= maxHeight) {
-                controls.style.height = `${newHeight}px`;
-                e.preventDefault();
-            }
-        });
 
-        container.addEventListener('touchend', () => {
-            if (!isDragging || container.style.display === 'none') return;
-            isDragging = false;
 
-            const currentHeight = controls.offsetHeight;
-            const threshold = window.innerHeight * 0.55;
 
-            if (currentHeight > threshold) {
-                expandPanel();
-            } else {
-                collapsePanel();
-            }
-        });
 
-        container.addEventListener('wheel', (e) => {
-            if (container.style.display === 'none') return;
 
-            if (!isExpanded && e.deltaY > 0) {
-                expandPanel();
-                e.preventDefault();
-                return;
-            }
-
-            if (isExpanded && isAtTop(scrollableContent) && e.deltaY < 0) {
-                collapsePanel();
-                e.preventDefault();
-                return;
-            }
-
-            if (!isExpanded) {
-                e.preventDefault();
-            }
-
-            lastScrollTop = scrollableContent.scrollTop;
-        });
-
-        scrollableContent.addEventListener('scroll', () => {
-            lastScrollTop = scrollableContent.scrollTop;
-        });
-
-        scrollableContent.addEventListener('touchmove', (e) => {
-            if (!isExpanded) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-    }
-
-    function expandPanel() {
-        controls.style.height = '70vh';
-        controls.classList.add('expanded');
-        isExpanded = true;
-
-        if (categoryContainer) categoryContainer.style.overflowY = 'auto';
-        if (subDivContainer && subDivContainer.style.display !== 'none') {
-            subDivContent.style.overflowY = 'auto';
-        }
-        if (sub3DivContainer && sub3DivContainer.style.display !== 'none') {
-            sub3Content.style.overflowY = 'auto';
-        }
-    }
-
-    function collapsePanel() {
-        if (isExpanded) {
-            const activeContent = sub3DivContainer.style.display !== 'none' ? sub3Content :
-                                subDivContainer.style.display !== 'none' ? subDivContent :
-                                categoryContainer;
-            
-            if (isAtTop(activeContent)) {
-                controls.style.height = '40vh';
-                controls.classList.remove('expanded');
-                isExpanded = false;
-
-                if (categoryContainer) categoryContainer.style.overflowY = 'hidden';
-                if (subDivContent) subDivContent.style.overflowY = 'hidden';
-                if (sub3Content) sub3Content.style.overflowY = 'hidden';
-            }
-        }
-    }
-
-    initializePanelHandlers(document.getElementById('controlspart2'), categoryContainer);
-    initializePanelHandlers(subDivContainer, subDivContent);
-});
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth > 768) return;
-
-    const controlsSub3 = document.getElementById('controls');
-    const sub3DivContainer = document.getElementById('sub3DivContainer');
-    const scrollTriggerSub3 = document.getElementById('scrollTrigger');
-    const sub3Content = document.querySelector('.sub3-content');
-
-    let startYSub3 = 0;
-    let startHeightSub3 = 0;
-    let isExpandedSub3 = false;
-    let isDraggingSub3 = false;
-    let touchStartTimeSub3 = 0;
-    let initialTouchYSub3 = 0;
-    let wheelDelayTimeoutSub3 = null;
-
-    function isAtTriggerSub3() {
-        return sub3DivContainer.scrollTop <= scrollTriggerSub3.offsetTop;
-    }
-
-    function expandPanelSub3() {
-        controlsSub3.style.height = '70vh';
-        controlsSub3.classList.add('expanded');
-        isExpandedSub3 = true;
-        sub3DivContainer.style.overflowY = 'auto';
-    }
-
-    function collapsePanelSub3() {
-        if (isExpandedSub3 && isAtTriggerSub3()) {
-            controlsSub3.style.height = '40vh';
-            controlsSub3.classList.remove('expanded');
-            isExpandedSub3 = false;
-            sub3DivContainer.style.overflowY = 'hidden';
-        }
-    }
-
-    function initializeSub3PanelHandlers() {
-        sub3DivContainer.addEventListener('touchstart', (e) => {
-            if (sub3DivContainer.style.display !== 'none') {
-                startYSub3 = e.touches[0].clientY;
-                initialTouchYSub3 = startYSub3;
-                startHeightSub3 = controlsSub3.offsetHeight;
-                touchStartTimeSub3 = Date.now();
-                isDraggingSub3 = true;
-            }
-        });
-
-        sub3DivContainer.addEventListener('touchmove', (e) => {
-            if (!isDraggingSub3 || sub3DivContainer.style.display === 'none') return;
-
-            const currentY = e.touches[0].clientY;
-            const deltaY = currentY - startYSub3;
-            const newHeight = startHeightSub3 - deltaY;
-            const minHeight = window.innerHeight * 0.4;
-            const maxHeight = window.innerHeight * 0.7;
-
-            if (isExpandedSub3 && deltaY > 0 && !isAtTriggerSub3()) return;
-
-            if (newHeight >= minHeight && newHeight <= maxHeight) {
-                controlsSub3.style.height = `${newHeight}px`;
-                e.preventDefault();
-            }
-        });
-
-        sub3DivContainer.addEventListener('touchend', (e) => {
-            if (!isDraggingSub3 || sub3DivContainer.style.display === 'none') return;
-
-            const currentHeight = controlsSub3.offsetHeight;
-            const threshold = window.innerHeight * 0.55;
-
-            if (currentHeight > threshold) {
-                expandPanelSub3();
-            } else if (isAtTriggerSub3()) {
-                collapsePanelSub3();
-            }
-
-            isDraggingSub3 = false;
-        });
-
-        sub3DivContainer.addEventListener('wheel', (e) => {
-            if (sub3DivContainer.style.display === 'none') return;
-
-            if (!isExpandedSub3 && e.deltaY > 0) {
-                expandPanelSub3();
-                e.preventDefault();
-                return;
-            }
-
-            if (isExpandedSub3 && isAtTriggerSub3() && e.deltaY < 0) {
-                if (wheelDelayTimeoutSub3) clearTimeout(wheelDelayTimeoutSub3);
-                wheelDelayTimeoutSub3 = setTimeout(() => {
-                    if (isAtTriggerSub3()) collapsePanelSub3();
-                }, 150);
-                e.preventDefault();
-            } else if (!isExpandedSub3) {
-                e.preventDefault();
-            }
-        });
-    }
-
-    initializeSub3PanelHandlers();
-});
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth > 768) return;
-
-    const controlsSub4 = document.getElementById('controls'); // Assuming 'controls' is used for height adjustments
-    const sub4DivContainer = document.getElementById('sub4DivContainer');
-
-    let startYSub4 = 0;
-    let startHeightSub4 = 0;
-    let isExpandedSub4 = false;
-    let isDraggingSub4 = false;
-    let initialTouchYSub4 = 0;
-    let touchStartTimeSub4 = 0;
-
-    function expandPanelSub4() {
-        controlsSub4.style.height = '70vh';
-        controlsSub4.classList.add('expanded');
-        isExpandedSub4 = true;
-        sub4DivContainer.style.overflowY = 'auto';
-    }
-
-    function collapsePanelSub4() {
-        controlsSub4.style.height = '40vh';
-        controlsSub4.classList.remove('expanded');
-        isExpandedSub4 = false;
-        sub4DivContainer.style.overflowY = 'hidden';
-    }
-
-    function initializeSub4PanelHandlers() {
-        sub4DivContainer.addEventListener('touchstart', (e) => {
-            if (sub4DivContainer.style.display !== 'none') {
-                startYSub4 = e.touches[0].clientY;
-                initialTouchYSub4 = startYSub4;
-                startHeightSub4 = controlsSub4.offsetHeight;
-                touchStartTimeSub4 = Date.now();
-                isDraggingSub4 = true;
-            }
-        });
-
-        sub4DivContainer.addEventListener('touchmove', (e) => {
-            if (!isDraggingSub4 || sub4DivContainer.style.display === 'none') return;
-
-            const currentY = e.touches[0].clientY;
-            const deltaY = currentY - startYSub4;
-            const newHeight = startHeightSub4 - deltaY;
-            const minHeight = window.innerHeight * 0.4;
-            const maxHeight = window.innerHeight * 0.7;
-
-            if (newHeight >= minHeight && newHeight <= maxHeight) {
-                // Adjust the panel height based on the touch movement
-                controlsSub4.style.height = `${newHeight}px`;
-                e.preventDefault();
-            }
-        });
-
-        sub4DivContainer.addEventListener('touchend', (e) => {
-            if (!isDraggingSub4 || sub4DivContainer.style.display === 'none') return;
-
-            const currentHeight = controlsSub4.offsetHeight;
-            const threshold = window.innerHeight * 0.55;
-
-            // Determine if the panel should expand or collapse based on the final height
-            if (currentHeight > threshold) {
-                expandPanelSub4();
-            } else {
-                collapsePanelSub4();
-            }
-
-            isDraggingSub4 = false;
-        });
-
-        // Allow expanding or collapsing with the mouse wheel
-        sub4DivContainer.addEventListener('wheel', (e) => {
-            if (sub4DivContainer.style.display === 'none') return;
-
-            if (!isExpandedSub4 && e.deltaY > 0) {
-                expandPanelSub4();
-                e.preventDefault();
-                return;
-            }
-
-            if (isExpandedSub4 && e.deltaY < 0) {
-                collapsePanelSub4();
-                e.preventDefault();
-            } else if (!isExpandedSub4) {
-                e.preventDefault();
-            }
-        });
-    }
-
-    initializeSub4PanelHandlers();
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth > 768) return;
-
-    const controls = document.getElementById('controls');
-    const sub5DivContainer = document.getElementById('sub5DivContainer');
-    const sub5Content = document.getElementById('sub5Content');
-    const sub6DivContainer = document.getElementById('sub6DivContainer');
-    const sub6Content = document.getElementById('sub6Content');
-    
-    let startY = 0;
-    let startHeight = 0;
-    let isExpanded = false;
-    let isDragging = false;
-    let lastScrollTop = 0;
-
-    // Create and setup fixed header containers
-    function setupFixedHeaders() {
-        // Setup for Sub5
-        const sub5HeaderContainer = document.createElement('div');
-        sub5HeaderContainer.className = 'fixed-header-container';
-        sub5HeaderContainer.style.position = 'sticky';
-        sub5HeaderContainer.style.top = '0';
-        sub5HeaderContainer.style.left = '0';
-        sub5HeaderContainer.style.right = '0';
-        sub5HeaderContainer.style.zIndex = '1001';
-        sub5HeaderContainer.style.backgroundColor = '#000';
-        sub5HeaderContainer.style.height = '120px';
-
-        // Move Sub5 header elements
-        const sub5BackButton = document.getElementById('backButtonSub5');
-        const sub5Heading = document.getElementById('sub5Heading');
-        const sub5SearchContainer = document.querySelector('#sub5DivContainer #subSearchContainer');
-
-        sub5HeaderContainer.appendChild(sub5BackButton);
-        sub5HeaderContainer.appendChild(sub5Heading);
-        sub5HeaderContainer.appendChild(sub5SearchContainer);
-
-        sub5DivContainer.insertBefore(sub5HeaderContainer, sub5DivContainer.firstChild);
-
-        // Style Sub5 header elements
-        sub5BackButton.style.position = 'absolute';
-        sub5BackButton.style.top = '10px';
-        sub5BackButton.style.right = '10px';
-        sub5BackButton.style.zIndex = '1002';
-
-        sub5Heading.style.position = 'absolute';
-        sub5Heading.style.top = '40px';
-        sub5Heading.style.width = '100%';
-        sub5Heading.style.zIndex = '1002';
-
-        sub5SearchContainer.style.position = 'absolute';
-        sub5SearchContainer.style.top = '80px';
-        sub5SearchContainer.style.width = '100%';
-        sub5SearchContainer.style.zIndex = '1002';
-
-        // Setup for Sub6
-        const sub6HeaderContainer = document.createElement('div');
-        sub6HeaderContainer.className = 'fixed-header-container';
-        sub6HeaderContainer.style.cssText = sub5HeaderContainer.style.cssText;
-
-        const sub6BackButton = document.getElementById('backButtonSub6');
-        const sub6Heading = document.getElementById('sub6Heading');
-        const sub6SearchContainer = document.querySelector('#sub6DivContainer #subSearchContainer');
-
-        sub6HeaderContainer.appendChild(sub6BackButton);
-        sub6HeaderContainer.appendChild(sub6Heading);
-        sub6HeaderContainer.appendChild(sub6SearchContainer);
-
-        sub6DivContainer.insertBefore(sub6HeaderContainer, sub6DivContainer.firstChild);
-
-        sub6BackButton.style.cssText = sub5BackButton.style.cssText;
-        sub6Heading.style.cssText = sub5Heading.style.cssText;
-        sub6SearchContainer.style.cssText = sub5SearchContainer.style.cssText;
-    }
-
-    setupFixedHeaders();
-
-    function isAtTop(element) {
-        return Math.abs(element.scrollTop) < 1;
-    }
-
-    function initializeSub5PanelHandlers() {
-        sub5Content.style.marginTop = '120px';
-        sub5Content.style.height = 'calc(40vh - 120px)';
-        sub5Content.style.overflowY = 'hidden';
-
-        sub5DivContainer.addEventListener('touchstart', (e) => {
-            if (sub5DivContainer.style.display !== 'none') {
-                startY = e.touches[0].clientY;
-                startHeight = controls.offsetHeight;
-                isDragging = true;
-                lastScrollTop = sub5Content.scrollTop;
-            }
-        });
-
-        sub5DivContainer.addEventListener('touchmove', (e) => {
-            if (!isDragging || sub5DivContainer.style.display === 'none') return;
-
-            if (isExpanded && !isAtTop(sub5Content)) {
-                isDragging = false;
-                return;
-            }
-
-            const deltaY = e.touches[0].clientY - startY;
-            const newHeight = startHeight - deltaY;
-            const minHeight = window.innerHeight * 0.4;
-            const maxHeight = window.innerHeight * 0.7;
-
-            if (newHeight >= minHeight && newHeight <= maxHeight) {
-                controls.style.height = `${newHeight}px`;
-                if (!isExpanded) {
-                    e.preventDefault();
-                }
-            }
-        });
-
-        sub5DivContainer.addEventListener('touchend', () => {
-            if (!isDragging || sub5DivContainer.style.display === 'none') return;
-            isDragging = false;
-
-            const currentHeight = controls.offsetHeight;
-            const threshold = window.innerHeight * 0.55;
-
-            if (currentHeight > threshold) {
-                expandSub5Panel();
-            } else {
-                collapseSub5Panel();
-            }
-        });
-
-        sub5Content.addEventListener('scroll', () => {
-            lastScrollTop = sub5Content.scrollTop;
-        });
-
-        sub5Content.addEventListener('touchmove', (e) => {
-            if (isExpanded) {
-                e.stopPropagation();
-            } else {
-                e.preventDefault();
-            }
-        }, { passive: false });
-
-        sub5DivContainer.addEventListener('wheel', (e) => {
-            if (sub5DivContainer.style.display === 'none') return;
-
-            if (!isExpanded && e.deltaY > 0) {
-                expandSub5Panel();
-                e.preventDefault();
-                return;
-            }
-
-            if (isExpanded && isAtTop(sub5Content) && e.deltaY < 0) {
-                collapseSub5Panel();
-                e.preventDefault();
-                return;
-            }
-
-            if (!isExpanded) {
-                e.preventDefault();
-            }
-        });
-    }
-
-    function expandSub5Panel() {
-        controls.style.height = '70vh';
-        controls.classList.add('expanded');
-        isExpanded = true;
-        sub5Content.style.overflowY = 'auto';
-        sub5Content.style.height = 'calc(70vh - 120px)';
-    }
-
-    function collapseSub5Panel() {
-        if (isExpanded && isAtTop(sub5Content)) {
-            controls.style.height = '40vh';
-            controls.classList.remove('expanded');
-            isExpanded = false;
-            sub5Content.style.overflowY = 'hidden';
-            sub5Content.style.height = 'calc(40vh - 120px)';
-        }
-    }
-
-    function initializeSub6PanelHandlers() {
-        sub6Content.style.marginTop = '120px';
-        sub6Content.style.height = 'calc(40vh - 120px)';
-        sub6Content.style.overflowY = 'hidden';
-
-        sub6DivContainer.addEventListener('touchstart', (e) => {
-            if (sub6DivContainer.style.display !== 'none') {
-                startY = e.touches[0].clientY;
-                startHeight = controls.offsetHeight;
-                isDragging = true;
-                lastScrollTop = sub6Content.scrollTop;
-            }
-        });
-
-        sub6DivContainer.addEventListener('touchmove', (e) => {
-            if (!isDragging || sub6DivContainer.style.display === 'none') return;
-
-            if (isExpanded && !isAtTop(sub6Content)) {
-                isDragging = false;
-                return;
-            }
-
-            const deltaY = e.touches[0].clientY - startY;
-            const newHeight = startHeight - deltaY;
-            const minHeight = window.innerHeight * 0.4;
-            const maxHeight = window.innerHeight * 0.7;
-
-            if (newHeight >= minHeight && newHeight <= maxHeight) {
-                controls.style.height = `${newHeight}px`;
-                if (!isExpanded) {
-                    e.preventDefault();
-                }
-            }
-        });
-
-        sub6DivContainer.addEventListener('touchend', () => {
-            if (!isDragging || sub6DivContainer.style.display === 'none') return;
-            isDragging = false;
-
-            const currentHeight = controls.offsetHeight;
-            const threshold = window.innerHeight * 0.55;
-
-            if (currentHeight > threshold) {
-                expandSub6Panel();
-            } else {
-                collapseSub6Panel();
-            }
-        });
-
-        sub6Content.addEventListener('scroll', () => {
-            lastScrollTop = sub6Content.scrollTop;
-        });
-
-        sub6Content.addEventListener('touchmove', (e) => {
-            if (isExpanded) {
-                e.stopPropagation();
-            } else {
-                e.preventDefault();
-            }
-        }, { passive: false });
-
-        sub6DivContainer.addEventListener('wheel', (e) => {
-            if (sub6DivContainer.style.display === 'none') return;
-
-            if (!isExpanded && e.deltaY > 0) {
-                expandSub6Panel();
-                e.preventDefault();
-                return;
-            }
-
-            if (isExpanded && isAtTop(sub6Content) && e.deltaY < 0) {
-                collapseSub6Panel();
-                e.preventDefault();
-                return;
-            }
-
-            if (!isExpanded) {
-                e.preventDefault();
-            }
-        });
-    }
-
-    function expandSub6Panel() {
-        controls.style.height = '70vh';
-        controls.classList.add('expanded');
-        isExpanded = true;
-        sub6Content.style.overflowY = 'auto';
-        sub6Content.style.height = 'calc(70vh - 120px)';
-    }
-
-    function collapseSub6Panel() {
-        if (isExpanded && isAtTop(sub6Content)) {
-            controls.style.height = '40vh';
-            controls.classList.remove('expanded');
-            isExpanded = false;
-            sub6Content.style.overflowY = 'hidden';
-            sub6Content.style.height = 'calc(40vh - 120px)';
-        }
-    }
-
-    function resetPanelState() {
-        isExpanded = false;
-        isDragging = false;
-        controls.style.height = '40vh';
-        controls.classList.remove('expanded');
-    }
-
-    document.getElementById('backButtonSub5').addEventListener('click', resetPanelState);
-    document.getElementById('backButtonSub6').addEventListener('click', resetPanelState);
-
-    initializeSub5PanelHandlers();
-    initializeSub6PanelHandlers();
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth > 768) return;
-
-    const controls = document.getElementById('controls');
-    const sub7DivContainer = document.getElementById('sub7DivContainer');
-    const sub8DivContainer = document.getElementById('sub8DivContainer');
-    const sub9DivContainer = document.getElementById('sub9DivContainer');
-
-    // Get scrollable content elements
-    const sub7Content = sub7DivContainer.querySelector('.scrollable-content');
-    const sub8Content = sub8DivContainer.querySelector('.scrollable-content');
-    const sub9Content = sub9DivContainer.querySelector('.scrollable-content');
-
-    // Shared state variables
-    let startY = 0;
-    let startHeight = 0;
-    let isExpanded = false;
-    let isDragging = false;
-    let lastScrollTop = 0;
-
-    function isAtTop(element) {
-        return Math.abs(element.scrollTop) < 1;
-    }
-
-    // Generic panel handler initialization
-    function initializePanelHandlers(container, scrollableContent) {
-        // Reset initial styles
-        scrollableContent.style.overflowY = 'auto';
-        scrollableContent.style.height = 'calc(100% - 200px)'; // Adjusted for header heights
-
-        container.addEventListener('touchstart', (e) => {
-            if (container.style.display !== 'none') {
-                startY = e.touches[0].clientY;
-                startHeight = controls.offsetHeight;
-                isDragging = true;
-                lastScrollTop = scrollableContent.scrollTop;
-            }
-        });
-
-        container.addEventListener('touchmove', (e) => {
-            if (!isDragging || container.style.display === 'none') return;
-
-            if (isExpanded && !isAtTop(scrollableContent)) {
-                isDragging = false;
-                return;
-            }
-
-            const deltaY = e.touches[0].clientY - startY;
-            const newHeight = startHeight - deltaY;
-            const minHeight = window.innerHeight * 0.4;
-            const maxHeight = window.innerHeight * 0.7;
-
-            if (newHeight >= minHeight && newHeight <= maxHeight) {
-                controls.style.height = `${newHeight}px`;
-                if (!isExpanded) {
-                    e.preventDefault();
-                }
-            }
-        });
-
-        container.addEventListener('touchend', () => {
-            if (!isDragging || container.style.display === 'none') return;
-            isDragging = false;
-
-            const currentHeight = controls.offsetHeight;
-            const threshold = window.innerHeight * 0.55;
-
-            if (currentHeight > threshold) {
-                expandPanel(container, scrollableContent);
-            } else {
-                collapsePanel(container, scrollableContent);
-            }
-        });
-
-        // Enable smooth scrolling
-        scrollableContent.addEventListener('scroll', () => {
-            lastScrollTop = scrollableContent.scrollTop;
-        });
-
-        // Handle touch events on scrollable content
-        scrollableContent.addEventListener('touchmove', (e) => {
-            if (isExpanded) {
-                e.stopPropagation();
-            } else {
-                e.preventDefault();
-            }
-        }, { passive: false });
-
-        // Mouse wheel handling
-        container.addEventListener('wheel', (e) => {
-            if (container.style.display === 'none') return;
-
-            if (!isExpanded && e.deltaY > 0) {
-                expandPanel(container, scrollableContent);
-                e.preventDefault();
-                return;
-            }
-
-            if (isExpanded && isAtTop(scrollableContent) && e.deltaY < 0) {
-                collapsePanel(container, scrollableContent);
-                e.preventDefault();
-                return;
-            }
-
-            if (!isExpanded) {
-                e.preventDefault();
-            }
-        });
-    }
-
-    function expandPanel(container, scrollableContent) {
-        controls.style.height = '70vh';
-        controls.classList.add('expanded');
-        isExpanded = true;
-        scrollableContent.style.overflowY = 'auto';
-
-        // Calculate content height considering headers
-        const headerBackground = container.querySelector('.header-background1');
-        const headerHeight = headerBackground ? headerBackground.offsetHeight : 200;
-        scrollableContent.style.height = `calc(70vh - ${headerHeight}px)`;
-
-        // Show directions display if it exists
-        const directionsDisplay = container.querySelector('[id^="directionsDisplay"]');
-        if (directionsDisplay) {
-            directionsDisplay.style.display = 'block';
-        }
-    }
-
-    function collapsePanel(container, scrollableContent) {
-        if (isExpanded && isAtTop(scrollableContent)) {
-            controls.style.height = '40vh';
-            controls.classList.remove('expanded');
-            isExpanded = false;
-
-            // Calculate content height considering headers
-            const headerBackground = container.querySelector('.header-background1');
-            const headerHeight = headerBackground ? headerBackground.offsetHeight : 200;
-            scrollableContent.style.height = `calc(40vh - ${headerHeight}px)`;
-        }
-    }
-
-    // Reset panel state when switching between containers
-    function resetPanelState() {
-        isExpanded = false;
-        isDragging = false;
-        controls.style.height = '40vh';
-        controls.classList.remove('expanded');
-    }
-
-    // Add reset handlers for back buttons
-    document.getElementById('backButtonSub7').addEventListener('click', resetPanelState);
-    document.getElementById('backButtonSub8').addEventListener('click', resetPanelState);
-    document.getElementById('backButtonSub9').addEventListener('click', resetPanelState);
-
-    // Initialize handlers for all containers
-    initializePanelHandlers(sub7DivContainer, sub7Content);
-    initializePanelHandlers(sub8DivContainer, sub8Content);
-    initializePanelHandlers(sub9DivContainer, sub9Content);
-
-    // Additional event listeners for mode buttons
-    function initializeModeButtons(container) {
-        const modeButtons = container.querySelectorAll('.mode-btn');
-        modeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons in the same container
-                modeButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-            });
-        });
-    }
-
-    // Initialize mode buttons for all containers
-    initializeModeButtons(sub7DivContainer);
-    initializeModeButtons(sub8DivContainer);
-    initializeModeButtons(sub9DivContainer);
-
-    // Update content display when directions are shown
-    const directionButtons = [
-        document.getElementById('getDirectionsBtn'),
-        document.getElementById('getDirectionsBtnSub8'),
-        document.getElementById('getDirectionsBtnSub9')
-    ];
-
-    directionButtons.forEach(button => {
-        if (button) {
-            button.addEventListener('click', () => {
-                const container = button.closest('[id$="DivContainer"]');
-                if (container) {
-                    expandPanel(container, container.querySelector('.scrollable-content'));
-                }
-            });
-        }
-    });
-});
 
 
 
@@ -7385,14 +4897,46 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
+function showDirectionsRequiredModal() {
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        text-align: center;
+    `;
+    
+    modal.innerHTML = `
+        <h3 style="margin-bottom: 15px; color: #dc3545;">Directions Required</h3>
+        <p style="margin-bottom: 20px;">Please generate directions first by clicking the 'Get Directions' button.</p>
+        <button style="padding: 8px 16px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            Close
+        </button>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    const closeButton = modal.querySelector('button');
+    closeButton.onclick = () => document.body.removeChild(modal);
+}
+window.isFromWarningModal = false;
 document.addEventListener('DOMContentLoaded', function() {
     const centerCoordinates = [-1.2133067398143993, 36.879474707493756];
     const WARNING_DISTANCE = 40; // Distance threshold in meters
     
     document.getElementById('startJourneyBtn').addEventListener('click', async function(e) {
-        e.preventDefault(); // Prevent default action initially
+        const directionsDisplay = document.getElementById('directionsDisplay');
+    if (!directionsDisplay || directionsDisplay.style.display !== 'block') {
+        e.preventDefault();
+        showDirectionsRequiredModal();
+        return;
+    }
         
         // 1. Check if marker is within USIU borders
         const markerLatLng = window.liveMarker.getLatLng();
@@ -7421,7 +4965,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (userChoice === 'Yes') {
                     // Transfer settings to sub9
-                    const activeButton = document.querySelector("#modeButtons .mode-btn.active");
+                    window.isFromWarningModal = true;
+
+                    // Show loading animation and handle navigation sequence
+                    showLoadingWithCountdown(4, () => {
+
+
+                        const activeButton = document.querySelector("#modeButtons .mode-btn.active");
                     const destinationText = document.getElementById("destinationHeading")
                         .textContent.replace('Destination: ', '');
                     
@@ -7443,9 +4993,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             sub9Button.classList.add('active');
                         }
                     }
-
-                    // Show loading animation and handle navigation sequence
-                    showLoadingWithCountdown(7, () => {
                         // Click get directions first
                         const getDirectionsBtn = document.getElementById('getDirectionsBtnSub9');
                         if (getDirectionsBtn) {
@@ -7457,7 +5004,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                 if (startJourneyBtn) {
                                     startJourneyBtn.click();
                                 }
-                            }, 500);
+                                window.isFromWarningModal = false;
+                            }, 50);
                         }
                     });
                     
@@ -7606,7 +5154,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const WARNING_DISTANCE = 40; // Distance threshold in meters
     
     document.getElementById('startJourneyBtnSub8').addEventListener('click', async function(e) {
+        const directionsDisplay = document.getElementById('directionsDisplay1');
+    if (!directionsDisplay || directionsDisplay.style.display !== 'block') {
         e.preventDefault();
+        showDirectionsRequiredModal();
+        return;
+    }
         
         const markerLatLng = window.liveMarker.getLatLng();
         const point = [markerLatLng.lng, markerLatLng.lat];
@@ -7631,7 +5184,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 if (userChoice === 'Yes') {
-                    const activeButton = document.querySelector("#modeButtonsSub8 .mode-btn.active");
+                   
+                    window.isFromWarningModal = true;
+                    // Show loading animation and handle navigation sequence
+                    showLoadingWithCountdown(4, () => {
+
+
+                        const activeButton = document.querySelector("#modeButtonsSub8 .mode-btn.active");
                     const destinationText = document.getElementById("sub8DestinationHeading")
                         .textContent.replace('Destination: ', '');
                     
@@ -7653,8 +5212,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }
 
-                    // Show loading animation and handle navigation sequence
-                    showLoadingWithCountdown(7, () => {
+
                         // Click get directions first
                         const getDirectionsBtn = document.getElementById('getDirectionsBtnSub9');
                         if (getDirectionsBtn) {
@@ -7666,6 +5224,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 if (startJourneyBtn) {
                                     startJourneyBtn.click();
                                 }
+                                window.isFromWarningModal = false;
                             }, 500);
                         }
                     });
@@ -7847,6 +5406,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (userChoice === 'Cancel') return false;
                 
                 if (userChoice === 'Yes') {
+                    window.isFromWarningModal = true;
                     comingFromWarningModal = true;
                     const destinationText = destElement.textContent.replace('Destination: ', '');
                     const activeButton = document.querySelector(modeButtonsSelector + ' .active');
@@ -7874,6 +5434,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(() => {
                         const startJourneyBtn = document.getElementById('startJourneyBtnSub9');
                         if (startJourneyBtn) startJourneyBtn.click();
+
+                        window.isFromWarningModal = false; 
                     }, 100);
                     
                     return false;
@@ -7918,7 +5480,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
    // Combined comprehensive startJourneyBtnSub9 click handler
 document.getElementById('startJourneyBtnSub9').addEventListener('click', async function(e) {
-    e.preventDefault();
+    if (!window.isFromWarningModal) {
+        const directionsDisplay = document.getElementById('directionsDisplay2');
+        if (!directionsDisplay || directionsDisplay.style.display !== 'block') {
+            e.preventDefault();
+            showDirectionsRequiredModal();
+            return;
+        }
+    }
 
     // Initial checks and setup
     const markerLatLng = window.liveMarker.getLatLng();
@@ -8927,7 +6496,7 @@ const soundStyles = document.createElement('style');
 soundStyles.textContent = `
 .sound-toggle {
     position: fixed;
-    top: 70px;
+    top: 140px;
     right: 20px;
     width: 40px;
     height: 40px;
@@ -9119,69 +6688,6 @@ const directionConfig = {
 
 
 
-// Updated getDirectionsBtn click handlers for sub7, sub8, and sub9
-document.getElementById("getDirectionsBtn").addEventListener("click", async () => {
-    // Show loading animation
-    showLoadingOverlay();
-
-    const sourceText = capitalizeWords(document.getElementById("sourceHeading").textContent.replace('Source: ', ''));
-    const destinationText = capitalizeWords(document.getElementById("destinationHeading").textContent.replace('Destination: ', ''));
-
-    selectDropdownOption("source", sourceText);
-    selectDropdownOption("destination", destinationText);
-
-    const selectedMode = document.querySelector("#modeButtons .active")?.id || "walkingMode";
-    selectMode(selectedMode);
-
-    document.getElementById("directionsDisplay").style.display = "block";
-    document.getElementById("directionsList").innerHTML = '';
-
-    await document.getElementById("searchBtn1").click();
-
-    // The loading overlay will be removed by the observer
-});
-
-document.getElementById("getDirectionsBtnSub8").addEventListener("click", async () => {
-    // Show loading animation
-    showLoadingOverlay();
-
-    document.getElementById("sourceType").value = "clickOnMap";
-    const destinationText = capitalizeWords(
-        document.getElementById("sub8DestinationHeading").textContent.trim().replace('Destination: ', '')
-    );
-    selectDropdownOption("coordDestination", destinationText);
-
-    const selectedMode = document.querySelector("#modeButtonsSub8 .active")?.id || "walkingModeSub8";
-    selectMode("coordMode", selectedMode);
-
-    document.getElementById("directionsDisplay1").style.display = "block";
-    document.getElementById("directionsList1").innerHTML = '';
-
-    await document.getElementById("coordSearchBtn").click();
-
-    // The loading overlay will be removed by the observer
-});
-
-document.getElementById("getDirectionsBtnSub9").addEventListener("click", async () => {
-    // Show loading animation
-    showLoadingOverlay();
-
-    document.getElementById("sourceType").value = "liveLoc";
-    const destinationText = capitalizeWords(
-        document.getElementById("sub9DestinationHeading").textContent.trim().replace('Destination: ', '')
-    );
-    selectDropdownOption("coordDestination", destinationText);
-
-    const selectedMode = document.querySelector("#modeButtonsSub9 .active")?.id || "walkingModeSub9";
-    selectMode("coordMode", selectedMode);
-
-    document.getElementById("directionsDisplay2").style.display = "block";
-    document.getElementById("directionsList2").innerHTML = '';
-
-    await document.getElementById("liveSearchBtn").click();
-
-    // The loading overlay will be removed by the observer
-});
 
 // Updated loading overlay function
 function showLoadingOverlay() {
@@ -9216,6 +6722,43 @@ function showLoadingOverlay() {
 
     return overlay;
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const themeSwitch = document.getElementById('theme-switch');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    let currentTheme = 'light'; // Default theme
+
+    function loadTheme(themeName) {
+        const link = document.getElementById('theme-stylesheet');
+        if (!link) {
+            const newLink = document.createElement('link');
+            newLink.id = 'theme-stylesheet';
+            newLink.rel = 'stylesheet';
+            document.head.appendChild(newLink);
+        }
+        document.getElementById('theme-stylesheet').href = `style${themeName === 'light' ? '1' : '2'}.css`;
+    }
+
+    // Always start with light theme on page load
+    loadTheme('light');
+    sunIcon.classList.add('active');
+    moonIcon.classList.remove('active');
+
+    themeSwitch.addEventListener('click', () => {
+        if (currentTheme === 'light') {
+            currentTheme = 'dark';
+            sunIcon.classList.remove('active');
+            moonIcon.classList.add('active');
+            loadTheme('dark');
+        } else {
+            currentTheme = 'light';
+            moonIcon.classList.remove('active');
+            sunIcon.classList.add('active');
+            loadTheme('light');
+        }
+    });
+});
+
 
 
     </script>

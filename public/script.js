@@ -7,7 +7,17 @@ let state = {
     selectedCategory: null,
     selectedLocation: null
 };
-
+const POINT_MAPPINGS = {
+    'SCHOOL OF SCIENCE AND HUMANITIES': 'POINT 13',
+    'SCHOOL OF CHANDARIA': 'POINT 14',
+    'USIU GATE A': 'POINT 86',
+    'USIU GATE B': 'POINT 100',
+    'LIBRARY': 'POINT 150',
+    'SCHOOL OF BUSINESS': 'POINT 200',
+    'ADMINISTRATION': 'POINT 220',
+    'SWIMMING POOL': 'POINT 250',
+    
+};
 
 
 // Event Listeners Setup
@@ -758,20 +768,15 @@ async function addItem(type) {
 // Updated point-related functions
 async function addNewPoint(locationName) {
     try {
-        const newPointValue = document.getElementById('edit-point-value').value.trim();
-        if (!newPointValue) {
-            handleError(new Error('Missing point value'), 'Please enter a point value');
-            return;
-        }
-
-        if (!newPointValue.toUpperCase().startsWith('POINT')) {
-            handleError(new Error('Invalid point format'), 'Point value should start with "POINT" (e.g., POINT 1)');
+        const selectedPoint = document.getElementById('edit-point-value').value.trim();
+        if (!selectedPoint) {
+            handleError(new Error('Missing point value'), 'Please select a point');
             return;
         }
 
         const newPoint = {
             name: locationName,
-            point: newPointValue.toUpperCase()
+            point: selectedPoint
         };
 
         state.points.push(newPoint);
@@ -792,17 +797,16 @@ async function addNewPoint(locationName) {
 
 async function updatePoint() {
     try {
-        const newPointValue = document.getElementById('edit-point-value').value.trim();
-        if (!newPointValue) {
-            handleError(new Error('Missing point value'), 'Please enter a point value');
+        const selectedPoint = document.getElementById('edit-point-value').value.trim();
+        if (!selectedPoint) {
+            handleError(new Error('Missing point value'), 'Please select a point');
             return;
         }
 
         const pointIndex = state.points.findIndex(p => p.name === state.selectedPoint);
         if (pointIndex !== -1) {
-            state.points[pointIndex].point = newPointValue;
+            state.points[pointIndex].point = selectedPoint;
             
-            // Update in Firebase
             await fetch('/firebase/dropdownpoints', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
@@ -849,8 +853,11 @@ function renderPoints(location) {
         // If point exists, show the point and edit button
         const div = document.createElement('div');
         div.className = 'point-item';
+        const locationName = Object.entries(POINT_MAPPINGS).find(([loc, point]) => 
+            point === pointInfo.point)?.[0] || pointInfo.point;
+        
         div.innerHTML = `
-            <span class="point-value">${pointInfo.point}</span>
+            <span class="point-value">${locationName} (${pointInfo.point})</span>
             <button class="edit-btn" onclick="showEditPointModal('${location}')">Edit Point</button>
         `;
         container.appendChild(div);
@@ -867,16 +874,14 @@ function renderPoints(location) {
         container.appendChild(div);
     }
 }
-
 // Updated showAddPointModal function
 function showAddPointModal(locationName) {
     const modal = document.getElementById('edit-point-modal');
     const modalTitle = modal.querySelector('h2');
     modalTitle.textContent = 'Add New Point';
     
-    // Set empty input value
+    // Reset select value
     document.getElementById('edit-point-value').value = '';
-    document.getElementById('edit-point-value').placeholder = 'Enter point number (e.g., POINT 1)';
     
     state.selectedPoint = locationName;
     
@@ -893,7 +898,8 @@ function showEditPointModal(locationName) {
     if (!pointInfo) return;
 
     const modal = document.getElementById('edit-point-modal');
-    document.getElementById('edit-point-value').value = pointInfo.point;
+    const select = document.getElementById('edit-point-value');
+    select.value = pointInfo.point;
     state.selectedPoint = locationName;
     modal.style.display = 'block';
 }
