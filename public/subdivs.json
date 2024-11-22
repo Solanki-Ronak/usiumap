@@ -17,42 +17,50 @@
             "Other": "Popular for breakfast and lunch"
         }
     },
-    "Lecturer 1": {
-        "image": "messi.jpeg",
+    "Joseph Owino": {
+        "image": "humanities.jpeg",
         "details": {
             "Location": "Humanities Building, Room 210",
             "Phone Number": "345-678-9012",
-            "Email Address": "lecturer1@university.edu",
+            "Email Address": "jowino@usiu.ac.ke",
             "Other": "Office hours 10 AM - 3 PM"
         }
     },
 
-    "Lecturer 2": {
-        "image": "path/to/lecturer1.png",
+    
+
+    "Maureen Kangu": {
+        "image": "humanities.jpeg",
         "details": {
             "Location": "Humanities Building, Room 210",
             "Phone Number": "345-678-9012",
-            "Email Address": "lecturer1@university.edu",
-            "Other": "Office hours 10 AM - 3 PM"
-        }
-    }
-
-    ,
-
-    "Lecturer 3": {
-        "image": "path/to/lecturer1.png",
-        "details": {
-            "Location": "Humanities Building, Room 210",
-            "Phone Number": "345-678-9012",
-            "Email Address": "lecturer1@university.edu",
+            "Email Address": "mkangu@usiu.ac.ke",
             "Other": "Office hours 10 AM - 3 PM"
         }
     },
 
     "Basketball Court": {
-        "image": "messi.jpeg",
+        "image": "basketball.jpeg",
+        "details": {
+            "Location": "Near buses stop",
+            "Phone Number": "345-678-9012",
+            "Email Address": "lecturer1@university.edu",
+            "Other": "Office hours 10 AM - 3 PM"
+        }
+    },
+    "SS1": {
+        "image": "humanities.jpeg",
         "details": {
             "Location": "Humanities Building, Room 210",
+            "Phone Number": "345-678-9012",
+            "Email Address": "lecturer1@university.edu",
+            "Other": "Office hours 10 AM - 3 PM"
+        }
+    },
+    "SS2": {
+        "image": "humanities.jpeg",
+        "details": {
+            "Location": "Humanities Building, Room 220",
             "Phone Number": "345-678-9012",
             "Email Address": "lecturer1@university.edu",
             "Other": "Office hours 10 AM - 3 PM"
@@ -60,3 +68,6 @@
     }
 
 }
+
+
+
