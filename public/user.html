@@ -6803,57 +6803,201 @@ function requestLocationPermission() {
     });
 }
 
-// Add this right after your existing liveMarker initialization
 document.addEventListener('DOMContentLoaded', async function() {
     if (!navigator.geolocation) {
         alert('Geolocation is not supported by your browser');
         return;
     }
 
-    const permissionGranted = await requestLocationPermission();
-    if (!permissionGranted) {
-        return;
+    // First check if we already have permission
+    try {
+        const permissionStatus = await navigator.permissions.query({ name: 'geolocation' });
+        
+        // Only show modal if permission is not granted
+        if (permissionStatus.state === 'prompt') {
+            const permissionGranted = await requestLocationPermission();
+            if (!permissionGranted) {
+                return;
+            }
+        }
+
+        // Start watching position regardless of how we got permission
+        navigator.geolocation.watchPosition(
+            function(position) {
+                const { latitude, longitude } = position.coords;
+                const point = [longitude, latitude];
+
+                // Check if within USIU borders
+                if (isPointInPolygon(point, usiuBorderCoordinates)) {
+                    liveMarker.setLatLng([latitude, longitude]);
+                } else {
+                    showOutsideCampusModal();
+                }
+            },
+            function(error) {
+                console.error('Location error:', error);
+                let errorMsg = '';
+                switch(error.code) {
+                    case error.PERMISSION_DENIED:
+                        errorMsg = "Location permission denied. Please enable location services.";
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        errorMsg = "Location information unavailable.";
+                        break;
+                    case error.TIMEOUT:
+                        errorMsg = "Location request timed out.";
+                        break;
+                    default:
+                        errorMsg = "An unknown error occurred.";
+                }
+                alert(errorMsg);
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 0
+            }
+        );
+    } catch (err) {
+        console.error('Error checking permission:', err);
+        // Fallback to direct geolocation request if permissions API fails
+        navigator.geolocation.getCurrentPosition(() => {
+            // If we get here, we have permission, so start watching
+            startWatchingPosition();
+        }, () => {
+            // If we get here, we need to request permission
+            requestLocationPermission().then(granted => {
+                if (granted) startWatchingPosition();
+            });
+        });
+    }
+});
+
+
+
+// First, add this CSS for the status indicator
+const statusStyles = document.createElement('style');
+statusStyles.textContent = `
+.location-status {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.status-inside {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-outside {
+    background-color: #fcc807;
+    color: #2c3992;
+}
+
+.status-icon {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+`;
+document.head.appendChild(statusStyles);
+
+// Function to show outside campus modal
+function showOutsideCampusModal() {
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        text-align: center;
+        max-width: 400px;
+    `;
+    
+    modal.innerHTML = `
+        <h3 style="margin-bottom: 15px; color: #2c3992; font-size: 18px;">Outside USIU Campus</h3>
+        <p style="margin-bottom: 20px; color: #666; line-height: 1.5;">You are currently outside USIU campus. Some features may be limited, such as live location tracking.</p>
+        <button style="padding: 10px 25px; background: #fcc807; color: #2c3992; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+            OK
+        </button>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    const button = modal.querySelector('button');
+    button.onclick = () => {
+        document.body.removeChild(modal);
+    };
+}
+
+// Function to update status indicator
+function updateLocationStatus(isInside) {
+    // Remove existing status if any
+    const existingStatus = document.querySelector('.location-status');
+    if (existingStatus) {
+        existingStatus.remove();
     }
 
-    // Start watching position
-    navigator.geolocation.watchPosition(
-        function(position) {
-            const { latitude, longitude } = position.coords;
-            const point = [longitude, latitude];
+    // Create new status indicator
+    const statusDiv = document.createElement('div');
+    statusDiv.className = 'location-status ' + (isInside ? 'status-inside' : 'status-outside');
+    
+    statusDiv.innerHTML = `
+        <span class="status-icon"></span>
+        <span>${isInside ? 'Inside USIU Campus' : 'Outside USIU Campus'}</span>
+    `;
+    
+    document.body.appendChild(statusDiv);
+}
 
-            // Check if within USIU borders
-            if (isPointInPolygon(point, usiuBorderCoordinates)) {
-                // Update marker position - this will trigger the existing 'move' event handler
+// Modify your position watching code
+navigator.geolocation.watchPosition(
+    function(position) {
+        const { latitude, longitude } = position.coords;
+        const point = [longitude, latitude];
+
+        // Check if within USIU borders
+        const isInside = isPointInPolygon(point, usiuBorderCoordinates);
+        
+        // Update the status indicator
+        updateLocationStatus(isInside);
+
+        if (isInside) {
+            if (liveMarker) {
                 liveMarker.setLatLng([latitude, longitude]);
-            } else {
+            }
+        } else {
+            // Only show modal once when first detected outside
+            if (!window.hasShownOutsideModal) {
                 showOutsideCampusModal();
+                window.hasShownOutsideModal = true;
             }
-        },
-        function(error) {
-            console.error('Location error:', error);
-            let errorMsg = '';
-            switch(error.code) {
-                case error.PERMISSION_DENIED:
-                    errorMsg = "Location permission denied. Please enable location services.";
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    errorMsg = "Location information unavailable.";
-                    break;
-                case error.TIMEOUT:
-                    errorMsg = "Location request timed out.";
-                    break;
-                default:
-                    errorMsg = "An unknown error occurred.";
-            }
-            alert(errorMsg);
-        },
-        {
-            enableHighAccuracy: true,
-            timeout: 10000,
-            maximumAge: 0
         }
-    );
-});
+    },
+    function(error) {
+        console.error('Location error:', error);
+        // Handle errors...
+    },
+    {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+    }
+);
 
     </script>
 </body>
