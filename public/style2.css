@@ -317,15 +317,34 @@ h1, h2, h3, h4, h5, h6,
     display: none;
     background-color: black;
     color: black;
-    height: 100%;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 30%;
     box-sizing: border-box;
+    z-index: 1000;
 }
 
 #sub3DivContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.sub3-content {
+    margin-top: 110px;
+    padding: 20px;
+    position: relative;
+    z-index: 1000;
+    height: calc(100vh - 110px); /* Height calculation for scrollable area */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 40px; /* Add padding at bottom */
+}
+
+.sub3-content::-webkit-scrollbar {
     display: none;
 }
 
@@ -377,13 +396,6 @@ h1, h2, h3, h4, h5, h6,
 }
 
 
-/* Content Container */
-.sub3-content {
-    margin-top: 110px; /* Match the header-background height */
-    padding: 20px;
-    position: relative;
-    z-index: 1000;
-}
 
 #sub3Image {
     width: 220px;
@@ -434,6 +446,7 @@ h1, h2, h3, h4, h5, h6,
 #detailsTable {
     width: 100%;
     margin-top: 20px;
+    margin-bottom: 30px; /* Add margin at bottom */
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 8px;
