@@ -314,7 +314,17 @@ h1, h2, h3, h4, h5, h6,
 #subDivContent::-webkit-scrollbar {
     display: none;
 }
-
+#sub3DivContainer {
+    display: none;
+    background-color: white;
+    color: white;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: relative;
+    box-sizing: border-box;
+}
 
 #sub3DivContainer::-webkit-scrollbar {
     display: none;
@@ -368,50 +378,14 @@ h1, h2, h3, h4, h5, h6,
 }
 
 
-#sub3DivContainer {
-    display: none;
-    background-color: white;
-    color: white;
-    height: 100vh;
-    overflow: hidden;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 30%;
-    box-sizing: border-box;
-    z-index: 1000;
-}
-
 /* Content Container */
 .sub3-content {
-    margin-top: 110px;
+    margin-top: 110px; /* Match the header-background height */
     padding: 20px;
     position: relative;
     z-index: 1000;
-    height: calc(100vh - 110px); /* Height calculation for scrollable area */
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    padding-bottom: 40px; /* Add padding at bottom */
 }
 
-.sub3-content::-webkit-scrollbar {
-    display: none;
-}
-
-/* Table styles */
-#detailsTable {
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 30px; /* Add margin at bottom */
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: white;
-    border: 2px solid #fcc807;
-}
 #sub3Image {
     width: 220px;
     height: auto;
@@ -457,6 +431,17 @@ h1, h2, h3, h4, h5, h6,
     margin-top: 5px;
 }
 
+/* Enhanced Table Styles */
+#detailsTable {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    border: 2px solid #fcc807;
+}
 
 #detailsTable td {
     padding: 15px;
