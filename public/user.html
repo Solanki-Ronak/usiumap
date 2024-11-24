@@ -2557,7 +2557,7 @@ function isPointInPolygon(point, polygon) {
     return inside;
 }
 var liveMarker = L.marker([ -1.219645599730465,36.87932573861777], {  // Replace with your desired coordinates
-    draggable: true, 
+    draggable: false, 
     zIndexOffset: 1000 
 }).addTo(map);
 
@@ -6759,7 +6759,101 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Add this function to show the location permission modal
+function requestLocationPermission() {
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        text-align: center;
+    `;
+    
+    modal.innerHTML = `
+        <h3 style="margin-bottom: 15px; color: #2c3992;">Location Access Required</h3>
+        <p style="margin-bottom: 20px;">Please enable location services to use live tracking features.</p>
+        <button style="padding: 8px 16px; background: #2c3992; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">
+            Enable Location
+        </button>
+        <button style="padding: 8px 16px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            Cancel
+        </button>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    return new Promise((resolve) => {
+        const [enableBtn, cancelBtn] = modal.querySelectorAll('button');
+        
+        enableBtn.onclick = () => {
+            document.body.removeChild(modal);
+            resolve(true);
+        };
+        
+        cancelBtn.onclick = () => {
+            document.body.removeChild(modal);
+            resolve(false);
+        };
+    });
+}
 
+// Add this right after your existing liveMarker initialization
+document.addEventListener('DOMContentLoaded', async function() {
+    if (!navigator.geolocation) {
+        alert('Geolocation is not supported by your browser');
+        return;
+    }
+
+    const permissionGranted = await requestLocationPermission();
+    if (!permissionGranted) {
+        return;
+    }
+
+    // Start watching position
+    navigator.geolocation.watchPosition(
+        function(position) {
+            const { latitude, longitude } = position.coords;
+            const point = [longitude, latitude];
+
+            // Check if within USIU borders
+            if (isPointInPolygon(point, usiuBorderCoordinates)) {
+                // Update marker position - this will trigger the existing 'move' event handler
+                liveMarker.setLatLng([latitude, longitude]);
+            } else {
+                showOutsideCampusModal();
+            }
+        },
+        function(error) {
+            console.error('Location error:', error);
+            let errorMsg = '';
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    errorMsg = "Location permission denied. Please enable location services.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    errorMsg = "Location information unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    errorMsg = "Location request timed out.";
+                    break;
+                default:
+                    errorMsg = "An unknown error occurred.";
+            }
+            alert(errorMsg);
+        },
+        {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+        }
+    );
+});
 
     </script>
 </body>
