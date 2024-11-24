@@ -6802,7 +6802,7 @@ function requestLocationPermission() {
         };
     });
 }
-
+let hasShownOutsideModal = false;
 document.addEventListener('DOMContentLoaded', async function() {
     if (!navigator.geolocation) {
         alert('Geolocation is not supported by your browser');
@@ -6823,17 +6823,30 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         // Start watching position regardless of how we got permission
         navigator.geolocation.watchPosition(
-            function(position) {
-                const { latitude, longitude } = position.coords;
-                const point = [longitude, latitude];
+    function(position) {
+        const { latitude, longitude } = position.coords;
+        const point = [longitude, latitude];
 
-                // Check if within USIU borders
-                if (isPointInPolygon(point, usiuBorderCoordinates)) {
-                    liveMarker.setLatLng([latitude, longitude]);
-                } else {
-                    showOutsideCampusModal();
-                }
-            },
+        // Check if within USIU borders
+        const isInside = isPointInPolygon(point, usiuBorderCoordinates);
+        
+        // Update the status indicator
+        updateLocationStatus(isInside);
+
+        if (isInside) {
+            if (liveMarker) {
+                liveMarker.setLatLng([latitude, longitude]);
+            }
+            // Reset the flag when user comes back inside
+            hasShownOutsideModal = false;
+        } else {
+            // Only show modal if it hasn't been shown yet
+            if (!hasShownOutsideModal) {
+                showOutsideCampusModal();
+                hasShownOutsideModal = true;
+            }
+        }
+    },
             function(error) {
                 console.error('Location error:', error);
                 let errorMsg = '';
