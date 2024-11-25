@@ -18,6 +18,20 @@
         
         <!-- Right side for controls -->
         <div id="controls">
+           
+           
+<div id="mobileControlButtons" class="hidden">
+    <button id="expandControls" aria-label="Expand Controls">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+    <button id="shrinkControls" aria-label="Shrink Controls">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+        </svg>
+    </button>
+</div>
             
             <div id="theme-toggle">
                 <button id="theme-switch" data-tooltip="Toggle theme">
@@ -6893,8 +6907,8 @@ const statusStyles = document.createElement('style');
 statusStyles.textContent = `
 .location-status {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 0px;
+    left: 50px;
     padding: 8px 15px;
     border-radius: 5px;
     font-weight: bold;
@@ -7011,7 +7025,43 @@ navigator.geolocation.watchPosition(
         maximumAge: 0
     }
 );
+document.addEventListener('DOMContentLoaded', function() {
+    const controls = document.getElementById('controls');
+    const expandBtn = document.getElementById('expandControls');
+    const shrinkBtn = document.getElementById('shrinkControls');
 
+    let currentState = 'normal'; // can be 'normal', 'expanded', or 'minimized'
+
+    if (expandBtn && shrinkBtn) {
+        expandBtn.addEventListener('click', function() {
+            if (currentState === 'minimized') {
+                // From 20vh to 65vh
+                controls.classList.remove('minimized');
+                controls.classList.remove('expanded');
+                currentState = 'normal';
+            } else if (currentState === 'normal') {
+                // From 65vh to 80vh
+                controls.classList.add('expanded');
+                controls.classList.remove('minimized');
+                currentState = 'expanded';
+            }
+        });
+
+        shrinkBtn.addEventListener('click', function() {
+            if (currentState === 'expanded') {
+                // From 80vh to 65vh
+                controls.classList.remove('expanded');
+                controls.classList.remove('minimized');
+                currentState = 'normal';
+            } else if (currentState === 'normal') {
+                // From 65vh to 20vh
+                controls.classList.add('minimized');
+                controls.classList.remove('expanded');
+                currentState = 'minimized';
+            }
+        });
+    }
+});
     </script>
 </body>
 </html>
