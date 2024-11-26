@@ -1116,8 +1116,9 @@ h1, h2, h3, h4, h5, h6,
 
 
 #directionsDisplay {
+    border: 2px solid #fcc807;
     display: none;
-    background-color: #222;
+    background-color: #2c3992;
     border-radius: 8px;
     margin-top: 20px;
     margin-bottom: 40px; /* Added bottom margin */
@@ -1136,17 +1137,22 @@ h1, h2, h3, h4, h5, h6,
 #directionsDisplay h2 {
     padding: 15px 20px;
     margin: 0;
-    color: #ff6600;
-    border-bottom: 2px solid #444;
-    background-color: #222;
+   
+
+    
+    color: #fcc807;
+    border-bottom: 2px solid #fcc807;
+    background-color: black;
 }
 
 
 
 #directionsList div {
     padding: 12px 0;
-    border-bottom: 1px solid #444;
-    color: black;
+    border-bottom: 1px solid #fcc807;
+    color: #fcc807;
+    
+   
 }
 
  
@@ -1478,7 +1484,7 @@ h1, h2, h3, h4, h5, h6,
 #sub9DivContainer {
     display: none;
     background-color: black;
-    color: black;
+   
     height: 100%;
     width: 100%;
     overflow-y: auto;
@@ -1751,20 +1757,14 @@ h1, h2, h3, h4, h5, h6,
     margin-bottom: 20px; /* Added margin to last item */
 }
 
-#directionsDisplay2 h2 {
-    padding: 15px 20px;
-    margin: 0;
-    color: #ff6600;
-    border-bottom: 2px solid #444;
-    background-color: #222;
-}
+
 
 
 
 #directionsList2 div {
     padding: 12px 0;
     border-bottom: 1px solid #444;
-    color: black;
+  
 }
 
 
@@ -2633,4 +2633,64 @@ body.dark-theme .moon-icon {
 
 
 
+}
+
+
+
+/* Total Distance Displays and Direction Displays */
+#totalDistanceDisplay,
+#totalDistanceDisplay1,
+#totalDistanceDisplay2,
+#directionsDisplay1,
+#directionsDisplay2 {
+    display: none;
+    background-color: #2c3992;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #fcc807;
+}
+
+/* Headers inside display containers */
+#totalDistanceDisplay h2,
+#totalDistanceDisplay1 h2,
+#totalDistanceDisplay2 h2,
+#directionsDisplay1 h2,
+#directionsDisplay2 h2 {
+    padding: 15px 20px;
+    margin: 0;
+    color: #fcc807;
+    border-bottom: 2px solid #fcc807;
+    background-color: black;
+}
+
+/* Value and direction list containers */
+#totalDistanceValue,
+#totalDistanceValue1,
+#totalDistanceValue2,
+#directionsList1,
+#directionsList2 {
+    padding: 15px 20px;
+    color: #fcc807;
+    font-size: 1.1em;
+}
+
+/* Direction From Table containers */
+.direction-from-table {
+    background-color: #2c3992;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* Direction images */
+#directionImage7,
+#directionImage8,
+#directionImage9 {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    object-fit: contain;
 }
