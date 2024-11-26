@@ -7053,6 +7053,82 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// Function to clear all interpolated points and navigation elements
+function clearAllMapElements() {
+    // Clear all interpolated markers (circle markers)
+    if (interpolatedMarkers) {
+        interpolatedMarkers.forEach(marker => {
+            if (marker && map.hasLayer(marker)) {
+                map.removeLayer(marker);
+            }
+        });
+        interpolatedMarkers = [];
+    }
+    
+    // Clear the red circle marker
+    if (redCircleMarker && map.hasLayer(redCircleMarker)) {
+        map.removeLayer(redCircleMarker);
+        redCircleMarker = null;
+    }
+
+    // Clear endpoint markers
+    if (endpointMarkers) {
+        endpointMarkers.forEach(endpointObj => {
+            if (endpointObj.marker && map.hasLayer(endpointObj.marker)) {
+                map.removeLayer(endpointObj.marker);
+            }
+        });
+        endpointMarkers = [];
+    }
+
+    // Clear only the polylines that were added for the interpolated points
+    map.eachLayer((layer) => {
+        if (layer instanceof L.Polyline && 
+            !(layer instanceof L.Polygon) && 
+            layer.options.weight === 8 || layer.options.weight === 6) {  // Only remove our added polylines which have weight 8 or 6
+            map.removeLayer(layer);
+        }
+    });
+
+    // Reset global variables
+    allPathPoints = [];
+    currentPathIndex = 0;
+    isNavigationActive = false;
+    rerooteModalShown = false;
+
+    // Clear directions text
+    ['currentDirection7', 'currentDirection8', 'currentDirection9'].forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.value = '';
+        }
+    });
+
+    // Reset any active mode buttons
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+}
+
+// Update back button handlers
+function goBackToSub6() {
+    clearAllMapElements();
+    document.getElementById('sub7DivContainer').style.display = 'none';
+    document.getElementById('sub6DivContainer').style.display = 'block';
+}
+
+function goBackToSub4FromSub8() {
+    clearAllMapElements();
+    document.getElementById('sub8DivContainer').style.display = 'none';
+    document.getElementById('sub4DivContainer').style.display = 'block';
+}
+
+function goBackToSub4FromSub9() {
+    clearAllMapElements();
+    document.getElementById('sub9DivContainer').style.display = 'none';
+    document.getElementById('sub4DivContainer').style.display = 'block';
+}
+
 
     </script>
 </body>
