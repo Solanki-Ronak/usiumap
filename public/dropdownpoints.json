@@ -1,12 +1,13 @@
 [
-    { "name": "Transportation Office", "point": "POINT 13" },
-    { "name": "Sironi", "point": "POINT 15" },
-    { "name": "Pauls Caffe", "point": "POINT 15" },
-    { "name": "Joseph Owino", "point": "POINT 15" },
-    { "name": "Basketball Court", "point": "POINT 15" },
-    { "name": "Maureen Kangu", "point": "POINT 15" },
-    { "name": "SS1", "point": "POINT 15" },
-    { "name": "SS2", "point": "POINT 15" }
+    { "name": "Maureen Kangu", "point": "POINT 25" },
+    { "name": "Sironi", "point": "POINT 25" },
+    { "name": "Francis Khayundi", "point": "POINT 25" },
+    { "name": "Joseph Owino", "point": "POINT 25" },
+    { "name": "Football Field", "point": "POINT 20" },
+    { "name": "SS1", "point": "POINT 25" },
+    { "name": "SS2", "point": "POINT 25" }
 ]
+
+
 
 
