@@ -1,20 +1,34 @@
+
+
+
+
 {
-    "Transportation Office": {
-        "image": "messi.jpeg",
+    "Maureen Kangu": {
+        "image": "humanities.jpeg",
         "details": {
             "Location": "Building A, Floor 1",
             "Phone Number": "123-456-7890",
-            "Email Address": "transportation@university.edu",
-            "Other": "Opens 9 AM - 5 PM transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu transportation@university.edu"
+            "Email Address": "mkangu@usiu.co.ke",
+            "Other": "Consultation time:  9 AM - 5 PM "
         }
     },
-    "Sironi": {
-        "image": "path/to/sironi.png",
+    "Francis Khayundi": {
+        "image": "humanities.jpeg",
         "details": {
-            "Location": "Main Campus, Block C",
-            "Phone Number": "234-567-8901",
-            "Email Address": "sironi@university.edu",
-            "Other": "Popular for breakfast and lunch"
+            "Location": "Building A, Floor 2",
+            "Phone Number": "123-456-7890",
+            "Email Address": "fkhayundi@usiu.co.ke",
+            "Other": "Consultation time:  9 AM - 5 PM "
+        }
+    },
+
+    "Sironi": {
+        "image": "humanities.jpeg",
+        "details": {
+            "Location": "Ground Floor",
+            "Phone Number": "123-456-7890",
+            "Email Address": "sironi@usiu.co.ke",
+            "Other": "Open from 7am to 10pm "
         }
     },
     "Joseph Owino": {
@@ -29,23 +43,15 @@
 
     
 
-    "Maureen Kangu": {
-        "image": "humanities.jpeg",
-        "details": {
-            "Location": "Humanities Building, Room 210",
-            "Phone Number": "345-678-9012",
-            "Email Address": "mkangu@usiu.ac.ke",
-            "Other": "Office hours 10 AM - 3 PM"
-        }
-    },
+    
 
-    "Basketball Court": {
-        "image": "basketball.jpeg",
+    "Football Field": {
+        "image": "football.jpeg",
         "details": {
-            "Location": "Near buses stop",
-            "Phone Number": "345-678-9012",
-            "Email Address": "lecturer1@university.edu",
-            "Other": "Office hours 10 AM - 3 PM"
+            "Location": "sportws area",
+            "Phone Number": "Not applicable",
+            "Email Address": "sports@usiu.ac.ke",
+            "Other": ""
         }
     },
     "SS1": {
