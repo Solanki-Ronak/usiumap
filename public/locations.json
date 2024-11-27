@@ -1,7 +1,7 @@
 {
-    "Transportation": ["Transportation Office"],
-    "Restaurants": ["Sironi", "Caffe latta", "Pauls Caffe"],
-    "Lecturers": ["Joseph Owino", "Maureen Kangu"],
+    
+    "Restaurants": ["Sironi"],
+    "Lecturers": ["Joseph Owino", "Maureen Kangu", "Francis Khayundi"],
     "Classrooms": ["SS1", "SS2"],
-    "Sports": ["Basketball Court", "Football Field"]
+    "Sports": [ "Football Field"]
 }
